@@ -7,5 +7,7 @@ import UseInfoModal from './useInfoModal'
 import SpeechcraftModal from './speechcraftModal'
 import EditPwdModal from './editPwdModal'
 import QuickSearchModal from './quickSearchModal'
-
-export { Header, Menu, Bread, Sider, styles ,UseInfoModal,SpeechcraftModal,EditPwdModal,QuickSearchModal}
+import Appointment from './Appointment'
+import Calendar from './Calendar'
+import Message from './Message'
+export { Header, Menu, Bread, Sider, styles ,UseInfoModal,SpeechcraftModal,EditPwdModal,QuickSearchModal,Appointment,Calendar,Message}

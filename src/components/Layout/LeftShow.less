@@ -1,0 +1,125 @@
+@import "~themes/vars";
+.appointment{
+    background: #fff;
+}
+.headTop{
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+}
+.calendar{
+  justify-content: center;
+  line-height: 32px;
+  background: #8c9eff;
+  box-shadow: 0px 4px 4px #ced3ff;
+  font-size: 15px;
+  color: #fff;
+}
+.headTop.message{
+  justify-content: center;
+  line-height: 32px;
+  background: #0dcbe4;
+  box-shadow: 0px 4px 4px #d0f3f7;
+  font-size: 15px;
+  color: #fff;
+}
+.headTop span{
+  flex:1;
+  line-height: 32px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 1px #ddd solid;
+}
+.headTop span.active{
+  background: #f4a21a;
+  color: #fff;
+  box-shadow: 0px 4px 4px #f7db8b;
+  border-bottom:none;
+}
+.headTop span:hover{
+  background: #f4a21a;
+  color: #fff;
+  box-shadow: 0px 4px 4px #f7db8b;
+}
+.appointment .ulList{
+  padding:15px 5px;
+  height: 300px;
+  overflow: auto;
+  box-shadow: 0px 4px 4px #d8d9da;
+}
+.appointment .ulList li{
+  height: 30px;
+  line-height: 30px;
+}
+.appointment .ulList li span{
+
+  display: inline-block;
+  &:nth-child(1){
+      color: #888989;
+      width: 10%;
+    text-align: center;
+  }
+  &:nth-child(2){
+    width:20%;
+  }
+  &:nth-child(3){
+    width:30%;
+  }
+  &:nth-child(4){
+    width:35%;
+  }
+  &:nth-child(5){
+    color: #0082fe;
+    width: 5%;
+  }
+}
+
+.appointment .ulList2{
+  padding:15px 5px;
+  height: 210px;
+  overflow: auto;
+  box-shadow: 0px 4px 4px #d8d9da;
+}
+.appointment .ulList2 li{
+  height: 30px;
+  line-height: 30px;
+}
+.appointment .ulList2 li>span{
+  display: inline-block;
+  margin: 0 10px;
+
+}
+.appointment .ulList2 li span:nth-child(2){
+  color: #929494;
+}
+.appointment .ulList2 li span span{
+  color: #0082fe;
+}
+
+.appointment .ulList3{
+
+}
+.appointment .ulList3 li span{
+  color: #ec412b!important;
+  margin: 0;
+}
+.appointment .ulList3 li span:nth-child(1){
+  margin: 0 5px 0 10px;
+  font-size:20px;
+}
+.appointment .ulList2.ulList3 li{
+  color: #3d3d3d;
+}
+.appointment .messageBox{
+  padding:15px 5px;
+  height: 210px;
+  overflow: auto;
+  box-shadow: 0px 4px 4px #d8d9da;
+}
+.appointment .messageBox p{
+  margin-left: 10px;
+}
+.appointment .messageBox p span{
+  color: #111111;
+}

@@ -16,7 +16,7 @@ import './app.less'
 
 
 const { Content, Footer, Sider } = Layout
-const { Header, Bread, styles ,UseInfoModal,SpeechcraftModal,EditPwdModal,QuickSearchModal} = MyLayout
+const { Header, Bread, styles ,UseInfoModal,SpeechcraftModal,EditPwdModal,QuickSearchModal,Appointment,Calendar,Message} = MyLayout
 const { prefix, openPages } = config
 
 let lastHref
@@ -26,7 +26,7 @@ const App = ({
 }) => {
   const {
     user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions,userInfoModalVisible,speechcraftModalVisible,
-    editPwdModalVisible,QuickSearchModalVisible,choseItem,currentItem,searchTxt
+    editPwdModalVisible,QuickSearchModalVisible,choseItem,currentItem,searchTxt,defaultActiveKey
   } = app
   let { pathname } = location
   pathname = pathname.startsWith('/') ? pathname : `/${pathname}`
@@ -75,6 +75,16 @@ const App = ({
     },
     onChangeSearch(value){
       dispatch({ type: 'app/onChangeSearchTxt',  payload: value, })
+    }
+  }
+
+  const AppointmentProps={
+    defaultActiveKey,
+    changeActiveKeyFunc(key){
+      dispatch({
+        type: `app/changeActiveKey`,
+        payload: key,
+      })
     }
   }
 
@@ -234,8 +244,15 @@ console.log(speechcraftModalVisible)
           {editPwdModalVisible && <EditPwdModal {...editPwdModalProps}  />}
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
-            <Bread {...breadProps} />
-            {hasPermission ? children : <Error />}
+            <div style={{width:'80%',float:'left'}}>
+              <Bread {...breadProps} />
+              {hasPermission ? children : <Error />}
+            </div>
+            <div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
+                <Appointment {...AppointmentProps}/>
+                <Calendar  />
+                <Message />
+            </div>
           </Content>
           <Footer >
             {config.footerText}

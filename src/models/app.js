@@ -19,6 +19,7 @@ export default {
     user: {},
     currentItem: {},  //当前选择的话术数据
     searchTxt:'',//搜索条件
+    defaultActiveKey:1,
     userInfoModalVisible:false,
     speechcraftModalVisible:false,
     editPwdModalVisible:false,
@@ -202,7 +203,9 @@ export default {
         siderFold: !state.siderFold,
       }
     },
-
+    changeActiveKey(state,{payload}){
+      return { ...state, defaultActiveKey: payload }
+    },
     switchTheme (state) {
       window.localStorage.setItem(`${prefix}darkTheme`, !state.darkTheme)
       return {

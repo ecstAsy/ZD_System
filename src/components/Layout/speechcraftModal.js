@@ -38,7 +38,7 @@ const SpeechcraftModal = ({
   const modalOpts = {
     ...speechcraftModalProps,
     onOk: handleOk,
-    choseDesId:choseDesIdFunc,
+
 
 }
   console.log(choseItem)

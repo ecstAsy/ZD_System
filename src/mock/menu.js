@@ -15,8 +15,15 @@ let database = [
     icon: 'user',
     route: '/user',
   },
+  {
+    id: '70001',
+    bpid: '1',
+    name: '名单申请',
+    icon: 'user',
+    route: '/application',
+  },
   // {
-  //   id: '70001',
+  //   id: '70002',
   //   bpid: '1',
   //   name: '采购商',
   //   icon: 'home',
