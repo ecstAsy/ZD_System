@@ -6,6 +6,7 @@ import 'babel-polyfill'
 
 // 1. Initialize
 const app = dva({
+  
   ...createLoading({
     effects: true,
   }),
