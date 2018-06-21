@@ -126,7 +126,7 @@ const Application = ({
 
   return (
     <Page inner>
-      名单申请1111111
+      名单申请11111112222
     </Page>
   )
 }
