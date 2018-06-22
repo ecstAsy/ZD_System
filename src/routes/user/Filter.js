@@ -1,7 +1,8 @@
 /* global document */
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import moment from 'moment';
+import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components'
 import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select } from 'antd'
 import city from '../../utils/city'
@@ -181,25 +182,25 @@ const Filter = ({
       <Col {...ColProps2}>
         <FormItem label="初登日期"  {...formItemLayout2}>
           {getFieldDecorator('beginDate', {
-          })(<RangePicker />)}
+          })(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps2}>
         <FormItem label="保险到期日"  {...formItemLayout2}>
           {getFieldDecorator('endDate', {
-          })(<RangePicker />)}
+          })(<RangePicker style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps2}>
         <FormItem label="名单发放日"  {...formItemLayout2}>
           {getFieldDecorator('endDate', {
-          })(<RangePicker />)}
+          })(<RangePicker style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps2}>
-        <FormItem label="名单发放日"  {...formItemLayout2}>
+        <FormItem label="预约时间"  {...formItemLayout2}>
           {getFieldDecorator('endDate', {
-          })(<RangePicker />)}
+          })(<RangePicker style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
     </Row>
