@@ -4,7 +4,7 @@ import { Switch, Route, Redirect, routerRedux } from 'dva/router'
 import dynamic from 'dva/dynamic'
 import App from 'routes/app'
 import { LocaleProvider } from 'antd'
-import enUS from 'antd/lib/locale-provider/en_US'
+import zh_CN from 'antd/lib/locale-provider/zh_CN'
 
 const { ConnectedRouter } = routerRedux
 
@@ -16,93 +16,35 @@ const Routers = function ({ history, app }) {
   const routes = [
     {
       path: '/dashboard',
-      models: () => [import('./models/dashboard')],
-      component: () => import('./routes/dashboard/'),
+      models: () => [import('./models/yewuyuan/dashboard')],
+      component: () => import('./routes/yewuyuan/dashboard/'),
     },
   {
     path: '/application',
-      models: () => [import('./models/application')],
-    component: () => import('./routes/application/'),
-  }, {
-      path: '/cardmodel',
-      models: () => [import('./models/cardmodel')],
-      component: () => import('./routes/cardmodel/'),
-    }, {
-      path: '/purchase',
-      models: () => [import('./models/purchase')],
-      component: () => import('./routes/purchase/'),
-    }, {
-      path: '/purchase/:id',
-      models: () => [import('./models/purchase/detail')],
-      component: () => import('./routes/purchase/detail/'),
-    }, {
-      path: '/provider',
-      models: () => [import('./models/provider')],
-      component: () => import('./routes/provider/'),
-    }, {
-      path: '/provider/info/:id',
-      models: () => [import('./models/provider/detail')],
-      component: () => import('./routes/provider/detail/info/'),
-    }, {
-      path: '/provider/form',
-      models: () => [import('./models/provider/detail')],
-      component: () => import('./routes/provider/detail/form/'),
-    }, {
-      path: '/provider/form/:id',
-      models: () => [import('./models/provider/detail')],
-      component: () => import('./routes/provider/detail/form/'),
-    }, {
+      models: () => [import('./models/yewuyuan/application')],
+    component: () => import('./routes/yewuyuan/application/'),
+  },  {
       path: '/user',
-      models: () => [import('./models/user')],
-      component: () => import('./routes/user/'),
+      models: () => [import('./models/yewuyuan/user')],
+      component: () => import('./routes/yewuyuan/user/'),
     }, {
       path: '/user/:id',
-      models: () => [import('./models/user/detail')],
-      component: () => import('./routes/user/detail/'),
+      models: () => [import('./models/yewuyuan/user/detail')],
+      component: () => import('./routes/yewuyuan/user/detail/'),
     }, {
       path: '/login',
       models: () => [import('./models/login')],
       component: () => import('./routes/login/'),
     }, {
-      path: '/request',
-      component: () => import('./routes/request/'),
-    }, {
-      path: '/UIElement/iconfont',
-      component: () => import('./routes/UIElement/iconfont/'),
-    }, {
-      path: '/UIElement/search',
-      component: () => import('./routes/UIElement/search/'),
-    }, {
-      path: '/UIElement/dropOption',
-      component: () => import('./routes/UIElement/dropOption/'),
-    }, {
-      path: '/UIElement/layer',
-      component: () => import('./routes/UIElement/layer/'),
-    }, {
-      path: '/UIElement/dataTable',
-      component: () => import('./routes/UIElement/dataTable/'),
-    }, {
-      path: '/UIElement/editor',
-      component: () => import('./routes/UIElement/editor/'),
-    }, {
-      path: '/chart/ECharts',
-      component: () => import('./routes/chart/ECharts/'),
-    }, {
-      path: '/chart/highCharts',
-      component: () => import('./routes/chart/highCharts/'),
-    }, {
-      path: '/chart/Recharts',
-      component: () => import('./routes/chart/Recharts/'),
-    }, {
-      path: '/post',
-      models: () => [import('./models/post')],
-      component: () => import('./routes/post/'),
-    },
+    path: '/successPolicy',
+      models: () => [import('./models/teamLeader/successPolicy')],
+    component: () => import('./routes/teamLeader/successPolicy/'),
+  }
   ]
 
   return (
     <ConnectedRouter history={history}>
-      <LocaleProvider locale={enUS}>
+      <LocaleProvider locale={zh_CN}>
         <App>
           <Switch>
             <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />
