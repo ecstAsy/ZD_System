@@ -11,7 +11,7 @@ import Modal from './Modal'
 
 
 const User = ({
-  location, dispatch, user, loading,
+  location, dispatch, user, loading, history
 }) => {
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
@@ -121,12 +121,13 @@ const User = ({
   }
 
   const  onAdd=()=>{
-    dispatch({
-      type: 'user/showModal',
-      payload: {
-        modalType: 'create',
-      },
-    })
+    // dispatch({
+    //   type: 'user/showModal',
+    //   payload: {
+    //     modalType: 'create',
+    //   },
+    // })
+    history.push('user/add');
   }
   const handleDeleteItems = () => {
     dispatch({
@@ -152,10 +153,6 @@ const User = ({
             {`选择 ${selectedRowKeys.length} 项`}
             <Button type="primary" style={{ marginLeft: 8 }} onClick={onAdd}>新增</Button>
             <Button style={{ marginLeft: 8,border:'1px #ffaf38 solid',color:'#ffaf38',background:'#fff8e3' }}>跟踪</Button>
-
-            {/*<Popconfirm title="Are you sure delete these items?" placement="left" onConfirm={handleDeleteItems}>*/}
-              {/*<Button type="primary" style={{ marginLeft: 8 }}>删除</Button>*/}
-            {/*</Popconfirm>*/}
           </Col>
         </Row>
 

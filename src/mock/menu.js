@@ -16,6 +16,14 @@ let database = [
     route: '/user',
   },
   {
+    id: '21',
+    bpid: '2',
+    mpid: '-1',
+    name: '新增名单',
+    icon: 'user',
+    route: '/user/add',
+  },
+  {
     id: '3',
     bpid: '1',
     name: '名单申请',
