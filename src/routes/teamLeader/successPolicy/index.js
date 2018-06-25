@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
+import { Row, Col, Button, Popconfirm ,Modal} from 'antd'
 import { Page } from 'components'
 import queryString from 'query-string'
 import List from './List'
 import Filter from './Filter'
-// import Modal from './Modal'
+import Offermodal from './Modal'
 import styles from './List.less'
 
 const SuccessPolicy = ({
@@ -31,11 +31,13 @@ const SuccessPolicy = ({
   }
 
   const modalProps = {
-    item: modalType === 'create' ? {} : currentItem,
+    item: {},
     visible: modalVisible,
     maskClosable: false,
-    confirmLoading: loading.effects[`user/${modalType}`],
-    title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
+    // confirmLoading: loading.effects[`user/${modalType}`],
+    title:'报价详情',
+    footer:null,
+    width:'80%',
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       console.log(data);
@@ -49,7 +51,7 @@ const SuccessPolicy = ({
     },
     onCancel () {
       dispatch({
-        type: 'user/hideModal',
+        type: 'successPolicy/hideModal',
       })
     },
   }
@@ -68,7 +70,7 @@ const SuccessPolicy = ({
     },
     onDeleteItem (id) {
       dispatch({
-        type: 'user/delete',
+        type: 'successPolicy/delete',
         payload: id,
       })
         .then(() => {
@@ -77,9 +79,9 @@ const SuccessPolicy = ({
           })
         })
     },
-    onEditItem (item) {
+    seeQuotation (item) {
       dispatch({
-        type: 'user/showModal',
+        type: 'successPolicy/showModal',
         payload: {
           modalType: 'update',
           currentItem: item,
@@ -141,7 +143,7 @@ const SuccessPolicy = ({
         {/*</Row>*/}
 
       <List {...listProps} />
-      {/*{modalVisible && <Modal {...modalProps} />}*/}
+      {modalVisible && <Offermodal {...modalProps} />}
     </Page>
   )
 }

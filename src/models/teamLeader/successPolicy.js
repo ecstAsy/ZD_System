@@ -14,7 +14,7 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem: {},
-    modalVisible: false,
+    modalVisible: false,  //报价弹窗
     isMore:false,
     modalType: 'create',
     selectedRowKeys: [],

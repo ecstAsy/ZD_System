@@ -25,6 +25,19 @@ let usersListData = Mock.mock({
       yuyueDate: '@datetime("yyyyMMddHHmmss")',
       isRenewal:'2',
       viFlag:1,
+      'zhuangtai|1':[
+        "待审核",
+        "审核通过",
+        "审核中",
+        "审核失败"
+      ],
+      'sendType|1':[
+        "未分配",
+        "已分配",
+        "已派送",
+        "派送中",
+        "派送失败"
+      ],
       avatar () {
         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
       },

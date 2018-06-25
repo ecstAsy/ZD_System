@@ -11,16 +11,16 @@ import styles from './List.less'
 const { confirm } = Modal
 
 const List = ({
-  onDeleteItem, onEditItem, isMotion, location, ...tableProps
+  onDeleteItem, seeQuotation, isMotion, location, ...tableProps
 }) => {
   location.query = queryString.parse(location.search)
 
   const handleMenuClick = (record, e) => {
     if (e.key === '1') {
-      onEditItem(record)
+      seeQuotation(record)
     } else if (e.key === '2') {
       confirm({
-        title: '你确定要删除吗?',
+        title: '你确定要更改吗?',
         onOk () {
           onDeleteItem(record.id)
         },
@@ -94,7 +94,7 @@ const List = ({
       title: '操作',
       key: 'operation',
       render: (text, record) => {
-        return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }, { key: '2', name: 'Delete' }]} />
+        return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: '查看报价' }, { key: '2', name: '更改所属' }]} />
       },
     },
   ]
