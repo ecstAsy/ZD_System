@@ -49,8 +49,11 @@ const List = ({
       key: 'preInsuranceCompany',
     },{
       title: '状态',
-      dataIndex: 'firstRegisterDate',
-      key: 'firstRegisterDate',
+      dataIndex: 'zhuangtai',
+      key: 'zhuangtai',
+      render: (text, record) => {
+        return <span style={{background:record.zhuangtai=='审核通过'?'#0dcbe4':record.zhuangtai=='审核中'?'#58b6ff':record.zhuangtai=='审核失败'?'#ff5640':'#f6be1a'}}>{record.zhuangtai}</span>
+      },
     }, {
       title: '支付方式',
       dataIndex: 'insuranceDueDate',
@@ -74,10 +77,10 @@ const List = ({
     },
     {
       title: '派单状态',
-      dataIndex: 'isRenewal',
-      key: 'isRenewal2',
+      dataIndex: 'sendType',
+      key: 'sendType',
       render: (text, record) => {
-        return <span>2</span>
+        return <span style={{color:record.sendType=='已分配'?'#7da906':record.sendType=='未分配'?'#f6be1a':record.sendType=='已派送'?'#0dcbe4':record.sendType=='派送中'?'#56b4fc':'#ff5640'}}>{record.sendType}</span>
       },
     }, {
       title: '派单类型',
