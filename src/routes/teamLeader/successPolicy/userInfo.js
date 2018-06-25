@@ -9,9 +9,9 @@ const UserInfo = ({
 
 })=>{
   const remarks=[
-    {id:1,data:'20180311',des:'备注1'},
-    {id:2,data:'20180517',des:'备注2'},
-    {id:3,data:'20180613',des:'备注3'},
+    {id:1,date:'20180311',des:'备注1'},
+    {id:2,date:'20180517',des:'备注2'},
+    {id:3,date:'20180613',des:'备注3'},
   ]
 
   return (
@@ -42,14 +42,19 @@ const UserInfo = ({
         <div>备注：</div>
         <div className='remarks'>
             <div className='line'>
-                <div className='mokuai'>
+              {remarks.map((item,key)=>{
+                return(
+                  <div className='mokuai' key={key}>
                     <span></span>
-                    <p className="date">2018.03.11</p>
-                </div>
-              <div className='mokuai'>
-                <span></span>
-                <p className="date">2018.03.11</p>
-              </div>
+                    <p className="date">{item.date}</p>
+                    <div className="remarkShow">
+                        这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注
+                        <p>修改</p>
+                    </div>
+                  </div>
+                )
+              })}
+
             </div>
         </div>
       </div>

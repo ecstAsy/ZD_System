@@ -42,16 +42,25 @@
 
     }
     .remarks{
-      margin-top: 20px;
+      margin-top: 80px;
     }
     .remarks .line{
       height: 2px;
       border-top: 2px #ddd solid;
+      & >.mokuai:nth-child(2n) p.date{
+        position: absolute;
+        top:-40px;
+      }
     }
     .remarks .line .mokuai{
-        display: inline-block;
+        display: block;
+        float: left;
         margin-right: 70px;
-      margin-top: -7px;
+        margin-top: -7px;
+        position: relative;
+    }
+    .remarks .line .mokuai:hover .remarkShow{
+        display: block;
     }
     .remarks .line .mokuai span{
       display: block;
@@ -60,10 +69,25 @@
       border: 3px #8c9eff solid;
       border-radius: 50%;
       background: #fff;
+    }
+    .remarks .line .mokuai .remarkShow{
+      width: 140px;
+      border-radius: 5px;
+      border:1px #ddd solid;
+      line-height: 20px;
+      position: absolute;
+      top:15px;
+      left:0;
+      display:none;
+      box-shadow: 0px 5px 2px #eee;
+      background: #fff;
+      & >p{
 
+      }
     }
     .remarks .line .mokuai p.date{
       margin-left: -20px;
+      color: #a0a0a1;
     }
   }
 }

@@ -52,6 +52,9 @@ const SuccessPolicy = ({
     onCancel () {
       dispatch({
         type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'quotation',
+        },
       })
     },
   }
@@ -83,7 +86,7 @@ const SuccessPolicy = ({
       dispatch({
         type: 'successPolicy/showModal',
         payload: {
-          modalType: 'update',
+          modalType: 'quotation',
           currentItem: item,
         },
       })
