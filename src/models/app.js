@@ -37,7 +37,7 @@ export default {
         id: 1,
         icon: 'laptop',
         name: '今日汇总',
-        router: '/dashboard',
+        router: '/yewuyuan/dashboard',
       },
     ],
     menuPopoverVisible: false,
@@ -164,7 +164,6 @@ export default {
       }
     },
     openUserInfo(state){
-      console.log(11111111111)
       return {
         ...state,
         userInfoModalVisible: true,

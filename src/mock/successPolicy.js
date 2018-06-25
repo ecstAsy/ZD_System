@@ -33,7 +33,7 @@ let usersListData = Mock.mock({
 })
 
 
-let database = usersListData.data
+let database = usersListData.data;
 
 const EnumRoleType = {
   ADMIN: 'admin',
@@ -47,7 +47,7 @@ const userPermission = {
     role: EnumRoleType.DEFAULT,
   },
   ADMIN: {
-    visit: ['1', '2','21', '7', '5', '51', '52', '53'],
+    visit: ['1', '2','3','21', '7', '5', '51', '52', '53'],
     role: EnumRoleType.ADMIN,
   },
   DEVELOPER: {
@@ -122,7 +122,7 @@ module.exports = {
     res.status(200).end()
   },
 
-  [`GET ${apiPrefix}/user`] (req, res) {
+  [`GET ${apiPrefix}/successPolicy`] (req, res) {
     const cookie = req.headers.cookie || ''
     const cookies = qs.parse(cookie.replace(/\s/g, ''), { delimiter: ';' })
     const response = {}
@@ -147,7 +147,7 @@ module.exports = {
     res.json(response)
   },
 
-  [`GET ${apiPrefix}/users`] (req, res) {
+  [`GET ${apiPrefix}/successPolicys`] (req, res) {
     const { query } = req
     let { pageSize, page, ...other } = query
     pageSize = pageSize || 10
@@ -190,7 +190,7 @@ module.exports = {
   },
 
 
-  [`POST ${apiPrefix}/user`] (req, res) {
+  [`POST ${apiPrefix}/successPolicy`] (req, res) {
     const newData = req.body
     newData.createTime = Mock.mock('@now')
     newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.nickName.substr(0, 1))

@@ -41,7 +41,7 @@ const SpeechcraftModal = ({
 
 
 }
-  console.log(choseItem)
+
   return (
     <Modal {...modalOpts}>
       <div className={styles.choseItem}>

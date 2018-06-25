@@ -116,7 +116,7 @@ const App = ({
     title: '个人信息',
     cancelText:'取消',
     okText:'保存',
-    width:'30%',
+    width:'35%',
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
@@ -148,7 +148,7 @@ const App = ({
     title: '话术帮助',
     okText:'确定',
     footer:null,
-    width:'35%',
+    width:'40%',
     wrapClassName: 'vertical-center-modal',
     choseItem:choseItem,
     currentItem:currentItem,
@@ -215,7 +215,7 @@ const App = ({
       {children}
     </div>)
   }
-console.log(speechcraftModalVisible)
+  console.log(user)
   return (
 
     <div>
@@ -244,14 +244,25 @@ console.log(speechcraftModalVisible)
           {editPwdModalVisible && <EditPwdModal {...editPwdModalProps}  />}
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
+            {/*<div style={{width:user.permissions.role=='admin'?'80%':'100%',float:'left'}}>*/}
+              {/*<Bread {...breadProps} />*/}
+              {/*{hasPermission ? children : <Error />}*/}
+            {/*</div>*/}
+            {/*{*/}
+              {/*user.permissions.role=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>*/}
+                {/*<Appointment {...AppointmentProps}/>*/}
+                {/*<Calendar  />*/}
+                {/*<Message />*/}
+              {/*</div>:null*/}
+            {/*}*/}
             <div style={{width:'80%',float:'left'}}>
               <Bread {...breadProps} />
               {hasPermission ? children : <Error />}
             </div>
             <div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
-                <Appointment {...AppointmentProps}/>
-                <Calendar  />
-                <Message />
+              <Appointment {...AppointmentProps}/>
+              <Calendar  />
+              <Message />
             </div>
           </Content>
           <Footer >

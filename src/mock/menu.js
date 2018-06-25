@@ -16,11 +16,18 @@ let database = [
     route: '/user',
   },
   {
-    id: '70001',
+    id: '3',
     bpid: '1',
     name: '名单申请',
     icon: 'user',
     route: '/application',
+  },
+  {
+    id: '4',
+    bpid: '1',
+    name: '成功提交保单',
+    icon: 'user',
+    route: '/successPolicy',
   },
   // {
   //   id: '70002',
