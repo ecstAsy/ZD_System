@@ -9,6 +9,7 @@ import List from './List'
 import Filter from './Filter'
 import Offermodal from './Modal'
 import styles from './List.less'
+import SendModal from './sendModal'
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
@@ -16,7 +17,7 @@ const SuccessPolicy = ({
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
   const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,isMore
+    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,isMore,sendModalVisible
   } = successPolicy
 
   const handleRefresh = (newQuery) => {
@@ -36,8 +37,8 @@ const SuccessPolicy = ({
     maskClosable: false,
     // confirmLoading: loading.effects[`user/${modalType}`],
     title:'报价详情',
-    footer:null,
     width:'90%',
+    footer:null,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       console.log(data);
@@ -58,7 +59,24 @@ const SuccessPolicy = ({
       })
     },
   }
-
+const sendModalProps = {
+  item: {},
+  visible: sendModalVisible,
+  maskClosable: false,
+  title:'派送记录',
+  width:'40%',
+  closable:false,
+  wrapClassName: 'vertical-center-modal',
+  cancelText:'关闭',
+  onCancel () {
+    dispatch({
+      type: 'successPolicy/hideModal',
+      payload: {
+        modalType: 'sendation',
+      },
+    })
+  },
+}
   const listProps = {
     dataSource: list,
     loading: loading.effects['user/query'],
@@ -91,6 +109,15 @@ const SuccessPolicy = ({
         },
       })
     },
+    seeSendation(item) {
+      dispatch({
+        type: 'successPolicy/showModal',
+        payload: {
+          modalType: 'sendation',
+          currentItem: item,
+        },
+      })
+    }
 
   }
 
@@ -147,6 +174,7 @@ const SuccessPolicy = ({
 
       <List {...listProps} />
       {modalVisible && <Offermodal {...modalProps} />}
+      {sendModalVisible && <SendModal {...sendModalProps} />}
     </Page>
   )
 }

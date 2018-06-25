@@ -15,6 +15,7 @@ export default modelExtend(pageModel, {
   state: {
     currentItem: {},
     modalVisible: false,  //报价弹窗
+    sendModalVisible : false ,//派送弹窗
     isMore:false,
     modalType: 'create',
     selectedRowKeys: [],
@@ -97,12 +98,12 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
-
     showModal (state, { payload }) {
       if(payload.modalType=='quotation'){
         return { ...state, ...payload, modalVisible: true }
+      }else{
+        return { ...state, ...payload, sendModalVisible: true }
       }
-
     },
     isShowMoreFunc( state, { payload }){
       console.log(payload)
@@ -111,8 +112,9 @@ export default modelExtend(pageModel, {
     hideModal (state,{payload}) {
       if(payload.modalType=='quotation'){
         return { ...state, modalVisible: false }
+      }else{
+        return { ...state, sendModalVisible: false }
       }
-
     },
 
     switchIsMotion (state) {
