@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd'
 import styles from './offer.less'
+import UserInfo from './userInfo'
 
 const FormItem = Form.Item
 
@@ -47,9 +48,7 @@ const Offermodal = ({
     <Modal {...modalOpts}>
         <div className={styles.offerBoxb}>
           <div className={styles.leftB}>
-            <div>
-              客户信息
-            </div>
+            <UserInfo />
             <div>
               最终报价
             </div>

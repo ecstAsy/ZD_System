@@ -37,7 +37,7 @@ const SuccessPolicy = ({
     // confirmLoading: loading.effects[`user/${modalType}`],
     title:'报价详情',
     footer:null,
-    width:'80%',
+    width:'90%',
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       console.log(data);
