@@ -99,14 +99,20 @@ export default modelExtend(pageModel, {
   reducers: {
 
     showModal (state, { payload }) {
-      return { ...state, ...payload, modalVisible: true }
+      if(payload.modalType=='quotation'){
+        return { ...state, ...payload, modalVisible: true }
+      }
+
     },
     isShowMoreFunc( state, { payload }){
       console.log(payload)
       return { ...state,  isMore: !payload }
     },
-    hideModal (state) {
-      return { ...state, modalVisible: false }
+    hideModal (state,{payload}) {
+      if(payload.modalType=='quotation'){
+        return { ...state, modalVisible: false }
+      }
+
     },
 
     switchIsMotion (state) {
