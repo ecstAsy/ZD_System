@@ -38,11 +38,12 @@ let database = [
     route: '/successPolicy',
   },
   {
-    id: '5',
-    bpid: '1',
+    id: '22',
+    bpid: '2',
+    mpid: '-1',
     name: '报价',
     icon: 'user',
-    route: '/quote',
+    route: '/user/quote',
   },
   // {
   //   id: '70002',

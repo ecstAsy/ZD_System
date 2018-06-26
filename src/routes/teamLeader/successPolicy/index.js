@@ -40,16 +40,6 @@ const SuccessPolicy = ({
     width:'90%',
     visibleRemark:visibleRemark,
     wrapClassName: 'vertical-center-modal',
-    onOk (data) {
-      console.log(data);
-      dispatch({
-        type: `user/${modalType}`,
-        payload: data,
-      })
-        .then(() => {
-          handleRefresh()
-        })
-    },
     onCancel () {
       dispatch({
         type: 'successPolicy/hideModal',

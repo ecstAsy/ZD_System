@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd'
+import { Form, Input, InputNumber, Radio, Modal, Cascader,Button } from 'antd'
 import styles from './offer.less'
 import UserInfo from './userInfo'
 
@@ -18,6 +18,7 @@ const formItemLayout = {
 const Offermodal = ({
   item = {},
   onOk,
+  onCancel,
   addRemark,
   RemarkCancel,
   visibleRemark,
@@ -64,7 +65,12 @@ const Offermodal = ({
 
 
   return (
-    <Modal {...modalOpts}>
+    <Modal {...modalOpts}   footer={[
+      <Button key="submit" type="primary"  onClick={onCancel}>
+        关闭
+      </Button>,
+    ]}
+    >
       <div className={styles.offerBoxb}>
         <div className={styles.leftB}>
           <UserInfo {...RemarkOpts} />

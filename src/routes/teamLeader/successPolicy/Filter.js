@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components'
 import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker} from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker } from 'antd'
 
 import styles from './List.less'
 const Option = Select.Option;
@@ -57,7 +57,7 @@ const formItemLayout2 = {
 };
 const ColProps3 = {
   xs: 24,
-  sm: 5,
+  sm:10,
   style: {
     marginBottom: 10,
     marginRight:0
@@ -158,6 +158,29 @@ const Filter = ({
     console.log(isMore)
     isShowMoreFunc(isMore)
   }
+  const residences = [{
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [{
+      value: 'hangzhou',
+      label: 'Hangzhou',
+      children: [{
+        value: 'xihu',
+        label: 'West Lake',
+      }],
+    }],
+  }, {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [{
+      value: 'nanjing',
+      label: 'Nanjing',
+      children: [{
+        value: 'zhonghuamen',
+        label: 'Zhong Hua Men',
+      }],
+    }],
+  }];
   return (
   <div className={styles.searchBox}>
     <form layout="horizontal">
@@ -250,47 +273,12 @@ const Filter = ({
         </FormItem>
       </Col>
       <Col {...ColProps3}>
-        <FormItem label="保险公司"  {...formItemLayout}>
+        <FormItem label="保险公司"  {...formItemLayout2}>
           {getFieldDecorator('baoxian1', {
-          })(<Select
-            showSearch
-            style={{ width: '100%' }}
-            placeholder="请选择"
-            dropdownStyle={{lineHeight:'25px'}}
-          >
-            <Option value="china">China</Option>
-            <Option value="use">U.S.A</Option>
-          </Select>)}
+          })(<Cascader placeholder="请选择" options={residences} />)}
         </FormItem>
       </Col>
-      <Col {...ColProps4}>
-        <FormItem  {...formItemLayout3}>
-          {getFieldDecorator('baoxian2', {
-          })(<Select
-            showSearch
-            style={{ width: '100%' }}
-            placeholder="请选择"
-            dropdownStyle={{lineHeight:'25px'}}
-          >
-            <Option value="china">China</Option>
-            <Option value="use">U.S.A</Option>
-          </Select>)}
-        </FormItem>
-      </Col>
-      <Col {...ColProps4}>
-        <FormItem  {...formItemLayout3}>
-          {getFieldDecorator('baoxian3', {
-          })(<Select
-            showSearch
-            style={{ width: '100%' }}
-            placeholder="请选择"
-            dropdownStyle={{lineHeight:'25px'}}
-          >
-            <Option value="china">China</Option>
-            <Option value="use">U.S.A</Option>
-          </Select>)}
-        </FormItem>
-      </Col>
+
     </Row>
 
     <Row gutter={24}>

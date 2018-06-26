@@ -6,7 +6,6 @@ import { Page } from 'components';
 import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
-import SendInfo from './sendInfo';
 
 
 const Quote = ({
@@ -20,7 +19,7 @@ const Quote = ({
 
   return (
       <Page>
-         <SendInfo />
+         <div>qwfdwfweew</div>
       </Page>
 
 
