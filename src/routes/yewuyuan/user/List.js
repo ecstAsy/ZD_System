@@ -11,7 +11,7 @@ import styles from './List.less'
 const { confirm } = Modal
 
 const List = ({
-  onDeleteItem, onEditItem, isMotion, location, ...tableProps
+  onDeleteItem, onEditItem, isMotion, location, ...tableProps,toQuote
 }) => {
   location.query = queryString.parse(location.search)
 
@@ -27,7 +27,9 @@ const List = ({
       })
     }
   }
-
+  const seeUserInfo = (item)=>{
+    toQuote(item)
+  }
   const columns = [
      {
       title: '姓名',
@@ -83,7 +85,7 @@ const List = ({
       key: 'operation',
       width: 100,
       render: (text, record) => {
-        return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }, { key: '2', name: 'Delete' }]} />
+        return <span onClick={()=>seeUserInfo(record.id)}>处理中</span>
       },
     },
   ]
@@ -117,6 +119,7 @@ List.propTypes = {
   onEditItem: PropTypes.func,
   isMotion: PropTypes.bool,
   location: PropTypes.object,
+  history : PropTypes.object
 }
 
 export default List

@@ -31,11 +31,11 @@ const Routers = function ({ history, app }) {
       path: '/user/add',
       models: () => [import('./models/yewuyuan/user/add')],
       component: () => import('./routes/yewuyuan/user/add/'),
-    }, {
-      path: '/quote',
-      models: () => [import('./models/yewuyuan/quote')],
-      component: () => import('./routes/yewuyuan/quote/'),
-    } ,{
+    },{
+      path: '/user/quote',
+      models: () => [import('./models/yewuyuan/user/quote')],
+      component: () => import('./routes/yewuyuan/user/quote/'),
+    },{
       path: '/login',
       models: () => [import('./models/login')],
       component: () => import('./routes/login/'),
