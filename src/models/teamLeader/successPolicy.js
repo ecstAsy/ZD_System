@@ -17,6 +17,7 @@ export default modelExtend(pageModel, {
     modalVisible: false,  //报价弹窗
     sendModalVisible : false ,//派送弹窗
     isMore:false,
+    visibleRemark:false,  //新增备注
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -101,7 +102,9 @@ export default modelExtend(pageModel, {
     showModal (state, { payload }) {
       if(payload.modalType=='quotation'){
         return { ...state, ...payload, modalVisible: true }
-      }else{
+      }else if(payload.modalType=='addRemark'){
+        return { ...state, ...payload, visibleRemark: true }
+      }else {
         return { ...state, ...payload, sendModalVisible: true }
       }
     },
@@ -112,6 +115,8 @@ export default modelExtend(pageModel, {
     hideModal (state,{payload}) {
       if(payload.modalType=='quotation'){
         return { ...state, modalVisible: false }
+      }else if(payload.modalType=='addRemark'){
+        return { ...state, ...payload, visibleRemark: false }
       }else{
         return { ...state, sendModalVisible: false }
       }

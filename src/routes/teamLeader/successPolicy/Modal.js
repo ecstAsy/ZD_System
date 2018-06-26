@@ -18,6 +18,10 @@ const formItemLayout = {
 const Offermodal = ({
   item = {},
   onOk,
+  addRemark,
+  RemarkCancel,
+  visibleRemark,
+  saveRemarkFunc,
   form: {
     getFieldDecorator,
     validateFields,
@@ -38,31 +42,46 @@ const Offermodal = ({
       onOk(data)
     })
   }
-
+  const add=()=>{
+    addRemark()
+  }
+  const CancelRemark=()=>{
+    RemarkCancel()
+  }
+  const saveRemark=(data)=>{
+    saveRemarkFunc(data)
+  }
   const modalOpts = {
     ...modalProps,
     onOk: handleOk,
   }
+  const RemarkOpts={
+    visibleRemark,
+    addRemark:add,
+    RemarkCancel:CancelRemark,
+    saveRemark:saveRemark,
+  }
+
 
   return (
     <Modal {...modalOpts}>
-        <div className={styles.offerBoxb}>
-          <div className={styles.leftB}>
-            <UserInfo />
-            <div>
-              最终报价
-            </div>
-            <div>
-              保单派送信息
-            </div>
+      <div className={styles.offerBoxb}>
+        <div className={styles.leftB}>
+          <UserInfo {...RemarkOpts} />
+          <div>
+            最终报价
           </div>
-          <div  className={styles.rightB}>
-            <div>
-              车险选项+时间信息
-            </div>
-
+          <div>
+            保单派送信息
           </div>
         </div>
+        <div  className={styles.rightB}>
+          <div>
+            车险选项+时间信息
+          </div>
+
+        </div>
+      </div>
     </Modal>
   )
 }
