@@ -17,7 +17,7 @@ const SuccessPolicy = ({
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
   const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,isMore,sendModalVisible
+    list, pagination, currentItem, modalVisible, visibleRemark, modalType, isMotion, selectedRowKeys,isMore,sendModalVisible
   } = successPolicy
 
   const handleRefresh = (newQuery) => {
@@ -38,7 +38,7 @@ const SuccessPolicy = ({
     // confirmLoading: loading.effects[`user/${modalType}`],
     title:'报价详情',
     width:'90%',
-    footer:null,
+    visibleRemark:visibleRemark,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       console.log(data);
@@ -58,6 +58,31 @@ const SuccessPolicy = ({
         },
       })
     },
+    addRemark(){
+      dispatch({
+        type: 'successPolicy/showModal',
+        payload: {
+          modalType: 'addRemark',
+        },
+      })
+    },
+    RemarkCancel(){
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'addRemark',
+        },
+      })
+    },
+    saveRemarkFunc(data){
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'addRemark',
+          data:data,
+        },
+      })
+    }
   }
 const sendModalProps = {
   item: {},
