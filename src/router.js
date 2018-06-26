@@ -32,6 +32,10 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/yewuyuan/user/add')],
       component: () => import('./routes/yewuyuan/user/add/'),
     }, {
+      path: '/quote',
+      models: () => [import('./models/yewuyuan/quote')],
+      component: () => import('./routes/yewuyuan/quote/'),
+    } ,{
       path: '/login',
       models: () => [import('./models/login')],
       component: () => import('./routes/login/'),

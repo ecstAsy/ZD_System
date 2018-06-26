@@ -34,9 +34,9 @@ const SendModal = ({onCancel,...sendModalProps})=>{
            ]}>
       <Timeline>
         {
-          TimeData.map(list=>{
+          TimeData.map((list,i)=>{
             return (
-              <Timeline.Item color="#8C9EFF">
+              <Timeline.Item color="#8C9EFF" key={i}>
                 <TimeLineList {...list}/>
               </Timeline.Item>
             )

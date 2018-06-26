@@ -37,6 +37,13 @@ let database = [
     icon: 'user',
     route: '/successPolicy',
   },
+  {
+    id: '5',
+    bpid: '1',
+    name: '报价',
+    icon: 'user',
+    route: '/quote',
+  },
   // {
   //   id: '70002',
   //   bpid: '1',

@@ -27,7 +27,8 @@ const filterProps = {
   return (
      <Page inner>
         <div className={classnames(styles.title)}>
-           <span className="circle-a"><span className="circle-b"></span></span>
+           {/*<span className="circle-a"><span className="circle-b"></span></span>*/}
+          <img src="../ghef_03.png" alt=""/>
            <span className="info">客户基本信息</span>
         </div>
         <Filter {...filterProps}/>
