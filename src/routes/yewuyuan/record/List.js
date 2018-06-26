@@ -1,3 +1,6 @@
+/**
+ * Created by Administrator on 2018/6/25 0025.
+ */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, Modal } from 'antd'
@@ -11,7 +14,7 @@ import styles from './List.less'
 const { confirm } = Modal
 
 const List = ({
-  onDeleteItem, onEditItem,toQuoteFunc, isMotion,location, ...tableProps
+  onDeleteItem, onEditItem, isMotion, location, ...tableProps
 }) => {
   location.query = queryString.parse(location.search)
 
@@ -27,12 +30,9 @@ const List = ({
       })
     }
   }
-  const toQuote=(id)=>{
-    toQuoteFunc(id)
-  }
 
   const columns = [
-     {
+    {
       title: '姓名',
       dataIndex: 'name',
       key: 'name',
@@ -45,52 +45,25 @@ const List = ({
       dataIndex: 'province',
       key: 'province',
       render: (text, record) =><span>{record.province+record.plateNumber}</span>,
-    }, {
-      title: '上年保险公司',
-      dataIndex: 'preInsuranceCompany',
-      key: 'preInsuranceCompany',
-      width: 250,
-    },{
-      title: '初登日期',
-      dataIndex: 'firstRegisterDate',
-      key: 'firstRegisterDate',
-    }, {
-      title: '保险到期日',
+},{
+    title: '拨打时间',
       dataIndex: 'insuranceDueDate',
       key: 'insuranceDueDate',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.insuranceDueDate - b.insuranceDueDate,
-    }, {
-      title: '名单发放日',
-      dataIndex: 'handleDate',
-      key: 'handleDate',
-      defaultSortOrder: 'descend',
-      sorter: (a, b) => a.handleDate - b.handleDate,
-    }, {
-      title: '预约时间',
-      dataIndex: 'yuyueDate',
-      key: 'yuyueDate',
-      width: 120,
-      defaultSortOrder: 'descend',
-      sorter: (a, b) => a.yuyueDate - b.yuyueDate,
-    }, {
-      title: '最后操作时间',
+  }, {
+    title: '通话时长(秒)',
       dataIndex: 'modifyDate',
       key: 'modifyDate',
-    }, {
-      title: '名单类型',
-      dataIndex: 'isRenewal',
-      key: 'isRenewal',
-    }, {
-      title: '状态',
+  },  {
+    title: '通话记录',
       key: 'operation',
       width: 100,
-      render: (text, record) => {
-       // return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }, { key: '2', name: 'Delete' }]} />
-        return <span onClick={()=>toQuote(record.id)}>处理中</span>
-      },
-    },
-  ]
+      render: (text, record) =>   <div>
+        <a href="javascript:;">播放</a>
+      </div>
+  },
+]
 
   const AnimateBody = (props) => {
     return <AnimTableBody {...props} />
@@ -102,18 +75,18 @@ const List = ({
 
   return (
     <Table
-      {...tableProps}
-      className={classnames(styles.table, { [styles.motion]: isMotion })}
+  {...tableProps}
+  className={classnames(styles.table, { [styles.motion]: isMotion })}
 
-      scroll={{ y: 500 }}
-      columns={columns}
-      simple
-      rowKey={record => record.id}
-      components={{
-        body: { wrapper: isMotion ? AnimateBody : CommonBody },
-      }}
-    />
-  )
+  scroll={{ y: 500 }}
+  columns={columns}
+  simple
+  rowKey={record => record.id}
+  components={{
+    body: { wrapper: isMotion ? AnimateBody : CommonBody },
+  }}
+/>
+)
 }
 
 List.propTypes = {

@@ -16,6 +16,14 @@ let database = [
     route: '/user',
   },
   {
+    id: '21',
+    bpid: '2',
+    mpid: '-1',
+    name: '新增名单',
+    icon: 'user',
+    route: '/user/add',
+  },
+  {
     id: '3',
     bpid: '1',
     name: '名单申请',
@@ -30,11 +38,19 @@ let database = [
     route: '/successPolicy',
   },
   {
-    id: '0001',
+    id: '5',
     bpid: '1',
     name: '通话记录',
     icon: 'phone',
     route: '/record',
+  },
+  {
+    id: '22',
+    bpid: '2',
+    mpid: '-1',
+    name: '报价',
+    icon: 'user',
+    route: '/user/quote',
   },
   // {
   //   id: '70002',

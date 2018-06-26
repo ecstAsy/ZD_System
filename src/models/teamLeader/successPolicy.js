@@ -15,7 +15,9 @@ export default modelExtend(pageModel, {
   state: {
     currentItem: {},
     modalVisible: false,  //报价弹窗
+    sendModalVisible : false ,//派送弹窗
     isMore:false,
+    visibleRemark:false,  //新增备注
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -97,16 +99,27 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
-
     showModal (state, { payload }) {
-      return { ...state, ...payload, modalVisible: true }
+      if(payload.modalType=='quotation'){
+        return { ...state, ...payload, modalVisible: true }
+      }else if(payload.modalType=='addRemark'){
+        return { ...state, ...payload, visibleRemark: true }
+      }else {
+        return { ...state, ...payload, sendModalVisible: true }
+      }
     },
     isShowMoreFunc( state, { payload }){
       console.log(payload)
       return { ...state,  isMore: !payload }
     },
-    hideModal (state) {
-      return { ...state, modalVisible: false }
+    hideModal (state,{payload}) {
+      if(payload.modalType=='quotation'){
+        return { ...state, modalVisible: false }
+      }else if(payload.modalType=='addRemark'){
+        return { ...state, ...payload, visibleRemark: false }
+      }else{
+        return { ...state, sendModalVisible: false }
+      }
     },
 
     switchIsMotion (state) {

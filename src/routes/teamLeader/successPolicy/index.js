@@ -9,6 +9,7 @@ import List from './List'
 import Filter from './Filter'
 import Offermodal from './Modal'
 import styles from './List.less'
+import SendModal from './sendModal'
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
@@ -16,7 +17,7 @@ const SuccessPolicy = ({
   location.query = queryString.parse(location.search)
   const { query, pathname } = location
   const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,isMore
+    list, pagination, currentItem, modalVisible, visibleRemark, modalType, isMotion, selectedRowKeys,isMore,sendModalVisible
   } = successPolicy
 
   const handleRefresh = (newQuery) => {
@@ -36,26 +37,61 @@ const SuccessPolicy = ({
     maskClosable: false,
     // confirmLoading: loading.effects[`user/${modalType}`],
     title:'报价详情',
-    footer:null,
-    width:'80%',
+    width:'90%',
+    visibleRemark:visibleRemark,
     wrapClassName: 'vertical-center-modal',
-    onOk (data) {
-      console.log(data);
-      dispatch({
-        type: `user/${modalType}`,
-        payload: data,
-      })
-        .then(() => {
-          handleRefresh()
-        })
-    },
     onCancel () {
       dispatch({
         type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'quotation',
+        },
       })
     },
+    addRemark(){
+      dispatch({
+        type: 'successPolicy/showModal',
+        payload: {
+          modalType: 'addRemark',
+        },
+      })
+    },
+    RemarkCancel(){
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'addRemark',
+        },
+      })
+    },
+    saveRemarkFunc(data){
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'addRemark',
+          data:data,
+        },
+      })
+    }
   }
-
+const sendModalProps = {
+  item: {},
+  visible: sendModalVisible,
+  maskClosable: false,
+  title:'派送记录',
+  width:'40%',
+  closable:false,
+  wrapClassName: 'vertical-center-modal',
+  cancelText:'关闭',
+  onCancel () {
+    dispatch({
+      type: 'successPolicy/hideModal',
+      payload: {
+        modalType: 'sendation',
+      },
+    })
+  },
+}
   const listProps = {
     dataSource: list,
     loading: loading.effects['user/query'],
@@ -83,11 +119,20 @@ const SuccessPolicy = ({
       dispatch({
         type: 'successPolicy/showModal',
         payload: {
-          modalType: 'update',
+          modalType: 'quotation',
           currentItem: item,
         },
       })
     },
+    seeSendation(item) {
+      dispatch({
+        type: 'successPolicy/showModal',
+        payload: {
+          modalType: 'sendation',
+          currentItem: item,
+        },
+      })
+    }
 
   }
 
@@ -144,6 +189,7 @@ const SuccessPolicy = ({
 
       <List {...listProps} />
       {modalVisible && <Offermodal {...modalProps} />}
+      {sendModalVisible && <SendModal {...sendModalProps} />}
     </Page>
   )
 }

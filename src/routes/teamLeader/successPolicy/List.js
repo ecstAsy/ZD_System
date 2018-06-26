@@ -11,7 +11,7 @@ import styles from './List.less'
 const { confirm } = Modal
 
 const List = ({
-  onDeleteItem, seeQuotation, isMotion, location, ...tableProps
+  onDeleteItem, seeQuotation, isMotion, location, ...tableProps,seeSendation
 }) => {
   location.query = queryString.parse(location.search)
 
@@ -27,7 +27,9 @@ const List = ({
       })
     }
   }
-
+  const handleSendType = (record)=>{
+    seeSendation(record)
+  }
   const columns = [
     {
       title: '车牌',
@@ -80,7 +82,8 @@ const List = ({
       dataIndex: 'sendType',
       key: 'sendType',
       render: (text, record) => {
-        return <span style={{color:record.sendType=='已分配'?'#7da906':record.sendType=='未分配'?'#f6be1a':record.sendType=='已派送'?'#0dcbe4':record.sendType=='派送中'?'#56b4fc':'#ff5640'}}>{record.sendType}</span>
+        return <span  style={{color:record.sendType=='已分配'?'#7da906':record.sendType=='未分配'?'#f6be1a':record.sendType=='已派送'?'#0dcbe4':record.sendType=='派送中'?'#56b4fc':'#ff5640'}}
+                   onClick={handleSendType} >{record.sendType}</span>
       },
     }, {
       title: '派单类型',
@@ -110,7 +113,7 @@ const List = ({
   return (
     <Table
       {...tableProps}
-      className={classnames(styles.table, { [styles.motion]: isMotion })}
+      className={classnames(styles.table, { [styles.motion]: !isMotion })}
 
       columns={columns}
       simple
@@ -127,6 +130,7 @@ List.propTypes = {
   onEditItem: PropTypes.func,
   isMotion: PropTypes.bool,
   location: PropTypes.object,
+  seeSendation : PropTypes.func
 }
 
 export default List
