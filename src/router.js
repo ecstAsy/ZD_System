@@ -39,6 +39,10 @@ const Routers = function ({ history, app }) {
     path: '/successPolicy',
       models: () => [import('./models/teamLeader/successPolicy')],
     component: () => import('./routes/teamLeader/successPolicy/'),
+  },{
+    path: '/record',
+      models: () => [import('./models/yewuyuan/record')],
+    component: () => import('./routes/yewuyuan/record/'),
   }
   ]
 

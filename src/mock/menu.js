@@ -29,6 +29,13 @@ let database = [
     icon: 'user',
     route: '/successPolicy',
   },
+  {
+    id: '0001',
+    bpid: '1',
+    name: '通话记录',
+    icon: 'phone',
+    route: '/record',
+  },
   // {
   //   id: '70002',
   //   bpid: '1',

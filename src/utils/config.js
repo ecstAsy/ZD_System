@@ -7,6 +7,7 @@ module.exports = {
   footerText: 'Ant Design Admin  © 2017 zuiidea',
   logo: '/call.png',
   logo2:'/call2.png',
+  logo3:'/ghef_03.png',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
   CORS: [],
