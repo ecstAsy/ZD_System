@@ -38,6 +38,13 @@ let database = [
     route: '/successPolicy',
   },
   {
+    id: '5',
+    bpid: '1',
+    name: '通话记录',
+    icon: 'phone',
+    route: '/record',
+  },
+  {
     id: '22',
     bpid: '2',
     mpid: '-1',
