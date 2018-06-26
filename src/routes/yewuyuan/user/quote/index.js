@@ -1,8 +1,36 @@
 import React from 'react';
-import { connect } from 'dva/index'
-const Quote = ()=>{
- return (
+import PropTypes from 'prop-types';
+import { connect } from 'dva';
+import { Row, Col, Button, Popconfirm } from 'antd';
+import { Page } from 'components';
+import queryString from 'query-string';
+import classnames from 'classnames';
+import styles from './index.less';
 
- )
+
+const Quote = ({
+   location, dispatch, quote, loading,
+                     }) => {
+   location.query = queryString.parse(location.search)
+  const { query, pathname } = location;
+  const {
+    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,
+  } = quote;
+
+  return (
+      <Page>
+         <div>qwfdwfweew</div>
+      </Page>
+
+
+  )
 }
-export default connect(({ providerDetail, loading }) => ({ providerDetail, loading }))(AddUser)
+
+Quote.propTypes = {
+  quote: PropTypes.object,
+  location: PropTypes.object,
+  dispatch: PropTypes.func,
+  loading: PropTypes.object,
+}
+
+export default connect(({ quote, loading }) => ({ quote, loading }))(Quote)

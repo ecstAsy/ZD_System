@@ -101,6 +101,10 @@ const User = ({
         })
       },
     },
+    toQuoteFunc(id){
+      console.log(id)
+      history.push('user/quote');
+    }
   }
 
   const filterProps = {
