@@ -40,6 +40,7 @@ const SuccessPolicy = ({
     width:'90%',
     visibleRemark:visibleRemark,
     wrapClassName: 'vertical-center-modal',
+    closable:false,
     onCancel () {
       dispatch({
         type: 'successPolicy/hideModal',
