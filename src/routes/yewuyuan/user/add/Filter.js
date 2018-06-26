@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FilterItem } from 'components';
 import classnames from 'classnames';
 import styles from './Filter.less';
 import { Form, Button, Row, Col, DatePicker, Input,  Select ,Icon } from 'antd';
