@@ -80,29 +80,29 @@ const Offermodal = ({
             <div className={styles.leftB}>
               <UserInfo {...RemarkOpts} />
               <div className={styles.logo}>
-                <table className={styles.ulForm}>
+                <apan className={styles.ulForm}>
                   <img alt="logo" src={config.logo3} />
-                  最终报价</table>
+                  最终报价</apan>
                 <FinalOffer />
               </div>
               <div className={styles.logo}>
-                <table className={styles.ulForm}>
+                <apan className={styles.ulForm}>
                   <img alt="logo" src={config.logo3} />
-                  保单派送信息</table>
+                  保单派送信息</apan>
                 <ExpressInformation />
               </div>
             </div>
             <div  className={styles.rightB}>
               <div className={styles.logo}>
-                <table className={styles.ulForm}>
+                <apan className={styles.ulForm}>
                   <img alt="logo" src={config.logo3} />
-                  车险选项</table>
+                  车险选项</apan>
                 <CarInsurance />
               </div>
               <div className={styles.logo}>
-              <table className={styles.ulForm}>
+              <apan className={styles.ulForm}>
                 <img alt="logo" src={config.logo3} />
-                时间信息</table>
+                时间信息</apan>
               <Time />
             </div>
             </div>

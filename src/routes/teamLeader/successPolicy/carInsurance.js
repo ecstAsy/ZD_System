@@ -55,7 +55,7 @@ const CarInsurance = () => {
           <FormItem label="商业险" {...formItemLayout}>
             <div style={{width:'548px',height:'120px',backgroundColor:'#F5FBFF'}}
                  className={styles.offerBoxb}>
-              <div className={classnames(styles.leftB,styles.ulList2)}>
+              <div className={classnames(styles.leftB,styles.ulList2,styles.header)}>
                 <Col offset={2} >
                   <div>商业险折扣：</div>
                   <div>车辆损失险：</div>
