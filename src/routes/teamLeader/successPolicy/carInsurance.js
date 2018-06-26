@@ -31,6 +31,7 @@ const CarInsurance = () => {
 
   return (
     <Form layout="horizontal">
+      <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>车险选项</span></div>
       <Col offset={1}>
       <Row style={{ marginTop: '3px' }}>
           <FormItem {...formItemLayout}>
