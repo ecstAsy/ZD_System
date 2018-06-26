@@ -4,7 +4,9 @@ import { connect } from 'dva';
 import { Row, Col, Button, Popconfirm } from 'antd';
 import { Page } from 'components';
 import queryString from 'query-string';
-
+import classnames from 'classnames';
+import styles from './index.less';
+import SendInfo from './sendInfo';
 
 
 const Quote = ({
@@ -17,9 +19,11 @@ const Quote = ({
   } = quote;
 
   return (
-    <Page inner>
-      名单申请
-    </Page>
+      <Page>
+         <SendInfo />
+      </Page>
+
+
   )
 }
 
