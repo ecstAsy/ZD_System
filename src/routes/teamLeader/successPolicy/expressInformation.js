@@ -31,7 +31,7 @@ const ExpressInformation = () => {
 
   return (
     <Form layout="horizontal">
-
+      <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>最终报价</span></div>
       <Row>
         <Col span={1}>
           <FormItem{...formItemLayout}>

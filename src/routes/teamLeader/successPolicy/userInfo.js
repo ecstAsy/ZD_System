@@ -43,7 +43,7 @@ const UserInfo = ({
   console.log(visibleRemark)
   return (
     <div>
-      <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px'}}>客户信息</span></div>
+      <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>客户信息</span></div>
       <div className="useInfoRow">
         <p>姓名：</p> <p>刘媛媛</p><p>身份证号：</p><p>325928199015451910</p>
       </div>

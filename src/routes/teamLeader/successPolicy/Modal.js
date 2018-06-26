@@ -79,32 +79,13 @@ const Offermodal = ({
         <div className={styles.offerBoxb} >
             <div className={styles.leftB}>
               <UserInfo {...RemarkOpts} />
-              <div className={styles.logo}>
-                <table className={styles.ulForm}>
-                  <img alt="logo" src={config.logo3} />
-                  最终报价</table>
-                <FinalOffer />
-              </div>
-              <div className={styles.logo}>
-                <table className={styles.ulForm}>
-                  <img alt="logo" src={config.logo3} />
-                  保单派送信息</table>
-                <ExpressInformation />
-              </div>
+              <ExpressInformation />
+              <FinalOffer />
+
             </div>
             <div  className={styles.rightB}>
-              <div className={styles.logo}>
-                <table className={styles.ulForm}>
-                  <img alt="logo" src={config.logo3} />
-                  车险选项</table>
-                <CarInsurance />
-              </div>
-              <div className={styles.logo}>
-              <table className={styles.ulForm}>
-                <img alt="logo" src={config.logo3} />
-                时间信息</table>
+              <CarInsurance />
               <Time />
-            </div>
             </div>
         </div>
     </Modal>
