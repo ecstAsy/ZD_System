@@ -6,7 +6,7 @@ import { Page } from 'components';
 import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
-
+import UserInfo from './userInfo'
 
 const Quote = ({
    location, dispatch, quote, loading,
@@ -18,8 +18,8 @@ const Quote = ({
   } = quote;
 
   return (
-      <Page>
-         <div>qwfdwfweew</div>
+      <Page inner>
+         <UserInfo/>
       </Page>
 
 
