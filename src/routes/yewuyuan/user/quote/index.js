@@ -6,6 +6,7 @@ import { Page } from 'components';
 import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
+import UserInfo from './userInfo'
 import CarInsurance from './carInsurance';
 import FinalQuote from './finalQuote';
 import TimeInfo from './timeInfo';
@@ -18,8 +19,36 @@ const Quote = ({
    location.query = queryString.parse(location.search)
   const { query, pathname } = location;
   const {
-    list, pagination, currentItem, noteModalVisible, modalType, isMotion, selectedRowKeys,
+    list, pagination, currentItem,visibleRemark,remarkId, modalVisible, modalType, isMotion, selectedRowKeys,
   } = quote;
+  const UserInfoProps={
+    visibleRemark:visibleRemark,
+    remarkId:remarkId,
+    addRemarkFunc(id){
+      console.log(id)
+      dispatch({
+        type: 'quote/showModalRemark',
+        payload: {
+         id:id?id:'',
+        },
+      })
+    },
+    RemarkCancel(){
+      dispatch({
+        type: 'quote/hideModalRemark',
+      })
+    },
+    saveRemark(data){
+      console.log(data)
+      dispatch({
+        type: 'quote/hideModalRemark',
+        payload: {
+          data:data,
+        },
+      })
+    }
+  }
+  console.log(visibleRemark)
   const finalProps = {
     sendNote(){
       dispatch({
@@ -51,6 +80,7 @@ const Quote = ({
   return (
       <Page>
         <Form >
+          <UserInfo {...UserInfoProps}/>
           <CarInsurance/>
           <FinalQuote {...finalProps}/>
           <TimeInfo/>
@@ -58,6 +88,8 @@ const Quote = ({
         </Form>
         {noteModalVisible && <NoteModal {...noteModalProps} />}
       </Page>
+
+
   )
 }
 

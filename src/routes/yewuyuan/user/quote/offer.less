@@ -1,26 +1,21 @@
-.offerBoxb{
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 50px;
-}
-.leftB{
-  flex:1;
-}
-.rightB{
-  flex:1;
-}
-.ulList2 {
-  color: #929494;
-}
-.ulForm {
-  font-weight: bold;
-}
+
 
 .header{
   margin: 0px 0 10px;
 }
 
 :global{
+  .useinfoBox .ant-form-item-label,.useinfoBox .ant-form-item-control{
+      line-height: 30px;
+  }
+  .useinfoBox .ant-form label{
+    font-size: 14px;
+  }
+  .useinfoBox .chengbao{
+      color: #0082fe;
+    margin-left: 10px;
+    cursor: pointer;
+  }
   .ant-modal-footer{
     text-align: center!important;
   }
@@ -34,7 +29,7 @@
       font-size: 15px;
     }
     & >p:nth-child(1),p:nth-child(3){
-      flex:1.6;
+      flex:0.8;
       text-align: right;
       color: #8f9090;
     }
@@ -43,25 +38,17 @@
       color: #000;
     }
     & >div:nth-child(1){
-      flex:1.6;
+      flex:0.9;
       text-align: right;
-      color: #8f9090;
       font-size: 15px;
     }
     & >div:nth-child(2){
       flex:7.6;
 
     }
-
-    .addresses{
-      display: block;
-      margin-bottom: 0;
-      font-size: 15px;
-      color: #000;
-    }
-
     .remarks{
       margin-top: 80px;
+      margin-left: 30px;
     }
     .remarks .line{
       height: 2px;
@@ -143,6 +130,5 @@
     background: #f7f8f8;
     padding: 10px;
   }
-
 }
 
