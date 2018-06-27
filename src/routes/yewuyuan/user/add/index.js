@@ -39,4 +39,4 @@ AddUser.propTypes = {
 
 }
 
-export default connect(({ providerDetail, loading }) => ({ providerDetail, loading }))(AddUser)
+export default connect(({ add, loading }) => ({ add, loading }))(AddUser)

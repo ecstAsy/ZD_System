@@ -66,6 +66,10 @@ const User = ({
         pageSize: page.pageSize,
       })
     },
+    toQuote (id){
+      history.push('user/quote')
+    },
+
     onDeleteItem (id) {
       dispatch({
         type: 'user/delete',

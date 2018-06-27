@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
-import { Row, Col, Button, Popconfirm } from 'antd';
+import { Row, Col, Button, Popconfirm ,Form} from 'antd';
 import { Page } from 'components';
 import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
-import UserInfo from './userInfo'
+
 
 const Quote = ({
    location, dispatch, quote, loading,
@@ -19,7 +19,11 @@ const Quote = ({
 
   return (
       <Page inner>
-         <UserInfo/>
+        <Form >
+          <UserInfo/>
+          <TimeInfo/>
+          <SendInfo />
+        </Form>
       </Page>
 
 
