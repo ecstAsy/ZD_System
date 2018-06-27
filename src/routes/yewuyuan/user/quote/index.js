@@ -47,7 +47,7 @@ const Quote = ({
   }
   console.log(visibleRemark)
   return (
-      <Page inner>
+      <Page>
         <Form >
           <UserInfo {...UserInfoProps}/>
           <TimeInfo/>
