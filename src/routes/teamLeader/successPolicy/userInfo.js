@@ -12,6 +12,7 @@ const UserInfo = ({
   addRemark,
   RemarkCancel,
   saveRemark,
+  remarkId,
   form: {
     getFieldDecorator,
     validateFields,
@@ -20,6 +21,12 @@ const UserInfo = ({
 })=>{
   const handleCancel=()=>{
     RemarkCancel()
+  }
+  const editRemark=(id)=>{
+    addRemark(id)
+  }
+  const addRemarkFunc=()=>{
+    addRemark()
   }
   const handleOk=()=>{
     validateFields((errors) => {
@@ -40,7 +47,7 @@ const UserInfo = ({
     {id:3,date:'20180613',des:'备注3'},
   ]
 
-  console.log(visibleRemark)
+
   return (
     <div>
       <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>客户信息</span></div>
@@ -76,14 +83,14 @@ const UserInfo = ({
                   <p className="date">{item.date}</p>
                   <div className="remarkShow">
                     这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注
-                    <p><span><Icon type="edit" />修改</span></p>
+                    <p><span onClick={()=>editRemark(item.id)}><Icon type="edit" />修改</span></p>
                   </div>
                 </div>
               )
             })}
             <div className='mokuai' style={{borderTop:'none'}}>
               <span className="oridel" style={{marginTop:'-5px'}}></span>
-              <p className="date addRemark" onClick={addRemark}>新增</p>
+              <p className="date addRemark" onClick={addRemarkFunc}>新增</p>
             </div>
 
           </div>
@@ -91,7 +98,7 @@ const UserInfo = ({
       </div>
       <Modal
         visible={visibleRemark}
-        title='新增备注'
+        title={remarkId==''?'新增备注':'修改备注'}
         onCancel={handleCancel}
         onOk={handleOk}
       >

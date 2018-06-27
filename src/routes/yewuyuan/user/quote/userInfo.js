@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker,Modal} from 'antd'
 import styles from './offer.less'
+import RemarkMadal from './remarkModal'
 const { TextArea } = Input;
+const Option = Select.Option;
+const { RangePicker } = DatePicker
 const FormItem = Form.Item
 const formItemLayout = {
   labelCol: {
@@ -14,9 +17,9 @@ const formItemLayout = {
     span: 16,
   },
   style:{
-    marginBottom: 0,
     borderRadius:'20px',
-    fontSize:'15px'
+    fontSize:'14px',
+    marginBottom:'10px'
   }
 };
 const ColProps = {
@@ -28,37 +31,42 @@ const ColProps = {
 };
 const UserInfo = ({
   visibleRemark,
-  addRemark,
+  addRemarkFunc,
   RemarkCancel,
+  remarkId,
   saveRemark,
   form: {
     getFieldDecorator,
     validateFields,
     getFieldsValue,
   },
+  ...UserInfoProps
 })=>{
-  const handleCancel=()=>{
-    RemarkCancel()
-  }
-  const handleOk=()=>{
-    validateFields((errors) => {
-      if (errors) {
-        return
-      }
-      const data = {
-        ...getFieldsValue(),
-      };
-      console.log(data)
-      saveRemark(data)
-    })
 
+
+  const addRemark = ()=>{
+    console.log(11111)
+    addRemarkFunc()
   }
   const remarks=[
     {id:1,date:'20180311',des:'备注1'},
     {id:2,date:'20180517',des:'备注2'},
     {id:3,date:'20180613',des:'备注3'},
   ]
-
+ const editRemark=(id)=>{
+   addRemarkFunc(id)
+ }
+ console.log(remarkId)
+  const RemarkMadalProps={
+    visible: visibleRemark,
+    title:remarkId==''?'新增备注':'修改备注',
+    onOk(data){
+      saveRemark(data)
+    },
+    onCancel(){
+      RemarkCancel()
+    },
+  }
   console.log(visibleRemark)
   return (
     <div className="useinfoBox">
@@ -91,12 +99,115 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="车架号" {...formItemLayout}>
-            <div>BOHU767VHIVG564<span>承保信息</span></div>
+            <div>BOHU767VHIVG564<span className="chengbao">承保信息</span></div>
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="核定座位" {...formItemLayout}>
             <div>5</div>
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="初登日期" {...formItemLayout}>
+            {getFieldDecorator('beginDate', {
+              initialValue:'',
+              rules: [
+                {
+                  required: true,
+                },
+              ],
+            })(<DatePicker  style={{ width: '70%' }} />)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="保险到期日" {...formItemLayout}>
+            {getFieldDecorator('endDate', {
+              initialValue:'',
+              rules: [
+                {
+                  required: true,
+                },
+              ],
+            })(<DatePicker  style={{ width: '70%' }} />)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="年检有效期" {...formItemLayout}>
+            {getFieldDecorator('useDate', {
+              initialValue:'',
+              rules: [
+                {
+                  required: true,
+                },
+              ],
+            })(<DatePicker  style={{ width: '70%' }} />)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="上年投保公司" {...formItemLayout}>
+            {getFieldDecorator('company', {
+            })(<Select
+              showSearch
+              style={{ width: '70%' }}
+              placeholder="请选择"
+
+            >
+              <Option value="china">A</Option>
+              <Option value="use">B</Option>
+            </Select>)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="使用性质" {...formItemLayout}>
+            {getFieldDecorator('xingzhi', {
+            })(<Select
+              showSearch
+              style={{ width: '70%' }}
+              placeholder="请选择"
+            >
+              <Option value="china">A</Option>
+              <Option value="use">B</Option>
+            </Select>)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="车辆种类" {...formItemLayout}>
+            {getFieldDecorator('xingzhi', {
+            })(<Select
+              showSearch
+              style={{ width: '70%' }}
+              placeholder="请选择"
+            >
+              <Option value="china">A</Option>
+              <Option value="use">B</Option>
+            </Select>)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="新车购置价" {...formItemLayout}>
+            {getFieldDecorator('carPrice', {
+            })(<Input   style={{ width: '70%' }} />)}
+            <span className="chengbao">查找</span>
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="其他联系方式" {...formItemLayout}>
+            {getFieldDecorator('telOther', {
+            })(<Input   style={{ width: '70%' }} />)}
+            <Icon style={{fontSize:'18px'}}  className="chengbao" type="phone" />
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="历史拨打记录" {...formItemLayout}>
+            {getFieldDecorator('historyTel', {
+            })(<Select
+              showSearch
+              style={{ width: '70%' }}
+              placeholder="请选择"
+            >
+              <Option value="china">A</Option>
+              <Option value="use">B</Option>
+            </Select>)}
           </FormItem>
         </Col>
       </Row>
@@ -114,7 +225,7 @@ const UserInfo = ({
                   <p className="date">{item.date}</p>
                   <div className="remarkShow">
                     这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注
-                    <p><span><Icon type="edit" />修改</span></p>
+                    <p><span onClick={()=>editRemark(item.id)}><Icon type="edit" />修改</span></p>
                   </div>
                 </div>
               )
@@ -127,23 +238,8 @@ const UserInfo = ({
           </div>
         </div>
       </div>
-      <Modal
-        visible={visibleRemark}
-        title='新增备注'
-        onCancel={handleCancel}
-        onOk={handleOk}
-      >
-        <FormItem>
-          {getFieldDecorator('remark', {
-            rules: [
-              {
-                required: true,
-                message: '备注信息不能为空!',
-              },
-            ],
-          })( <TextArea className="textarerRemark" placeholder="请输入备注内容"  />)}
-        </FormItem>
-      </Modal>
+
+      {visibleRemark&&<RemarkMadal {...RemarkMadalProps}/>}
     </div>
   )
 }

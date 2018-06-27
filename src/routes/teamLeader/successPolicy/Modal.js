@@ -25,9 +25,10 @@ const Offermodal = ({
   item = {},
   onOk,
   onCancel,
-  addRemark,
+  addRemarkFunc,
   RemarkCancel,
   visibleRemark,
+  remarkId,
   saveRemarkFunc,
   form: {
     getFieldDecorator,
@@ -45,13 +46,10 @@ const Offermodal = ({
         ...getFieldsValue(),
         key: item.key,
       }
-      data.address = data.address.join(' ');
       onOk(data)
     })
   }
-  const add=()=>{
-    addRemark()
-  }
+
   const CancelRemark=()=>{
     RemarkCancel()
   }
@@ -64,9 +62,12 @@ const Offermodal = ({
   }
   const RemarkOpts={
     visibleRemark,
-    addRemark:add,
     RemarkCancel:CancelRemark,
     saveRemark:saveRemark,
+    addRemark(id){
+      addRemarkFunc(id)
+    },
+    remarkId:remarkId,
   }
 
 

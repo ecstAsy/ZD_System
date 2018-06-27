@@ -18,6 +18,7 @@ export default modelExtend(pageModel, {
     sendModalVisible : false ,//派送弹窗
     isMore:false,
     visibleRemark:false,  //新增备注
+    remarkId:'',
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -103,7 +104,8 @@ export default modelExtend(pageModel, {
       if(payload.modalType=='quotation'){
         return { ...state, ...payload, modalVisible: true }
       }else if(payload.modalType=='addRemark'){
-        return { ...state, ...payload, visibleRemark: true }
+        console.log(payload.id)
+        return { ...state, ...payload, visibleRemark: true,remarkId: payload.id}
       }else {
         return { ...state, ...payload, sendModalVisible: true }
       }

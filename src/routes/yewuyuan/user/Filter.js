@@ -168,7 +168,7 @@ const Filter = ({
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
-            dropdownStyle={{lineHeight:'25px'}}
+
           >
             <Option value="china">China</Option>
             <Option value="use">U.S.A</Option>

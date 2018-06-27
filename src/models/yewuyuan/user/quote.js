@@ -16,6 +16,8 @@ export default modelExtend(pageModel, {
     currentItem: {},
     modalVisible: false,
     modalType: 'create',
+    visibleRemark:false,
+    remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
   },
@@ -96,6 +98,13 @@ export default modelExtend(pageModel, {
 
     showModal (state, { payload }) {
       return { ...state, ...payload, modalVisible: true }
+    },
+    showModalRemark(state, { payload }) {
+      console.log(payload.id)
+      return { ...state, ...payload, visibleRemark: true,remarkId:payload.id}
+    },
+    hideModalRemark(state, { payload }) {
+      return { ...state, ...payload, visibleRemark: false }
     },
 
     hideModal (state) {
