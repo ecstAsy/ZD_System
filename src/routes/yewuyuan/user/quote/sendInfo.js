@@ -23,10 +23,10 @@ const formItemLayout = {
 };
 const formItemLayout2 = {
   labelCol: {
-    span:5,
+    span:4,
   },
   wrapperCol: {
-    span: 19,
+    span: 20,
   },
   style:{
     marginBottom: 0,
@@ -44,7 +44,7 @@ const ColProps = {
 };
 const ColProps2 = {
   xs: 24,
-  sm: 14,
+  sm: 17,
   style: {
     marginBottom: 10,
     marginRight:10
@@ -84,7 +84,7 @@ const SendInfo = ({form: {
 
   }
    return(
-     <div className={classnames(styles.Quote)}>
+     <div className={classnames(styles.Quote,styles.SendInfo)}>
        <Title title={`保单派送信息`}/>
        <Row gutter={24}>
          <Col {...ColProps}>
@@ -130,7 +130,10 @@ const SendInfo = ({form: {
          <Col {...ColProps2}>
          <FormItem {...formItemLayout2} label="派件地址" >
            {getFieldDecorator('address',{})(
-             <Cascader options={options}  placeholder="请选择" />
+             <div>
+               <Cascader className='addressChoose' options={options}  placeholder="请选择" />
+               <Input className='addressInput' placeholder="街道/门牌号"/>
+             </div>
              )}
          </FormItem>
          </Col>

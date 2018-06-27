@@ -14,7 +14,7 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem: {},
-    modalVisible: false,
+    noteModalVisible: false,
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -95,11 +95,15 @@ export default modelExtend(pageModel, {
   reducers: {
 
     showModal (state, { payload }) {
-      return { ...state, ...payload, modalVisible: true }
+      if(payload.modalType=='noteAtion'){
+        return { ...state, noteModalVisible: true }
+      }
     },
 
     hideModal (state) {
-      return { ...state, modalVisible: false }
+      if(payload.modalType=='noteAtion'){
+        return { ...state, noteModalVisible: false }
+      }
     },
 
   },

@@ -4,10 +4,36 @@
   background: #fff;
   border-radius: 5px;
   margin-bottom: 15px;
+  :global{
+    .cutLine{
+      width: 95%;
+      height: 1px ;
+      border-top: 1px dashed #e5e5e5;
+      margin-left: 5%;
+    }
+    .ant-form-item{
+      margin-bottom: 0px;
+    }
+  }
 }
 .title{
   width: 98%;
   margin: 0 auto;
+  :global{
+    .shortNote{
+      float: right;
+      color: #0082fe;
+      cursor: pointer;
+    }
+  }
+}
+.SendInfo{
+  :global{
+    .addressChoose,.addressInput{
+      width: 48%;
+      margin-right: 2%;
+    }
+  }
 }
 .TimeInfo{
   :global{
@@ -23,5 +49,28 @@
       border: 1px solid #0082fe;
       border-radius: 15px;
     }
+  }
+}
+.FinalQuote{
+  :global{
+    .checkGoods{
+      color: #0082fe;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+}
+.NoteModal{
+  :global{
+    .ant-modal-footer{
+      text-align: center;
+    }
+    .ant-btn{
+      margin: 0 40px;
+    }
+    .ant-modal-title{
+      text-align: center;
+    }
+
   }
 }
