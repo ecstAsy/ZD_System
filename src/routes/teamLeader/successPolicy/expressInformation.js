@@ -30,33 +30,25 @@ const ColProps = {
 const ExpressInformation = () => {
 
   return (
-    <Form layout="horizontal">
+    <div>
       <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>最终报价</span></div>
-      <Row>
-        <Col span={1}>
-          <FormItem{...formItemLayout}>
-            <div style={{width:'548px',height:'150px'}}
-                 className={styles.offerBoxb}>
-              <div className={classnames(styles.leftB,styles.ulList2)}>
-                <Col offset={2} >
-                  <div>商业险金额：</div>
-                  <div>车船税：</div>
-                  <div>优惠额度：</div>
-                  <div>赠送礼品：</div>
-                </Col>
-              </div>
-              <div  className={classnames(styles.rightB,styles.ulList2)}>
-                <div>交强险金额：</div>
-                <div>开单保费：</div>
-                <div>实收金额：</div>
-              </div>
-            </div>
-          </FormItem>
-        </Col>
-      </Row>
+      <div>
+        <div className="useInfoRow">
+          <p>商业险金额：</p> <p>2566.00</p><p>交强险金额：</p><p>1260.00</p>
+        </div>
+        <div className="useInfoRow">
+          <p>车船税：</p> <p>300.00</p><p>开单保费：</p><p>5211.00</p>
+        </div>
+        <div className="useInfoRow">
+          <p>优惠额度：</p> <p>300.00</p><p>实收金额：</p><p>5000.00</p>
+        </div>
+        <div className="useInfoRow">
+        </div>
+      </div>
 
 
-    </Form>
+
+    </div>
   )
 }
 

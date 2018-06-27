@@ -30,23 +30,19 @@ const ColProps = {
 const Time = () => {
 
   return (
-    <Form layout="horizontal">
+    <div>
       <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>时间信息</span></div>
-
-      <Row>
-        <Col offset={1}>
-          <FormItem {...formItemLayout}>
-            <div style={{width:'548px',height:'38px',marginBottom:'20px',fontcolor:'#D5DCE1'}}
-                 className={styles.offerBoxb}>
-              <div className={classnames(styles.leftB,styles.ulList2)}>
-                  <div>车船税:</div>
-                  <div>商业险:</div>
-              </div>
-            </div>
-          </FormItem>
-        </Col>
-      </Row>
-    </Form>
+      <div>
+        <div className="useInfoRow">
+          <div>交强险：</div>
+          <div className="addresses">2018-6-26 00:00:00<span style={{color:'#8f9090',margin:'5px'}}>至</span>2019-6-26 00:00:00</div>
+      </div>
+     <div className="useInfoRow">
+          <div>车船税：</div>
+       <div className="addresses">2018-6-26 00:00:00<span style={{color:'#8f9090',margin:'5px'}}>至</span>2019-6-26 00:00:00</div>
+        </div>
+      </div>
+    </div>
   )
 }
 
