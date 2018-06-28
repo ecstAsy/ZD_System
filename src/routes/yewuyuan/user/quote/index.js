@@ -19,7 +19,7 @@ const Quote = ({
    location.query = queryString.parse(location.search)
   const { query, pathname } = location;
   const {
-    choseItem,list, pagination, currentItem,visibleRemark,remarkId, modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
+    choseItem,list, pagination, currentItem,visibleRemark,giftModalVisible ,remarkId, GiftData,modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
   } = quote;
   const UserInfoProps={
     visibleRemark:visibleRemark,

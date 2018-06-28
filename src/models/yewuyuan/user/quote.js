@@ -33,7 +33,7 @@ export default modelExtend(pageModel, {
       {id:10,title:'记录仪',Num:0},
       {id:11,title:'延保卡',Num:0},
       {id:12,title:'优典券',Num:0},
-    ]
+    ],
     insuranceData:[
       {id:25001,checked:false,name:'车辆损失险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
       {id:25002,checked:false,name:'第三者责任险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
@@ -144,7 +144,7 @@ export default modelExtend(pageModel, {
             choseinsuranceData.push(item.name);
           }
       }
-      return { ...state, ...payload, insuranceData: insuranceData ,choseinsuranceData:choseinsuranceData,}
+      return { ...state, ...payload,}
     },
 
     checkedStrongInsurFunc(state, { payload }){
@@ -156,7 +156,7 @@ export default modelExtend(pageModel, {
           item.coverageAblead=!item.coverageAblead;
         }
       }
-      return { ...state, ...payload, strongInsuranceData: strongInsuranceData}
+      return { ...state, ...payload, }
     },
 
     showModal (state, { payload }) {
