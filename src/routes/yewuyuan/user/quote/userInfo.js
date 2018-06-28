@@ -110,36 +110,21 @@ const UserInfo = ({
         <Col {...ColProps}>
           <FormItem label="初登日期" {...formItemLayout}>
             {getFieldDecorator('beginDate', {
-              initialValue:'',
-              rules: [
-                {
-                  required: true,
-                },
-              ],
+
             })(<DatePicker  style={{ width: '70%' }} />)}
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="保险到期日" {...formItemLayout}>
             {getFieldDecorator('endDate', {
-              initialValue:'',
-              rules: [
-                {
-                  required: true,
-                },
-              ],
+
             })(<DatePicker  style={{ width: '70%' }} />)}
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="年检有效期" {...formItemLayout}>
             {getFieldDecorator('useDate', {
-              initialValue:'',
-              rules: [
-                {
-                  required: true,
-                },
-              ],
+
             })(<DatePicker  style={{ width: '70%' }} />)}
           </FormItem>
         </Col>

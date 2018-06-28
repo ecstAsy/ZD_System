@@ -15,11 +15,28 @@ export default modelExtend(pageModel, {
   state: {
     currentItem: {},
     noteModalVisible: false,
-    modalType: 'create',
     visibleRemark:false,
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
+    insuranceData:[
+      {id:25001,checked:false,name:'车辆损失险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25002,checked:false,name:'第三者责任险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25003,checked:false,name:'驾驶员座位险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25004,checked:false,name:'乘客座位险/座',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25005,checked:false,name:'玻璃单独破碎险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25006,checked:false,name:'全车盗抢险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25007,checked:false,name:'自燃损失险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25008,checked:false,name:'车身划痕险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25009,checked:false,name:'涉水险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25010,checked:false,name:'无法找到第三方特约险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25011,checked:false,name:'不计免赔险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+    ],
+    choseinsuranceData:[],  //已选的商业险
+    strongInsuranceData:[
+      {id:25012,checked:false,name:'车船税',travelTax:'',discount_costAblead:true,coverageAblead:true,},
+    ]
+
   },
 
   subscriptions: {
@@ -95,6 +112,37 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
+    checkedInsuranceFunc(state, { payload }){
+      let id = payload.id;
+      let insuranceData = state.insuranceData;
+      let choseinsuranceData = [];
+      for(let item of insuranceData){
+          if(item.id==id){
+            item.checked=!item.checked;
+            if(id==25002||id==25003||id==25004||id==25005||id==25008){
+                item.coverageAblead=!item.coverageAblead;
+            }
+          }
+      }
+      for(let item of insuranceData){
+          if(item.checked){
+            choseinsuranceData.push(item.name);
+          }
+      }
+      return { ...state, ...payload, insuranceData: insuranceData ,choseinsuranceData:choseinsuranceData,}
+    },
+
+    checkedStrongInsurFunc(state, { payload }){
+      let id = payload.id;
+      let strongInsuranceData = state.strongInsuranceData;
+      for(let item of strongInsuranceData){
+        if(item.id==id){
+          item.checked=!item.checked;
+          item.coverageAblead=!item.coverageAblead;
+        }
+      }
+      return { ...state, ...payload, strongInsuranceData: strongInsuranceData}
+    },
 
     showModal (state, { payload }) {
       if(payload.modalType=='noteAtion'){

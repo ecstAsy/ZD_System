@@ -19,7 +19,7 @@ const Quote = ({
    location.query = queryString.parse(location.search)
   const { query, pathname } = location;
   const {
-    list, pagination, currentItem,visibleRemark,remarkId, modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible
+    list, pagination, currentItem,visibleRemark,remarkId, modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
   } = quote;
   const UserInfoProps={
     visibleRemark:visibleRemark,
@@ -48,7 +48,30 @@ const Quote = ({
       })
     }
   }
-  console.log(visibleRemark)
+
+  const CarInsuranceProps={
+    insuranceData:insuranceData,
+    choseinsuranceData,
+    strongInsuranceData,
+    checkedInsuranceFunc(id){
+        console.log(id)
+      dispatch({
+        type: 'quote/checkedInsuranceFunc',
+        payload: {
+          id:id,
+        },
+      })
+    },
+    checkedStrongInsurFunc(id){
+      dispatch({
+        type: 'quote/checkedStrongInsurFunc',
+        payload: {
+          id:id,
+        },
+      })
+    }
+  }
+
   const finalProps = {
     sendNote(){
       dispatch({
@@ -81,12 +104,19 @@ const Quote = ({
       <Page>
         <Form >
           <UserInfo {...UserInfoProps}/>
-          <CarInsurance/>
+          <CarInsurance {...CarInsuranceProps}/>
           <FinalQuote {...finalProps}/>
           <TimeInfo/>
           <SendInfo />
         </Form>
         {noteModalVisible && <NoteModal {...noteModalProps} />}
+        <div className="buttonBox">
+          <Button type="primary">保存</Button>
+          <Button type="primary">跟踪提交</Button>
+          <Button type="primary">成功提交</Button>
+          <Button type="primary">失败提交</Button>
+          <Button type="primary">其他业务</Button>
+        </div>
       </Page>
 
 
