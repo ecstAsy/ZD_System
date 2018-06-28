@@ -72,7 +72,84 @@
     .ant-modal-title{
       text-align: center;
     }
+    .templateItem{
+      line-height: 24px;
+      margin-bottom: 10px;
+    }
+    .templateItem span{
+      font-size: 13px;
+      margin: 8px 15px;
+      cursor: pointer;
+      height: 24px;
 
+      padding: 0 5px;
+      border-radius: 15px;
+    }
+    .templateItem span.active{
+      color: #0082fe;
+      border: 1px solid #0082fe;
+    }
+    .templateItem span:hover{
+      color: #0082fe;
+    }
+    .templateContent{
+      border-radius: 5px;
+      background: #f0f2f5;
+      padding: 15px;
+      font-size: 13px;
+      line-height: 25px;
+      height: 250px;
+      overflow: auto;
+    }
+  }
+}
+.GiftModal{
+  :global{
+    .ant-tag{
+      margin-bottom: 10px;
+    }
+    .giftContent{
+      margin-top: 20px;
+    }
+    .giftContentHeader span{
+      text-align: center;
+      display: inline-block;
+      width: 50%;
+      color: #939ba4;
+    }
+    .gift{
+      width: 100%;
+      margin-top: 0;
+    }
+    .giftTitle{
+      display: inline-block;
+      width: 50%;
+      text-align: center;
+    }
+    .giftNum{
+      width: 50%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .cost,.input,.add{
+      display: inline-block;
+      width: 33.33%;
+      float: left;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .add,.cost{
+      margin: 0 auto;
+      border: none;
+      font-size: 18px;
+      outline: medium;
+    }
+    .ant-btn.active{
+      color: #0082fe;
+    }
+    .ant-form-item{
+      margin-bottom: 0;
+    }
   }
 }
 :global{

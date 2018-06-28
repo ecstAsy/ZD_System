@@ -12,14 +12,14 @@ import FinalQuote from './finalQuote';
 import TimeInfo from './timeInfo';
 import SendInfo from './sendInfo';
 import NoteModal from './noteModal';
-
+import GiftModal from './giftModal';
 const Quote = ({
    location, dispatch, quote, loading,
                      }) => {
    location.query = queryString.parse(location.search)
   const { query, pathname } = location;
   const {
-    list, pagination, currentItem,visibleRemark,remarkId, modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
+    choseItem,list, pagination, currentItem,visibleRemark,remarkId, modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
   } = quote;
   const UserInfoProps={
     visibleRemark:visibleRemark,
@@ -80,9 +80,19 @@ const Quote = ({
           modalType: 'noteAtion'
         },
       })
+    },
+    chooseGift (){
+      dispatch({
+        type: 'quote/showModal',
+        payload: {
+          modalType: 'giftAtion'
+        },
+      })
     }
   };
+
   const noteModalProps = {
+    loading,
     item: {},
     visible: noteModalVisible,
     maskClosable: false,
@@ -90,8 +100,9 @@ const Quote = ({
     width:'40%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
-    cancelText:'关闭',
-    onCancel () {
+    choseItem:choseItem,
+    currentItem:currentItem,
+    handleCancel () {
       dispatch({
         type: 'quote/hideModal',
         payload: {
@@ -99,7 +110,58 @@ const Quote = ({
         },
       })
     },
+    choseDesId(item){
+      dispatch({
+        type: 'quote/choseDesId',
+        payload: item,
+      })
+    }
   };
+  const giftModalProps = {
+    item: {},
+    GiftData,
+    visible: giftModalVisible,
+    maskClosable: false,
+    title:'选择礼品',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    handleCost(id){
+      dispatch({
+        type: 'quote/GiftUpdata',
+        payload: {
+          modalType: 'cost',
+          id:id
+        },
+      })
+    },
+    handleAdd(id){
+      dispatch({
+        type: 'quote/GiftUpdata',
+        payload: {
+          modalType: 'add',
+          id:id
+        },
+      })
+    },
+    TagClose(id){
+      dispatch({
+        type: 'quote/GiftUpdata',
+        payload: {
+          modalType: 'close',
+          id:id
+        },
+      })
+    },
+    handleCancel () {
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'giftAtion',
+        },
+      })
+    },
+  }
   return (
       <Page>
         <Form >
@@ -110,6 +172,7 @@ const Quote = ({
           <SendInfo />
         </Form>
         {noteModalVisible && <NoteModal {...noteModalProps} />}
+        {giftModalVisible && <GiftModal {...giftModalProps}/>}
         <div className="buttonBox">
           <Button type="primary">保存</Button>
           <Button type="primary">跟踪提交</Button>

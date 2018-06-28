@@ -25,37 +25,59 @@ const ColProps = {
     marginRight:10
   },
 };
-const NoteModal = ({loading,...noteModalProps,
-                   form:{
-                     getFieldDecorator,
-                     getFieldsValue,
-                     setFieldsValue,
-                   }})=>{
-
+const NoteModal = ({
+   loading,...noteModalProps,choseItem, currentItem, choseDesId, handleCancel,
+   form:{
+     getFieldDecorator,
+     getFieldsValue,
+     setFieldsValue,
+   }})=>{
+  const Note = [{id:1,title:'模板一',detail:'是计算机计算机数据是'},
+    {id:2,title:'模板二',detail:'短信模板'}];
+  const choseDesIdFunc = (item)=>{
+    choseDesId(item)
+  };
   return (
     <Modal {...noteModalProps} className={classnames(styles.NoteModal)}
            footer={[
-             <Button key="submit" type="primary" loading={loading} >
+             <Button  type="primary" loading={loading} >
                发送
              </Button>,
-             <Button key="back" >取消</Button>,
+             <Button  onClick={handleCancel} >取消</Button>,
            ]}>
       <Form>
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem label="发送至其他号码" {...formItemLayout}>
-              {getFieldDecorator('userType', {
-
+              {getFieldDecorator('ortherPhone', {
               })(<Input/>)}
             </FormItem>
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员" {...formItemLayout}>
-              {getFieldDecorator('giveGoods', {
+              {getFieldDecorator('action', {
                 initialValue:'刘媛媛'
               })(<Input/>)}
             </FormItem>
           </Col>
+        </Row>
+        <Row>
+           <FormItem>
+             {getFieldDecorator('note',{})(
+                 <div className="templateBox">
+                   <div className="templateItem">
+                     {
+                       Note.map((item,i)=>{
+                         return (
+                           <span className={currentItem.id===item.id?'active':''}  key={i} onClick={()=>choseDesIdFunc(item)}>{item.title}</span>
+                         )
+                       })
+                     }
+                   </div>
+                   <div className="templateContent">{currentItem.detail}</div>
+                 </div>
+               )}
+           </FormItem>
         </Row>
       </Form>
 
