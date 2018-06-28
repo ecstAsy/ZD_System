@@ -28,7 +28,8 @@ const ColProps = {
   },
 };
 const FinalQuote  = ({
-   sendNote,
+  sendNote,
+  chooseGift,
   form:{
     getFieldDecorator,
     getFieldsValue,
@@ -56,7 +57,7 @@ const FinalQuote  = ({
            <FormItem label="赠送礼品" {...formItemLayout}>
              {getFieldDecorator('giveGoods', {
                initialValue:'a'
-             })(<span className='checkGoods'>选择礼品</span>)}
+             })(<span className='checkGoods' onClick={chooseGift}>选择礼品</span>)}
            </FormItem>
          </Col>
        </Row>
@@ -103,6 +104,7 @@ const FinalQuote  = ({
 }
 FinalQuote.prototype = {
   sendNote:PropTypes.func,
+  chooseGift:PropTypes.func,
   form: PropTypes.object
 }
 export default Form.create()(FinalQuote)

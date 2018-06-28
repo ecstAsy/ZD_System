@@ -14,12 +14,27 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem: {},
-    noteModalVisible: false,
+    noteModalVisible: false,//发送短信弹窗
+    giftModalVisible:false,//赠送礼品弹窗
     modalType: 'create',
     visibleRemark:false,
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
+    GiftData :[
+      {id:1,title:'旅行尊享券',Num:2},
+      {id:2,title:'旅行专享券',Num:1},
+      {id:3,title:'保养券',Num:0},
+      {id:4,title:'单面喷漆卡',Num:0},
+      {id:5,title:'床上四件套',Num:0},
+      {id:6,title:'车载床垫',Num:0},
+      {id:7,title:'车载净化器',Num:0},
+      {id:8,title:'车载充电器',Num:0},
+      {id:9,title:'车载手机支架吸盘式',Num:0},
+      {id:10,title:'记录仪',Num:0},
+      {id:11,title:'延保卡',Num:0},
+      {id:12,title:'优典券',Num:0},
+    ]
   },
 
   subscriptions: {
@@ -99,6 +114,8 @@ export default modelExtend(pageModel, {
     showModal (state, { payload }) {
       if(payload.modalType=='noteAtion'){
         return { ...state, noteModalVisible: true }
+      }else if(payload.modalType=='giftAtion'){
+        return { ...state, giftModalVisible: true }
       }
     },
     showModalRemark(state, { payload }) {
@@ -109,11 +126,38 @@ export default modelExtend(pageModel, {
       return { ...state, ...payload, visibleRemark: false }
     },
 
-    hideModal (state) {
+    hideModal (state,{ payload }) {
       if(payload.modalType=='noteAtion'){
         return { ...state, noteModalVisible: false }
+      }else if(payload.modalType=='giftAtion'){
+        return { ...state, giftModalVisible: false }
       }
     },
-
+    choseDesId(state, { payload }){
+      console.log(payload)
+      return{
+        ...state,currentItem:payload
+      }
+    },
+    GiftUpdata(state,{payload}){
+      if(payload.modalType=='cost'){
+        state.GiftData.map(item=>{
+          if(item.id==payload.id){
+            item.Num>0 && item.Num--
+          }
+        })
+        return{ ...state }
+      }else if(payload.modalType=='add'){
+        state.GiftData.map(item=>{
+          item.id==payload.id ? item.Num++ : ''
+        })
+        return{ ...state }
+      }else if(payload.modalType=='close'){
+        state.GiftData.map(item=>{
+          item.id==payload.id ? item.Num = 0 : ''
+        })
+        return{ ...state }
+      }
+    }
   },
 })
