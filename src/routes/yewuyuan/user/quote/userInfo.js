@@ -32,6 +32,8 @@ const ColProps = {
 const UserInfo = ({
   visibleRemark,
   addRemarkFunc,
+  openUnderwriting,
+  choosePurCar,
   RemarkCancel,
   remarkId,
   saveRemark,
@@ -45,7 +47,6 @@ const UserInfo = ({
 
 
   const addRemark = ()=>{
-    console.log(11111)
     addRemarkFunc()
   }
   const remarks=[
@@ -99,7 +100,7 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="车架号" {...formItemLayout}>
-            <div>BOHU767VHIVG564<span className="chengbao">承保信息</span></div>
+            <div>BOHU767VHIVG564<span onClick={()=>openUnderwriting()} className="chengbao">承保信息</span></div>
           </FormItem>
         </Col>
         <Col {...ColProps}>
@@ -172,7 +173,7 @@ const UserInfo = ({
           <FormItem label="新车购置价" {...formItemLayout}>
             {getFieldDecorator('carPrice', {
             })(<Input   style={{ width: '70%' }} />)}
-            <span className="chengbao">查找</span>
+            <span className="chengbao" onClick={choosePurCar}>查找</span>
           </FormItem>
         </Col>
         <Col {...ColProps}>

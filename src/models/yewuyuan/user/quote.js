@@ -16,7 +16,10 @@ export default modelExtend(pageModel, {
     currentItem: {},
     noteModalVisible: false,//发送短信弹窗
     giftModalVisible:false,//赠送礼品弹窗
-    visibleRemark:false,
+    visibleRemark:false,  //备注弹窗
+    underwritingModalVisible:false,//承保信息
+    choosePurCarModalVisible:false, //选择新车购置价
+    deductiblesModalVisible:false,//不计免赔险
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -160,10 +163,17 @@ export default modelExtend(pageModel, {
     },
 
     showModal (state, { payload }) {
+      console.log(payload.modalType)
       if(payload.modalType=='noteAtion'){
         return { ...state, noteModalVisible: true }
       }else if(payload.modalType=='giftAtion'){
         return { ...state, giftModalVisible: true }
+      }else if(payload.modalType=='underwriting'){
+        return { ...state, underwritingModalVisible: true }
+      }else if(payload.modalType=='choosePurCar'){
+        return { ...state, choosePurCarModalVisible: true }
+      }else if(payload.modalType=='deductibles'){
+        return { ...state, deductiblesModalVisible: true }
       }
     },
     showModalRemark(state, { payload }) {
@@ -179,6 +189,10 @@ export default modelExtend(pageModel, {
         return { ...state, noteModalVisible: false }
       }else if(payload.modalType=='giftAtion'){
         return { ...state, giftModalVisible: false }
+      }else if(payload.modalType=='underwriting'){
+        return { ...state, underwritingModalVisible: false }
+      }else if(payload.modalType=='choosePurCar'){
+        return { ...state, choosePurCarModalVisible: false }
       }
     },
     choseDesId(state, { payload }){

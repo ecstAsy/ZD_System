@@ -4,11 +4,11 @@
 import modelExtend from 'dva-model-extend'
 import queryString from 'query-string'
 import { config } from 'utils'
-import { create, remove, update } from 'services/yewuyuan/user'
-import * as usersService from 'services/yewuyuan/users'
+import { create, remove, update } from 'services/yewuyuan/record'
+import * as recordsService from 'services/yewuyuan/records'
 import { pageModel } from '../common'
 
-const { query } = usersService
+const { query } = recordsService
 const { prefix } = config
 
 export default modelExtend(pageModel, {

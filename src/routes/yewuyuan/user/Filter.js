@@ -72,10 +72,10 @@ const Filter = ({
   isShowMoreFunc,
 }) => {
   const handleFields = (fields) => {
-    const { beginDate ,yuyueTime,editTime} = fields;
+    const { firstRegisterDate ,yuyueTime,editTime} = fields;
     console.log(fields);
-    if (beginDate.length) {
-      fields.beginDate = [beginDate[0].format('YYYYMMDD'), beginDate[1].format('YYYYMMDD')]
+    if (firstRegisterDate.length) {
+      fields.firstRegisterDate = [firstRegisterDate[0].format('YYYYMMDD'), firstRegisterDate[1].format('YYYYMMDD')]
     }
     if(yuyueTime){
       fields.yuyueTime = yuyueTime.format('YYYYMMDDHHmmss');
@@ -117,12 +117,14 @@ const Filter = ({
   };
   const { name, address } = filter;
 
+
+
   let initialCreateTime = [];
-  if (filter.beginDate && filter.beginDate[0]) {
-    initialCreateTime[0] = moment(filter.beginDate[0])
+  if (filter.firstRegisterDate && filter.firstRegisterDate[0]) {
+    initialCreateTime[0] = moment(filter.firstRegisterDate[0])
   }
-  if (filter.beginDate && filter.beginDate[1]) {
-    initialCreateTime[1] = moment(filter.beginDate[1])
+  if (filter.firstRegisterDate && filter.firstRegisterDate[1]) {
+    initialCreateTime[1] = moment(filter.firstRegisterDate[1])
   }
   const isShowMore=(isMore)=>{
     console.log(isMore)
@@ -137,7 +139,7 @@ const Filter = ({
     <Row gutter={24}>
       <Col {...ColProps}>
         <FormItem label="姓名" {...formItemLayout}>
-          {getFieldDecorator('usename', {
+          {getFieldDecorator('name', {
           })(<Input />)}
         </FormItem>
       </Col>
@@ -205,19 +207,19 @@ const Filter = ({
       </Col>
       <Col {...ColProps2}>
         <FormItem label="初登日期"  {...formItemLayout2}>
-          {getFieldDecorator('beginDate', {
+          {getFieldDecorator('firstRegisterDate', {initialValue: initialCreateTime
           })(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps2}>
         <FormItem label="保险到期日"  {...formItemLayout2}>
-          {getFieldDecorator('endDate', { initialValue: initialCreateTime
+          {getFieldDecorator('endDate', {
           })(<RangePicker style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps2}>
         <FormItem label="名单发放日"  {...formItemLayout2}>
-          {getFieldDecorator('endDate', {
+          {getFieldDecorator('mingdanDate', {
           })(<RangePicker style={{ width: '90%' }} />)}
         </FormItem>
       </Col>

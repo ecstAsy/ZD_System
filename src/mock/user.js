@@ -18,8 +18,8 @@ let usersListData = Mock.mock({
       isMale: '@boolean',
       email: '@email',
       preInsuranceCompany:/^\d{5}$/,
-      firstRegisterDate:'@date("yyyy-MMdd")',
-      insuranceDueDate:'@date("yyyyMMdd")',
+      firstRegisterDate:'@date("yyyyMMdd")',
+      recordDate:'@date("yyyyMMdd")',
       handleDate:'@date("yyyyMMdd")',
       modifyDate: '@datetime("yyyyMMddHHmmss")',
       yuyueDate: '@datetime("yyyyMMddHHmmss")',
@@ -56,7 +56,7 @@ const EnumRoleType = {
 
 const userPermission = {
   DEFAULT: {
-    visit: ['1', '2','3', '4','21', '7', '5', '51', '52', '53'],
+    visit: ['1', '2','3', '4','21','22', '7', '5', '51', '52', '53'],
     role: EnumRoleType.DEFAULT,
   },
   ADMIN: {

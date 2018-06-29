@@ -66,6 +66,9 @@ const CarInsurance = () => {
 
   )
 }
+CarInsurance.propTypes = {
+
+}
 
 
 

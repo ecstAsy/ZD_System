@@ -13,14 +13,17 @@ import TimeInfo from './timeInfo';
 import SendInfo from './sendInfo';
 import NoteModal from './noteModal';
 import GiftModal from './giftModal';
+import UnderWritingMadal from './underwritingModal';
+import ChoosePurCarModal from './choosePurCarModel'
 const Quote = ({
    location, dispatch, quote, loading,
                      }) => {
    location.query = queryString.parse(location.search)
   const { query, pathname } = location;
   const {
-    choseItem,list, pagination, currentItem,visibleRemark,giftModalVisible ,remarkId, GiftData,modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
+    choseItem,list, pagination, currentItem,visibleRemark,giftModalVisible ,deductiblesModalVisible,underwritingModalVisible,choosePurCarModalVisible,remarkId, GiftData,modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
   } = quote;
+
   const UserInfoProps={
     visibleRemark:visibleRemark,
     remarkId:remarkId,
@@ -44,6 +47,75 @@ const Quote = ({
         type: 'quote/hideModalRemark',
         payload: {
           data:data,
+        },
+      })
+    },
+    openUnderwriting(data){
+      dispatch({
+        type: 'quote/showModal',
+        payload: {
+          modalType: 'underwriting'
+        },
+      })
+    },
+    choosePurCar(data){
+      console.log(1111111)
+      dispatch({
+        type: 'quote/showModal',
+        payload: {
+          modalType: 'choosePurCar'
+        },
+      })
+    },
+    deductiblesModal(data){
+      dispatch({
+        type: 'quote/showModal',
+        payload: {
+          modalType: 'deductibles'
+        },
+      })
+    }
+
+  };
+
+  const UnderwritingProps={
+    item: {},
+    visible: underwritingModalVisible,
+    title:'承保信息',
+    width:'90%',
+    closable:false,
+
+    onCancel(){
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'underwriting'
+        },
+      })
+    }
+
+
+  };
+
+  const choosePurCarProps={
+    visible: choosePurCarModalVisible,
+    title:'选择新车购置价',
+    width:'90%',
+    closable:false,
+    onOk(data){
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'choosePurCar',
+          data:data,
+        },
+      })
+    },
+    onCancel(){
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'choosePurCar'
         },
       })
     }
@@ -162,6 +234,7 @@ const Quote = ({
       })
     },
   }
+  console.log(choosePurCarModalVisible)
   return (
       <Page>
         <Form >
@@ -173,6 +246,8 @@ const Quote = ({
         </Form>
         {noteModalVisible && <NoteModal {...noteModalProps} />}
         {giftModalVisible && <GiftModal {...giftModalProps}/>}
+        {underwritingModalVisible && <UnderWritingMadal {...UnderwritingProps} />}
+        {choosePurCarModalVisible && <ChoosePurCarModal {...choosePurCarProps} />}
         <div className="buttonBox">
           <Button type="primary">保存</Button>
           <Button type="primary">跟踪提交</Button>

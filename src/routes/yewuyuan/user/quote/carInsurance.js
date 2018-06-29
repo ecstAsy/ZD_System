@@ -89,6 +89,7 @@ const CarInsurance = ({
   choseinsuranceData,
   checkedInsuranceFunc,
   checkedStrongInsurFunc,
+  deductiblesModal,
   form:{
     getFieldDecorator,
     getFieldsValue,
@@ -268,10 +269,12 @@ const CarInsurance = ({
                       </Col>:(item.id==25011? <Col span={20}>
                       <FormItem label={item.name} {...formItemLayou3}>
                         <InputNumber className="leftInput" disabled={item.coverageAblead}/>
-                        <span className="choseItem">
-                               {choseinsuranceData.map((item,key)=>{
-                                 return(item+'/')
-                               })}
+                        <span className="choseItem" onClick={deductiblesModal}>
+                          {choseinsuranceData.length>0?choseinsuranceData.map((item,key)=>{
+                            return(item+'/')
+                          }):'请选择'}
+
+
                              </span>
                       </FormItem>
                     </Col>:<Col span={11}>
@@ -311,8 +314,13 @@ const CarInsurance = ({
         </Row>
 
 
-
       </div>
     )
 }
+CarInsurance.propTypes = {
+  isShowshangyexian: PropTypes.func,
+  checkedStrongInsurance: PropTypes.func,
+  checkedInsurance: PropTypes.func,
+}
+
 export default Form.create() (CarInsurance)

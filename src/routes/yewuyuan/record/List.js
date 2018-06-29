@@ -47,10 +47,10 @@ const List = ({
       render: (text, record) =><span>{record.province+record.plateNumber}</span>,
 },{
     title: '拨打时间',
-      dataIndex: 'insuranceDueDate',
-      key: 'insuranceDueDate',
+      dataIndex: 'recordDate',
+      key: 'recordDate',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.insuranceDueDate - b.insuranceDueDate,
+      sorter: (a, b) => a.recordDate - b.recordDate,
   }, {
     title: '通话时长(秒)',
       dataIndex: 'modifyDate',

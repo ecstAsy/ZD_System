@@ -1,11 +1,11 @@
-import { request, config } from 'utils'
+import { request ,config} from 'utils'
 
 const { api } = config
-const { successPolicy } = api
+const { records } = api
 
 export function query (params) {
   return request({
-    url: successPolicy,
+    url: '../api_1/records',
     method: 'get',
     data: params,
   })
@@ -13,7 +13,7 @@ export function query (params) {
 
 export function create (params) {
   return request({
-    url: successPolicy.replace('/:id', ''),
+    url: 'api_1/records',
     method: 'post',
     data: params,
   })
@@ -21,7 +21,7 @@ export function create (params) {
 
 export function remove (params) {
   return request({
-    url: successPolicy,
+    url: 'api_1/records/'.concat(params.id),
     method: 'delete',
     data: params,
   })
@@ -29,8 +29,8 @@ export function remove (params) {
 
 export function update (params) {
   return request({
-    url: successPolicy,
-    method: 'patch',
+    url: 'api_1/records',
+    method: 'put',
     data: params,
   })
 }

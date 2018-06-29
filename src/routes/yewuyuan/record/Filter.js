@@ -74,9 +74,9 @@ const Filter = ({
 }) => {
   const handleFields = (fields) => {
     console.log(fields)
-    const { createTime } = fields
-    if (createTime.length) {
-      fields.createTime = [createTime[0].format('YYYY-MM-DD'), createTime[1].format('YYYY-MM-DD')]
+    const { recordDate } = fields
+    if (recordDate.length) {
+      fields.recordDate = [recordDate[0].format('YYYY-MM-DD'), recordDate[1].format('YYYY-MM-DD')]
     }
     return fields
   }
@@ -123,7 +123,7 @@ const Filter = ({
 <Row gutter={24}>
     <Col {...ColProps}>
 <FormItem label="姓名" {...formItemLayout}>
-  {getFieldDecorator('usename', {
+  {getFieldDecorator('name', {
   })(<Input />)}
 </FormItem>
   </Col>
@@ -142,7 +142,7 @@ const Filter = ({
 
   <Col {...ColProps2}>
 <FormItem label="拨打时间"  {...formItemLayout2}>
-  {getFieldDecorator('recordDate', {
+  {getFieldDecorator('recordDate', {initialValue: initialCreateTime
   })(<RangePicker style={{ width: '90%' }} />)}
 </FormItem>
   </Col>
