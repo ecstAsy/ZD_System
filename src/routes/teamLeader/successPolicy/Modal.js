@@ -98,6 +98,7 @@ Offermodal.propTypes = {
   type: PropTypes.string,
   item: PropTypes.object,
   onOk: PropTypes.func,
+  onCancel:PropTypes.func,
 }
 
 export default Form.create()(Offermodal)

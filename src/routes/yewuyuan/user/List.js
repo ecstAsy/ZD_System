@@ -117,8 +117,7 @@ const List = ({
 }
 
 List.propTypes = {
-  onDeleteItem: PropTypes.func,
-  onEditItem: PropTypes.func,
+  toQuote: PropTypes.func,
   isMotion: PropTypes.bool,
   location: PropTypes.object,
 }

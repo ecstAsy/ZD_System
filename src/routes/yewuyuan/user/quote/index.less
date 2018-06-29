@@ -19,7 +19,7 @@
 }
 .title{
   width: 98%;
-  margin: 0 auto;
+  margin: 0 auto 15px;
   :global{
     .shortNote{
       float: right;
@@ -56,7 +56,7 @@
   :global{
     .checkGoods{
       color: #0082fe;
-      font-size: 12px;
+      font-size: 14px;
       cursor: pointer;
     }
   }
@@ -150,5 +150,109 @@
     .ant-form-item{
       margin-bottom: 0;
     }
+  }
+}
+:global{
+  .shangyexian{
+    background: #f5fbff;
+    height: 0;
+    overflow: hidden;
+    width: 88%;
+    margin: 20px 6%;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .shouqiSy{
+    bottom:20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 999999;
+    right:20px;
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg);
+  }
+  .shouqiSy:hover{
+    color: #0082fe;
+  }
+  .shangyexian.show{
+    padding: 15px;
+    overflow: auto;
+    height: auto;
+  }
+  .shangyexian .ant-select-selection{
+    background: none;
+  }
+  .ant-input-number.leftInput{
+    width: 35%;
+    margin-right: 10px;
+    background: none;
+  }
+  .ant-input-number.leftInput input{
+    background: none;
+  }
+  .ant-input-number.rightInput{
+    width: 35%;
+    background: none;
+  }
+  .ant-input-number.rightInput input{
+    background: none;
+  }
+  .double-right{
+    color: #939ba4;
+    cursor: pointer;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg);
+  }
+  .double-right:hover{
+    color: #0082fe;
+  }
+  .double-right.show{
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg);
+  }
+  .choseItem{
+    color: #0082fe;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .buttonBox{
+    margin-top: 35px;
+  }
+  .buttonBox button{
+    margin-right: 15px;
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .buttonBox button:nth-child(2){
+    background: #fff8e3;
+    border:1px #ffa800 solid;
+    color: #ffa800;
+  }
+  .buttonBox button:nth-child(4){
+    background: #f0f2f5;
+    border:1px #ec412b solid;
+    color: #ec412b;
+  }
+  .buttonBox button:nth-child(5){
+    background: #00b38a;
+    border:1px #00b38a solid;
+    color: #fff;
+    margin-left: 20px;
+  }
+  .rowTitle{
+    margin-bottom: 10px;
+  }
+  .rowTitle.rowTitleTwo {
+    margin-top: 25px;
+  }
+  .ant-table-thead > tr > th {
+    height: 42px;
+    padding: 10px 5px;
+    background: #f0f2f5;
   }
 }

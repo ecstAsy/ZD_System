@@ -4,11 +4,12 @@ const config = require('../utils/config')
 
 const { apiPrefix } = config
 
-let usersListData = Mock.mock({
+let successPolicyData = Mock.mock({
   'data|80-100': [
     {
       id: '@id',
       name: '@cname',
+      yuwuName:'@cname',
       nickName: '@last',
       plateNumber: /^E\d{5}$/,
       phone: /^1[34578]\d{9}$/,
@@ -19,12 +20,28 @@ let usersListData = Mock.mock({
       email: '@email',
       preInsuranceCompany:/^\d{5}$/,
       firstRegisterDate:'@date("yyyy-MMdd")',
-      insuranceDueDate:'@date("yyyyMMdd")',
-      handleDate:'@date("yyyyMMdd")',
+      'payType|1':[
+        "扫码支付",
+        "转账到保险公司",
+      ],
+      policyPrice: /^\d{5}$/,
       modifyDate: '@datetime("yyyyMMddHHmmss")',
-      yuyueDate: '@datetime("yyyyMMddHHmmss")',
+      beginDate: '@date("yyyyMMdd")',
       isRenewal:'2',
       viFlag:1,
+      'zhuangtai|1':[
+        "待审核",
+        "审核通过",
+        "审核中",
+        "审核失败"
+      ],
+      'sendType|1':[
+        "未分配",
+        "已分配",
+        "已派送",
+        "派送中",
+        "派送失败"
+      ],
       avatar () {
         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
       },
@@ -33,7 +50,9 @@ let usersListData = Mock.mock({
 })
 
 
-let database = usersListData.data;
+let database = successPolicyData.data;
+
+
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {

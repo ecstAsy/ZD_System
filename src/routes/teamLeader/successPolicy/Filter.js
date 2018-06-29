@@ -102,17 +102,12 @@ const Filter = ({
   isShowMoreFunc,
 }) => {
   const handleFields = (fields) => {
-    const { beginDate ,yuyueTime,editTime} = fields;
+    const { beginDate } = fields;
     console.log(fields);
     if (beginDate.length) {
       fields.beginDate = [beginDate[0].format('YYYYMMDD'), beginDate[1].format('YYYYMMDD')]
     }
-    if(yuyueTime){
-      fields.yuyueTime = yuyueTime.format('YYYYMMDDHHmmss');
-    }
-    if(editTime){
-      fields.editTime = editTime.format('YYYYMMDDHHmmss');
-    }
+
 
     console.log(fields);
     return fields
@@ -187,7 +182,7 @@ const Filter = ({
     <Row gutter={24}>
       <Col {...ColProps}>
         <FormItem label="姓名" {...formItemLayout}>
-          {getFieldDecorator('usename', {
+          {getFieldDecorator('name', {
           })(<Input />)}
         </FormItem>
       </Col>
@@ -254,7 +249,7 @@ const Filter = ({
       </Col>
       <Col {...ColProps2}>
         <FormItem label="提交日期"  {...formItemLayout2}>
-          {getFieldDecorator('beginDate', {
+          {getFieldDecorator('beginDate', {initialValue: initialCreateTime
           })(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>

@@ -26,22 +26,7 @@ const Appointment = ({
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
-            <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
+
           </ul>
         ):(
           <ul className={styles.ulList}>

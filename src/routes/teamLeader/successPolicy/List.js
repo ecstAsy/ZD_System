@@ -43,8 +43,8 @@ const List = ({
       key: 'name',
     },{
       title: '业务员',
-      dataIndex: 'phone',
-      key: 'phone',
+      dataIndex: 'yuwuName',
+      key: 'yuwuName',
     }, {
       title: '出单类型',
       dataIndex: 'preInsuranceCompany',
@@ -58,16 +58,16 @@ const List = ({
       },
     }, {
       title: '支付方式',
-      dataIndex: 'insuranceDueDate',
-      key: 'insuranceDueDate',
+      dataIndex: 'payType',
+      key: 'payType',
     }, {
       title: '保单金额',
-      dataIndex: 'handleDate',
-      key: 'handleDate',
+      dataIndex: 'policyPrice',
+      key: 'policyPrice',
     }, {
       title: '提交时间',
-      dataIndex: 'yuyueDate',
-      key: 'yuyueDate',
+      dataIndex: 'beginDate',
+      key: 'beginDate',
     }, {
       title: '缴费时间',
       dataIndex: 'modifyDate',
@@ -126,8 +126,8 @@ const List = ({
 }
 
 List.propTypes = {
-  onDeleteItem: PropTypes.func,
-  onEditItem: PropTypes.func,
+  handleSendType: PropTypes.func,
+  handleMenuClick: PropTypes.func,
   isMotion: PropTypes.bool,
   location: PropTypes.object,
   seeSendation : PropTypes.func

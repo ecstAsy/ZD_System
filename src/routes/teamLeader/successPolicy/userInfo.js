@@ -116,4 +116,10 @@ const UserInfo = ({
     </div>
   )
 }
+UserInfo.propTypes = {
+  addRemarkFunc: PropTypes.func,
+  editRemark:PropTypes.func,
+}
+
+
 export default Form.create()(UserInfo)

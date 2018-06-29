@@ -17,6 +17,7 @@ module.exports = {
   APIV2,
   api: {
     successPolicys:`${APIV1}/successPolicys`,
+    records:`${APIV1}/records`,
     userLogin: `${APIV1}/user/login`,
     userLogout: `${APIV1}/user/logout`,
     userInfo: `${APIV1}/userInfo`,

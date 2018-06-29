@@ -5,7 +5,7 @@ const Title = ({title,sendNote})=>{
   return (
     <div className={classnames(styles.title)}>
       <img src="../ghef_03.png" alt=""/>
-      <span>{title}</span>
+      <span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>{title}</span>
       {
         title==='最终报价'?<span className='shortNote' onClick={sendNote}>短信通知客户</span>:''
       }

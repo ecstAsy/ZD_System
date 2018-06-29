@@ -16,8 +16,10 @@ export default modelExtend(pageModel, {
     currentItem: {},
     noteModalVisible: false,//发送短信弹窗
     giftModalVisible:false,//赠送礼品弹窗
-    modalType: 'create',
-    visibleRemark:false,
+    visibleRemark:false,  //备注弹窗
+    underwritingModalVisible:false,//承保信息
+    choosePurCarModalVisible:false, //选择新车购置价
+    deductiblesModalVisible:false,//不计免赔险
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -34,7 +36,25 @@ export default modelExtend(pageModel, {
       {id:10,title:'记录仪',Num:0},
       {id:11,title:'延保卡',Num:0},
       {id:12,title:'优典券',Num:0},
+    ],
+    insuranceData:[
+      {id:25001,checked:false,name:'车辆损失险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25002,checked:false,name:'第三者责任险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25003,checked:false,name:'驾驶员座位险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25004,checked:false,name:'乘客座位险/座',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25005,checked:false,name:'玻璃单独破碎险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25006,checked:false,name:'全车盗抢险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25007,checked:false,name:'自燃损失险',coverage:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25008,checked:false,name:'车身划痕险',ex:'',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25009,checked:false,name:'涉水险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25010,checked:false,name:'无法找到第三方特约险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+      {id:25011,checked:false,name:'不计免赔险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
+    ],
+    choseinsuranceData:[],  //已选的商业险
+    strongInsuranceData:[
+      {id:25012,checked:false,name:'车船税',travelTax:'',discount_costAblead:true,coverageAblead:true,},
     ]
+
   },
 
   subscriptions: {
@@ -110,12 +130,50 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
+    checkedInsuranceFunc(state, { payload }){
+      let id = payload.id;
+      let insuranceData = state.insuranceData;
+      let choseinsuranceData = [];
+      for(let item of insuranceData){
+          if(item.id==id){
+            item.checked=!item.checked;
+            if(id==25002||id==25003||id==25004||id==25005||id==25008){
+                item.coverageAblead=!item.coverageAblead;
+            }
+          }
+      }
+      for(let item of insuranceData){
+          if(item.checked){
+            choseinsuranceData.push(item.name);
+          }
+      }
+      return { ...state, ...payload,}
+    },
+
+    checkedStrongInsurFunc(state, { payload }){
+      let id = payload.id;
+      let strongInsuranceData = state.strongInsuranceData;
+      for(let item of strongInsuranceData){
+        if(item.id==id){
+          item.checked=!item.checked;
+          item.coverageAblead=!item.coverageAblead;
+        }
+      }
+      return { ...state, ...payload, }
+    },
 
     showModal (state, { payload }) {
+      console.log(payload.modalType)
       if(payload.modalType=='noteAtion'){
         return { ...state, noteModalVisible: true }
       }else if(payload.modalType=='giftAtion'){
         return { ...state, giftModalVisible: true }
+      }else if(payload.modalType=='underwriting'){
+        return { ...state, underwritingModalVisible: true }
+      }else if(payload.modalType=='choosePurCar'){
+        return { ...state, choosePurCarModalVisible: true }
+      }else if(payload.modalType=='deductibles'){
+        return { ...state, deductiblesModalVisible: true }
       }
     },
     showModalRemark(state, { payload }) {
@@ -131,6 +189,10 @@ export default modelExtend(pageModel, {
         return { ...state, noteModalVisible: false }
       }else if(payload.modalType=='giftAtion'){
         return { ...state, giftModalVisible: false }
+      }else if(payload.modalType=='underwriting'){
+        return { ...state, underwritingModalVisible: false }
+      }else if(payload.modalType=='choosePurCar'){
+        return { ...state, choosePurCarModalVisible: false }
       }
     },
     choseDesId(state, { payload }){

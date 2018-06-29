@@ -96,7 +96,7 @@ const sendModalProps = {
 }
   const listProps = {
     dataSource: list,
-    loading: loading.effects['user/query'],
+    loading: loading.effects['successPolicy/query'],
     pagination,
     location,
     isMotion,

@@ -38,7 +38,7 @@ const TimeInfo = ({form: {
        <Col {...ColProps}>
          <FormItem label="交强险" {...formItemLayout}>
            {getFieldDecorator('compulsory', {
-           })(<div><DatePicker /><span className="cutTxt">至</span><DatePicker />
+           })(<div><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" /><span className="cutTxt">至</span><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" />
              <Button className="timeBtn" >同下</Button></div>)}
          </FormItem>
        </Col>
@@ -47,7 +47,7 @@ const TimeInfo = ({form: {
          <Col {...ColProps}>
            <FormItem label="商业险" {...formItemLayout}>
              {getFieldDecorator('commercial', {
-             })(<div><DatePicker /><span className="cutTxt">至</span><DatePicker />
+             })(<div><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" /><span className="cutTxt">至</span><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss"/>
                <Button className="timeBtn" >同上</Button></div>)}
            </FormItem>
          </Col>
