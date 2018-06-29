@@ -1,39 +1,25 @@
-const qs = require('qs')
-const Mock = require('mockjs')
-const config = require('../utils/config')
-
-const { apiPrefix } = config
-
-let usersListData = Mock.mock({
-  'data|80-100': [
+import qs from 'qs';
+import Mock from 'mockjs';
+import config from '../utils/config';
+const { apiPrefix } = config;
+let complaintsListData = Mock.mock({
+  'data|80-100':[
     {
-      id: '@id',
-      name: '@cname',
-      nickName: '@last',
-      plateNumber: /^E\d{5}$/,
-      phone: /^1[34578]\d{9}$/,
-      'age|11-99': 1,
+      id:'@id',
+      userName:'@cname',
+      userPhone:/^1[34578]\d{9}$/,
+      userPlate: /^E\d{5}$/,
       province:'苏',
-      address: '@county(true)',
-      isMale: '@boolean',
-      email: '@email',
-      preInsuranceCompany:/^\d{5}$/,
-      firstRegisterDate:'@date("yyyy-MMdd")',
-      insuranceDueDate:'@date("yyyyMMdd")',
-      handleDate:'@date("yyyyMMdd")',
-      modifyDate: '@datetime("yyyyMMddHHmmss")',
-      yuyueDate: '@datetime("yyyyMMddHHmmss")',
-      isRenewal:'2',
-      viFlag:1,
-      avatar () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
-      },
-    },
-  ],
+      createTime: '@datetime("yyyy-MM-dd")',
+      handleTime:'@datetime("yyyy-MM-dd")',
+      'processor|1':['业务员1','业务员2','业务员3','业务员4'],
+      'status|1':['返现驳回','','未处理','返现通过'],
+      'cpType|1':['礼品投诉','返现投诉'],
+      cpDecription:'返现100元'
+    }
+  ]
 })
-
-
-let database = usersListData.data;
+let database = complaintsListData.data;
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {
@@ -61,35 +47,12 @@ const NOTFOUND = {
 
 module.exports = {
 
-  [`POST ${apiPrefix}/successPolicy`] (req, res) {
-    const { username, password } = req.body
-    const user = adminUsers.filter(item => item.username === username)
-
-    if (user.length > 0 && user[0].password === password) {
-      const now = new Date()
-      now.setDate(now.getDate() + 1)
-      res.cookie('token', JSON.stringify({ id: user[0].id, deadline: now.getTime() }), {
-        maxAge: 900000,
-        httpOnly: true,
-      })
-      res.json({ success: true, message: 'Ok' })
-    } else {
-      res.status(400).end()
-    }
-  },
-
-  [`GET ${apiPrefix}/successPolicy`] (req, res) {
-    res.clearCookie('token')
-    res.status(200).end()
-  },
-
-  [`GET ${apiPrefix}/successPolicys`] (req, res) {
-    const { query } = req
-    let { pageSize, page, ...other } = query
-    pageSize = pageSize || 10
-    page = page || 1
-
-    let newData = database
+  [`GET ${apiPrefix}/complaint`] (req, res) {
+    const { query } = req;
+    let { pageSize, page, ...other } = query;
+    pageSize = pageSize || 10;
+    page = page || 1;
+    let newData = database;
     for (let key in other) {
       if ({}.hasOwnProperty.call(other, key)) {
         newData = newData.filter((item) => {
@@ -111,24 +74,23 @@ module.exports = {
         })
       }
     }
-
     res.status(200).json({
       data: newData.slice((page - 1) * pageSize, page * pageSize),
       total: newData.length,
     })
   },
 
-  [`DELETE ${apiPrefix}/successPolicy`] (req, res) {
+  [`DELETE ${apiPrefix}/complaint`] (req, res) {
     const { ids } = req.body
     database = database.filter(item => !ids.some(_ => _ === item.id))
     res.status(204).end()
   },
 
 
-  [`POST ${apiPrefix}/successPolicy`] (req, res) {
+  [`POST ${apiPrefix}/complaint`] (req, res) {
     const newData = req.body
     newData.createTime = Mock.mock('@now')
-    newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.nickName.substr(0, 1))
+    newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png')
     newData.id = Mock.mock('@id')
 
     database.unshift(newData)
@@ -136,7 +98,7 @@ module.exports = {
     res.status(200).end()
   },
 
-  [`GET ${apiPrefix}/successPolicy/:id`] (req, res) {
+  [`GET ${apiPrefix}/complaint/:id`] (req, res) {
     const { id } = req.params
     const data = queryArray(database, id, 'id')
     if (data) {
@@ -146,7 +108,7 @@ module.exports = {
     }
   },
 
-  [`DELETE ${apiPrefix}/successPolicy/:id`] (req, res) {
+  [`DELETE ${apiPrefix}/complaint/:id`] (req, res) {
     const { id } = req.params
     const data = queryArray(database, id, 'id')
     if (data) {
@@ -157,7 +119,7 @@ module.exports = {
     }
   },
 
-  [`PATCH ${apiPrefix}/successPolicy/:id`] (req, res) {
+  [`PATCH ${apiPrefix}/complaint/:id`] (req, res) {
     const { id } = req.params
     const editItem = req.body
     let isExist = false

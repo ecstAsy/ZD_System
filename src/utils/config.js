@@ -31,5 +31,6 @@ module.exports = {
     providers: `${APIV1}/providers`,
     provider: `${APIV1}/provider/:id`,
     purchase: 'api_1/purchases/:id',
+    complaint:`${APIV1}/complaint`,
   },
 }

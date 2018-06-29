@@ -21,7 +21,6 @@ const SuccessPolicy = ({
   } = successPolicy
 
   const handleRefresh = (newQuery) => {
-    console.log(newQuery)
     dispatch(routerRedux.push({
       pathname,
       search: queryString.stringify({
@@ -86,7 +85,6 @@ const sendModalProps = {
   width:'40%',
   closable:false,
   wrapClassName: 'vertical-center-modal',
-  cancelText:'关闭',
   onCancel () {
     dispatch({
       type: 'successPolicy/hideModal',
