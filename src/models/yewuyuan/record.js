@@ -13,7 +13,6 @@ const { prefix } = config
 
 export default modelExtend(pageModel, {
   namespace: 'record',
-
   state: {
     currentItem: {},
     modalVisible: false,

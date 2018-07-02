@@ -80,7 +80,7 @@ const NOTFOUND = {
 
 module.exports = {
 
-  [`POST ${apiPrefix}/user/login`] (req, res) {
+  [`POST ${apiPrefix}/successPolicy`] (req, res) {
     const { username, password } = req.body
     const user = adminUsers.filter(item => item.username === username)
 
@@ -97,34 +97,9 @@ module.exports = {
     }
   },
 
-  [`GET ${apiPrefix}/user/logout`] (req, res) {
+  [`GET ${apiPrefix}/successPolicy`] (req, res) {
     res.clearCookie('token')
     res.status(200).end()
-  },
-
-  [`GET ${apiPrefix}/successPolicy`] (req, res) {
-    const cookie = req.headers.cookie || ''
-    const cookies = qs.parse(cookie.replace(/\s/g, ''), { delimiter: ';' })
-    const response = {}
-    const user = {}
-    if (!cookies.token) {
-      res.status(200).send({ message: 'Not Login' })
-      return
-    }
-    const token = JSON.parse(cookies.token)
-    if (token) {
-      response.success = token.deadline > new Date().getTime()
-    }
-    if (response.success) {
-      const userItem = adminUsers.filter(_ => _.id === token.id)
-      if (userItem.length > 0) {
-        user.permissions = userItem[0].permissions
-        user.username = userItem[0].username
-        user.id = userItem[0].id
-      }
-    }
-    response.user = user
-    res.json(response)
   },
 
   [`GET ${apiPrefix}/successPolicys`] (req, res) {
@@ -144,7 +119,6 @@ module.exports = {
               const start = new Date(other[key][0]).getTime()
               const end = new Date(other[key][1]).getTime()
               const now = new Date(item[key]).getTime()
-
               if (start && end) {
                 return now >= start && now <= end
               }
@@ -163,7 +137,7 @@ module.exports = {
     })
   },
 
-  [`DELETE ${apiPrefix}/users`] (req, res) {
+  [`DELETE ${apiPrefix}/successPolicy`] (req, res) {
     const { ids } = req.body
     database = database.filter(item => !ids.some(_ => _ === item.id))
     res.status(204).end()

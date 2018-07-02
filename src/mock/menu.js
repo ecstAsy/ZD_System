@@ -52,6 +52,13 @@ let database = [
     icon: 'user',
     route: '/user/quote',
   },
+  {
+    id: '6',
+    bpid: '1',
+    name: '客户投诉',
+    icon: 'user',
+    route: '/complaint',
+  }
   // {
   //   id: '70002',
   //   bpid: '1',
