@@ -14,12 +14,9 @@ const ColProps = {
   xs: 24,
   sm: 12,
   style: {
-
+    marginBottom: 10,
   },
 };
-
-
-
 
 const DeductiblesModal =({
   item = {},
@@ -32,9 +29,6 @@ const DeductiblesModal =({
   },
   ...DeductiblesProps
 })=>{
-
-
-
   const handleOk = () => {
     validateFields((errors) => {
       if (errors) {
@@ -42,16 +36,17 @@ const DeductiblesModal =({
       }
       const data = {
         ...getFieldsValue(),
-      }
+      };
       console.log(data)
       onOk(data)
     })
-  }
+  };
+
   const modalOpts = {
     ...DeductiblesProps,
     onOk: handleOk,
-  }
-  console.log(deductiblesData)
+  };
+
   return(
     <Modal
       {...modalOpts}
@@ -66,18 +61,13 @@ const DeductiblesModal =({
                   <Checkbox value={i.id}>{i.name}</Checkbox>
                 </Col>
                 )
-
             })
           }
         </Row>
-
       </CheckboxGroup>)}
-
-
-
     </Modal>
   )
-}
+};
 DeductiblesModal.prototype = {
 
 

@@ -45,21 +45,24 @@ const Offermodal = ({
       const data = {
         ...getFieldsValue(),
         key: item.key,
-      }
+      };
       onOk(data)
     })
-  }
+  };
 
   const CancelRemark=()=>{
     RemarkCancel()
-  }
+  };
+
   const saveRemark=(data)=>{
     saveRemarkFunc(data)
-  }
+  };
+
   const modalOpts = {
     ...modalProps,
     onOk: handleOk,
-  }
+  };
+
   const RemarkOpts={
     visibleRemark,
     RemarkCancel:CancelRemark,
@@ -68,8 +71,7 @@ const Offermodal = ({
       addRemarkFunc(id)
     },
     remarkId:remarkId,
-  }
-
+  };
 
   return (
     <Modal {...modalOpts}   footer={[
@@ -82,7 +84,6 @@ const Offermodal = ({
               <UserInfo {...RemarkOpts} />
               <ExpressInformation />
               <FinalOffer />
-
             </div>
             <div  className={styles.rightB}>
               <CarInsurance />
@@ -91,7 +92,7 @@ const Offermodal = ({
         </div>
     </Modal>
   )
-}
+};
 
 Offermodal.propTypes = {
   form: PropTypes.object.isRequired,

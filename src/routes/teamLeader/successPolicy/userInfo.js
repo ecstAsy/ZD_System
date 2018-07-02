@@ -21,13 +21,13 @@ const UserInfo = ({
 })=>{
   const handleCancel=()=>{
     RemarkCancel()
-  }
+  };
   const editRemark=(id)=>{
     addRemark(id)
-  }
+  };
   const addRemarkFunc=()=>{
     addRemark()
-  }
+  };
   const handleOk=()=>{
     validateFields((errors) => {
       if (errors) {
@@ -36,17 +36,17 @@ const UserInfo = ({
       const data = {
         ...getFieldsValue(),
       };
-      console.log(data)
       saveRemark(data)
     })
+  };
 
-  }
   const remarks=[
     {id:1,date:'20180311',des:'备注1'},
     {id:2,date:'20180517',des:'备注2'},
     {id:3,date:'20180613',des:'备注3'},
-  ]
+  ];
 
+  const remarkValue='';
 
   return (
     <div>
@@ -104,6 +104,7 @@ const UserInfo = ({
       >
         <FormItem>
           {getFieldDecorator('remark', {
+            initialValue: '',
             rules: [
               {
                 required: true,
@@ -115,11 +116,12 @@ const UserInfo = ({
       </Modal>
     </div>
   )
-}
+};
+
 UserInfo.propTypes = {
   addRemarkFunc: PropTypes.func,
   editRemark:PropTypes.func,
-}
+};
 
 
 export default Form.create()(UserInfo)

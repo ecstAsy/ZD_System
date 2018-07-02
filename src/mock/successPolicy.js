@@ -9,33 +9,33 @@ let successPolicyData = Mock.mock({
     {
       id: '@id',
       name: '@cname',
-      yuwuName:'@cname',
-      nickName: '@last',
-      plateNumber: /^E\d{5}$/,
+      salesman:'@cname',
+      plate: /^E\d{5}$/,
       phone: /^1[34578]\d{9}$/,
       'age|11-99': 1,
       province:'苏',
       address: '@county(true)',
       isMale: '@boolean',
       email: '@email',
-      preInsuranceCompany:/^\d{5}$/,
+      SingleType:/^\d{5}$/,
       firstRegisterDate:'@date("yyyy-MMdd")',
       'payType|1':[
         "扫码支付",
         "转账到保险公司",
       ],
+      piesType:'2',
       policyPrice: /^\d{5}$/,
-      modifyDate: '@datetime("yyyyMMddHHmmss")',
-      beginDate: '@date("yyyyMMdd")',
-      isRenewal:'2',
+      PaymentDate: '@datetime("yyyyMMddHHmmss")',
+      submissionDate: '@date("yyyyMMdd")',
+      insuranceCompany:'2',
       viFlag:1,
-      'zhuangtai|1':[
+      'state|1':[
         "待审核",
         "审核通过",
         "审核中",
         "审核失败"
       ],
-      'sendType|1':[
+      'singleState|1':[
         "未分配",
         "已分配",
         "已派送",
@@ -43,11 +43,11 @@ let successPolicyData = Mock.mock({
         "派送失败"
       ],
       avatar () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
+        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png',)
       },
     },
   ],
-})
+});
 
 
 let database = successPolicyData.data;

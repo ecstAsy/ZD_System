@@ -34,7 +34,7 @@ const ColProps = {
     marginRight:30
   },
 };
-const  ColProps2={
+const  ColPropsLong={
   xs: 24,
   sm: 11,
   style: {
@@ -42,7 +42,7 @@ const  ColProps2={
     marginRight:10
   },
 };
-const formItemLayout2 = {
+const formItemLayoutLong = {
   labelCol: {
     span:6,
   },
@@ -55,61 +55,23 @@ const formItemLayout2 = {
     fontSize:'14px'
   }
 };
-const ColProps3 = {
-  xs: 24,
-  sm:10,
-  style: {
-    marginBottom: 10,
-    marginRight:0
-  },
-};
-const ColProps4 = {
-  xs: 24,
-  sm: 3,
-  style: {
-    marginBottom: 10,
-    marginRight:0,
-    paddingLeft:0,
-    paddingRight:10
-  },
-};
-const formItemLayout3 = {
-  labelCol: {
-    span:0,
-  },
-  wrapperCol: {
-    span: 24,
-  },
-  style:{
-    marginBottom: 0,
-    borderRadius:'20px',
-    fontSize:'14px'
-  }
-};
 
 const Filter = ({
-  onAdd,
-  isMotion,
-  switchIsMotion,
   onFilterChange,
   filter,
-  isMore,
   form: {
     getFieldDecorator,
     getFieldsValue,
     setFieldsValue,
   },
-  isShowMoreFunc,
 }) => {
+  const {name, plate }=filter;
+
   const handleFields = (fields) => {
-    const { beginDate } = fields;
-    console.log(fields);
-    if (beginDate.length) {
-      fields.beginDate = [beginDate[0].format('YYYYMMDD'), beginDate[1].format('YYYYMMDD')]
+    const { submissionDate } = fields;
+    if (submissionDate && submissionDate.length && submissionDate.length > 1) {
+      fields.submissionDate = [submissionDate[0].format('YYYYMMDD'), submissionDate[1].format('YYYYMMDD')]
     }
-
-
-    console.log(fields);
     return fields
   };
 
@@ -134,25 +96,6 @@ const Filter = ({
     handleSubmit()
   };
 
-  const handleChange = (key, values) => {
-    let fields = getFieldsValue();
-    fields[key] = values;
-    fields = handleFields(fields);
-    onFilterChange(fields)
-  };
-  const { name, address } = filter;
-
-  let initialCreateTime = [];
-  if (filter.beginDate && filter.beginDate[0]) {
-    initialCreateTime[0] = moment(filter.beginDate[0])
-  }
-  if (filter.beginDate && filter.beginDate[1]) {
-    initialCreateTime[1] = moment(filter.beginDate[1])
-  }
-  const isShowMore=(isMore)=>{
-    console.log(isMore)
-    isShowMoreFunc(isMore)
-  }
   const residences = [{
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -182,20 +125,17 @@ const Filter = ({
     <Row gutter={24}>
       <Col {...ColProps}>
         <FormItem label="姓名" {...formItemLayout}>
-          {getFieldDecorator('name', {
-          })(<Input />)}
+          {getFieldDecorator('name', { initialValue: name })(<Input />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>
         <FormItem label="车牌"  {...formItemLayout}>
-          {getFieldDecorator('chepai', {
-          })(<Input />)}
+          {getFieldDecorator('plate', { initialValue: plate })(<Input />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>
         <FormItem label="业务员"  {...formItemLayout}>
-          {getFieldDecorator('yewuyuan', {
-          })(<Select
+          {getFieldDecorator('salesman')(<Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -207,8 +147,7 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="出单类型"  {...formItemLayout}>
-          {getFieldDecorator('chudanType', {
-          })(<Select
+          {getFieldDecorator('SingleType')(<Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -221,8 +160,7 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="状态"  {...formItemLayout}>
-          {getFieldDecorator('zhuangtai', {
-          })(<Select
+          {getFieldDecorator('state')(<Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -235,8 +173,7 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="支付方式"  {...formItemLayout}>
-          {getFieldDecorator('payType', {
-          })(<Select
+          {getFieldDecorator('payType')(<Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -247,16 +184,14 @@ const Filter = ({
           </Select>)}
         </FormItem>
       </Col>
-      <Col {...ColProps2}>
-        <FormItem label="提交日期"  {...formItemLayout2}>
-          {getFieldDecorator('beginDate', {initialValue: initialCreateTime
-          })(<RangePicker  style={{ width: '90%' }} />)}
+      <Col {...ColPropsLong}>
+        <FormItem label="提交日期"  {...formItemLayoutLong}>
+          {getFieldDecorator('submissionDate')(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>
         <FormItem label="派单状态"  {...formItemLayout}>
-          {getFieldDecorator('paidanType', {
-          })(<Select
+          {getFieldDecorator('singleState')(<Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -267,15 +202,12 @@ const Filter = ({
           </Select>)}
         </FormItem>
       </Col>
-      <Col {...ColProps3}>
-        <FormItem label="保险公司"  {...formItemLayout2}>
-          {getFieldDecorator('baoxian1', {
-          })(<Cascader placeholder="请选择" options={residences} />)}
+      <Col {...ColPropsLong}>
+        <FormItem label="保险公司"  {...formItemLayoutLong}>
+          {getFieldDecorator('insuranceCompany')(<Cascader placeholder="请选择" options={residences} />)}
         </FormItem>
       </Col>
-
     </Row>
-
     <Row gutter={24}>
       <Col >
         <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
@@ -283,17 +215,13 @@ const Filter = ({
             <Button type="primary" className="margin-right" onClick={handleSubmit}>查询</Button>
             <Button onClick={handleReset}>重置</Button>
           </div>
-          {/*<div className="flex-vertical-center">*/}
-            {/*<Switch className="ant-switch-large" style={{ marginRight: 16 }} defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren="Motion" unCheckedChildren="Motion" />*/}
-            {/*<Button type="ghost" onClick={onAdd}>Create</Button>*/}
-          {/*</div>*/}
         </div>
       </Col>
     </Row>
     </form>
   </div>
   )
-}
+};
 
 Filter.propTypes = {
   onAdd: PropTypes.func,
