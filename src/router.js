@@ -48,6 +48,10 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/teamLeader/complaint')],
       component: () => import('./routes/teamLeader/complaint/'),
     },{
+    path: '/parameter',
+      models: () => [import('./models/teamLeader/parameter')],
+    component: () => import('./routes/teamLeader/parameter/'),
+  },{
     path: '/record',
       models: () => [import('./models/yewuyuan/record')],
     component: () => import('./routes/yewuyuan/record/'),

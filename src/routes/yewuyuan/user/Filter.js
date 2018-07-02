@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import moment from 'moment';
 import { FilterItem } from 'components'
 import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select, Icon, TimePicker } from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker} from 'antd'
+
 import styles from './List.less'
 
 const Option = Select.Option;
-const { Search } = Input;
+const { Search } = Input
 const { RangePicker } = DatePicker
 const FormItem = Form.Item
 
@@ -54,6 +55,7 @@ const formItemLayout2 = {
     fontSize:'14px'
   }
 };
+
 
 const Filter = ({
   onAdd,

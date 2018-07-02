@@ -58,7 +58,14 @@ let database = [
     name: '客户投诉',
     icon: 'user',
     route: '/complaint',
-  }
+  },
+  {
+    id: '7',
+    bpid: '1',
+    name: '团队参数',
+    icon: 'setting',
+    route: '/parameter',
+  },
   // {
   //   id: '70002',
   //   bpid: '1',
