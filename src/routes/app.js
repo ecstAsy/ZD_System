@@ -249,12 +249,16 @@ const App = ({
               {hasPermission ? children : <Error />}
             </div>
             {
+
               permissions.role=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
                 <Appointment {...AppointmentProps}/>
                 <Calendar  />
                 <Message />
               </div>:null
             }
+
+
+
             {/*<div style={{width:'80%',float:'left'}}>*/}
               {/*<Bread {...breadProps} />*/}
               {/*{hasPermission ? children : <Error />}*/}

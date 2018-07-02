@@ -27,41 +27,38 @@ const ColProps = {
     marginRight:10
   },
 };
-const FinalQuote  = ({
-  sendNote,
-  chooseGift,
-  form:{
-    getFieldDecorator,
-    getFieldsValue,
-    setFieldsValue,
-  }})=>{
+const FinalQuote  = ({ sendNote, chooseGift,
+   form:{ getFieldDecorator, getFieldsValue, setFieldsValue }
+ })=>{
+
   const titleProps = {
     title:`最终报价`,
     sendNote
-  }
+  };
+
   return (
     <div className={classnames(styles.Quote,styles.FinalQuote)}>
       <Title {...titleProps}/>
-       <Row gutter={24}>
-         <Col {...ColProps}>
-           <FormItem label="客户类型" {...formItemLayout}>
-             {getFieldDecorator('userType', {
-               initialValue:'a'
-             })(<RadioGroup>
-               <Radio value="a">A</Radio>
-               <Radio value="b">B</Radio>
-             </RadioGroup>)}
-           </FormItem>
-         </Col>
-         <Col {...ColProps}>
-           <FormItem label="赠送礼品" {...formItemLayout}>
-             {getFieldDecorator('giveGoods', {
-               initialValue:'a'
-             })(<span className='checkGoods' onClick={chooseGift}>选择礼品</span>)}
-           </FormItem>
-         </Col>
-       </Row>
-       <p className='cutLine'></p>
+      <Row gutter={24}>
+        <Col {...ColProps}>
+          <FormItem label="客户类型" {...formItemLayout}>
+            {getFieldDecorator('userType', {
+              initialValue:'a'
+            })(<RadioGroup>
+                 <Radio value="a">A</Radio>
+                 <Radio value="b">B</Radio>
+              </RadioGroup>)}
+          </FormItem>
+        </Col>
+        <Col {...ColProps}>
+          <FormItem label="赠送礼品" {...formItemLayout}>
+            {getFieldDecorator('giveGoods', {
+              initialValue:'a'
+            })(<span className='checkGoods' onClick={chooseGift}>选择礼品</span>)}
+          </FormItem>
+        </Col>
+      </Row>
+      <p className='cutLine'></p>
       <Row gutter={24}>
         <Col {...ColProps}>
           <FormItem  {...formItemLayout} label="商业险金额">
@@ -102,9 +99,11 @@ const FinalQuote  = ({
     </div>
   )
 }
-FinalQuote.prototype = {
+
+FinalQuote.propType = {
   sendNote:PropTypes.func,
   chooseGift:PropTypes.func,
   form: PropTypes.object
-}
+};
+
 export default Form.create()(FinalQuote)

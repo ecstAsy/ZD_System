@@ -5,9 +5,11 @@ import classnames from 'classnames';
 import styles from './index.less';
 import { FilterItem } from 'components';
 import PropTypes from 'prop-types';
+
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
+
 const formItemLayout = {
   labelCol: {
     span:10,
@@ -21,7 +23,7 @@ const formItemLayout = {
     fontSize:'14px'
   }
 };
-const formItemLayout2 = {
+const formItemLayoutTwo = {
   labelCol: {
     span:4,
   },
@@ -42,19 +44,21 @@ const ColProps = {
     marginRight:10
   },
 };
-const ColProps2 = {
+const ColPropsTwo = {
   xs: 24,
   sm: 17,
   style: {
     marginBottom: 10,
     marginRight:10
-  },
+  }
 };
-const SendInfo = ({form: {
-  getFieldDecorator,
-  getFieldsValue,
-  setFieldsValue,
-}})=>{
+const SendInfo = ({
+  form: {
+    getFieldDecorator,
+    getFieldsValue,
+    setFieldsValue,
+  }
+})=>{
   const options = [{
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -78,11 +82,6 @@ const SendInfo = ({form: {
       }],
     }],
   }];
-
-  const fields = getFieldsValue();
-  const onChange = ()=>{
-
-  }
    return(
      <div className={classnames(styles.Quote,styles.SendInfo)}>
        <Title title={`保单派送信息`}/>
@@ -96,7 +95,7 @@ const SendInfo = ({form: {
          </Col>
          <Col {...ColProps}>
            <FormItem {...formItemLayout} label="派送时间" >
-             {getFieldDecorator('sendTime',{})(
+             {getFieldDecorator('sendTime')(
                <DatePicker placeholder="请选择"/> )}
            </FormItem>
          </Col>
@@ -118,7 +117,7 @@ const SendInfo = ({form: {
          </Col>
          <Col {...ColProps}>
            <FormItem {...formItemLayout} label="收款方式" >
-             {getFieldDecorator('payWay',{})(
+             {getFieldDecorator('payWay')(
                <Select showSearch style={{ width: '100%' }} placeholder="请选择" dropdownStyle={{lineHeight:'25px'}} >
                  <Option value="china">China</Option>
                  <Option value="use">U.S.A</Option>
@@ -127,9 +126,9 @@ const SendInfo = ({form: {
          </Col>
        </Row>
        <Row gutter={24}>
-         <Col {...ColProps2}>
-         <FormItem {...formItemLayout2} label="派件地址" >
-           {getFieldDecorator('address',{})(
+         <Col {...ColPropsTwo}>
+         <FormItem {...formItemLayoutTwo} label="派件地址" >
+           {getFieldDecorator('address')(
              <div>
                <Cascader className='addressChoose' options={options}  placeholder="请选择" />
                <Input className='addressInput' placeholder="街道/门牌号"/>
@@ -139,17 +138,19 @@ const SendInfo = ({form: {
          </Col>
        </Row>
        <Row gutter={24}>
-         <Col {...ColProps2}>
-           <FormItem label="备注"  {...formItemLayout2}>
-             {getFieldDecorator('moreInfo', {
-             })(<TextArea rows={4} />)}
+         <Col {...ColPropsTwo}>
+           <FormItem label="备注"  {...formItemLayoutTwo}>
+             {getFieldDecorator('moreInfo')(
+               <TextArea rows={4} />)}
            </FormItem>
          </Col>
        </Row>
      </div>
    )
 }
+
 SendInfo.propTypes = {
   form: PropTypes.object,
-}
+};
+
 export default Form.create()(SendInfo)

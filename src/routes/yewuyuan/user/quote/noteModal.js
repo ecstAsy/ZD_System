@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Modal, Form ,Button, Input } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+
 const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
@@ -14,7 +15,7 @@ const formItemLayout = {
   style:{
     marginBottom: 0,
     borderRadius:'20px',
-    fontSize:'14px'
+    fontSize:'14'
   }
 };
 const ColProps = {
@@ -33,17 +34,13 @@ const NoteModal = ({
      setFieldsValue,
    }})=>{
   const Note = [{id:1,title:'模板一',detail:'是计算机计算机数据是'},
-    {id:2,title:'模板二',detail:'短信模板'}];
-  const choseDesIdFunc = (item)=>{
-    choseDesId(item)
-  };
+                {id:2,title:'模板二',detail:'短信模板'}];
+
   return (
     <Modal {...noteModalProps} className={classnames(styles.NoteModal)}
            footer={[
-             <Button  type="primary" loading={loading} >
-               发送
-             </Button>,
-             <Button  onClick={handleCancel} >取消</Button>,
+             <Button  type="primary" loading={loading}>发送</Button>,
+             <Button  onClick={handleCancel}>取消</Button>
            ]}>
       <Form>
         <Row gutter={24}>
@@ -69,7 +66,7 @@ const NoteModal = ({
                      {
                        Note.map((item,i)=>{
                          return (
-                           <span className={currentItem.id===item.id?'active':''}  key={i} onClick={()=>choseDesIdFunc(item)}>{item.title}</span>
+                           <span className={currentItem.id===item.id?'active':''}  key={i} onClick={()=>choseDesId(item)}>{item.title}</span>
                          )
                        })
                      }
@@ -80,8 +77,12 @@ const NoteModal = ({
            </FormItem>
         </Row>
       </Form>
-
     </Modal>
   )
 }
+
+NoteModal.propType = {
+  choseDesId : PropTypes.func
+}
+
 export default Form.create() (NoteModal)

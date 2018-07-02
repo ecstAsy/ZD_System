@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './index.less';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+
 const Title = ({title,sendNote})=>{
   return (
     <div className={classnames(styles.title)}>
@@ -11,5 +13,11 @@ const Title = ({title,sendNote})=>{
       }
     </div>
   )
+}
+
+Title.propTypes = {
+  sendNote : PropTypes.func
+}
+
 };
 export default Title

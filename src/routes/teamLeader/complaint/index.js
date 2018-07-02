@@ -9,10 +9,10 @@ import Filter from './Filter';
 import List from './List';
 import AuditModal from './auditModal';
 const Complaint = ({location, dispatch, complaint, loading,})=>{
-  location.query = queryString.parse(location.search)
-  const { query, pathname } = location
-  const {
-    list, pagination, currentItem ,auditModalVisible,isMotion} = complaint;
+  location.query = queryString.parse(location.search);
+  const { query, pathname } = location;;
+  const { list, pagination, currentItem, auditModalVisible } = complaint;
+
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -21,21 +21,22 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
         ...newQuery,
       }),
     }))
-  }
+  };
+
   const filterProps = {
-    onFilterChange (value) {
+    FilterSearch (value) {
       handleRefresh({
         ...value,
         page: 1,
       })
-    },
-  }
+    }
+  };
+
   const listProps = {
     dataSource: list,
     loading: loading.effects['complaint/query'],
     pagination,
     location,
-    isMotion,
     onChange (page) {
       handleRefresh({
         page: page.current,
@@ -44,15 +45,16 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
     },
     handleStatus (list) {
       list.status == '' &&
-      dispatch({
-        type: 'complaint/showModal',
-        payload: {
-          modalType: 'audit',
-          data: list,
-        },
-      })
+        dispatch({
+          type: 'complaint/showModal',
+          payload: {
+            modalType: 'audit',
+            data: list,
+          },
+        })
     }
-  }
+  };
+
   const auditModal = {
     item: currentItem,
     visible: auditModalVisible,
@@ -76,6 +78,7 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
       })
     }
   }
+
   return (
     <Page inner>
       <Filter {...filterProps}/>
@@ -84,7 +87,7 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
           <Button type="primary" style={{ width:80 }}>新增</Button>
         </Col>
       </Row>
-      <List {...listProps} />
+      <List {...listProps}/>
       {auditModalVisible && <AuditModal {...auditModal}/>}
     </Page>
   )

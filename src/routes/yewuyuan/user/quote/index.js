@@ -286,8 +286,6 @@ const Quote = ({
           <Button type="primary">其他业务</Button>
         </div>
       </Page>
-
-
   )
 }
 

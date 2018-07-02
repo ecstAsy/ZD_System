@@ -23,7 +23,8 @@ const FilterItem = ({
 
 FilterItem.propTypes = {
   label: PropTypes.string,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 }
 
 export default FilterItem
+
