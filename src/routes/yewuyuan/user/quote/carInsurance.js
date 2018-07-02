@@ -105,7 +105,6 @@ const CarInsurance = ({
         ...getFieldsValue(),
         key: item.key,
       }
-      console.log(data)
       onOk(data)
     })
   }
@@ -133,7 +132,6 @@ const CarInsurance = ({
     checkedStrongInsurFunc(id)
   }
   const isShowshangyexian=(key)=>{
-    console.log(key)
     if(key==1){
       if($('.shangyexian').eq(0).hasClass('show')){
         $('.shangyexian').eq(0).removeClass('show');

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './Filter.less';
-import { Form, Button, Row, Col, DatePicker, Input,  Select ,Icon } from 'antd';
+import { Form, Button, Row, Col, DatePicker, Input, Select } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
@@ -81,13 +81,8 @@ const Filter = ({
           setFieldsValue,
         }})=>{
   const handleFields = (fields) => {
-    const { carCheckTime ,firstLoginTime} = fields;
-    if (carCheckTime) {
-      fields.carCheckTime = fields.carCheckTime.format('YYYYMMDD');
-    }
-    if(firstLoginTime){
-      fields.firstLoginTime = firstLoginTime.format('YYYYMMDDHH');
-    }
+    fields.carCheckTime = fields.carCheckTime && fields.carCheckTime.format('YYYYMMDD');
+    fields.firstLoginTime = fields.firstLoginTime && fields.firstLoginTime.format('YYYYMMDDHH');
     return fields
   };
   const handleSubmit = () => {
@@ -113,22 +108,19 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="车牌型号"  {...formItemLayout}>
-              {getFieldDecorator('plateType',{
-              })(<Input />)}
+              {getFieldDecorator('plateType')(<Input />)}
             </FormItem>
           </Col>
           <Col {...ColProps}>
             <FormItem label="发动机号"  {...formItemLayout}>
-              {getFieldDecorator('engineType', {
-              })(<Input />)}
+              {getFieldDecorator('engineType')(<Input />)}
             </FormItem>
           </Col>
         </Row>
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem label="核定座位"  {...formItemLayout}>
-              {getFieldDecorator('engineType', {
-              })(<Input />)}
+              {getFieldDecorator('engineType')(<Input />)}
             </FormItem>
           </Col>
           <Col {...ColProps}>
@@ -142,15 +134,14 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="车架号码"  {...formItemLayout}>
-              {getFieldDecorator('frameNum', {
-              })(<Input />)}
+              {getFieldDecorator('frameNum')(<Input />)}
             </FormItem>
           </Col>
         </Row>
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem {...formItemLayout} label="车检有效期" >
-              {getFieldDecorator('carCheckTime',{})(
+              {getFieldDecorator('carCheckTime')(
                 <DatePicker placeholder="请选择"/> )}
             </FormItem>
           </Col>
@@ -158,8 +149,7 @@ const Filter = ({
             <FormItem label="联系电话"  {...formItemLayout}>
               {getFieldDecorator('userPhone',{
                 rules: [
-                  { required: true, message: 'userPhone is required!' },
-                  {pattern: /^1[34578]\d{9}$/,message: '请输入正确格式的手机号!',},
+                  { required: true, message: 'userPhone is required!' }
                 ],
               })(<Input />)}
             </FormItem>

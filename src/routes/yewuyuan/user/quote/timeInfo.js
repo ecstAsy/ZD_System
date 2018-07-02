@@ -4,7 +4,9 @@ import classnames from 'classnames';
 import styles from './index.less';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, DatePicker, Button } from 'antd';
+
 const FormItem = Form.Item;
+
 const formItemLayout = {
   labelCol: {
     span:4,
@@ -26,33 +28,39 @@ const ColProps = {
     marginRight:10
   },
 };
-const TimeInfo = ({form: {
-  getFieldDecorator,
-  getFieldsValue,
-  setFieldsValue,
-}})=>{
+
+const TimeInfo = ({
+      form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+})=>{
   return (
      <div className={classnames(styles.Quote,styles.TimeInfo)}>
        <Title title={`时间信息`}/>
        <Row gutter={24}>
-       <Col {...ColProps}>
-         <FormItem label="交强险" {...formItemLayout}>
-           {getFieldDecorator('compulsory', {
-           })(<div><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" /><span className="cutTxt">至</span><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" />
-             <Button className="timeBtn" >同下</Button></div>)}
-         </FormItem>
-       </Col>
-       </Row>
-       <Row gutter={24}>
          <Col {...ColProps}>
-           <FormItem label="商业险" {...formItemLayout}>
-             {getFieldDecorator('commercial', {
-             })(<div><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" /><span className="cutTxt">至</span><DatePicker  showTime format="YYYY-MM-DD HH:mm:ss"/>
-               <Button className="timeBtn" >同上</Button></div>)}
+           <FormItem {...formItemLayout} label="交强险">
+             {getFieldDecorator('compulsory')(
+               <div>
+                  <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
+                  <span className="cutTxt">至</span>
+                  <DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" />
+                  <Button className="timeBtn" >同下</Button>
+               </div>)}
            </FormItem>
          </Col>
        </Row>
-
+       <Row gutter={24}>
+         <Col {...ColProps}>
+           <FormItem {...formItemLayout} label="商业险" >
+             {getFieldDecorator('commercial')(
+               <div>
+                  <DatePicker  showTime format="YYYY-MM-DD HH:mm:ss" />
+                  <span className="cutTxt">至</span>
+                  <DatePicker  showTime format="YYYY-MM-DD HH:mm:ss"/>
+                  <Button className="timeBtn">同上</Button>
+               </div>)}
+           </FormItem>
+         </Col>
+       </Row>
      </div>
   )
 }

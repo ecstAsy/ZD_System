@@ -244,26 +244,30 @@ const App = ({
           {editPwdModalVisible && <EditPwdModal {...editPwdModalProps}  />}
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
-            {/*<div style={{width:user.permissions.role=='admin'?'80%':'100%',float:'left'}}>*/}
-              {/*<Bread {...breadProps} />*/}
-              {/*{hasPermission ? children : <Error />}*/}
-            {/*</div>*/}
-            {/*{*/}
-              {/*user.permissions.role=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>*/}
-                {/*<Appointment {...AppointmentProps}/>*/}
-                {/*<Calendar  />*/}
-                {/*<Message />*/}
-              {/*</div>:null*/}
-            {/*}*/}
-            <div style={{width:'80%',float:'left'}}>
+            <div style={{width:permissions.role=='admin'?'80%':'100%',float:'left'}}>
               <Bread {...breadProps} />
               {hasPermission ? children : <Error />}
             </div>
-            <div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
-              <Appointment {...AppointmentProps}/>
-              <Calendar  />
-              <Message />
-            </div>
+            {
+
+              permissions.role=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
+                <Appointment {...AppointmentProps}/>
+                <Calendar  />
+                <Message />
+              </div>:null
+            }
+
+
+
+            {/*<div style={{width:'80%',float:'left'}}>*/}
+              {/*<Bread {...breadProps} />*/}
+              {/*{hasPermission ? children : <Error />}*/}
+            {/*</div>*/}
+            {/*<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>*/}
+              {/*<Appointment {...AppointmentProps}/>*/}
+              {/*<Calendar  />*/}
+              {/*<Message />*/}
+            {/*</div>*/}
           </Content>
           <Footer >
             {config.footerText}

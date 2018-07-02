@@ -37,7 +37,7 @@ export default {
         id: 1,
         icon: 'laptop',
         name: '今日汇总',
-        router: '/yewuyuan/dashboard',
+        router: '/dashboard',
       },
     ],
     menuPopoverVisible: false,
