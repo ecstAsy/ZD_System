@@ -74,7 +74,7 @@ const Filter = ({
   const handleFields = (fields) => {
     const { firstRegisterDate ,yuyueTime,editTime} = fields;
     console.log(fields);
-    if (firstRegisterDate.length) {
+    if (firstRegisterDate&&firstRegisterDate.length>0) {
       fields.firstRegisterDate = [firstRegisterDate[0].format('YYYYMMDD'), firstRegisterDate[1].format('YYYYMMDD')]
     }
     if(yuyueTime){
@@ -207,8 +207,7 @@ const Filter = ({
       </Col>
       <Col {...ColProps2}>
         <FormItem label="初登日期"  {...formItemLayout2}>
-          {getFieldDecorator('firstRegisterDate', {initialValue: initialCreateTime
-          })(<RangePicker  style={{ width: '90%' }} />)}
+          {getFieldDecorator('firstRegisterDate')(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps2}>

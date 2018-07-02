@@ -15,13 +15,14 @@ import NoteModal from './noteModal';
 import GiftModal from './giftModal';
 import UnderWritingMadal from './underwritingModal';
 import ChoosePurCarModal from './choosePurCarModel'
+import DeductiblesModal from './deductiblesModal'
 const Quote = ({
    location, dispatch, quote, loading,
                      }) => {
    location.query = queryString.parse(location.search)
   const { query, pathname } = location;
   const {
-    choseItem,list, pagination, currentItem,visibleRemark,giftModalVisible ,deductiblesModalVisible,underwritingModalVisible,choosePurCarModalVisible,remarkId, GiftData,modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
+    choseItem,list, pagination, currentItem,visibleRemark,giftModalVisible ,deductiblesModalVisible,deductiblesData,underwritingModalVisible,choosePurCarModalVisible,remarkId, GiftData,modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
   } = quote;
 
   const UserInfoProps={
@@ -67,14 +68,6 @@ const Quote = ({
         },
       })
     },
-    deductiblesModal(data){
-      dispatch({
-        type: 'quote/showModal',
-        payload: {
-          modalType: 'deductibles'
-        },
-      })
-    }
 
   };
 
@@ -120,6 +113,30 @@ const Quote = ({
       })
     }
   }
+  const DeductiblesProps={
+    visible: deductiblesModalVisible,
+    title:'不计免赔险',
+    width:'50%',
+    deductiblesData,
+    closable:false,
+    onOk(data){
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'deductibles',
+          data:data,
+        },
+      })
+    },
+    onCancel(){
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'deductibles'
+        },
+      })
+    }
+  }
 
   const CarInsuranceProps={
     insuranceData:insuranceData,
@@ -139,6 +156,15 @@ const Quote = ({
         type: 'quote/checkedStrongInsurFunc',
         payload: {
           id:id,
+        },
+      })
+    },
+    deductiblesModal(data){
+      console.log(1111111)
+      dispatch({
+        type: 'quote/showModal',
+        payload: {
+          modalType: 'deductibles'
         },
       })
     }
@@ -234,7 +260,7 @@ const Quote = ({
       })
     },
   }
-  console.log(choosePurCarModalVisible)
+  console.log(deductiblesData)
   return (
       <Page>
         <Form >
@@ -248,6 +274,7 @@ const Quote = ({
         {giftModalVisible && <GiftModal {...giftModalProps}/>}
         {underwritingModalVisible && <UnderWritingMadal {...UnderwritingProps} />}
         {choosePurCarModalVisible && <ChoosePurCarModal {...choosePurCarProps} />}
+        {deductiblesModalVisible && <DeductiblesModal {...DeductiblesProps}/>}
         <div className="buttonBox">
           <Button type="primary">保存</Button>
           <Button type="primary">跟踪提交</Button>

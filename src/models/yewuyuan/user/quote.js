@@ -53,7 +53,15 @@ export default modelExtend(pageModel, {
     choseinsuranceData:[],  //已选的商业险
     strongInsuranceData:[
       {id:25012,checked:false,name:'车船税',travelTax:'',discount_costAblead:true,coverageAblead:true,},
+    ],
+    deductiblesData:[
+      {id:'25001',name:'此损险不计免赔'},
+      {id:'25002',name:'第三责任险不计免赔'},
+      {id:'25003',name:'座位险不计免赔'},
+      {id:'25004',name:'全车盗抢险不计免赔'},
+      {id:'25005',name:'附加险不计免赔特约条款'},
     ]
+
 
   },
 
@@ -193,6 +201,8 @@ export default modelExtend(pageModel, {
         return { ...state, underwritingModalVisible: false }
       }else if(payload.modalType=='choosePurCar'){
         return { ...state, choosePurCarModalVisible: false }
+      }else if(payload.modalType=='deductibles'){
+        return { ...state, deductiblesModalVisible: false }
       }
     },
     choseDesId(state, { payload }){
