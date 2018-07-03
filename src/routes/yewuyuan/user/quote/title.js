@@ -7,7 +7,7 @@ const Title = ({title,sendNote})=>{
   return (
     <div className={classnames(styles.title)}>
       <img src="../ghef_03.png" alt=""/>
-      <span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>{title}</span>
+      <span className="titleTxt">{title}</span>
       {
         title==='最终报价'?<span className='shortNote' onClick={sendNote}>短信通知客户</span>:''
       }
@@ -19,4 +19,5 @@ Title.propTypes = {
   sendNote : PropTypes.func
 }
 
+};
 export default Title

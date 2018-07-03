@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select } from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input, Select } from 'antd'
 import styles from './List.less'
 
 const Option = Select.Option;
@@ -26,6 +26,7 @@ const formItemLayout = {
     borderRadius:'20px',
   }
 }
+
 const ColProps = {
   xs: 24,
   sm: 7,
@@ -34,7 +35,8 @@ const ColProps = {
     marginRight:10
   },
 }
-const  ColProps2={
+
+const  ColPropses={
   xs: 24,
   sm: 11,
   style: {
@@ -42,7 +44,8 @@ const  ColProps2={
     marginRight:10
   },
 }
-const formItemLayout2 = {
+
+const formItemLayouts = {
   labelCol: {
     span:6,
   },
@@ -57,13 +60,10 @@ const formItemLayout2 = {
 
 const TwoColProps = {
     ...ColProps,
-  xl: 96,
+    xl: 96,
 }
 
 const Filter = ({
-  onAdd,
-  isMotion,
-  switchIsMotion,
   onFilterChange,
   filter,
   form: {
@@ -73,7 +73,6 @@ const Filter = ({
   },
 }) => {
   const handleFields = (fields) => {
-    console.log(fields)
     const { recordDate } = fields
     if (recordDate.length) {
       fields.recordDate = [recordDate[0].format('YYYY-MM-DD'), recordDate[1].format('YYYY-MM-DD')]
@@ -108,68 +107,60 @@ const Filter = ({
     fields = handleFields(fields)
     onFilterChange(fields)
   }
-  const { name, address } = filter
 
-  let initialCreateTime = []
-  if (filter.createTime && filter.createTime[0]) {
-    initialCreateTime[0] = moment(filter.createTime[0])
-  }
-  if (filter.createTime && filter.createTime[1]) {
-    initialCreateTime[1] = moment(filter.createTime[1])
-  }
+  const { name } = filter
+    let initialCreateTime = []
+    if (filter.createTime && filter.createTime[0]) {
+      initialCreateTime[0] = moment(filter.createTime[0])
+    }
+    if (filter.createTime && filter.createTime[1]) {
+      initialCreateTime[1] = moment(filter.createTime[1])
+    }
 
   return (
     <div style={{padding:'20px',border:'1px #ddd solid',marginBottom:'35px'}}>
-<Row gutter={24}>
-    <Col {...ColProps}>
-<FormItem label="姓名" {...formItemLayout}>
-  {getFieldDecorator('name', {
-  })(<Input />)}
-</FormItem>
-  </Col>
-  <Col {...ColProps}>
-<FormItem label="手机号"  {...formItemLayout}>
-  {getFieldDecorator('phone', {
-  })(<Input />)}
-</FormItem>
-  </Col>
-  <Col {...ColProps}>
-<FormItem label="车牌"  {...formItemLayout}>
-  {getFieldDecorator('chepai', {
-  })(<Input />)}
-</FormItem>
-  </Col>
+    <Row gutter={24}>
+      <Col {...ColProps}>
+        <FormItem label="姓名" {...formItemLayout}>
+          {getFieldDecorator('name', {
+          })(<Input />)}
+        </FormItem>
+      </Col>
+      <Col {...ColProps}>
+        <FormItem label="手机号"  {...formItemLayout}>
+          {getFieldDecorator('phone', {
+          })(<Input />)}
+        </FormItem>
+      </Col>
+      <Col {...ColProps}>
+        <FormItem label="车牌"  {...formItemLayout}>
+          {getFieldDecorator('chepai', {
+          })(<Input />)}
+        </FormItem>
+      </Col>
+      <Col {...ColPropses}>
+        <FormItem label="拨打时间"  {...formItemLayouts}>
+          {getFieldDecorator('recordDate', {initialValue: initialCreateTime
+          })(<RangePicker style={{ width: '90%' }} />)}
+        </FormItem>
+      </Col>
+    </Row>
 
-  <Col {...ColProps2}>
-<FormItem label="拨打时间"  {...formItemLayout2}>
-  {getFieldDecorator('recordDate', {initialValue: initialCreateTime
-  })(<RangePicker style={{ width: '90%' }} />)}
-</FormItem>
-  </Col>
-  </Row>
-
-  <Row gutter={24}>
-    <Col >
-    <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
-<div>
-  <Button type="primary" className="margin-right" onClick={handleSubmit}>查询</Button>
-    <Button onClick={handleReset}>重置</Button>
-    </div>
-    {/*<div className="flex-vertical-center">*/}
-  {/*<Switch className="ant-switch-large" style={{ marginRight: 16 }} defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren="Motion" unCheckedChildren="Motion" />*/}
-  {/*<Button type="ghost" onClick={onAdd}>Create</Button>*/}
-  {/*</div>*/}
-</div>
-  </Col>
-  </Row>
+    <Row gutter={24}>
+      <Col >
+        <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
+          <div>
+            <Button type="primary" className="margin-right" onClick={handleSubmit}>查询</Button>
+            <Button onClick={handleReset}>重置</Button>
+          </div>
+      </div>
+      </Col>
+    </Row>
   </div>
 )
 }
 
 Filter.propTypes = {
-  onAdd: PropTypes.func,
-  isMotion: PropTypes.bool,
-  switchIsMotion: PropTypes.func,
   form: PropTypes.object,
   filter: PropTypes.object,
   onFilterChange: PropTypes.func,

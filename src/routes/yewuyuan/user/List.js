@@ -11,25 +11,13 @@ import styles from './List.less'
 const { confirm } = Modal
 
 const List = ({
-  onDeleteItem, onEditItem,toQuoteFunc, isMotion,location, ...tableProps
+  onDeleteItem, onEditItem, toQuoteFunc, isMotion, location, ...tableProps
 }) => {
   location.query = queryString.parse(location.search)
 
-  const handleMenuClick = (record, e) => {
-    if (e.key === '1') {
-      onEditItem(record)
-    } else if (e.key === '2') {
-      confirm({
-        title: '你确定要删除吗?',
-        onOk () {
-          onDeleteItem(record.id)
-        },
-      })
-    }
-  }
   const toQuote=(id)=>{
     toQuoteFunc(id)
-  }
+  };
 
   const columns = [
      {
@@ -44,7 +32,7 @@ const List = ({
       title: '车牌',
       dataIndex: 'province',
       key: 'province',
-      render: (text, record) =><span>{record.province+record.plateNumber}</span>,
+      render: (text, record) =><span>{record.province+record.plate}</span>,
     }, {
       title: '上年保险公司',
       dataIndex: 'preInsuranceCompany',
@@ -52,35 +40,35 @@ const List = ({
       width: 250,
     },{
       title: '初登日期',
-      dataIndex: 'firstRegisterDate',
-      key: 'firstRegisterDate',
+      dataIndex: 'InitialDate',
+      key: 'InitialDate',
     }, {
       title: '保险到期日',
-      dataIndex: 'insuranceDueDate',
-      key: 'insuranceDueDate',
+      dataIndex: 'insuranceEndDate',
+      key: 'insuranceEndDate',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.insuranceDueDate - b.insuranceDueDate,
+      sorter: (a, b) => a.insuranceEndDate - b.insuranceEndDate,
     }, {
       title: '名单发放日',
-      dataIndex: 'handleDate',
-      key: 'handleDate',
+      dataIndex: 'listDate',
+      key: 'listDate',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.handleDate - b.handleDate,
+      sorter: (a, b) => a.listDate - b.listDate,
     }, {
       title: '预约时间',
-      dataIndex: 'yuyueDate',
-      key: 'yuyueDate',
+      dataIndex: 'yuyueTime',
+      key: 'yuyueTime',
       width: 120,
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.yuyueDate - b.yuyueDate,
     }, {
       title: '最后操作时间',
-      dataIndex: 'modifyDate',
-      key: 'modifyDate',
+      dataIndex: 'lastOptTime',
+      key: 'lastOptTime',
     }, {
       title: '名单类型',
-      dataIndex: 'isRenewal',
-      key: 'isRenewal',
+      dataIndex: 'listType',
+      key: 'listType',
     }, {
       title: '状态',
       key: 'operation',
@@ -90,21 +78,20 @@ const List = ({
         return <span onClick={()=>toQuote(record.id)}>处理中</span>
       },
     },
-  ]
+  ];
 
   const AnimateBody = (props) => {
     return <AnimTableBody {...props} />
-  }
+  };
 
   const CommonBody = (props) => {
     return <tbody {...props} />
-  }
+  };
 
   return (
     <Table
       {...tableProps}
-      className={classnames(styles.table, { [styles.motion]: isMotion })}
-
+      className={classnames(styles.table)}
       scroll={{ y: 500 }}
       columns={columns}
       simple
@@ -114,12 +101,12 @@ const List = ({
       }}
     />
   )
-}
+};
 
 List.propTypes = {
   toQuote: PropTypes.func,
   isMotion: PropTypes.bool,
   location: PropTypes.object,
-}
+};
 
 export default List

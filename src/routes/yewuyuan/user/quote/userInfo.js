@@ -25,9 +25,6 @@ const formItemLayout = {
 const ColProps = {
   xs: 24,
   sm: 8,
-  style: {
-
-  },
 };
 const UserInfo = ({
   visibleRemark,
@@ -44,20 +41,18 @@ const UserInfo = ({
   },
   ...UserInfoProps
 })=>{
+    const addRemark = ()=>{
+      addRemarkFunc()
+    };
+    const remarks=[
+      {id:1,date:'20180311',des:'备注1'},
+      {id:2,date:'20180517',des:'备注2'},
+      {id:3,date:'20180613',des:'备注3'},
+    ];
+   const editRemark=(id)=>{
+     addRemarkFunc(id)
+   };
 
-
-  const addRemark = ()=>{
-    addRemarkFunc()
-  }
-  const remarks=[
-    {id:1,date:'20180311',des:'备注1'},
-    {id:2,date:'20180517',des:'备注2'},
-    {id:3,date:'20180613',des:'备注3'},
-  ]
- const editRemark=(id)=>{
-   addRemarkFunc(id)
- }
- console.log(remarkId)
   const RemarkMadalProps={
     visible: visibleRemark,
     title:remarkId==''?'新增备注':'修改备注',
@@ -67,11 +62,11 @@ const UserInfo = ({
     onCancel(){
       RemarkCancel()
     },
-  }
-  console.log(visibleRemark)
+  };
+
   return (
     <div className="useinfoBox">
-      <div className={styles.header}> <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>客户信息</span></div>
+      <div className='header'> <img src="/ghef_03.png"/><span>客户信息</span></div>
       <Row gutter={24}>
         <Col {...ColProps}>
           <FormItem label="姓名" {...formItemLayout}>
@@ -110,33 +105,25 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="初登日期" {...formItemLayout}>
-            {getFieldDecorator('beginDate', {
-
-            })(<DatePicker  style={{ width: '70%' }} />)}
+            {getFieldDecorator('beginDate')(<DatePicker  style={{ width: '70%' }} />)}
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="保险到期日" {...formItemLayout}>
-            {getFieldDecorator('endDate', {
-
-            })(<DatePicker  style={{ width: '70%' }} />)}
+            {getFieldDecorator('endDate')(<DatePicker  style={{ width: '70%' }} />)}
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="年检有效期" {...formItemLayout}>
-            {getFieldDecorator('useDate', {
-
-            })(<DatePicker  style={{ width: '70%' }} />)}
+            {getFieldDecorator('useDate')(<DatePicker  style={{ width: '70%' }} />)}
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="上年投保公司" {...formItemLayout}>
-            {getFieldDecorator('company', {
-            })(<Select
+            {getFieldDecorator('company')(<Select
               showSearch
               style={{ width: '70%' }}
               placeholder="请选择"
-
             >
               <Option value="china">A</Option>
               <Option value="use">B</Option>
@@ -145,8 +132,7 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="使用性质" {...formItemLayout}>
-            {getFieldDecorator('xingzhi', {
-            })(<Select
+            {getFieldDecorator('xingzhi')(<Select
               showSearch
               style={{ width: '70%' }}
               placeholder="请选择"
@@ -158,8 +144,7 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="车辆种类" {...formItemLayout}>
-            {getFieldDecorator('xingzhi', {
-            })(<Select
+            {getFieldDecorator('xingzhi')(<Select
               showSearch
               style={{ width: '70%' }}
               placeholder="请选择"
@@ -171,22 +156,19 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="新车购置价" {...formItemLayout}>
-            {getFieldDecorator('carPrice', {
-            })(<Input   style={{ width: '70%' }} />)}
+            {getFieldDecorator('carPrice')(<Input style={{ width: '70%' }} />)}
             <span className="chengbao" onClick={choosePurCar}>查找</span>
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="其他联系方式" {...formItemLayout}>
-            {getFieldDecorator('telOther', {
-            })(<Input   style={{ width: '70%' }} />)}
+            {getFieldDecorator('telOther')(<Input style={{ width: '70%' }} />)}
             <Icon style={{fontSize:'18px'}}  className="chengbao" type="phone" />
           </FormItem>
         </Col>
         <Col {...ColProps}>
           <FormItem label="历史拨打记录" {...formItemLayout}>
-            {getFieldDecorator('historyTel', {
-            })(<Select
+            {getFieldDecorator('historyTel')(<Select
               showSearch
               style={{ width: '70%' }}
               placeholder="请选择"
@@ -197,9 +179,6 @@ const UserInfo = ({
           </FormItem>
         </Col>
       </Row>
-
-
-
       <div className="useInfoRow">
         <div>备注：</div>
         <div className='remarks'>
@@ -220,11 +199,9 @@ const UserInfo = ({
               <span className="oridel" style={{marginTop:'-5px'}}></span>
               <p className="date addRemark" onClick={addRemark}>新增</p>
             </div>
-
           </div>
         </div>
       </div>
-
       {visibleRemark&&<RemarkMadal {...RemarkMadalProps}/>}
     </div>
   )

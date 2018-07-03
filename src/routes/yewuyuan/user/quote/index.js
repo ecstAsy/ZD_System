@@ -14,22 +14,19 @@ import SendInfo from './sendInfo';
 import NoteModal from './noteModal';
 import GiftModal from './giftModal';
 import UnderWritingMadal from './underwritingModal';
-import ChoosePurCarModal from './choosePurCarModel'
-import DeductiblesModal from './deductiblesModal'
+import ChoosePurCarModal from './choosePurCarModel';
+import DeductiblesModal from './deductiblesModal';
 const Quote = ({
-   location, dispatch, quote, loading,
+  dispatch, quote, loading,
                      }) => {
-   location.query = queryString.parse(location.search)
-  const { query, pathname } = location;
   const {
-    choseItem,list, pagination, currentItem,visibleRemark,giftModalVisible ,deductiblesModalVisible,deductiblesData,underwritingModalVisible,choosePurCarModalVisible,remarkId, GiftData,modalVisible, modalType, isMotion, selectedRowKeys,noteModalVisible,insuranceData,strongInsuranceData,choseinsuranceData
+    choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData, underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData, strongInsuranceData, choseinsuranceData
   } = quote;
 
   const UserInfoProps={
     visibleRemark:visibleRemark,
     remarkId:remarkId,
     addRemarkFunc(id){
-      console.log(id)
       dispatch({
         type: 'quote/showModalRemark',
         payload: {
@@ -42,8 +39,8 @@ const Quote = ({
         type: 'quote/hideModalRemark',
       })
     },
+
     saveRemark(data){
-      console.log(data)
       dispatch({
         type: 'quote/hideModalRemark',
         payload: {
@@ -51,6 +48,7 @@ const Quote = ({
         },
       })
     },
+
     openUnderwriting(data){
       dispatch({
         type: 'quote/showModal',
@@ -59,8 +57,8 @@ const Quote = ({
         },
       })
     },
+
     choosePurCar(data){
-      console.log(1111111)
       dispatch({
         type: 'quote/showModal',
         payload: {
@@ -68,7 +66,6 @@ const Quote = ({
         },
       })
     },
-
   };
 
   const UnderwritingProps={
@@ -77,7 +74,6 @@ const Quote = ({
     title:'承保信息',
     width:'90%',
     closable:false,
-
     onCancel(){
       dispatch({
         type: 'quote/hideModal',
@@ -86,8 +82,6 @@ const Quote = ({
         },
       })
     }
-
-
   };
 
   const choosePurCarProps={
@@ -104,6 +98,7 @@ const Quote = ({
         },
       })
     },
+
     onCancel(){
       dispatch({
         type: 'quote/hideModal',
@@ -112,7 +107,8 @@ const Quote = ({
         },
       })
     }
-  }
+  };
+
   const DeductiblesProps={
     visible: deductiblesModalVisible,
     title:'不计免赔险',
@@ -128,6 +124,7 @@ const Quote = ({
         },
       })
     },
+
     onCancel(){
       dispatch({
         type: 'quote/hideModal',
@@ -136,14 +133,13 @@ const Quote = ({
         },
       })
     }
-  }
+  };
 
   const CarInsuranceProps={
     insuranceData:insuranceData,
     choseinsuranceData,
     strongInsuranceData,
     checkedInsuranceFunc(id){
-        console.log(id)
       dispatch({
         type: 'quote/checkedInsuranceFunc',
         payload: {
@@ -151,6 +147,7 @@ const Quote = ({
         },
       })
     },
+
     checkedStrongInsurFunc(id){
       dispatch({
         type: 'quote/checkedStrongInsurFunc',
@@ -159,8 +156,8 @@ const Quote = ({
         },
       })
     },
+
     deductiblesModal(data){
-      console.log(1111111)
       dispatch({
         type: 'quote/showModal',
         payload: {
@@ -168,7 +165,7 @@ const Quote = ({
         },
       })
     }
-  }
+  };
 
   const finalProps = {
     sendNote(){
@@ -179,6 +176,7 @@ const Quote = ({
         },
       })
     },
+
     chooseGift (){
       dispatch({
         type: 'quote/showModal',
@@ -208,6 +206,7 @@ const Quote = ({
         },
       })
     },
+
     choseDesId(item){
       dispatch({
         type: 'quote/choseDesId',
@@ -215,6 +214,7 @@ const Quote = ({
       })
     }
   };
+
   const giftModalProps = {
     item: {},
     GiftData,
@@ -233,6 +233,7 @@ const Quote = ({
         },
       })
     },
+
     handleAdd(id){
       dispatch({
         type: 'quote/GiftUpdata',
@@ -242,6 +243,7 @@ const Quote = ({
         },
       })
     },
+
     TagClose(id){
       dispatch({
         type: 'quote/GiftUpdata',
@@ -251,6 +253,7 @@ const Quote = ({
         },
       })
     },
+
     handleCancel () {
       dispatch({
         type: 'quote/hideModal',
@@ -259,8 +262,8 @@ const Quote = ({
         },
       })
     },
-  }
-  console.log(deductiblesData)
+  };
+
   return (
       <Page>
         <Form >

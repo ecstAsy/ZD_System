@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { routerRedux } from 'dva/router';
-import { connect } from 'dva';
-import { Row, Col, Button, Popconfirm ,Modal} from 'antd';
-import { Page } from 'components';
-import queryString from 'query-string';
-import List from './List';
-import Filter from './Filter';
-import Offermodal from './Modal';
-import styles from './List.less';
-import SendModal from './sendModal';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { routerRedux } from 'dva/router'
+import { connect } from 'dva'
+import { Row, Col, Button, Popconfirm ,Modal} from 'antd'
+import { Page } from 'components'
+import queryString from 'query-string'
+import List from './List'
+import Filter from './Filter'
+import Offermodal from './Modal'
+import styles from './List.less'
+import SendModal from './sendModal'
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
@@ -17,6 +17,8 @@ const SuccessPolicy = ({
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const {
+    list, TimeData, pagination, modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible
+  } = successPolicy;
     list, TimeData, pagination, currentItem, modalVisible, visibleRemark, modalType,remarkId,
     isMotion, selectedRowKeys,isMore,sendModalVisible } = successPolicy;
 
@@ -35,7 +37,6 @@ const SuccessPolicy = ({
     visible: modalVisible,
     remarkId:remarkId,
     maskClosable: false,
-    // confirmLoading: loading.effects[`user/${modalType}`],
     title:'报价详情',
     width:'90%',
     visibleRemark:visibleRemark,
@@ -49,6 +50,7 @@ const SuccessPolicy = ({
         },
       })
     },
+
     addRemarkFunc(id){
       dispatch({
         type: 'successPolicy/showModal',
@@ -58,6 +60,7 @@ const SuccessPolicy = ({
         },
       })
     },
+
     RemarkCancel(){
       dispatch({
         type: 'successPolicy/hideModal',
@@ -66,6 +69,7 @@ const SuccessPolicy = ({
         },
       })
     },
+
     saveRemarkFunc(data){
       dispatch({
         type: 'successPolicy/hideModal',
@@ -75,6 +79,26 @@ const SuccessPolicy = ({
         },
       })
     }
+  };
+
+  const sendModalProps = {
+    TimeData,
+    visible: sendModalVisible,
+    maskClosable: false,
+    title:'派送记录',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    onCancel () {
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'sendation',
+        },
+      })
+    },
+  };
+
   };
 
   const sendModalProps = {
@@ -107,6 +131,7 @@ const SuccessPolicy = ({
         pageSize: page.pageSize,
       })
     },
+
     onDeleteItem (id) {
       dispatch({
         type: 'successPolicy/delete',
@@ -118,6 +143,7 @@ const SuccessPolicy = ({
           })
         })
     },
+
     seeQuotation (item) {
       dispatch({
         type: 'successPolicy/showModal',
@@ -127,6 +153,7 @@ const SuccessPolicy = ({
         },
       })
     },
+
     seeSendation(item) {
       dispatch({
         type: 'successPolicy/showModal',
@@ -140,7 +167,6 @@ const SuccessPolicy = ({
 
   const filterProps = {
     isMotion,
-    isMore,
     filter: {
       ...query,
     },
@@ -150,25 +176,11 @@ const SuccessPolicy = ({
         page: 1,
       })
     },
+
     switchIsMotion () {
       dispatch({ type: 'user/switchIsMotion' })
     },
   };
-
-  const handleDeleteItems = () => {
-    dispatch({
-      type: 'user/multiDelete',
-      payload: {
-        ids: selectedRowKeys,
-      },
-    })
-      .then(() => {
-        handleRefresh({
-          page: (list.length === selectedRowKeys.length && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-        })
-      })
-  };
-
 
   return (
     <Page inner>
@@ -181,13 +193,13 @@ const SuccessPolicy = ({
       {sendModalVisible && <SendModal {...sendModalProps} />}
     </Page>
   )
-}
+};
 
 SuccessPolicy.propTypes = {
   successPolicy: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
-}
+};
 
 export default connect(({ successPolicy, loading }) => ({ successPolicy, loading }))(SuccessPolicy)

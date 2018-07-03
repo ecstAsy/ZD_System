@@ -1,33 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { routerRedux } from 'dva/router';
-import { connect } from 'dva';
-import { Row, Col, Button, Popconfirm ,Modal, Icon} from 'antd';
-import { Page } from 'components';
-import List from './List';
-import Lists from './Lists';
-import styles from './List.less';
-import queryString from 'query-string';
+/**
+ * Created by Administrator on 2018/7/2 0002.
+ */
+import React from 'react'
+import PropTypes from 'prop-types'
+import { routerRedux } from 'dva/router'
+import { connect } from 'dva'
+import { Row, Col, Button } from 'antd'
+import { Page } from 'components'
+import List from './List'
+import Lists from './Lists'
+import styles from './List.less'
+import queryString from 'query-string'
 
 
 const Parameter = ({
   location, dispatch, parameter, loading,
 }) => {
-  location.query = queryString.parse(location.search);
-  const { query, pathname } = location;
-  const {} = parameter;
+  location.query = queryString.parse(location.search)
+
   return (
     <Page inner>
-      <Row style={{ marginBottom: 10, textAlign: 'right', fontSize: 13 }}>
-        <Col>
+      <Row className="page">
           <Button type="edit" icon="edit" style={{border:0}}>编辑</Button>
-        </Col>
       </Row>
       <div>
-        <List />
-      </div>
-      <div>
-        <Lists/>
+          <List />
+          <Lists/>
       </div>
     </Page>
   )
