@@ -1,19 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Table, Modal } from 'antd'
-import classnames from 'classnames'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import queryString from 'query-string'
-import AnimTableBody from 'components/DataTable/AnimTableBody'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Modal } from 'antd';
+import classnames from 'classnames';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import AnimTableBody from 'components/DataTable/AnimTableBody';
+import styles from './List.less';
 
-const { confirm } = Modal
+const { confirm } = Modal;
 
 const List = ({
-  onDeleteItem, seeQuotation, isMotion, location, ...tableProps,seeSendation
+  onDeleteItem, seeQuotation, isMotion, location, ...tableProps, seeSendation
 }) => {
-  location.query = queryString.parse(location.search)
+  location.query = queryString.parse(location.search);
 
   const handleMenuClick = (record, e) => {
     if (e.key === '1') {
@@ -26,10 +26,12 @@ const List = ({
         },
       })
     }
-  }
+  };
+
   const handleSendType = (record)=>{
     seeSendation(record)
-  }
+  };
+
   const columns = [
     {
       title: '车牌',
@@ -68,16 +70,15 @@ const List = ({
       title: '提交时间',
       dataIndex: 'beginDate',
       key: 'beginDate',
-    }, {
+    },{
       title: '缴费时间',
       dataIndex: 'modifyDate',
       key: 'modifyDate',
-    }, {
+    },{
       title: '保险公司',
       dataIndex: 'isRenewal',
       key: 'isRenewal',
-    },
-    {
+    },{
       title: '派单状态',
       dataIndex: 'sendType',
       key: 'sendType',
@@ -85,30 +86,29 @@ const List = ({
         return <span  style={{color:record.sendType=='已分配'?'#7da906':record.sendType=='未分配'?'#f6be1a':record.sendType=='已派送'?'#0dcbe4':record.sendType=='派送中'?'#56b4fc':'#ff5640'}}
                    onClick={handleSendType} >{record.sendType}</span>
       },
-    }, {
+    },{
       title: '派单类型',
       dataIndex: 'isRenewal',
       key: 'isRenewal3',
       render: (text, record) => {
         return <span>2</span>
       },
-    },
-    {
+    },{
       title: '操作',
       key: 'operation',
       render: (text, record) => {
         return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: '查看报价' }, { key: '2', name: '更改所属' }]} />
       },
     },
-  ]
+  ];
 
   const AnimateBody = (props) => {
     return <AnimTableBody {...props} />
-  }
+  };
 
   const CommonBody = (props) => {
     return <tbody {...props} />
-  }
+  };
 
   return (
     <Table

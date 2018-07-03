@@ -84,7 +84,7 @@ const GiftModal = ({...giftModalProps, handleCancel, handleCost, handleAdd, TagC
   )
 }
 
-GiftModal.propType = {
+GiftModal.propTypes = {
   handleCancel : PropTypes.func,
 }
 

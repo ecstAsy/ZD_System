@@ -8,10 +8,12 @@ import queryString from 'query-string';
 import Filter from './Filter';
 import List from './List';
 import AuditModal from './auditModal';
-const Complaint = ({location, dispatch, complaint, loading,})=>{
+import AddComplaintModal from './addComplaintModal';
+
+const Complaint = ({location, dispatch, complaint,   loading,})=>{
   location.query = queryString.parse(location.search);
-  const { query, pathname } = location;;
-  const { list, pagination, currentItem, auditModalVisible } = complaint;
+  const { query, pathname } = location;
+  const { list, pagination, currentItem, auditModalVisible, addComplaintModalVisible } = complaint;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -23,7 +25,17 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
     }))
   };
 
+  const onAddComplaint = ()=>{
+    dispatch({
+      type: 'complaint/showModal',
+      payload: {
+        modalType: 'add'
+      },
+    })
+  };
+
   const filterProps = {
+    location,
     FilterSearch (value) {
       handleRefresh({
         ...value,
@@ -77,6 +89,23 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
         },
       })
     }
+  };
+
+  const addComplaintModalProps = {
+    visible: addComplaintModalVisible,
+    maskClosable: false,
+    title:'新增投诉',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel(){
+      dispatch({
+        type: 'complaint/hideModal',
+        payload: {
+          modalType: 'add'
+        },
+      })
+    }
   }
 
   return (
@@ -84,11 +113,12 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
       <Filter {...filterProps}/>
       <Row style={{ marginBottom: 10, textAlign: 'right', fontSize: 13 }}>
         <Col>
-          <Button type="primary" style={{ width:80 }}>新增</Button>
+          <Button type="primary" style={{ width:80 }} onClick={onAddComplaint}>新增</Button>
         </Col>
       </Row>
       <List {...listProps}/>
       {auditModalVisible && <AuditModal {...auditModal}/>}
+      {addComplaintModalVisible && <AddComplaintModal {...addComplaintModalProps}/>}
     </Page>
   )
 }

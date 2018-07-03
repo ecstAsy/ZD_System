@@ -3,9 +3,12 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Input, Select, DatePicker, Button } from 'antd';
 import styles from './index.less';
+import queryString from 'query-string'
+
 const FormItem = Form.Item;
 const Option = Select.Option;
 const RangePicker = DatePicker.RangePicker;
+
 const formItemLayout = {
   labelCol: {
     span:10,
@@ -48,12 +51,10 @@ const ColPropsTwo = {
     marginRight:30
   },
 };
-const Filter = ({FilterSearch,
-    form: {
-      getFieldDecorator,
-      getFieldsValue,
-      setFieldsValue }
+const Filter = ({FilterSearch, location,
+    form: { getFieldDecorator, getFieldsValue, setFieldsValue }
   })=>{
+  const values = queryString.parse(location.search);
   const handleFields = (fields) => {
     if( fields.creatTime && fields.creatTime instanceof Array && fields.creatTime.length > 1 ){
        fields.creatTime = [fields.creatTime[0].format('YYYYMMDD'), fields.creatTime[1].format('YYYYMMDD')]
@@ -83,29 +84,37 @@ const Filter = ({FilterSearch,
       <Form>
         <Row gutter={24}>
           <Col {...ColProps}>
-            <FormItem  {...formItemLayout} label="姓名">
-              {getFieldDecorator('userName')(
+            <FormItem {...formItemLayout} label="姓名">
+              {getFieldDecorator('userName',{
+                initialValue : values.userName
+              })(
                 <Input />
               )}
             </FormItem>
           </Col>
           <Col {...ColProps}>
-            <FormItem  {...formItemLayout} label="手机号">
-              {getFieldDecorator('userPhone')(
+            <FormItem {...formItemLayout} label="手机号">
+              {getFieldDecorator('userPhone',{
+                initialValue : values.userPhone
+              })(
                 <Input />
               )}
             </FormItem>
           </Col>
           <Col {...ColProps}>
-            <FormItem  {...formItemLayout} label="车牌号">
-              {getFieldDecorator('userPlate')(
+            <FormItem {...formItemLayout} label="车牌号">
+              {getFieldDecorator('userPlate',{
+                initialValue : values.userPlate
+              })(
                 <Input />
               )}
             </FormItem>
           </Col>
           <Col {...ColProps}>
-            <FormItem  {...formItemLayout} label="处理人">
-              {getFieldDecorator('processor')(
+            <FormItem {...formItemLayout} label="处理人">
+              {getFieldDecorator('processor',{
+                initialValue : values.processor
+              })(
                 <Input />
               )}
             </FormItem>
@@ -113,8 +122,10 @@ const Filter = ({FilterSearch,
         </Row>
         <Row gutter={24}>
           <Col {...ColProps}>
-            <FormItem  {...formItemLayout} label="状态">
-              {getFieldDecorator('status', )(
+            <FormItem {...formItemLayout} label="状态">
+              {getFieldDecorator('status',{
+                initialValue : values.status
+              })(
                 <Select showSearch style={{ width: '100%' }} placeholder="请选择" >
                     <Option value="china">China</Option>
                     <Option value="use">U.S.A</Option>
@@ -123,15 +134,19 @@ const Filter = ({FilterSearch,
             </FormItem>
           </Col>
           <Col {...ColPropsTwo}>
-            <FormItem  {...formItemLayoutTwo} label="创建日期">
-              {getFieldDecorator('creatTime')(
+            <FormItem {...formItemLayoutTwo} label="创建日期">
+              {getFieldDecorator('creatTime',{
+                initialValue : values.creatTime
+              })(
                 <RangePicker />
               )}
             </FormItem>
           </Col>
           <Col {...ColPropsTwo}>
-            <FormItem  {...formItemLayoutTwo} label="处理日期">
-              {getFieldDecorator('handleTime')(
+            <FormItem {...formItemLayoutTwo} label="处理日期">
+              {getFieldDecorator('handleTime',{
+                initialValue : values.handleTime
+              })(
                 <RangePicker />
               )}
             </FormItem>

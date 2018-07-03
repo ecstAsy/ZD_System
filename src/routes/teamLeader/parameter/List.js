@@ -1,12 +1,9 @@
-/**
- * Created by Administrator on 2018/7/2 0002.
- */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Table, Row, Col } from 'antd'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Row, Col } from 'antd';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import styles from './List.less';
 
 const List = () => {
   const ListData = [{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},]

@@ -1,22 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
-import { Page } from 'components'
-import queryString from 'query-string'
-import List from './List'
-import Filter from './Filter'
-import Modal from './Modal'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Row, Col, Button, Popconfirm } from 'antd';
+import { Page } from 'components';
+import queryString from 'query-string';
+import List from './List';
+import Filter from './Filter';
+import Modal from './Modal';
 
 const User = ({
   location, dispatch, user, loading, history
 }) => {
-  location.query = queryString.parse(location.search)
-  const { query, pathname } = location
+  location.query = queryString.parse(location.search);
+  const { query, pathname } = location;
   const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys,isMore
-  } = user
+    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys, isMore
+  } = user;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -26,7 +26,8 @@ const User = ({
         ...newQuery,
       }),
     }))
-  }
+  };
+
   const listProps = {
     dataSource: list,
     loading: loading.effects['user/query'],
@@ -52,7 +53,7 @@ const User = ({
     toQuoteFunc(id){
       history.push('user/quote');
     }
-  }
+  };
 
   const filterProps = {
     isMore,
@@ -71,11 +72,11 @@ const User = ({
     switchIsMotion () {
       dispatch({ type: 'user/switchIsMotion' })
     },
-  }
+  };
 
   const onAdd=()=>{
     history.push('user/add');
-  }
+  };
 
   return (
     <Page inner>

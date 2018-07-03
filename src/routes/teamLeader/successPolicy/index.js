@@ -1,24 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm ,Modal} from 'antd'
-import { Page } from 'components'
-import queryString from 'query-string'
-import List from './List'
-import Filter from './Filter'
-import Offermodal from './Modal'
-import styles from './List.less'
-import SendModal from './sendModal'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Row, Col, Button, Popconfirm ,Modal} from 'antd';
+import { Page } from 'components';
+import queryString from 'query-string';
+import List from './List';
+import Filter from './Filter';
+import Offermodal from './Modal';
+import styles from './List.less';
+import SendModal from './sendModal';
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
 }) => {
-  location.query = queryString.parse(location.search)
-  const { query, pathname } = location
+  location.query = queryString.parse(location.search);
+  const { query, pathname } = location;
   const {
-    list, pagination, currentItem, modalVisible, visibleRemark, modalType,remarkId, isMotion, selectedRowKeys,isMore,sendModalVisible
-  } = successPolicy
+    list, TimeData, pagination, currentItem, modalVisible, visibleRemark, modalType,remarkId,
+    isMotion, selectedRowKeys,isMore,sendModalVisible } = successPolicy;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -28,7 +28,7 @@ const SuccessPolicy = ({
         ...newQuery,
       }),
     }))
-  }
+  };
 
   const modalProps = {
     item: {},
@@ -50,7 +50,6 @@ const SuccessPolicy = ({
       })
     },
     addRemarkFunc(id){
-      console.log(id)
       dispatch({
         type: 'successPolicy/showModal',
         payload: {
@@ -76,24 +75,26 @@ const SuccessPolicy = ({
         },
       })
     }
-  }
-const sendModalProps = {
-  item: {},
-  visible: sendModalVisible,
-  maskClosable: false,
-  title:'派送记录',
-  width:'40%',
-  closable:false,
-  wrapClassName: 'vertical-center-modal',
-  onCancel () {
-    dispatch({
-      type: 'successPolicy/hideModal',
-      payload: {
-        modalType: 'sendation',
-      },
-    })
-  },
-}
+  };
+
+  const sendModalProps = {
+    TimeData,
+    visible: sendModalVisible,
+    maskClosable: false,
+    title:'派送记录',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    onCancel () {
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'sendation',
+        },
+      })
+    },
+  };
+
   const listProps = {
     dataSource: list,
     loading: loading.effects['successPolicy/query'],
@@ -135,8 +136,7 @@ const sendModalProps = {
         },
       })
     }
-
-  }
+  };
 
   const filterProps = {
     isMotion,
@@ -150,11 +150,10 @@ const sendModalProps = {
         page: 1,
       })
     },
-
     switchIsMotion () {
       dispatch({ type: 'user/switchIsMotion' })
     },
-  }
+  };
 
   const handleDeleteItems = () => {
     dispatch({
@@ -168,7 +167,7 @@ const sendModalProps = {
           page: (list.length === selectedRowKeys.length && pagination.current > 1) ? pagination.current - 1 : pagination.current,
         })
       })
-  }
+  };
 
 
   return (
@@ -177,18 +176,6 @@ const sendModalProps = {
       <div className={styles.totalPrice}>
         保险费用合计：<span>3628.50</span>万元
       </div>
-        {/*<Row style={{ marginBottom: 10, textAlign: 'right', fontSize: 13 }}>*/}
-          {/*<Col>*/}
-            {/*{`选择 ${selectedRowKeys.length} 项`}*/}
-            {/*<Button type="primary" style={{ marginLeft: 8 }} onClick={onAdd}>新增</Button>*/}
-            {/*<Button style={{ marginLeft: 8,border:'1px #ffaf38 solid',color:'#ffaf38',background:'#fff8e3' }}>跟踪</Button>*/}
-
-            {/*/!*<Popconfirm title="Are you sure delete these items?" placement="left" onConfirm={handleDeleteItems}>*!/*/}
-              {/*/!*<Button type="primary" style={{ marginLeft: 8 }}>删除</Button>*!/*/}
-            {/*/!*</Popconfirm>*!/*/}
-          {/*</Col>*/}
-        {/*</Row>*/}
-
       <List {...listProps} />
       {modalVisible && <Offermodal {...modalProps} />}
       {sendModalVisible && <SendModal {...sendModalProps} />}

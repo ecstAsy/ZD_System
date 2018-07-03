@@ -100,7 +100,7 @@ const FinalQuote  = ({ sendNote, chooseGift,
   )
 }
 
-FinalQuote.propType = {
+FinalQuote.propTypes = {
   sendNote:PropTypes.func,
   chooseGift:PropTypes.func,
   form: PropTypes.object

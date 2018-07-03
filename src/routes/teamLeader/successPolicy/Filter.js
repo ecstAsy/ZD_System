@@ -182,20 +182,18 @@ const Filter = ({
     <Row gutter={24}>
       <Col {...ColProps}>
         <FormItem label="姓名" {...formItemLayout}>
-          {getFieldDecorator('name', {
-          })(<Input />)}
+          {getFieldDecorator('name')(<Input />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>
         <FormItem label="车牌"  {...formItemLayout}>
-          {getFieldDecorator('chepai', {
-          })(<Input />)}
+          {getFieldDecorator('chepai')(<Input />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>
         <FormItem label="业务员"  {...formItemLayout}>
-          {getFieldDecorator('yewuyuan', {
-          })(<Select
+          {getFieldDecorator('yewuyuan')(
+          <Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -207,8 +205,8 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="出单类型"  {...formItemLayout}>
-          {getFieldDecorator('chudanType', {
-          })(<Select
+          {getFieldDecorator('chudanType')(
+          <Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -221,8 +219,8 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="状态"  {...formItemLayout}>
-          {getFieldDecorator('zhuangtai', {
-          })(<Select
+          {getFieldDecorator('zhuangtai')(
+          <Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -235,8 +233,8 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="支付方式"  {...formItemLayout}>
-          {getFieldDecorator('payType', {
-          })(<Select
+          {getFieldDecorator('payType')(
+          <Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -255,8 +253,8 @@ const Filter = ({
       </Col>
       <Col {...ColProps}>
         <FormItem label="派单状态"  {...formItemLayout}>
-          {getFieldDecorator('paidanType', {
-          })(<Select
+          {getFieldDecorator('paidanType')(
+          <Select
             showSearch
             style={{ width: '100%' }}
             placeholder="请选择"
@@ -269,13 +267,11 @@ const Filter = ({
       </Col>
       <Col {...ColProps3}>
         <FormItem label="保险公司"  {...formItemLayout2}>
-          {getFieldDecorator('baoxian1', {
-          })(<Cascader placeholder="请选择" options={residences} />)}
+          {getFieldDecorator('baoxian1')(
+            <Cascader placeholder="请选择" options={residences} />)}
         </FormItem>
       </Col>
-
     </Row>
-
     <Row gutter={24}>
       <Col >
         <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
@@ -283,10 +279,6 @@ const Filter = ({
             <Button type="primary" className="margin-right" onClick={handleSubmit}>查询</Button>
             <Button onClick={handleReset}>重置</Button>
           </div>
-          {/*<div className="flex-vertical-center">*/}
-            {/*<Switch className="ant-switch-large" style={{ marginRight: 16 }} defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren="Motion" unCheckedChildren="Motion" />*/}
-            {/*<Button type="ghost" onClick={onAdd}>Create</Button>*/}
-          {/*</div>*/}
         </div>
       </Col>
     </Row>

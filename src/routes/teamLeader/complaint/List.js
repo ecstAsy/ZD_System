@@ -12,29 +12,25 @@ const List = ({ location, ...listProps, handleStatus }) => {
       title: '姓名',
       dataIndex: 'userName',
       key: 'userName',
-    },
-    {
+    },{
       title: '手机号',
       dataIndex: 'userPhone',
       key: 'userPhone',
-    },
-    {
+    },{
       title: '车牌',
       dataIndex: 'province',
       key: 'province',
       render: (text, record) =>
         <span>{record.province+record.userPlate}</span>,
-    },
-    , {
+    },{
       title: '创建日期',
       dataIndex: 'createTime',
       key: 'createTime'
-    }, {
+    },{
       title: '处理日期',
       dataIndex: 'handleTime',
       key: 'handleTime',
-    },
-    {
+    },{
       title: '处理人',
       dataIndex: 'processor',
       key: 'processor',
@@ -47,11 +43,11 @@ const List = ({ location, ...listProps, handleStatus }) => {
               list.status== '返现通过'?'#01CBBD':''}}>
           {list.status}
         </span>
-    }, {
+    },{
       title: '类别',
       dataIndex: 'cpType',
       key: 'cpType'
-    }, {
+    },{
       title: '操作',
       dataIndex: 'sendType',
       key: 'sendType',
@@ -61,11 +57,11 @@ const List = ({ location, ...listProps, handleStatus }) => {
           {list.status=='返现驳回'?'查看':list.status=='未处理'?'分配':list.status=='返现通过'?'查看':'审核'}
         </span>
     }
-  ]
+  ];
 
   const CommonBody = (props) => {
     return <tbody {...props}/>
-  }
+  };
 
   return (
     <Table

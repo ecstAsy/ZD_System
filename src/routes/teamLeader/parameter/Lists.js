@@ -1,12 +1,9 @@
-/**
- * Created by Administrator on 2018/7/2 0002.
- */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Table, Row, Col } from 'antd'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Row, Col } from 'antd';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import styles from './List.less';
 
 const Lists = () => {
   const ListsDate=[{name:'康耀丽',num:'100'},{name:'柴璐婵',num:'100'},{name:'董倩倩',num:'100'},{name:'蒯红霞',num:'100'},{name:'康耀丽',num:'100'},{name:'康耀丽',num:'100'},{name:'康耀丽',num:'100'},{name:'康耀丽',num:'100'}]

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import {  Modal, Button } from 'antd';
 import styles from './index.less';
 import classnames from 'classnames';
-const AuditModal = ({...auditModal, item, handleCancel, handleConfirm, handleReject })=>{
+const AuditModal = ({
+      ...auditModal, item, handleCancel, handleConfirm, handleReject
+ })=>{
   return (
     <Modal {...auditModal}
       className={classnames(styles.AuditModal)}
