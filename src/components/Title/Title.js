@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.less';
+import styles from './Title.less';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 

@@ -13,14 +13,11 @@ import SendModal from './sendModal'
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
-}) => {
+ }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const {
-    list, TimeData, pagination, modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible
-  } = successPolicy;
-    list, TimeData, pagination, currentItem, modalVisible, visibleRemark, modalType,remarkId,
-    isMotion, selectedRowKeys,isMore,sendModalVisible } = successPolicy;
+    list, TimeData, pagination,  modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible } = successPolicy;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -99,25 +96,7 @@ const SuccessPolicy = ({
     },
   };
 
-  };
 
-  const sendModalProps = {
-    TimeData,
-    visible: sendModalVisible,
-    maskClosable: false,
-    title:'派送记录',
-    width:'40%',
-    closable:false,
-    wrapClassName: 'vertical-center-modal',
-    onCancel () {
-      dispatch({
-        type: 'successPolicy/hideModal',
-        payload: {
-          modalType: 'sendation',
-        },
-      })
-    },
-  };
 
   const listProps = {
     dataSource: list,

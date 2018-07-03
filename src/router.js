@@ -23,15 +23,15 @@ const Routers = function ({ history, app }) {
     path: '/application',//名单申请
       models: () => [import('./models/yewuyuan/application')],
     component: () => import('./routes/yewuyuan/application/'),
-  },  {
+  },{
       path: '/user',//名单查询
       models: () => [import('./models/yewuyuan/user')],
       component: () => import('./routes/yewuyuan/user/'),
-    }, {
+    },{
       path: '/user/add',//新增名单
       models: () => [import('./models/yewuyuan/user/add')],
       component: () => import('./routes/yewuyuan/user/add/'),
-    }, {
+    },{
       path: '/user/quote',//报价
       models: () => [import('./models/yewuyuan/user/quote')],
       component: () => import('./routes/yewuyuan/user/quote/'),
@@ -39,7 +39,7 @@ const Routers = function ({ history, app }) {
       path: '/login',//登陆
       models: () => [import('./models/login')],
       component: () => import('./routes/login/'),
-    }, {
+    },{
     path: '/successPolicy',//成功提交保单
       models: () => [import('./models/teamLeader/successPolicy')],
     component: () => import('./routes/teamLeader/successPolicy/'),
@@ -55,7 +55,11 @@ const Routers = function ({ history, app }) {
     path: '/record',//通话记录
       models: () => [import('./models/yewuyuan/record')],
     component: () => import('./routes/yewuyuan/record/'),
-  }
+  },{
+      path: '/allocate',//通话记录
+      models: () => [import('./models/teamLeader/allocateList')],
+      component: () => import('./routes/teamLeader/allocateList/'),
+    }
   ]
 
   return (
