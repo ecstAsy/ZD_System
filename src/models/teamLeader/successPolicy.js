@@ -22,6 +22,12 @@ export default modelExtend(pageModel, {
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
+    TimeData : [
+      {year:'2019.06.25',hour:'18:03',status:'提交',action:'保险业务员 周丹',tel:'18621617627',special:'这里是被汉族大在萨达阿'},
+      {year:'',hour:'18:45',status:'最终提交',action:'保险业务员 周丹',tel:'18621617627',special:''},
+      {year:'2019.06.26',hour:'18:03',status:'审核通过',action:'出单 弹琴',tel:'18621617627',special:'这里是被汉族大在萨达阿'},    {year:'',hour:'18:53',status:'等级保费',action:'出单 弹琴',tel:'18621617627',special:''},
+      {year:'2019.06.29',hour:'10:03',status:'修改派送信息',action:'业务员 周倩',tel:'18621617627',special:'这里是被汉族大在萨达阿'}
+    ]
   },
 
   subscriptions: {

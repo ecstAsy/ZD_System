@@ -1,28 +1,23 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
 import { config } from 'utils';
-import { create, remove, update } from 'services/teamLeader/complaint';
-import * as complaintsService from 'services/teamLeader/complaint';
+import { create, remove, update } from 'services/teamLeader/allocate';
+import * as allocatesService from 'services/teamLeader/allocate';
 import { pageModel } from '../common';
 
-const { query } = complaintsService;
+const { query } = allocatesService;
 
 export default modelExtend(pageModel, {
-  namespace: 'complaint',
+  namespace: 'allocate',
   state: {
     currentItem: {},
-    selectList:[{id:1,userName:'用户',userPlate:'苏E00000',userPhone:'15698766789',salseMan:'业务员1'},
-      {id:2,userName:'用户',userPlate:'苏E11111',userPhone:'15698766789',salseMan:'业务员2'}],
-    auditModalVisible : false ,//审核弹窗
-    addComplaintModalVisible : false , //新增投诉弹窗,
-    selectListModalVisible : false,
-    selectedUser : ''
+    FilterModalVisible : false ,//审核弹窗
   },
 
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen((location) => {
-        if (location.pathname === '/complaint') {
+        if (location.pathname === '/allocate') {
           const payload = queryString.parse(location.search) || { page: 1, pageSize: 10 };
           dispatch({
             type: 'query',
@@ -76,27 +71,11 @@ export default modelExtend(pageModel, {
 
   reducers: {
     showModal (state, { payload }) {
-      if(payload.modalType === 'audit'){
-        return { ...state, currentItem:payload.data, auditModalVisible: true }
-      }else if(payload.modalType === 'add'){
-        return { ...state, addComplaintModalVisible: true }
-      }else if (payload.modalType === 'select'){
-        return { ...state, selectListModalVisible: true ,addComplaintModalVisible:false}
-      }
+        return { ...state,  FilterModalVisible: true }
     },
 
     hideModal (state,{payload}) {
-      if(payload.modalType === 'audit'){
-        return { ...state, auditModalVisible: false }
-      }else if(payload.modalType === 'add'){
-        return { ...state, addComplaintModalVisible:false }
-      }else if (payload.modalType === 'select'){
-        return { ...state, selectListModalVisible: false ,addComplaintModalVisible:true}
-      }
-    },
-
-    changeState(state,{payload}) {
-      return {...state, selectedUser: payload}
+        return { ...state, FilterModalVisible: false }
     }
   },
 })

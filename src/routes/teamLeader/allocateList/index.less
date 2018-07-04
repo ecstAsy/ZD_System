@@ -1,10 +1,51 @@
-.searchBox{
-  padding:20px;
-  border:1px #ddd solid;
-  margin-bottom: 35px;
+.bg{
+  background: #fff;
+  padding: 24px 16px;
+  font-family: 'MicrosoftYaHei';
+}
+.selectBox{
+  font-size: 14px;
+  margin-bottom: 32px;
+  :global{
+    .ant-col-20:nth-of-type(2){
+      margin-top: 32px;
+    }
+    .title{
+      color: #939BA4;
+    }
+    .detail{
+      color: #333;
+    }
+    .select{
+      color: #0082FE;
+      margin-left: 54px;
+      cursor: pointer;
+    }
+  }
+}
+.selectContent{
+  :global{
+    .title{
+      font-size: 14px;
+      color: #939BA4;
+    }
+    .detail{
+      font-size: 20px;
+      color: #0082FE;
+    }
+    .saveBtn{
+      background: #0082FE;
+      color: #fff;
+      font-size: 14px;
+      width: 103px;
+      height: 43px;
+      margin-top: 32px;
+    }
+  }
 }
 .table {
   border: 1px #f0f2f5 solid;
+  margin-top: 8px;
   td.avatar {
     img {
       border-radius: 50%;
@@ -24,41 +65,7 @@
   :global {
     .ant-table-tbody > tr > td,
     .ant-table-thead > tr > th {
-      &:nth-child(1) {
-        width: 11%!important;
-      }
-
-      &:nth-child(2) {
-        width: 11%;
-      }
-
-      &:nth-child(3) {
-        width: 11%;
-      }
-
-      &:nth-child(4) {
-        width:11%;
-      }
-
-      &:nth-child(5) {
-        width: 11%;
-      }
-
-      &:nth-child(6) {
-        width: 11%;
-      }
-
-      &:nth-child(7) {
-        width: 11%;
-      }
-
-      &:nth-child(8) {
-        width:11%;
-      }
-
-      &:nth-child(9) {
-        width: 12%;
-      }
+      width: 12.5%;
     }
 
     .ant-table-thead {
@@ -74,7 +81,10 @@
         }
       }
     }
-
+    .ant-form-item{
+      margin-bottom: 0;
+      width: 50%;
+    }
     .ant-table-tbody {
       & > tr {
         transition: none;
@@ -87,9 +97,6 @@
           align-items: center;
           justify-content: center;
           color: #939ba4;
-          &:nth-child(9) span{
-            cursor:pointer;
-          }
         }
         &.ant-table-expanded-row-level-1 > td {
           height: auto;
@@ -102,7 +109,8 @@
   }
 
 }
-.AuditModal{
+
+.FilterModal{
   color:#333;
   :global{
     .ant-modal-title{
@@ -128,38 +136,6 @@
     }
     .contentTitle{
       color: #939BA4;
-    }
-  }
-}
-.AddComplaintModal{
-  :global{
-    .NameChoose{
-      color: #0082fe;
-      cursor: pointer;
-    }
-    .NameShow{
-      display: inline-block;
-      margin-right: 20px;
-    }
-  }
-}
-.SelectListModal{
-  :global{
-    .ant-col-9{
-      height: 40px;
-    }
-    .ant-col-6{
-      height: 40px;
-    }
-    .ant-col-6 .ant-btn{
-      margin-left: 16px;
-      margin-top: 3px;
-      width: 72px;
-      font-size: 16px;
-    }
-    .ant-radio-group{
-      width: 100%;
-      margin-top: 32px;
     }
   }
 }

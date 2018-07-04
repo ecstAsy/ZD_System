@@ -55,10 +55,45 @@ const formItemLayoutLong = {
     fontSize:'14px'
   }
 };
+const ColProps3 = {
+  xs: 24,
+  sm:10,
+  style: {
+    marginBottom: 10,
+    marginRight:0
+  },
+};
+const ColProps4 = {
+  xs: 24,
+  sm: 3,
+  style: {
+    marginBottom: 10,
+    marginRight:0,
+    paddingLeft:0,
+    paddingRight:10
+  },
+};
+const formItemLayout3 = {
+  labelCol: {
+    span:0,
+  },
+  wrapperCol: {
+    span: 24,
+  },
+  style:{
+    marginBottom: 0,
+    borderRadius:'20px',
+    fontSize:'14px'
+  }
+};
 
 const Filter = ({
+  onAdd,
+  isMotion,
+  switchIsMotion,
   onFilterChange,
   filter,
+  isMore,
   form: {
     getFieldDecorator,
     getFieldsValue,

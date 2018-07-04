@@ -37,7 +37,7 @@ const GiftModal = ({...giftModalProps, handleCancel, handleCost, handleAdd, TagC
           GiftData.map((item,i)=>{
             if(item.Num!=0){
               if(item.Num!=1){
-                return ( <Tag className='tag' onClose={()=>TagClose(item.id)} closable>{`${item.title} × ${item.Num}`}</Tag> )
+                return ( <Tag className='tag' onClose={()=>TagClose(item.id)} closable>{`${item.title} * ${item.Num}`}</Tag> )
               }else{
                 return ( <Tag className='tag' onClose={()=>TagClose(item.id)} closable>{`${item.title}`}</Tag> )
               }
@@ -84,7 +84,7 @@ const GiftModal = ({...giftModalProps, handleCancel, handleCost, handleAdd, TagC
   )
 }
 
-GiftModal.propType = {
+GiftModal.propTypes = {
   handleCancel : PropTypes.func,
 }
 

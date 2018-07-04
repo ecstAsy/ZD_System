@@ -1,17 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Table, Modal } from 'antd'
-import classnames from 'classnames'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import queryString from 'query-string'
-import AnimTableBody from 'components/DataTable/AnimTableBody'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Modal } from 'antd';
+import classnames from 'classnames';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import AnimTableBody from 'components/DataTable/AnimTableBody';
+import styles from './List.less';
 
-const { confirm } = Modal
+const { confirm } = Modal;
 
 const List = ({
-  onDeleteItem, seeQuotation, isMotion, location, ...tableProps,seeSendation
+  onDeleteItem, seeQuotation, isMotion, location, ...tableProps, seeSendation
 }) => {
   location.query = queryString.parse(location.search);
 
@@ -87,15 +87,14 @@ const List = ({
         return <span  style={{color:record.singleState=='已分配'?'#7da906':record.singleState=='未分配'?'#f6be1a':record.singleState=='已派送'?'#0dcbe4':record.singleState=='派送中'?'#56b4fc':'#ff5640'}}
                    onClick={handleSendType} >{record.singleState}</span>
       },
-    }, {
+    },{
       title: '派单类型',
       dataIndex: 'piesType',
       key: 'piesType',
       render: (text, record) => {
         return <span>{record.piesType}</span>
       },
-    },
-    {
+    },{
       title: '操作',
       key: 'operation',
       render: (text, record) => {

@@ -1,28 +1,24 @@
-import qs from 'qs';
 import Mock from 'mockjs';
 import config from '../utils/config';
 
 const { apiPrefix } = config;
 
-let complaintsListData = Mock.mock({
+let allocateListData = Mock.mock({
   'data|80-100':[
     {
       id:'@id',
-      userName:'@cname',
-      userPhone:/^1[34578]\d{9}$/,
-      userPlate: /^E\d{5}$/,
-      province:'苏',
-      createTime: '@datetime("yyyy-MM-dd")',
-      handleTime:'@datetime("yyyy-MM-dd")',
-      'processor|1':['业务员1','业务员2','业务员3','业务员4'],
-      'status|1':['返现驳回','','未处理','返现通过'],
-      'cpType|1':['礼品投诉','返现投诉'],
-      cpDecription:'返现100元'
+      salesMan:'@cname',
+      'firstCallWilldo|0-100':1,
+      'firstCallDone|0-100': 1,
+      'reserveWilldo|0-100': 1,
+      'reserveDone|0-100': 1,
+      'todayTrack|0-100': 1,
+      'todayAllocate|0-100': 1,
     }
   ]
 })
 
-let database = complaintsListData.data;
+let database = allocateListData.data;
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {
@@ -47,7 +43,7 @@ const NOTFOUND = {
 };
 
 module.exports = {
-  [`GET ${apiPrefix}/complaint`] (req, res) {
+  [`GET ${apiPrefix}/allocate`] (req, res) {
     const { query } = req;
     let { pageSize, page, ...other } = query;
     pageSize = pageSize || 10;
@@ -80,14 +76,14 @@ module.exports = {
     })
   },
 
-  [`DELETE ${apiPrefix}/complaint`] (req, res) {
+  [`DELETE ${apiPrefix}/allocate`] (req, res) {
     const { ids } = req.body
     database = database.filter(item => !ids.some(_ => _ === item.id))
     res.status(204).end()
   },
 
 
-  [`POST ${apiPrefix}/complaint`] (req, res) {
+  [`POST ${apiPrefix}/allocate`] (req, res) {
     const newData = req.body
     newData.createTime = Mock.mock('@now')
     newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png')
@@ -98,7 +94,7 @@ module.exports = {
     res.status(200).end()
   },
 
-  [`GET ${apiPrefix}/complaint/:id`] (req, res) {
+  [`GET ${apiPrefix}/allocate/:id`] (req, res) {
     const { id } = req.params
     const data = queryArray(database, id, 'id')
     if (data) {
@@ -108,7 +104,7 @@ module.exports = {
     }
   },
 
-  [`DELETE ${apiPrefix}/complaint/:id`] (req, res) {
+  [`DELETE ${apiPrefix}/allocate/:id`] (req, res) {
     const { id } = req.params
     const data = queryArray(database, id, 'id')
     if (data) {
@@ -119,7 +115,7 @@ module.exports = {
     }
   },
 
-  [`PATCH ${apiPrefix}/complaint/:id`] (req, res) {
+  [`PATCH ${apiPrefix}/allocate/:id`] (req, res) {
     const { id } = req.params
     const editItem = req.body
     let isExist = false

@@ -8,10 +8,13 @@ import queryString from 'query-string';
 import Filter from './Filter';
 import List from './List';
 import AuditModal from './auditModal';
-const Complaint = ({location, dispatch, complaint, loading,})=>{
+import AddComplaintModal from './addComplaintModal';
+import SelectListModal from './selectListModal';
+
+const Complaint = ({location, dispatch, complaint,   loading,})=>{
   location.query = queryString.parse(location.search);
-  const { query, pathname } = location;;
-  const { list, pagination, currentItem, auditModalVisible } = complaint;
+  const { query, pathname } = location;
+  const { list, selectList, selectedUser, pagination, currentItem, auditModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -23,7 +26,17 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
     }))
   };
 
+  const onAddComplaint = ()=>{
+    dispatch({
+      type: 'complaint/showModal',
+      payload: {
+        modalType: 'add'
+      },
+    })
+  };
+
   const filterProps = {
+    location,
     FilterSearch (value) {
       handleRefresh({
         ...value,
@@ -63,10 +76,12 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
     width:'30%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
-    handleConfirm(){
+    handleConfirm(payload){
+
 
     },
-    handleReject(){
+    handleReject(payload){
+
 
     },
     handleCancel(){
@@ -77,6 +92,62 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
         },
       })
     }
+  };
+
+  const addComplaintModalProps = {
+    visible: addComplaintModalVisible,
+    maskClosable: false,
+    title:'新增投诉',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    selectedUser,
+    handleCancel(){
+      dispatch({
+        type: 'complaint/hideModal',
+        payload: {
+          modalType: 'add'
+        }
+      })
+    },
+    showSelectList(){
+      dispatch({
+        type: 'complaint/showModal',
+        payload: {
+          modalType: 'select'
+        }
+      })
+    }
+  };
+
+  const selectListModalProps = {
+    visible: selectListModalVisible,
+    maskClosable: false,
+    title:'新增投诉',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    selectList,
+    handleCancel(){
+      dispatch({
+        type: 'complaint/hideModal',
+        payload: {
+          modalType: 'select'
+        },
+      })
+    },
+    handleConfirm(payload){
+      dispatch({
+        type:'complaint/changeState',
+        payload
+      })
+    },
+    FilterSearch (value) {
+      handleRefresh({
+        ...value,
+        page: 1,
+      })
+    }
   }
 
   return (
@@ -84,11 +155,13 @@ const Complaint = ({location, dispatch, complaint, loading,})=>{
       <Filter {...filterProps}/>
       <Row style={{ marginBottom: 10, textAlign: 'right', fontSize: 13 }}>
         <Col>
-          <Button type="primary" style={{ width:80 }}>新增</Button>
+          <Button type="primary" style={{ width:80 }} onClick={onAddComplaint}>新增</Button>
         </Col>
       </Row>
       <List {...listProps}/>
-      {auditModalVisible && <AuditModal {...auditModal}/>}
+      { auditModalVisible && <AuditModal {...auditModal}/> }
+      { addComplaintModalVisible && <AddComplaintModal {...addComplaintModalProps}/> }
+      { selectListModalVisible && <SelectListModal {...selectListModalProps}/> }
     </Page>
   )
 }

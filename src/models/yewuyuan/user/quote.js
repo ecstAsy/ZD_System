@@ -11,7 +11,6 @@ const { prefix } = config
 
 export default modelExtend(pageModel, {
   namespace: 'quote',
-
   state: {
     currentItem: {},
     noteModalVisible: false,//发送短信弹窗
@@ -61,8 +60,6 @@ export default modelExtend(pageModel, {
       {id:'25004',name:'全车盗抢险不计免赔'},
       {id:'25005',name:'附加险不计免赔特约条款'},
     ]
-
-
   },
 
   subscriptions: {
@@ -184,13 +181,6 @@ export default modelExtend(pageModel, {
         return { ...state, deductiblesModalVisible: true }
       }
     },
-    showModalRemark(state, { payload }) {
-      console.log(payload.id)
-      return { ...state, ...payload, visibleRemark: true,remarkId:payload.id}
-    },
-    hideModalRemark(state, { payload }) {
-      return { ...state, ...payload, visibleRemark: false }
-    },
 
     hideModal (state,{ payload }) {
       if(payload.modalType=='noteAtion'){
@@ -205,16 +195,22 @@ export default modelExtend(pageModel, {
         return { ...state, deductiblesModalVisible: false }
       }
     },
+
+    showModalRemark(state, { payload }) {
+      return { ...state, ...payload, visibleRemark: true,remarkId:payload.id}
+    },
+
+    hideModalRemark(state, { payload }) {
+      return { ...state, ...payload, visibleRemark: false }
+    },
+
     choseDesId(state, { payload }){
-      console.log(payload)
-      return{
-        ...state,currentItem:payload
-      }
+      return{ ...state,currentItem:payload }
     },
     GiftUpdata(state,{payload}){
       if(payload.modalType=='cost'){
         state.GiftData.map(item=>{
-          if(item.id==payload.id){
+          if(item.id == payload.id){
             item.Num>0 && item.Num--
           }
         })

@@ -81,7 +81,7 @@ const NoteModal = ({
   )
 }
 
-NoteModal.propType = {
+NoteModal.propTypes = {
   choseDesId : PropTypes.func
 }
 

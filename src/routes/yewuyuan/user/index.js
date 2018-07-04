@@ -15,7 +15,7 @@ const User = ({
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const {
-    list, pagination, selectedRowKeys, isMore
+    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys, isMore
   } = user;
 
   const handleRefresh = (newQuery) => {

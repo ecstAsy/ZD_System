@@ -13,12 +13,11 @@ import SendModal from './sendModal'
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
-}) => {
+ }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const {
-    list, pagination, modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible
-  } = successPolicy;
+    list, TimeData, pagination,  modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible } = successPolicy;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -50,7 +49,6 @@ const SuccessPolicy = ({
     },
 
     addRemarkFunc(id){
-      console.log(id)
       dispatch({
         type: 'successPolicy/showModal',
         payload: {
@@ -81,7 +79,7 @@ const SuccessPolicy = ({
   };
 
   const sendModalProps = {
-    item: {},
+    TimeData,
     visible: sendModalVisible,
     maskClosable: false,
     title:'派送记录',
@@ -97,6 +95,8 @@ const SuccessPolicy = ({
       })
     },
   };
+
+
 
   const listProps = {
     dataSource: list,
