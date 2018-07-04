@@ -9,11 +9,12 @@ import Filter from './Filter';
 import List from './List';
 import AuditModal from './auditModal';
 import AddComplaintModal from './addComplaintModal';
+import SelectListModal from './selectListModal';
 
 const Complaint = ({location, dispatch, complaint,   loading,})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, currentItem, auditModalVisible, addComplaintModalVisible } = complaint;
+  const { list, selectList, selectedUser, pagination, currentItem, auditModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -75,10 +76,12 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     width:'30%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
-    handleConfirm(){
+    handleConfirm(payload){
+
 
     },
-    handleReject(){
+    handleReject(payload){
+
 
     },
     handleCancel(){
@@ -98,12 +101,51 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     width:'40%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
+    selectedUser,
     handleCancel(){
       dispatch({
         type: 'complaint/hideModal',
         payload: {
           modalType: 'add'
+        }
+      })
+    },
+    showSelectList(){
+      dispatch({
+        type: 'complaint/showModal',
+        payload: {
+          modalType: 'select'
+        }
+      })
+    }
+  };
+
+  const selectListModalProps = {
+    visible: selectListModalVisible,
+    maskClosable: false,
+    title:'新增投诉',
+    width:'40%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    selectList,
+    handleCancel(){
+      dispatch({
+        type: 'complaint/hideModal',
+        payload: {
+          modalType: 'select'
         },
+      })
+    },
+    handleConfirm(payload){
+      dispatch({
+        type:'complaint/changeState',
+        payload
+      })
+    },
+    FilterSearch (value) {
+      handleRefresh({
+        ...value,
+        page: 1,
       })
     }
   }
@@ -117,8 +159,9 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
         </Col>
       </Row>
       <List {...listProps}/>
-      {auditModalVisible && <AuditModal {...auditModal}/>}
-      {addComplaintModalVisible && <AddComplaintModal {...addComplaintModalProps}/>}
+      { auditModalVisible && <AuditModal {...auditModal}/> }
+      { addComplaintModalVisible && <AddComplaintModal {...addComplaintModalProps}/> }
+      { selectListModalVisible && <SelectListModal {...selectListModalProps}/> }
     </Page>
   )
 }

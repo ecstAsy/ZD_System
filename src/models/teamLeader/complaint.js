@@ -11,8 +11,12 @@ export default modelExtend(pageModel, {
   namespace: 'complaint',
   state: {
     currentItem: {},
+    selectList:[{id:1,userName:'用户',userPlate:'苏E00000',userPhone:'15698766789',salseMan:'业务员1'},
+      {id:2,userName:'用户',userPlate:'苏E11111',userPhone:'15698766789',salseMan:'业务员2'}],
     auditModalVisible : false ,//审核弹窗
-    addComplaintModalVisible : false , //新增投诉弹窗
+    addComplaintModalVisible : false , //新增投诉弹窗,
+    selectListModalVisible : false,
+    selectedUser : ''
   },
 
   subscriptions: {
@@ -72,19 +76,27 @@ export default modelExtend(pageModel, {
 
   reducers: {
     showModal (state, { payload }) {
-      if(payload.modalType=='audit'){
+      if(payload.modalType === 'audit'){
         return { ...state, currentItem:payload.data, auditModalVisible: true }
-      }else if(payload.modalType=='add'){
+      }else if(payload.modalType === 'add'){
         return { ...state, addComplaintModalVisible: true }
+      }else if (payload.modalType === 'select'){
+        return { ...state, selectListModalVisible: true ,addComplaintModalVisible:false}
       }
     },
 
     hideModal (state,{payload}) {
-      if(payload.modalType=='audit'){
+      if(payload.modalType === 'audit'){
         return { ...state, auditModalVisible: false }
-      }else if(payload.modalType == 'add'){
+      }else if(payload.modalType === 'add'){
         return { ...state, addComplaintModalVisible:false }
+      }else if (payload.modalType === 'select'){
+        return { ...state, selectListModalVisible: false ,addComplaintModalVisible:true}
       }
+    },
+
+    changeState(state,{payload}) {
+      return {...state, selectedUser: payload}
     }
   },
 })

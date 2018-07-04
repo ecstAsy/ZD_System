@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Input, Select, DatePicker, Button } from 'antd';
 import styles from './index.less';
-import queryString from 'query-string'
+import queryString from 'query-string';
 
 const FormItem = Form.Item;
 const Option = Select.Option;

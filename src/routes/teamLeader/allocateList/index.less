@@ -19,6 +19,7 @@
     .select{
       color: #0082FE;
       margin-left: 54px;
+      cursor: pointer;
     }
   }
 }
@@ -31,6 +32,14 @@
     .detail{
       font-size: 20px;
       color: #0082FE;
+    }
+    .saveBtn{
+      background: #0082FE;
+      color: #fff;
+      font-size: 14px;
+      width: 103px;
+      height: 43px;
+      margin-top: 32px;
     }
   }
 }
@@ -74,6 +83,7 @@
     }
     .ant-form-item{
       margin-bottom: 0;
+      width: 50%;
     }
     .ant-table-tbody {
       & > tr {
@@ -98,4 +108,34 @@
     }
   }
 
+}
+
+.FilterModal{
+  color:#333;
+  :global{
+    .ant-modal-title{
+      text-align: center;
+      font-size: 18px;
+      color: #4D4D4D;
+    }
+    .ant-modal-footer{
+      text-align: center;
+      font-size: 14px;
+    }
+    .ant-modal-footer .ant-btn{
+      width: 120px;
+      height: 40px;
+    }
+    .ant-modal-footer .ant-btn:first-of-type(2){
+      margin-left: 48px;
+      color: #fff;
+    }
+    .ant-modal-footer .ant-btn:last-of-type{
+      margin-left: 48px;
+      color: #4D4D4D;
+    }
+    .contentTitle{
+      color: #939BA4;
+    }
+  }
 }

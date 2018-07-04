@@ -67,7 +67,7 @@ const Routers = function ({ history, app }) {
       <LocaleProvider locale={zh_CN}>
         <App>
           <Switch>
-            <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />
+            {/*<Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />*/}
             {
             routes.map(({ path, ...dynamics }, key) => (
               <Route key={key}

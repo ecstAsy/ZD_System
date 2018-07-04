@@ -49,7 +49,7 @@ const List = ({...listProps,
       dataIndex: 'allocateNum',
       key: 'allocateNum',
       render:(text,list)=><FormItem>
-          {getFieldDecorator('processor')(
+          {getFieldDecorator(`${list.salesMan}`)(
             <Input />
           )}
         </FormItem>

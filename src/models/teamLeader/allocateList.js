@@ -11,8 +11,7 @@ export default modelExtend(pageModel, {
   namespace: 'allocate',
   state: {
     currentItem: {},
-    auditModalVisible : false ,//审核弹窗
-    addComplaintModalVisible : false , //新增投诉弹窗
+    FilterModalVisible : false ,//审核弹窗
   },
 
   subscriptions: {
@@ -72,19 +71,11 @@ export default modelExtend(pageModel, {
 
   reducers: {
     showModal (state, { payload }) {
-      if(payload.modalType=='audit'){
-        return { ...state, currentItem:payload.data, auditModalVisible: true }
-      }else if(payload.modalType=='add'){
-        return { ...state, addComplaintModalVisible: true }
-      }
+        return { ...state,  FilterModalVisible: true }
     },
 
     hideModal (state,{payload}) {
-      if(payload.modalType=='audit'){
-        return { ...state, auditModalVisible: false }
-      }else if(payload.modalType == 'add'){
-        return { ...state, addComplaintModalVisible:false }
-      }
+        return { ...state, FilterModalVisible: false }
     }
   },
 })

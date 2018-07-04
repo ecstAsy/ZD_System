@@ -22,7 +22,7 @@ const formItemLayout = {
   }
 }
 
-const AddComplaintModal = ({...addComplaintModalProps, handleCancel,
+const AddComplaintModal = ({...addComplaintModalProps, handleCancel, showSelectList, selectedUser,
       form: { getFieldDecorator, getFieldsValue, setFieldsValue }
   })=>{
   return (
@@ -35,17 +35,26 @@ const AddComplaintModal = ({...addComplaintModalProps, handleCancel,
       <Row>
         <Col span={20}>
           <FormItem {...formItemLayout} label="客户">
-            {getFieldDecorator('user')(
-              <span className='NameChoose'>选择</span>
+            {getFieldDecorator('user',{
+              initialValue : selectedUser.userName
+            })(
+              <div>
+                {
+                  selectedUser.userName && <span className='NameShow'>{selectedUser.userName}</span>
+                }
+                <span className='NameChoose' onClick={showSelectList}>选择</span>
+              </div>
             )}
           </FormItem>
         </Col>
         <Col span={20}>
           <FormItem {...formItemLayout} label="处理业务员">
-            {getFieldDecorator('action')(
+            {getFieldDecorator('action',{
+              initialValue : selectedUser.salseMan
+            })(
               <Select showSearch style={{ width: '50%' }} placeholder="请选择" >
-                <Option value="china">China</Option>
-                <Option value="use">U.S.A</Option>
+                <Option value="业务员1">业务员1</Option>
+                <Option value="业务员2">业务员2</Option>
               </Select>
             )}
           </FormItem>
@@ -82,7 +91,8 @@ const AddComplaintModal = ({...addComplaintModalProps, handleCancel,
 }
 
 AddComplaintModal.propTypes = {
-  handleCancel : PropTypes.func
+  handleCancel : PropTypes.func,
+  showSelectList : PropTypes.func
 }
 
 export default Form.create() (AddComplaintModal)

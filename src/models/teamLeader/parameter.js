@@ -106,7 +106,6 @@ export default modelExtend(pageModel, {
       if(payload.modalType=='quotation'){
         return { ...state, ...payload, modalVisible: true }
       }else if(payload.modalType=='addRemark'){
-        console.log(payload.id)
         return { ...state, ...payload, visibleRemark: true,remarkId: payload.id}
       }else {
         return { ...state, ...payload, sendModalVisible: true }

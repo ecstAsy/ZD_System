@@ -8,12 +8,13 @@ import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
 import List from './List';
+import FilterModal from './FilterModal';
 
 
 const AllocateList = ({location, dispatch, allocate, loading})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, currentItem } = allocate;
+  const { list,  FilterModalVisible, pagination } = allocate;
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -23,18 +24,33 @@ const AllocateList = ({location, dispatch, allocate, loading})=>{
       }),
     }))
   };
+
+  const showFilterModal = ()=>{
+    dispatch({
+      type:'allocate/showModal'
+    })
+  };
+
+  const filterProps = {
+    visible : FilterModalVisible,
+    maskClosable: false,
+    title:'筛选条件',
+    width:'45%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel(){
+      dispatch({
+        type:'allocate/hideModal'
+      })
+    }
+  }
+
   const listProps = {
     dataSource: list,
-    loading: loading.effects['allocate/query'],
-    pagination,
-    location,
-    onChange (page) {
-      handleRefresh({
-        page: page.current,
-        pageSize: page.pageSize,
-      })
-    },
-  }
+    pagination:false,
+    loading: loading.effects['allocate/query']
+  };
+
   return (
     <Page>
       <div className={classnames(styles.selectBox,styles.bg)}>
@@ -45,7 +61,7 @@ const AllocateList = ({location, dispatch, allocate, loading})=>{
           <Col span={20}>
             <span className='title'>筛选条件：</span>
             <span className='detail'>无</span>
-            <span className='select'>选择</span>
+            <span className='select' onClick={showFilterModal}>选择</span>
           </Col>
         </Row>
       </div>
@@ -56,7 +72,9 @@ const AllocateList = ({location, dispatch, allocate, loading})=>{
           </Col>
         </Row>
         <List {...listProps}/>
+        <Button className='saveBtn'>保存</Button>
       </div>
+      { FilterModalVisible && <FilterModal {...filterProps}/>}
     </Page>
   )
 }
