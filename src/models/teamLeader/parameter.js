@@ -16,14 +16,17 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem: {},
-    modalVisible: false,  //报价弹窗
-    sendModalVisible : false ,//派送弹窗
-    isMore:false,
-    visibleRemark:false,  //新增备注
     remarkId:'',
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
+    ListData : [{name:'周丹:',num:'10'},{name:'周丹:',num:'10'},
+      {name:'周丹:',num:'10'},{name:'周丹:',num:'10'},{name:'周丹:',num:'10'},
+      {name:'周丹:',num:'10'}],
+    mouthDate : [
+
+    ],
+    isEdit:false
   },
 
   subscriptions: {
@@ -112,10 +115,17 @@ export default modelExtend(pageModel, {
         return { ...state, ...payload, sendModalVisible: true }
       }
     },
-    isShowMoreFunc( state, { payload }){
-      console.log(payload)
-      return { ...state,  isMore: !payload }
+    isEditFunc( state ){
+      return { ...state,  isEdit: ! state.isEdit }
     },
-
+    handleCancelFunc( state ){
+      return { ...state,  handleCancel: ! state.isEdit }
+    },
+    choseDesId(state, { payload }){
+      console.log(payload)
+      return{
+        ...state,currentItem:payload
+      }
+    },
   },
 })

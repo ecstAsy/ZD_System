@@ -18,7 +18,7 @@ let successPolicyData = Mock.mock({
       email: '@email',
       preInsuranceCompany:/^\d{5}$/,
       firstRegisterDate:'@date("yyyyMMdd")',
-      recordDate:'@date("yyyyMMdd")',
+      recordDate:'@date("yyyy-MM-dd")',
       handleDate:'@date("yyyyMMdd")',
       modifyDate: /^\d{3}$/,
       yuyueDate: '@datetime("yyyyMMddHHmmss")',

@@ -3,23 +3,50 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'antd'
+import { Row, Col, Form, Input } from 'antd'
 import { DropOption } from 'components'
 import { Link } from 'react-router-dom'
 import styles from './List.less'
 
-const Lists = () => {
-  const ListsDate=[{name:'康耀丽:',num:'100'},{name:'柴璐婵:',num:'100'},{name:'董倩倩:',num:'100'},{name:'蒯红霞:',num:'100'},{name:'康耀丽:',num:'100'},{name:'康耀丽:',num:'100'},{name:'康耀丽:',num:'100'},{name:'康耀丽:',num:'100'}]
+const FormItem = Form.Item;
+const formItemLayout = {
+  labelCol: {
+    span:10,
+  },
+  wrapperCol: {
+    span: 14,
+  },
+  style:{
+    marginBottom: 0,
+    borderRadius:'20px',
+    fontSize:'15'
+  }
+};
+const Lists = ({...listProps, ListData, isEdit,
+  form: {
+    getFieldDecorator,
+    getFieldsValue,
+    setFieldsValue }
+}) => {
   return (
     <Row>
       <img src="/ghef_03.png"/><span className="biaoti">单日跟踪上限</span>
       <Row style={{marginBottom:20,marginTop:15}}>
         {
-          ListsDate.map((lists,i)=>{
+          ListData.map((lists,i)=>{
             return(
               <Col span={6}>
-                <div className="useInfoRow">
-                  <p>{lists.name}</p><p>{lists.num}</p>
+                <div>
+                  {
+                    !isEdit? <div className="useInfoRow"><p>{lists.name}</p><p>{lists.num}</p></div>:
+                      <FormItem {...formItemLayout} label={lists.name}>
+                        {getFieldDecorator('num',{
+                          initialValue:lists.num
+                        })(
+                          <Input />
+                        )}
+                      </FormItem>
+                  }
                 </div>
               </Col>
             )
@@ -34,4 +61,4 @@ Lists.propTypes = {
   location: PropTypes.object,
 }
 
-export default Lists
+export default Form.create()(Lists)

@@ -19,5 +19,4 @@ Title.propTypes = {
   sendNote : PropTypes.func
 }
 
-};
 export default Title

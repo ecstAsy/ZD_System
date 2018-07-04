@@ -14,7 +14,7 @@ const formItemLayout = {
   wrapperCol: {
     span: 14,
   },
-}
+};
 
 const modal = ({
   item = {},
@@ -38,24 +38,24 @@ const modal = ({
     data.address = data.address.join(' ')
     onOk(data)
   })
-  }
+  };
 
   const modalOpts = {
       ...modalProps,
     onOk: handleOk,
-}
+  };
 
   return (
     <Modal {...modalOpts}>
-<Form layout="horizontal">
+      <Form layout="horizontal">
 
     {/*<FormItem label="Link" hasFeedback {...formItemLayout}>*/}
 
-{/*</FormItem>*/}
+    {/*</FormItem>*/}
 
-  </Form>
+      </Form>
   </Modal>
-)
+  )
 }
 
 modal.propTypes = {

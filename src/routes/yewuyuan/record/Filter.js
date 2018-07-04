@@ -25,7 +25,7 @@ const formItemLayout = {
     marginBottom: 0,
     borderRadius:'20px',
   }
-}
+};
 
 const ColProps = {
   xs: 24,
@@ -34,7 +34,7 @@ const ColProps = {
     marginBottom: 10,
     marginRight:10
   },
-}
+};
 
 const  ColPropses={
   xs: 24,
@@ -43,7 +43,7 @@ const  ColPropses={
     marginBottom: 10,
     marginRight:10
   },
-}
+};
 
 const formItemLayouts = {
   labelCol: {
@@ -56,12 +56,12 @@ const formItemLayouts = {
     marginBottom: 0,
     borderRadius:'20px',
   }
-}
+};
 
 const TwoColProps = {
     ...ColProps,
     xl: 96,
-}
+};
 
 const Filter = ({
   onFilterChange,
@@ -84,7 +84,7 @@ const Filter = ({
     let fields = getFieldsValue();
     fields = handleFields(fields)
     onFilterChange(fields)
-  }
+  };
 
   const handleReset = () => {
     const fields = getFieldsValue()
@@ -99,14 +99,14 @@ const Filter = ({
     }
     setFieldsValue(fields)
     handleSubmit()
-  }
+  };
 
   const handleChange = (key, values) => {
     let fields = getFieldsValue()
     fields[key] = values
     fields = handleFields(fields)
     onFilterChange(fields)
-  }
+  };
 
   const { name } = filter
     let initialCreateTime = []

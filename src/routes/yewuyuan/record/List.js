@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Table, } from 'antd'
+import { Table } from 'antd'
 import classnames from 'classnames'
 import { DropOption } from 'components'
 import { Link } from 'react-router-dom'
@@ -11,7 +11,7 @@ import queryString from 'query-string'
 import styles from './List.less'
 
 const List = ({
-  location, ...tableProps
+  location, ...tableProps,
 }) => {
   location.query = queryString.parse(location.search)
 
@@ -48,7 +48,7 @@ const List = ({
           <a href="javascript:;">播放</a>
         </div>
       },
-  ]
+  ];
 
   return (
     <Table

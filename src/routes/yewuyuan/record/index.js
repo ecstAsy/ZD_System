@@ -27,7 +27,7 @@ const Record = ({
         ...newQuery,
     }),
   }))
-  }
+  };
 
   const listProps = {
     dataSource: list,
@@ -40,7 +40,7 @@ const Record = ({
         pageSize: page.pageSize,
       })
     },
-  }
+  };
 
   const filterProps = {
     filter: {
@@ -52,7 +52,7 @@ const Record = ({
       page: 1,
     })
     },
-  }
+  };
 
   return (
     <Page inner>
