@@ -242,12 +242,12 @@ const App = ({
           {editPwdModalVisible && <EditPwdModal {...editPwdModalProps}  />}
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
-            <div style={{width:permissions.role=='admin'?'80%':'100%',float:'left'}}>
+            <div style={{width:permissions.role !=='admin'?'80%':'100%',float:'left'}}>
               <Bread {...breadProps} />
               {hasPermission ? children : <Error />}
             </div>
             {
-              permissions.role=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
+              permissions.role!=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
                 <Appointment {...AppointmentProps}/>
                 <Calendar  />
                 <Message />

@@ -2,23 +2,25 @@ import Mock from 'mockjs';
 import config from '../utils/config';
 
 const { apiPrefix } = config;
-
-let allocateListData = Mock.mock({
-  'data|6-15':[
-    {
-      id:'@id',
-      salesMan:'@cname',
-      'firstCallWilldo|0-100':1,
-      'firstCallDone|0-100': 1,
-      'reserveWilldo|0-100': 1,
-      'reserveDone|0-100': 1,
-      'todayTrack|0-100': 1,
-      'todayAllocate|0-100': 1,
-    }
-  ]
+let rebateApplyListsData = Mock.mock({
+  'data|80-100':[{
+    id : '@id',
+    'applicant|1' : ['业务员1','业务员2','业务员3','业务员4'],
+    applyTime : '@datetime("yyyy-MM-dd HH:mm:ss")',
+    customer : '@cname',
+    carPlate : /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/,
+    'insuranceCompany|1' : ['人保/苏州/人保1','人保/常州/人保2','人保/无锡/人保3','人保/南京/人保4','人保/江阴/人保1'],
+    'commercialNum|2000-5000.1-10' : 1,
+    'rebateRatio|14-28.1-10': 1,
+    'overTopNum|150-300.1-10' : 1,
+    'heightRatio|14-34.1-10' : 1,
+    applyType : '保单申请',
+    'status|1' : ['驳回','未处理','同意','上级申请中'],
+    'remark|1' : ['没超','正常']
+  }]
 })
 
-let database = allocateListData.data;
+let database = rebateApplyListsData.data;
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {
@@ -43,7 +45,7 @@ const NOTFOUND = {
 };
 
 module.exports = {
-  [`GET ${apiPrefix}/allocate`] (req, res) {
+  [`GET ${apiPrefix}/rebateapply`] (req, res) {
     const { query } = req;
     let { pageSize, page, ...other } = query;
     pageSize = pageSize || 10;
@@ -53,17 +55,6 @@ module.exports = {
       if ({}.hasOwnProperty.call(other, key)) {
         newData = newData.filter((item) => {
           if ({}.hasOwnProperty.call(item, key)) {
-            if (key === 'address') {
-              return other[key].every(iitem => item[key].indexOf(iitem) > -1)
-            } else if (key === 'createTime') {
-              const start = new Date(other[key][0]).getTime()
-              const end = new Date(other[key][1]).getTime()
-              const now = new Date(item[key]).getTime()
-              if (start && end) {
-                return now >= start && now <= end
-              }
-              return true
-            }
             return String(item[key]).trim().indexOf(decodeURI(other[key]).trim()) > -1
           }
           return true
@@ -76,14 +67,14 @@ module.exports = {
     })
   },
 
-  [`DELETE ${apiPrefix}/allocate`] (req, res) {
+  [`DELETE ${apiPrefix}/rebateapply`] (req, res) {
     const { ids } = req.body
     database = database.filter(item => !ids.some(_ => _ === item.id))
     res.status(204).end()
   },
 
 
-  [`POST ${apiPrefix}/allocate`] (req, res) {
+  [`POST ${apiPrefix}/rebateapply`] (req, res) {
     const newData = req.body
     newData.createTime = Mock.mock('@now')
     newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png')
@@ -94,7 +85,7 @@ module.exports = {
     res.status(200).end()
   },
 
-  [`GET ${apiPrefix}/allocate/:id`] (req, res) {
+  [`GET ${apiPrefix}/rebateapply/:id`] (req, res) {
     const { id } = req.params
     const data = queryArray(database, id, 'id')
     if (data) {
@@ -104,7 +95,7 @@ module.exports = {
     }
   },
 
-  [`DELETE ${apiPrefix}/allocate/:id`] (req, res) {
+  [`DELETE ${apiPrefix}/rebateapply/:id`] (req, res) {
     const { id } = req.params
     const data = queryArray(database, id, 'id')
     if (data) {
@@ -115,7 +106,7 @@ module.exports = {
     }
   },
 
-  [`PATCH ${apiPrefix}/allocate/:id`] (req, res) {
+  [`PATCH ${apiPrefix}/rebateapply/:id`] (req, res) {
     const { id } = req.params
     const editItem = req.body
     let isExist = false

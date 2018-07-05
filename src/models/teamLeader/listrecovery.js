@@ -8,10 +8,16 @@ import { pageModel } from '../common';
 const { query } = allocatesService;
 
 export default modelExtend(pageModel, {
-  namespace: 'allocate',
+  namespace: 'listrecovery',
   state: {
-    currentItem: {},
     FilterModalVisible : false ,//筛选条件弹窗,
+    allocateListModalVisible:false,//名单分配弹窗,
+    salesMan:[
+      {id:1,name:'张田'},{id:2,name:'康耀丽'},{id:3,name:'安丽杰'},{id:4,name:'许立梅'},{id:5,name:'周丹'},
+      {id:6,name:'柴璐婵'},{id:7,name:'肖俊'},{id:8,name:'蒯红霞'},{id:9,name:'董倩倩'},{id:10,name:'宋慧琳'},
+      {id:11,name:'崔绍'},{id:12,name:'安琪'},{id:13,name:'王艳'},{id:14,name:'王晓丽'},{id:15,name:'于春銮'},
+      {id:16,name:'徐雪婷'}
+    ],
     FilterValues:[
       {id:'firstRegisterTime',title:'初登日期',firstRegisterTime:''},
       {id:'driverTime',title:'年龄',driverTime:''},
@@ -27,15 +33,13 @@ export default modelExtend(pageModel, {
       {id:'highEndCar',title:'高端车',highEndCar:''},
       {id:'carPlate',title:'车牌',carPlate:''},
       {id:'washList',title:'清洗名单',washList:''},
-
-
     ]
   },
 
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen((location) => {
-        if (location.pathname === '/allocate') {
+        if (location.pathname === '/listrecovery') {
           const payload = queryString.parse(location.search) || { page: 1, pageSize: 10 };
           dispatch({
             type: 'query',
@@ -89,11 +93,20 @@ export default modelExtend(pageModel, {
 
   reducers: {
     showModal (state, { payload }) {
+      if(payload.modalType==='filter'){
         return { ...state,  FilterModalVisible: true }
+      }else if (payload.modalType==='allocate'){
+        return { ...state,  allocateListModalVisible: true }
+      }
+
     },
 
     hideModal (state,{payload}) {
-        return { ...state, FilterModalVisible: false }
+      if(payload.modalType==='filter'){
+        return { ...state,  FilterModalVisible: false }
+      }else if (payload.modalType==='allocate'){
+        return { ...state,  allocateListModalVisible: false }
+      }
     },
 
     updataFilterValues (state,{ payload }){

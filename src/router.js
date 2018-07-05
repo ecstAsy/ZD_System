@@ -56,9 +56,17 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/yewuyuan/record')],
     component: () => import('./routes/yewuyuan/record/'),
   },{
-      path: '/allocate',//通话记录
+      path: '/allocate',//名单分配
       models: () => [import('./models/teamLeader/allocateList')],
       component: () => import('./routes/teamLeader/allocateList/'),
+    },{
+      path: '/rebateapply',//返利申请
+      models: () => [import('./models/teamLeader/rebateapply')],
+      component: () => import('./routes/teamLeader/rebateapply/'),
+    },{
+      path: '/listrecovery',//名单回收
+      models: () => [import('./models/teamLeader/listrecovery')],
+      component: () => import('./routes/teamLeader/listrecovery/'),
     }
   ]
 

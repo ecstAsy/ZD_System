@@ -17,7 +17,5 @@ const Title = ({title,sendNote})=>{
 
 Title.propTypes = {
   sendNote : PropTypes.func
-}
-
-
+};
 export default Title
