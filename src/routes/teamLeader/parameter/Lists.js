@@ -30,7 +30,6 @@ const Lists = ({...listProps, ListData, isEdit,
 }) => {
   return (
     <Row>
-      <img src="/ghef_03.png"/><span className="biaoti">单日跟踪上限</span>
       <Row style={{marginBottom:20,marginTop:15}}>
         {
           ListData.map((lists,i)=>{

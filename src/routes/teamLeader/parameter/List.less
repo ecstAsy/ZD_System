@@ -1,3 +1,25 @@
+.MouthDate {
+  :global {
+    .ant-row{
+      margin: 0 40px;
+    }
+    .templateItem{
+      color: #000;
+      line-height: 24px;
+      margin-bottom: 10px;
+    }
+    .templateItem span{
+      font-size: 15px;
+      margin: 8px 20px;
+      height: 10px;
+      padding: 0px;
+    }
+    .templateItem span.active{
+      color: #0082fe;
+    }
+  }
+}
+
 :global{
   .page{
     margin-Bottom: 10px;
@@ -15,9 +37,10 @@
     line-height: 30px;
   }
   .biaoti{
-    margin-Left:5px;
+    text-align: right;
+    width: 150px;
+    margin-left:10px;
     font-Size:15px;
-    font-weight:bold;
   }
   .ant-modal-footer{
     text-align: center!important;
@@ -44,6 +67,7 @@
     }
   }
   .listInfoRow {
+    text-align: left;
     flex-direction: row;
     display: flex;
     line-height: 30px;
@@ -68,28 +92,22 @@
     height: 100px;
     margin-top: -16px;
   }
-
   .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
     background: #fff;
     padding: 15px 15px 0 0;
   }
-
   .card-container > .ant-tabs-card > .ant-tabs-bar {
     border-color: #fff;
   }
-
   .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
     border-color: transparent;
     background: transparent;
     width: 68px;
     margin-left: 30px;
-
   }
-
   .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
     border-color: #fff;
     background: #fff;
   }
-
 }
 

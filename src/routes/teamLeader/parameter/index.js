@@ -5,18 +5,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-import { Row, Button } from 'antd'
-import { Page, Editor } from 'components'
+import { Row, Button, Form } from 'antd'
+import { Page, Editor, Title } from 'components'
 import List from './List'
 import Lists from './Lists'
+import Mouth from './mouthDate'
 import styles from './List.less'
 import queryString from 'query-string'
 
+const FormItem = Form.Item;
 const Parameter = ({
   location, dispatch, parameter, loading,
 }) => {
   location.query = queryString.parse(location.search);
-  const { ListData, isEdit, handleCancel } = parameter;
+  const { ListData, isEdit, handleCancel, mouthDate, currentItem } = parameter;
 
   const isEditFunc = ()=> {
     dispatch({
@@ -27,6 +29,20 @@ const Parameter = ({
   const listProps = {
     ListData,
     isEdit
+  };
+
+  const mouthProps = {
+    item: {},
+    loading,
+    mouthDate,
+    width:'45%',
+    currentItem:currentItem,
+    choseDesId(item){
+      dispatch({
+        type: 'parameter/choseDesId',
+        payload: item,
+      })
+    }
   };
 
   const handleCancelFunc = () => {
@@ -40,21 +56,26 @@ const Parameter = ({
       <Row className="page">
           <Button type="Edit" icon="edit" style={{border:0}} onClick={isEditFunc}>编辑</Button>
       </Row>
-      <div>
-          <List {...listProps}/>
-          <Lists {...listProps}/>
-      </div>
+      <Title title="月业绩目标（万）"/>
+      <Mouth {...mouthProps} />
+      <List {...listProps}/>
+      <Title title="单日跟踪上限"/>
+      <Lists {...listProps}/>
       <div>
         {
           isEdit?
             <div className="anniu">
-              <Button type="primary">保存</Button><Button onClick={handleCancelFunc}>取消</Button></div>:
+              <Button type="primary" style={{marginLeft:10,width:80}}>保存</Button>
+              <Button onClick={handleCancelFunc} style={{marginLeft:10,width:80}}>取消</Button></div>:
             ""
         }
       </div>
     </Page>
+
   )
+
 }
+
 
 Parameter.propTypes = {
   parameter: PropTypes.object,

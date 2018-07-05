@@ -73,7 +73,7 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     visible: auditModalVisible,
     maskClosable: false,
     title:'投诉审核',
-    width:'30%',
+    width:'40%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
     handleConfirm(payload){

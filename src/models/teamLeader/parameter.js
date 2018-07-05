@@ -20,12 +20,11 @@ export default modelExtend(pageModel, {
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
-    ListData : [{name:'周丹:',num:'10'},{name:'周丹:',num:'10'},
-      {name:'周丹:',num:'10'},{name:'周丹:',num:'10'},{name:'周丹:',num:'10'},
-      {name:'周丹:',num:'10'}],
-    mouthDate : [
-
-    ],
+    ListData : [{name:'周丹:',num:'10'},{name:'周0丹:',num:'10'},
+      {name:'周1丹:',num:'10'},{name:'周2丹:',num:'10'},{name:'周3丹:',num:'10'},
+      {name:'周4丹:',num:'10'}],
+    mouthDate : [{id:1,date:'2018-05'},{id:2,date:'2018-06'},{id:3,date:'2018-07'},
+      {id:4,date:'2018-08'},{id:5,date:'2018-09'}],
     isEdit:false
   },
 
