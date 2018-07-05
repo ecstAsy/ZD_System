@@ -193,7 +193,7 @@ const Quote = ({
     visible: noteModalVisible,
     maskClosable: false,
     title:'短信通知客户',
-    width:'40%',
+    width:'45%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
     choseItem:choseItem,

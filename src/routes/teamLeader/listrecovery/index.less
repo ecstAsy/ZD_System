@@ -1,17 +1,37 @@
-.bg{
-  background: #fff;
-  padding: 24px 16px;
-  font-family: 'MicrosoftYaHei';
-}
-.selectBox{
-  font-size: 14px;
-  margin-bottom: 32px;
+.ListRecovery{
   :global{
-    .ant-col-20:nth-of-type(2){
-      margin-top: 32px;
+    .recoveryInfoList{
+      margin-bottom: 32px;
     }
-    .title{
+    .recoveryInfoListTitle{
+      display: inline-block;
+      width: 6%;
+      vertical-align: top;
       color: #939BA4;
+      font-size: 14px;
+      text-align: right;
+      margin-right: 2%;
+    }
+    .recoveryInfoListContent{
+      width: 90%;
+      display: inline-block;
+      color: #333;
+      font-size: 14px;
+      :global{
+        .ant-btn{
+          width: 96px;
+          height: 32px;
+          border-radius: 16px;
+        }
+        .ant-btn:nth-of-type(1){
+          margin-right: 32px;
+        }
+      }
+    }
+    .ant-radio-wrapper{
+      margin-right: 20px;
+      margin-bottom: 10px;
+
     }
     .detail{
       color: #333;
@@ -19,29 +39,47 @@
     .select{
       color: #0082FE;
       cursor: pointer;
+      margin-left: 56px;
     }
-    .anticon:before{
+    .anticon-cross:before{
       color: red;
     }
   }
 }
-.selectContent{
+.AllocateListModal{
+  color:#333;
   :global{
-    .title{
+    .ant-modal-title{
+      text-align: center;
+      font-size: 18px;
+      color: #4D4D4D;
+    }
+    .ant-modal-footer{
+      text-align: center;
       font-size: 14px;
+    }
+    .ant-modal-footer .ant-btn{
+      width: 120px;
+      height: 40px;
+    }
+    .ant-modal-footer .ant-btn:first-of-type(2){
+      margin-left: 48px;
+      color: #fff;
+    }
+    .ant-modal-footer .ant-btn:last-of-type{
+      margin-left: 48px;
+      color: #4D4D4D;
+    }
+    .contentTitle{
       color: #939BA4;
     }
-    .detail{
-      font-size: 20px;
-      color: #0082FE;
-    }
-    .saveBtn{
-      background: #0082FE;
-      color: #fff;
+    .title{
+      color: #333;
       font-size: 14px;
-      width: 103px;
-      height: 43px;
-      margin-top: 32px;
+    }
+    .detail{
+      color: #0082FE;
+      font-size: 20px;
     }
   }
 }
@@ -67,7 +105,10 @@
   :global {
     .ant-table-tbody > tr > td,
     .ant-table-thead > tr > th {
-      width: 12.5%;
+      width: 12%;
+      &:nth-child(8){
+        width: 16%;
+      }
     }
 
     .ant-table-thead {
@@ -110,34 +151,4 @@
     }
   }
 
-}
-
-.FilterModal{
-  color:#333;
-  :global{
-    .ant-modal-title{
-      text-align: center;
-      font-size: 18px;
-      color: #4D4D4D;
-    }
-    .ant-modal-footer{
-      text-align: center;
-      font-size: 14px;
-    }
-    .ant-modal-footer .ant-btn{
-      width: 120px;
-      height: 40px;
-    }
-    .ant-modal-footer .ant-btn:first-of-type(2){
-      margin-left: 48px;
-      color: #fff;
-    }
-    .ant-modal-footer .ant-btn:last-of-type{
-      margin-left: 48px;
-      color: #4D4D4D;
-    }
-    .contentTitle{
-      color: #939BA4;
-    }
-  }
 }

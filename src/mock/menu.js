@@ -63,6 +63,18 @@ let database = [
     name: '名单分配',
     icon: 'phone',
     route: '/allocate',
+  },{
+    id: '9',
+    bpid: '1',
+    name: '返利申请',
+    icon: 'user',
+    route: '/rebateapply',
+  },{
+    id: '10',
+    bpid: '1',
+    name: '名单回收',
+    icon: 'user',
+    route: '/listrecovery',
   }
 ];
 
