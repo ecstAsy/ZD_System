@@ -73,7 +73,7 @@ const ListRecovery = ({location, dispatch, listrecovery, loading,
     visible : allocateListModalVisible,
     maskClosable: false,
     title:'重新分配',
-    width:'45%',
+    width:'50%',
     closable:false,
     FilterValues,
     wrapClassName: 'vertical-center-modal',
@@ -138,7 +138,7 @@ const ListRecovery = ({location, dispatch, listrecovery, loading,
         </div>
       </div>
       { FilterModalVisible && <FilterModal {...filterModalProps}/> }
-      { allocateListModalVisible && <AllocateListModal {...allocateListModalProps}/>}
+      { allocateListModalVisible && <AllocateListModal {...allocateListModalProps}/> }
     </Page>
   )
 }

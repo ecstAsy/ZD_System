@@ -67,6 +67,10 @@ const Routers = function ({ history, app }) {
       path: '/listrecovery',//名单回收
       models: () => [import('./models/teamLeader/listrecovery')],
       component: () => import('./routes/teamLeader/listrecovery/'),
+    },{
+      path: '/speechcraft',//话术管理
+      models: () => [import('./models/teamLeader/speechcraft')],
+      component: () => import('./routes/teamLeader/speechcraft/'),
     }
   ]
 
