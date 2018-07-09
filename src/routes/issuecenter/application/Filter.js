@@ -66,12 +66,12 @@ const Filter = ({
     setFieldsValue,
   },
 }) => {
-  const {name, plate }=filter;
+  const { carPlate }=filter;
 
   const handleFields = (fields) => {
-    const { applicationDate } = fields;
-    if (applicationDate && applicationDate.length && applicationDate.length > 1) {
-      fields.applicationDate = [applicationDate[0].format('YYYYMMDD'), applicationDate[1].format('YYYYMMDD')]
+    const { applyTime } = fields;
+    if (applyTime && applyTime.length && applyTime.length > 1) {
+      fields.applyTime = [applyTime[0].format('YYYYMMDD'), applyTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -104,12 +104,12 @@ const Filter = ({
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem label="车牌" {...formItemLayout}>
-              {getFieldDecorator('plate', { initialValue: plate })(<Input />)}
+              {getFieldDecorator('carPlate', { initialValue: carPlate })(<Input />)}
             </FormItem>
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('state')(<Select
+              {getFieldDecorator('status')(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -135,7 +135,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('salesman')(<Select
+              {getFieldDecorator('processor')(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -147,7 +147,7 @@ const Filter = ({
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="申请日期"  {...formItemLayoutLong}>
-              {getFieldDecorator('applicationDate')(<RangePicker  style={{ width: '90%' }} />)}
+              {getFieldDecorator('applyTime')(<RangePicker  style={{ width: '90%' }} />)}
             </FormItem>
           </Col>
         </Row>

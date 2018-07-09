@@ -8,14 +8,14 @@ import { Page } from 'components'
 import queryString from 'query-string'
 import List from './List';
 
-
-
 const Application = ({
      location, dispatch, application, loading,
  }) => {
   location.query = queryString.parse(location.search)
   const { query, pathname } = location;
+
   const { list, pagination } = application;
+
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -38,18 +38,6 @@ const Application = ({
     },
   };
 
-  location.query = queryString.parse(location.search);
-  const { query, pathname } = location;
-  const { list, pagination } = application;
-  const handleRefresh = (newQuery) => {
-    dispatch(routerRedux.push({
-      pathname,
-      search: queryString.stringify({
-        ...query,
-        ...newQuery,
-      }),
-    }))
-  };
 
   const listProps = {
     dataSource: list,
