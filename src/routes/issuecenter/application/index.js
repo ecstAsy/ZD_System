@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import Filter from './Filter'
-import { Row, Col, Button, Popconfirm } from 'antd'
-import { Page } from 'components'
-import queryString from 'query-string'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import Filter from './Filter';
+import { Row, Col, Button, Popconfirm } from 'antd';
+import { Page } from 'components';
+import queryString from 'query-string';
 import List from './List';
 
 const Application = ({
@@ -13,9 +13,7 @@ const Application = ({
  }) => {
   location.query = queryString.parse(location.search)
   const { query, pathname } = location;
-
   const { list, pagination } = application;
-
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -54,7 +52,6 @@ const Application = ({
   return (
     <Page inner>
       <Filter {...filterProps}/>
-
       <List {...listProps}/>
     </Page>
   )
