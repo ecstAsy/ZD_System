@@ -20,10 +20,6 @@ const Routers = function ({ history, app }) {
       component: () => import('./routes/yewuyuan/dashboard/'),
     },
   {
-    path: '/application',//名单申请
-      models: () => [import('./models/yewuyuan/application')],
-    component: () => import('./routes/yewuyuan/application/'),
-  },{
       path: '/user',//名单查询
       models: () => [import('./models/yewuyuan/user')],
       component: () => import('./routes/yewuyuan/user/'),
@@ -71,6 +67,10 @@ const Routers = function ({ history, app }) {
       path: '/speechcraft',//话术管理
       models: () => [import('./models/teamLeader/speechcraft')],
       component: () => import('./routes/teamLeader/speechcraft/'),
+    },{
+      path: '/application',//名单申请
+      models: () => [import('./models/issuecenter/application')],
+      component: () => import('./routes/issuecenter/application/'),
     }
   ]
 

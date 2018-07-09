@@ -246,7 +246,7 @@ const Filter = ({
           <Col {...ColProps3}>
             <FormItem label="备注"  {...formItemLayout3}>
               {getFieldDecorator('moreInfo', {
-              })(<TextArea rows={4} />)}
+              })(<TextArea autosize={{ minRows: 4, maxRows: 4 }} />)}
             </FormItem>
           </Col>
         </Row>
