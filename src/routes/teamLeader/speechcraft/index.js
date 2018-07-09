@@ -61,7 +61,6 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
         <AddSpeechCraftList {...addSpeechCraftListProps}/>
       </div>
       { editSpeechCraftModalVisible &&  <EditSpeechCraftModal {...EditSpeechCraftModalProps}/>}
-      {/*{  }*/}
     </Page>
   )
 }

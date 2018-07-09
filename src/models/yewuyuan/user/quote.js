@@ -19,6 +19,7 @@ export default modelExtend(pageModel, {
     underwritingModalVisible:false,//承保信息
     choosePurCarModalVisible:false, //选择新车购置价
     deductiblesModalVisible:false,//不计免赔险
+    insureInfoModalVisible:true,
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -168,7 +169,6 @@ export default modelExtend(pageModel, {
     },
 
     showModal (state, { payload }) {
-      console.log(payload.modalType)
       if(payload.modalType=='noteAtion'){
         return { ...state, noteModalVisible: true }
       }else if(payload.modalType=='giftAtion'){
@@ -183,16 +183,18 @@ export default modelExtend(pageModel, {
     },
 
     hideModal (state,{ payload }) {
-      if(payload.modalType=='noteAtion'){
+      if(payload.modalType==='noteAtion'){
         return { ...state, noteModalVisible: false }
-      }else if(payload.modalType=='giftAtion'){
+      }else if(payload.modalType==='giftAtion'){
         return { ...state, giftModalVisible: false }
-      }else if(payload.modalType=='underwriting'){
+      }else if(payload.modalType==='underwriting'){
         return { ...state, underwritingModalVisible: false }
-      }else if(payload.modalType=='choosePurCar'){
+      }else if(payload.modalType==='choosePurCar'){
         return { ...state, choosePurCarModalVisible: false }
-      }else if(payload.modalType=='deductibles'){
+      }else if(payload.modalType==='deductibles'){
         return { ...state, deductiblesModalVisible: false }
+      }else if(payload.modalType==='insureAtion') {
+        return { ...state, insureInfoModalVisible: false }
       }
     },
 

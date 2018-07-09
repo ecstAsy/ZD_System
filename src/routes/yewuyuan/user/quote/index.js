@@ -16,11 +16,14 @@ import GiftModal from './giftModal';
 import UnderWritingMadal from './underwritingModal';
 import ChoosePurCarModal from './choosePurCarModel';
 import DeductiblesModal from './deductiblesModal';
+import InsureInfoModal from './insureInfoModal';
 const Quote = ({
   dispatch, quote, loading,
                      }) => {
   const {
-    choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData, underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData, strongInsuranceData, choseinsuranceData
+    choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData,
+    underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData,
+    strongInsuranceData, choseinsuranceData, insureInfoModalVisible
   } = quote;
 
   const UserInfoProps={
@@ -264,6 +267,23 @@ const Quote = ({
     },
   };
 
+  const InsureInfoModalProps = {
+    visible: insureInfoModalVisible,
+    maskClosable: false,
+    title:'投保单',
+    width:'50%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel () {
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'insureAtion',
+        },
+      })
+    },
+  }
+
   return (
       <Page>
         <Form >
@@ -278,6 +298,7 @@ const Quote = ({
         {underwritingModalVisible && <UnderWritingMadal {...UnderwritingProps} />}
         {choosePurCarModalVisible && <ChoosePurCarModal {...choosePurCarProps} />}
         {deductiblesModalVisible && <DeductiblesModal {...DeductiblesProps}/>}
+        {insureInfoModalVisible && <InsureInfoModal {...InsureInfoModalProps}/>}
         <div className="buttonBox">
           <Button type="primary">保存</Button>
           <Button type="primary">跟踪提交</Button>
