@@ -34,6 +34,7 @@ module.exports = {
     purchase: 'api_1/purchases/:id',
     complaint:`${APIV1}/complaint`,
     allocate:`${APIV1}/allocate`,
-    rebateapply:`${APIV1}/rebateapply`
+    rebateapply:`${APIV1}/rebateapply`,
+    application:`${APIV1}/application`
   },
 }
