@@ -71,6 +71,10 @@ const Routers = function ({ history, app }) {
       path: '/application',//名单申请
       models: () => [import('./models/issuecenter/application')],
       component: () => import('./routes/issuecenter/application/'),
+    },{
+      path: '/batches',//批单
+      models: () => [import('./models/issuecenter/batches')],
+      component: () => import('./routes/issuecenter/batches/'),
     }
   ]
 

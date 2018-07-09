@@ -81,6 +81,12 @@ let database = [
     name: '话术管理',
     icon: 'phone',
     route: '/speechcraft',
+  },{
+    id: '12',
+    bpid: '1',
+    name: '批单',
+    icon: 'phone',
+    route: '/batches',
   }
 ];
 
