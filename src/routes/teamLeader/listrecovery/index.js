@@ -87,7 +87,8 @@ const ListRecovery = ({location, dispatch, listrecovery, loading,
         }
       })
     },
-  }
+  };
+
   return (
     <Page inner className={classnames(styles.ListRecovery)}>
       <div className='recoveryInfoList'>
