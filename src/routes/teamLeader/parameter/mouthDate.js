@@ -7,7 +7,7 @@ import { Row, Col, Form,  } from 'antd'
 import { DropOption } from 'components'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames';
-import styles from './List.less'
+import styles from './List.less';
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -32,12 +32,12 @@ const Mouth = ({...mouthProps, mouthDate, currentItem, choseDesId,
 }) => {
   return (
     <div className={classnames(styles.MouthDate)}>
-
-       <FormItem {...formItemLayout}>
+    <Row>
+      <FormItem {...formItemLayout}>
       {getFieldDecorator('mouth',{})(
-        <div >
-        <div className="templateItem" >
-          <span style={{color:'#8f9090'}}>请选择月份：</span>
+        <div>
+        <div className="templateItem">
+          <span>请选择月份：</span>
       {
         mouthDate.map((item,i)=>{
           return(
@@ -46,9 +46,11 @@ const Mouth = ({...mouthProps, mouthDate, currentItem, choseDesId,
         })
       }
         </div>
+          <div>{currentItem.detail}</div>
         </div>
         )}
         </FormItem>
+    </Row>
   </div>
   )
 }

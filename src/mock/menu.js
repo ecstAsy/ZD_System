@@ -75,6 +75,12 @@ let database = [
     name: '名单回收',
     icon: 'user',
     route: '/listrecovery',
+  },{
+    id: '11',
+    bpid: '1',
+    name: '话术管理',
+    icon: 'phone',
+    route: '/speechcraft',
   }
 ];
 
