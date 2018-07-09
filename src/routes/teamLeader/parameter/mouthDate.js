@@ -3,11 +3,12 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Form,  } from 'antd'
+import { Row, Col, Form } from 'antd'
 import { DropOption } from 'components'
 import { Link } from 'react-router-dom'
 import classnames from 'classnames';
-import styles from './List.less';
+import  List from './List'
+import styles from './List.less'
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -37,7 +38,7 @@ const Mouth = ({...mouthProps, mouthDate, currentItem, choseDesId,
       {getFieldDecorator('mouth',{})(
         <div>
         <div className="templateItem">
-          <span>请选择月份：</span>
+          <span style={{color:'#8f9090'}}>请选择月份：</span>
       {
         mouthDate.map((item,i)=>{
           return(

@@ -101,13 +101,6 @@ const Filter = ({
     handleSubmit()
   };
 
-  const handleChange = (key, values) => {
-    let fields = getFieldsValue()
-    fields[key] = values
-    fields = handleFields(fields)
-    onFilterChange(fields)
-  };
-
   const { name } = filter
     let initialCreateTime = []
     if (filter.createTime && filter.createTime[0]) {
