@@ -19,7 +19,7 @@ const formItemLayout = {
   style:{
     marginBottom: 0,
     borderRadius:'20px',
-    fontSize:'15'
+    fontSize:'15',
   }
 };
 const List = ({...listProps, ListData, isEdit,
@@ -38,7 +38,7 @@ const List = ({...listProps, ListData, isEdit,
                       <div >
                         {
                           !isEdit? <div className="useInfoRow"><p>{list.name}</p><p>{list.num}</p></div>:
-                            <FormItem  {...formItemLayout} label={list.name}>
+                            <FormItem  {...formItemLayout} label={list.name} >
                               {getFieldDecorator(`${list.name}`,{
                                 initialValue:`${list.num}`
                               })(<Input />)}

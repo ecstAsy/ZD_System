@@ -8,25 +8,12 @@ let successPolicyData = Mock.mock({
     {
       id: '@id',
       name: '@cname',
-      nickName: '@last',
       plateNumber: /^E\d{5}$/,
       phone: /^1[34578]\d{9}$/,
-      'age|11-99': 1,
       province:'苏',
-      address: '@county(true)',
       isMale: '@boolean',
-      email: '@email',
-      preInsuranceCompany:/^\d{5}$/,
-      firstRegisterDate:'@date("yyyyMMdd")',
-      recordDate:'@date("yyyy-MM-dd")',
-      handleDate:'@date("yyyyMMdd")',
-      modifyDate: /^\d{3}$/,
-      yuyueDate: '@datetime("yyyyMMddHHmmss")',
-      isRenewal:'2',
-      viFlag:1,
-      avatar () {
-        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
-      },
+      recordDate:'@date("yyyy-MM-dd HH:mm:ss")',
+      'modifyDate|0-1000': 1,
     },
   ],
 })
