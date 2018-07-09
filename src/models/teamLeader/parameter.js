@@ -90,6 +90,7 @@ export default modelExtend(pageModel, {
       }
     },
 
+
     * update ({ payload }, { select, call, put }) {
       const id = yield select(({ user }) => user.currentItem.id)
       const newUser = { ...payload, id }
