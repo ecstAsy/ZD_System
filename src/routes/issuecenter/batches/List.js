@@ -66,7 +66,7 @@ const List = ({...listProps,
   return (
     <Table
       {...listProps}
-      // className={classnames(styles.table)}
+       className={classnames(styles.table)}
       columns={columns}
       simple
       rowKey={record => record.id}
