@@ -148,7 +148,7 @@ const PolicyRegistration = ({
 }
 
 PolicyRegistration.propTypes = {
-  application: PropTypes.object,
+  policyRegistration: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
