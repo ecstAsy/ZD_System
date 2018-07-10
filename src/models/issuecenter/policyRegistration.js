@@ -14,7 +14,9 @@ export default modelExtend(pageModel, {
   namespace: 'policyRegistration',
 
   state: {
-    currentItem:''
+    currentItem:'',
+    PolicyActionMoneyModalVisible:false,
+    PolicyActionTimeModalVisible:false
   },
 
   subscriptions: {
@@ -34,7 +36,6 @@ export default modelExtend(pageModel, {
   effects: {
     * query ({ payload = {} }, { call, put }) {
       const data = yield call(query, payload);
-      console.log(data)
       if (data) {
         yield put({
           type: 'querySuccess',
@@ -54,15 +55,16 @@ export default modelExtend(pageModel, {
   reducers: {
 
     showModal (state, { payload }) {
-      if(payload.status==='待审核'){
-        return { ...state,  AuditModalVisible: true ,currentItem:payload }
-      }else if (payload.status==='审核通过'){
-        return { ...state,  RegisterModalVisible: true ,currentItem:payload}
+      console.log(payload)
+      if(payload.policyAction==='修改登记金额'){
+        return { ...state,  PolicyActionMoneyModalVisible: true, currentItem:payload }
+      }else if(payload.policyAction==='修改缴费日期'||payload.policyAction==='登记缴费日期'){
+        return { ...state,  PolicyActionTimeModalVisible: true, currentItem:payload }
       }
     },
 
     hideModal (state,{payload}) {
-      return { ...state, RegisterModalVisible: false,AuditModalVisible:false }
+      return { ...state, PolicyActionMoneyModalVisible: false, PolicyActionTimeModalVisible:false }
     },
 
   },

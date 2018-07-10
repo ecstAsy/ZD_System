@@ -6,7 +6,7 @@ const { apiPrefix } = config;
 let applicationListData = Mock.mock({
   'data|80-100':[
     {
-      id:'@id',
+      'id|+1': 1,
       name:'@cname',
       'insuranceCompany|1' : ['人保/苏州/人保1','人保/常州/人保2','人保/无锡/人保3','人保/南京/人保4','人保/江阴/人保1'],
       carPlate : /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/,
@@ -17,13 +17,14 @@ let applicationListData = Mock.mock({
       'salesman|1':['业务员1','业务员2','业务员3','业务员4'],
       'registrant|1':['出单登记','财务登记'],
       'status|1':['退保','待审核','审核通过'],
+      'policyAction|1':['修改缴费日期','登记缴费日期','修改登记金额'],
       'internalCar|1':['是','否'],
-      'costNum|1':['2.00','3.00','6.00','0.50','0.46',''],
-      'commercialNum|2000-5000.1-10' : 1,
-      'compulsoryNum|2000-5000.1-10' : 1,
+      costNum:0,
+      'commercialNum|2000-5000.2' : 1,
+      'compulsoryNum|2000-5000.2' : 1,
       'registerStatus|1':['登记完整','-'],
-      'insuranceNum|900-5000.1-2' : 1,
-      'vehicleVesselTax|900-5000.1-2':1,
+      'insuranceNum|900-5000.2' : 1,
+      'vehicleVesselTax|100-1000.2':1,
       batchInfo:'京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领，京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领',
       remark:'京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领,京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领'
     }
