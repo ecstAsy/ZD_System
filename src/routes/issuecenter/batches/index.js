@@ -4,6 +4,7 @@ import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
 import queryString from 'query-string';
+import Filter from './Filter';
 import List from './List';
 import RegisterModal from './registerModal';
 import AuditModal from './auditModal';
@@ -73,11 +74,24 @@ const Batches = ({
     },
   };
 
+  const filterProps = {
+    filter: {
+      ...query,
+    },
+    onFilterChange (value) {
+      handleRefresh({
+        ...value,
+        page: 1,
+      })
+    },
+  };
+
 
   return (
     <Page inner>
 
       <List {...listProps}/>
+      <Filter {...filterProps}/>
       {RegisterModalVisible && <RegisterModal {...registerModalProps}/>}
       {AuditModalVisible  && <AuditModal {...auditModalProps}/>}
     </Page>
