@@ -113,8 +113,8 @@ const PolicyRegistration = ({
     }
   }
   return (
-    <Page inner>
-      <div>
+    <Page >
+      <div className={classnames(styles.wrap)}>
           <Row gutter={24}>
             <Col {...ColPropsLong}>
               <FormItem label="登记时间"  {...formItemLayoutLong}>
@@ -129,15 +129,16 @@ const PolicyRegistration = ({
           </Row>
           <Row gutter={24}>
             <Col >
-                <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,marginBottom:'15px'}}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap'}}>
                   <Button type="primary" className="margin-right" >下载出单表</Button>
                 </div>
             </Col>
           </Row>
       </div>
-      <Filter {...filterProps}/>
-    <Page>
+
+
       <div className={classnames(styles.wrap)}>
+        <Filter {...filterProps}/>
         <List {...listProps}/>
       </div>
       {PolicyActionMoneyModalVisible && <PolicyMoneyActionModal {...policyActionMoneyModalProps}/>}
