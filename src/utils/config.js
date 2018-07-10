@@ -36,6 +36,7 @@ module.exports = {
     allocate:`${APIV1}/allocate`,
     rebateapply:`${APIV1}/rebateapply`,
     application:`${APIV1}/application`,
-    batches:`${APIV1}/batches`
+    batches:`${APIV1}/batches`,
+    generalData:`${APIV1}/generalData`
   },
 }
