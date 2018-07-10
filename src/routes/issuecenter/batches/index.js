@@ -4,11 +4,11 @@ import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
 import queryString from 'query-string';
+import Filter from './Filter';
 
 
-
-const Barches = ({
-     location, dispatch, barches, loading,
+const Batches = ({
+     location, dispatch, batches, loading,
    }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
@@ -23,20 +23,31 @@ const Barches = ({
     }))
   };
 
+  const filterProps = {
+    filter: {
+      ...query,
+    },
+    onFilterChange (value) {
+      handleRefresh({
+        ...value,
+        page: 1,
+      })
+    },
+  };
 
 
   return (
     <Page inner>
-
+      <Filter {...filterProps}/>
       sss
     </Page>
   )
 }
-Barches.propTypes = {
+Batches.propTypes = {
   application: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
 
-export default connect(({ barches, loading }) => ({ barches, loading }))(Barches)
+export default connect(({ batches, loading }) => ({ batches, loading }))(Batches)
