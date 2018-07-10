@@ -89,9 +89,8 @@ const Batches = ({
 
   return (
     <Page inner>
-
-      <List {...listProps}/>
       <Filter {...filterProps}/>
+      <List {...listProps}/>
       {RegisterModalVisible && <RegisterModal {...registerModalProps}/>}
       {AuditModalVisible  && <AuditModal {...auditModalProps}/>}
     </Page>

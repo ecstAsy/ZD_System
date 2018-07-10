@@ -66,7 +66,7 @@ const Filter = ({
     setFieldsValue,
   },
 }) => {
-  const { carPlate }=filter;
+  const { carPlate, status, team, processor, applyTime, }=filter;
 
   const handleFields = (fields) => {
     const { applyTime } = fields;
@@ -109,7 +109,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status')(<Select
+              {getFieldDecorator('status', { initialValue: status})(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -122,7 +122,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="团队"  {...formItemLayout}>
-              {getFieldDecorator('team')(<Select
+              {getFieldDecorator('team', {initialValue: team})(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -135,7 +135,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor')(<Select
+              {getFieldDecorator('processor', {initialValue: processor})(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -147,7 +147,7 @@ const Filter = ({
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="申请日期"  {...formItemLayoutLong}>
-              {getFieldDecorator('applyTime')(<RangePicker  style={{ width: '90%' }} />)}
+              {getFieldDecorator('applyTime', {initialValue: applyTime})(<RangePicker  style={{ width: '90%' }} />)}
             </FormItem>
           </Col>
         </Row>
