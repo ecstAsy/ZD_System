@@ -67,7 +67,7 @@ const Filter = ({
     setFieldsValue,
   },
 }) => {
-  const { carPlate }=filter;
+  const { carPlate, costNum, status, team, processor, applyTime, insuranceCompany, }=filter;
 
   const handleFields = (fields) => {
     const { applyTime } = fields;
@@ -105,25 +105,25 @@ const Filter = ({
       value: 'suzhou',
       label: '苏州',
       children: [{
-        value: 'nanjing',
-        label: '南京',
+        value: 'xinqu',
+        label: '新区',
       }],
     }],
   }, {
     value: 'taibao',
     label: '太保',
     children: [{
-      value: 'suzhou',
-      label: '苏州',
+      value: 'nanjing',
+      label: '南京',
       children: [{
-        value: 'nanjing',
-        label: '南京',
+        value: 'xuanwu',
+        label: '玄武',
       }],
     }],
   }];
 
   return (
-    <div>
+    <div className={styles.searchBox}>
       <form layout="horizontal">
         <Row gutter={24}>
           <Col {...ColProps}>
@@ -133,7 +133,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status')(<Select
+              {getFieldDecorator('status', { initialValue: status })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -146,7 +146,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="团队"  {...formItemLayout}>
-              {getFieldDecorator('team')(<Select
+              {getFieldDecorator('team', { initialValue: team })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -159,7 +159,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor')(<Select
+              {getFieldDecorator('processor', { initialValue: processor })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -171,14 +171,14 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="差额" {...formItemLayout}>
-              {getFieldDecorator('amountDifference ', { initialValue: carPlate })
+              {getFieldDecorator('costNum ', { initialValue: costNum })
               (
                 <div>
                   <InputGroup>
                     <Col span={11}>
                       <Input  />
                     </Col>
-                    <Col span={1}>-</Col>
+                    <Col span={1}><p className="ant-form-split">-</p></Col>
                     <Col span={11}>
                       <Input  />
                     </Col>
@@ -189,12 +189,14 @@ const Filter = ({
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="出单日期"  {...formItemLayoutLong}>
-              {getFieldDecorator('applyTime')(<RangePicker  style={{ width: '70%' }} />)}
+              {getFieldDecorator('applyTime', { initialValue: applyTime })
+              (<RangePicker  style={{ width: '70%' }} />)}
             </FormItem>
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="保险公司"  {...formItemLayoutLong}>
-              {getFieldDecorator('insuranceCompany')(<Cascader placeholder="请选择" options={residences} />)}
+              {getFieldDecorator('insuranceCompany', { initialValue: insuranceCompany })
+              (<Cascader placeholder="请选择" options={residences} />)}
             </FormItem>
           </Col>
         </Row>

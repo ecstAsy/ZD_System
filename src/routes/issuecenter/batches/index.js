@@ -51,17 +51,16 @@ const Batches = ({
 
   return (
     <Page inner>
-
-      <List {...listProps}/>
       <Filter {...filterProps}/>
+      <List {...listProps}/>
     </Page>
   )
 }
-Barches.propTypes = {
+Batches.propTypes = {
   application: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
 
-export default connect(({ barches, loading }) => ({ barches, loading }))(Barches)
+export default connect(({ batches, loading }) => ({ batches, loading }))(Batches)
