@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd'
 import city from '../../utils/city'
 
-const FormItem = Form.Item
-
+const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -12,7 +11,7 @@ const formItemLayout = {
   wrapperCol: {
     span: 14,
   },
-}
+};
 
 const modal = ({
   item = {},
@@ -35,12 +34,12 @@ const modal = ({
       }
       onOk(data)
     })
-  }
+  };
 
   const modalOpts = {
     ...modalProps,
     onOk: handleOk,
-  }
+  };
 
   return (
     <Modal {...modalOpts}>

@@ -155,6 +155,9 @@
     .ant-form-item{
       margin-bottom: 0;
     }
+    .anticon-cross:before{
+      color: red;
+    }
   }
 }
 :global{
@@ -259,5 +262,48 @@
     height: 42px;
     padding: 10px 5px;
     background: #f0f2f5;
+  }
+}
+.InsureInfoModal{
+  :global{
+    table{
+      width: 100%;
+      font-size:12px;
+      border-radius:5px;
+      background:#f5fbff;
+      :global{
+        tr{
+          height: 32px;
+        }
+        tr>th,tr>td{
+          text-indent: 12px;
+        }
+        td{
+          color: #1B56A5;
+        }
+         tr >th> span{
+           display: inline-block;
+           width: 33.33%;
+           text-align: center;
+         }
+        tr > td > p{
+          width: 100%;
+          margin: 5px 0;
+        }
+        tr > td > p >span{
+          display: inline-block;
+          width: 33.33%;
+          text-align: center;
+
+        }
+        .td_span{
+          color: #333;
+        }
+        .td_insurance{
+          display: inline-block;
+          margin-left: 5px;
+        }
+      }
+    }
   }
 }

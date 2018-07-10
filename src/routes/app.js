@@ -15,11 +15,12 @@ import '../themes/index.less'
 import './app.less'
 
 
-const { Content, Footer, Sider } = Layout
-const { Header, Bread, styles ,UseInfoModal,SpeechcraftModal,EditPwdModal,QuickSearchModal,Appointment,Calendar,Message} = MyLayout
-const { prefix, openPages } = config
+const { Content, Footer, Sider } = Layout;
+const { Header, Bread, styles ,UseInfoModal, SpeechcraftModal, EditPwdModal, QuickSearchModal, Appointment,
+        Calendar, Message } = MyLayout;
+const { prefix, openPages } = config;
 
-let lastHref
+let lastHref;
 
 const App = ({
   children, dispatch, app, loading, location,
@@ -27,19 +28,19 @@ const App = ({
   const {
     user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions,userInfoModalVisible,speechcraftModalVisible,
     editPwdModalVisible,QuickSearchModalVisible,choseItem,currentItem,searchTxt,defaultActiveKey
-  } = app
-  let { pathname } = location
-  pathname = pathname.startsWith('/') ? pathname : `/${pathname}`
-  const { iconFontJS, iconFontCSS, logo } = config
-  const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname))
-  const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false
-  const { href } = window.location
+  } = app;
+  let { pathname } = location;
+  pathname = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const { iconFontJS, iconFontCSS, logo } = config;
+  const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname));
+  const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
+  const { href } = window.location;
 
   if (lastHref !== href) {
-    NProgress.start()
+    NProgress.start();
     if (!loading.global) {
-      NProgress.done()
-      lastHref = href
+      NProgress.done();
+      lastHref = href;
     }
   }
 
@@ -109,7 +110,6 @@ const App = ({
   }
 
   const modalProps = {
-    // item: modalType === 'create' ? {} : currentItem,
     visible: userInfoModalVisible,
     maskClosable: false,
     // confirmLoading: loading.effects[`user/${modalType}`],
@@ -141,7 +141,6 @@ const App = ({
   }
 
   const speechcraftModalProps={
-    // item: modalType === 'create' ? {} : currentItem,
     visible: speechcraftModalVisible,
     maskClosable: false,
     // confirmLoading: loading.effects[`user/${modalType}`],
@@ -215,7 +214,6 @@ const App = ({
       {children}
     </div>)
   }
-  console.log(user)
   return (
 
     <div>
@@ -244,30 +242,17 @@ const App = ({
           {editPwdModalVisible && <EditPwdModal {...editPwdModalProps}  />}
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
-            <div style={{width:permissions.role=='admin'?'80%':'100%',float:'left'}}>
+            <div style={{width:permissions.role =='admin'?'80%':'100%',float:'left'}}>
               <Bread {...breadProps} />
               {hasPermission ? children : <Error />}
             </div>
             {
-
               permissions.role=='admin'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
                 <Appointment {...AppointmentProps}/>
                 <Calendar  />
                 <Message />
               </div>:null
             }
-
-
-
-            {/*<div style={{width:'80%',float:'left'}}>*/}
-              {/*<Bread {...breadProps} />*/}
-              {/*{hasPermission ? children : <Error />}*/}
-            {/*</div>*/}
-            {/*<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>*/}
-              {/*<Appointment {...AppointmentProps}/>*/}
-              {/*<Calendar  />*/}
-              {/*<Message />*/}
-            {/*</div>*/}
           </Content>
           <Footer >
             {config.footerText}

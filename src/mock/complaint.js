@@ -1,7 +1,9 @@
 import qs from 'qs';
 import Mock from 'mockjs';
 import config from '../utils/config';
+
 const { apiPrefix } = config;
+
 let complaintsListData = Mock.mock({
   'data|80-100':[
     {
@@ -19,34 +21,32 @@ let complaintsListData = Mock.mock({
     }
   ]
 })
+
 let database = complaintsListData.data;
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {
-    return null
+    return null;
   }
-  let data
-
+  let data;
   for (let item of array) {
     if (item[keyAlias] === key) {
-      data = item
-      break
+      data = item;
+      break;
     }
   }
-
   if (data) {
-    return data
+    return data;
   }
-  return null
+  return null;
 }
 
 const NOTFOUND = {
   message: 'Not Found',
   documentation_url: 'http://localhost:8000/request',
-}
+};
 
 module.exports = {
-
   [`GET ${apiPrefix}/complaint`] (req, res) {
     const { query } = req;
     let { pageSize, page, ...other } = query;

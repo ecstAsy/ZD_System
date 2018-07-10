@@ -53,7 +53,7 @@ const ColProps = {
     marginRight:10
   },
 };
-const  ColProps2={
+const ColProps2={
   xs: 24,
   sm: 14,
   style: {
@@ -202,7 +202,7 @@ const Filter = ({
             </FormItem>
           </Col>
           <Col {...ColProps2}>
-            <FormItem label="联系地址"  {...formItemLayout2}>
+            <FormItem label="联系地址" {...formItemLayout2}>
               {getFieldDecorator('userAddress',{})(<Input />)}
             </FormItem>
           </Col>
@@ -246,7 +246,7 @@ const Filter = ({
           <Col {...ColProps3}>
             <FormItem label="备注"  {...formItemLayout3}>
               {getFieldDecorator('moreInfo', {
-              })(<TextArea rows={4} />)}
+              })(<TextArea autosize={{ minRows: 4, maxRows: 4 }} />)}
             </FormItem>
           </Col>
         </Row>

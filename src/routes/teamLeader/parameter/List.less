@@ -1,26 +1,47 @@
-.offerBoxb{
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 50px;
-}
-.leftB{
-  flex:1;
-}
-.rightB{
-  flex:1;
-}
-.ulList2 {
-  color: #929494;
-}
-.ulForm {
-  font-weight: bold;
-}
-
-.header{
-  margin: 0px 0 10px;
+.MouthDate {
+  :global {
+    .ant-row{
+      margin: 0 40px;
+    }
+    .templateItem{
+      color: #000;
+      line-height: 24px;
+      margin-bottom: 10px;
+    }
+    .templateItem span{
+      font-size: 15px;
+      margin: 8px 20px;
+      height: 10px;
+      padding: 0px;
+    }
+    .templateItem span.active{
+      color: #0082fe;
+    }
+  }
 }
 
 :global{
+  .page{
+    margin-Bottom: 10px;
+    text-Align: right;
+    font-Size: 13px;
+  }
+  .anniu{
+    margin-top: 50px;
+    text-Align: left;
+    font-Size: 13px;
+  }
+  .Tabs{
+    flex-direction: row;
+    display: flex;
+    line-height: 30px;
+  }
+  .biaoti{
+    text-align: right;
+    width: 150px;
+    margin-left:10px;
+    font-Size:15px;
+  }
   .ant-modal-footer{
     text-align: center!important;
   }
@@ -28,9 +49,11 @@
     flex-direction: row;
     display: flex;
     line-height: 30px;
+    margin-left: 10px;
     & >p{
       display: block;
       margin-bottom: 0;
+      margin-left: 8px;
       font-size: 15px;
     }
     & >p:nth-child(1),p:nth-child(3),p:nth-child(5),p:nth-child(7){
@@ -42,108 +65,9 @@
       flex:2;
       color: #000;
     }
-    & >div:nth-child(1){
-      flex:1.6;
-      text-align: right;
-      color: #8f9090;
-      font-size: 15px;
-    }
-    & >div:nth-child(2){
-      flex:7.6;
-
-    }
-
-    .addresses{
-      display: block;
-      margin-bottom: 0;
-      font-size: 15px;
-      color: #000;
-    }
-
-    .remarks{
-      margin-top: 80px;
-    }
-    .remarks .line{
-      height: 2px;
-      border-top: 2px #ddd dashed;
-      & >.mokuai:nth-child(2n) p.date{
-        position: absolute;
-        top:-40px;
-      }
-    }
-    .remarks .line .mokuai{
-      display: block;
-      float: left;
-      width: 90px;
-      border-top: 2px #ddd solid;
-      margin-top: -2px;
-      position: relative;
-      height: 30px;
-    }
-    .remarks .line .mokuai:nth-last-child(2){
-      border-top: 2px #ddd dashed;
-    }
-    .remarks .line .mokuai:hover .remarkShow{
-      display: block;
-    }
-    .remarks .line .mokuai:hover .oridel{
-      border: 3px #ffa800 solid;
-    }
-    .remarks .line .mokuai span.oridel{
-      display: block;
-      width: 12px;
-      height: 12px;
-      border: 3px #8c9eff solid;
-      border-radius: 50%;
-      background: #fff;
-      margin-top: -7px;
-    }
-    .remarks .line .mokuai .remarkShow{
-      width: 140px;
-      border-radius: 5px;
-      border:1px #ddd solid;
-      line-height: 20px;
-      position: absolute;
-      top:15px;
-      left:0;
-      display: none;
-      box-shadow: 2px 3px 5px #eee;
-      background: #fff;
-      padding: 5px;
-      z-index: 99;
-      & >p{
-        text-align: right;
-        color: #a1a2a2;
-        margin-bottom: 0;
-        & >span{
-          cursor: pointer;
-        }
-        & >span:hover{
-          color: #0082fe;
-        }
-      }
-    }
-    .remarks .line .mokuai p.date{
-      margin-left: -20px;
-      color: #a0a0a1;
-    }
-    .remarks .line .mokuai p.date.addRemark{
-      position: absolute;
-      top:-40px;
-      left:12px;
-      font-size: 15px;
-      color: #0082fe;
-      cursor: pointer;
-    }
-
-  }
-  .textarerRemark{
-    width: 100%;
-    border:none;
-    background: #f7f8f8;
-    padding: 10px;
   }
   .listInfoRow {
+    text-align: left;
     flex-direction: row;
     display: flex;
     line-height: 30px;
@@ -164,5 +88,26 @@
       font-size: 15px;
     }
   }
-
+  .card-container > .ant-tabs-card > .ant-tabs-content {
+    height: 100px;
+    margin-top: -16px;
+  }
+  .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+    background: #fff;
+    padding: 15px 15px 0 0;
+  }
+  .card-container > .ant-tabs-card > .ant-tabs-bar {
+    border-color: #fff;
+  }
+  .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    border-color: transparent;
+    background: transparent;
+    width: 68px;
+    margin-left: 30px;
+  }
+  .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+    border-color: #fff;
+    background: #fff;
+  }
 }
+

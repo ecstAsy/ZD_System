@@ -16,14 +16,16 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem: {},
-    modalVisible: false,  //报价弹窗
-    sendModalVisible : false ,//派送弹窗
-    isMore:false,
-    visibleRemark:false,  //新增备注
     remarkId:'',
     modalType: 'create',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
+    ListData : [{name:'周丹:',num:'10'},{name:'周0丹:',num:'10'},
+      {name:'周1丹:',num:'10'},{name:'周2丹:',num:'10'},{name:'周3丹:',num:'10'},
+      {name:'周4丹:',num:'10'}],
+    mouthDate : [{id:1,date:'2018-05'},{id:2,date:'2018-06'},{id:3,date:'2018-07'},
+      {id:4,date:'2018-08'},{id:5,date:'2018-09'}],
+    isEdit:false
   },
 
   subscriptions: {
@@ -88,6 +90,7 @@ export default modelExtend(pageModel, {
       }
     },
 
+
     * update ({ payload }, { select, call, put }) {
       const id = yield select(({ user }) => user.currentItem.id)
       const newUser = { ...payload, id }
@@ -106,16 +109,22 @@ export default modelExtend(pageModel, {
       if(payload.modalType=='quotation'){
         return { ...state, ...payload, modalVisible: true }
       }else if(payload.modalType=='addRemark'){
-        console.log(payload.id)
         return { ...state, ...payload, visibleRemark: true,remarkId: payload.id}
       }else {
         return { ...state, ...payload, sendModalVisible: true }
       }
     },
-    isShowMoreFunc( state, { payload }){
-      console.log(payload)
-      return { ...state,  isMore: !payload }
+    isEditFunc( state ){
+      return { ...state,  isEdit: ! state.isEdit }
     },
-
+    handleCancelFunc( state ){
+      return { ...state,  handleCancel: ! state.isEdit }
+    },
+    choseDesId(state, { payload }){
+      console.log(payload)
+      return{
+        ...state,currentItem:payload
+      }
+    },
   },
 })

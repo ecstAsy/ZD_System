@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 import { Form, Row, Col, Select, Cascader, Checkbox ,Input ,InputNumber,Button ,Icon} from 'antd';
-import Title from './title';
+import { Title } from 'components';
 import styles from './index.less';
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -28,7 +28,7 @@ const formItemLayout = {
     fontSize:'14px'
   }
 };
-const formItemLayout2 = {
+const formItemLayout_b = {
   labelCol: {
     span:9,
   },
@@ -41,7 +41,7 @@ const formItemLayout2 = {
     fontSize:'14px'
   }
 };
-const formItemLayou3 = {
+const formItemLayout_c = {
   labelCol: {
     span:5,
   },
@@ -54,7 +54,7 @@ const formItemLayou3 = {
     fontSize:'14px'
   }
 };
-const formItemLayou4 = {
+const formItemLayout_d = {
   labelCol: {
     span:5,
   },
@@ -67,7 +67,7 @@ const formItemLayou4 = {
     fontSize:'14px'
   }
 };
-const ColProps2 = {
+const ColProps_b = {
   xs: 24,
   sm: 11,
   style: {
@@ -75,7 +75,7 @@ const ColProps2 = {
     marginRight:10
   },
 };
-const ColProps3 = {
+const ColProps_c = {
   xs: 24,
   sm: 1,
   style: {
@@ -168,7 +168,7 @@ const CarInsurance = ({
                 </Select> )}
             </FormItem>
           </Col>
-          <Col {...ColProps2}>
+          <Col {...ColProps_b}>
             <FormItem {...formItemLayout} label="区域" >
               {getFieldDecorator('insuranceAddress',{})(
                 <div>
@@ -186,22 +186,22 @@ const CarInsurance = ({
 
         <Row className="shangyexian show" >
           <Icon onClick={()=>isShowshangyexian(1)} className="shouqiSy" type="double-right" />
-          <Col {...ColProps3}>
-            <FormItem  {...formItemLayout2}>
+          <Col {...ColProps_c}>
+            <FormItem  {...formItemLayout_b}>
             </FormItem>
           </Col>
           <Col span={11}>
-            <FormItem label="商业险折扣" {...formItemLayout2}>
+            <FormItem label="商业险折扣" {...formItemLayout_b}>
               {getFieldDecorator('zhekou', {
               })(<InputNumber className="leftInput"  />)}
             </FormItem>
           </Col>
-          <Col {...ColProps3}>
-            <FormItem  {...formItemLayout2}>
+          <Col {...ColProps_c}>
+            <FormItem  {...formItemLayout_b}>
             </FormItem>
           </Col>
           <Col span={11}>
-            <FormItem label="风险保费" {...formItemLayout2}>
+            <FormItem label="风险保费" {...formItemLayout_b}>
               {getFieldDecorator('baofei', {
               })(<InputNumber className="leftInput" />)}
             </FormItem>
@@ -209,13 +209,13 @@ const CarInsurance = ({
           {insuranceData.map((item,key)=>{
             return (
               <div>
-                <Col {...ColProps3}>
-                  <FormItem  {...formItemLayout2}>
+                <Col {...ColProps_c}>
+                  <FormItem  {...formItemLayout_b}>
                     <Checkbox key={key} value={item.id} checked={item.checked} onClick={()=>checkedInsurance(item.id)} ></Checkbox>
                   </FormItem></Col>
                 {item.id==25002?(
                   <Col span={11}>
-                    <FormItem label={item.name} {...formItemLayout2}>
+                    <FormItem label={item.name} {...formItemLayout_b}>
                       <Select
                         showSearch
                         style={{ width: '35%',background:'none',marginRight:'10px'}}
@@ -231,7 +231,7 @@ const CarInsurance = ({
                 ):(
                   item.id==25005?(
                     <Col span={11}>
-                      <FormItem label={item.name} {...formItemLayout2}>
+                      <FormItem label={item.name} {...formItemLayout_b}>
                         <Select
                           showSearch
                           style={{ width: '35%',background:'none',marginRight:'10px'}}
@@ -246,7 +246,7 @@ const CarInsurance = ({
                     </Col>
                   ):(item.id==25008?(
                     <Col span={11}>
-                      <FormItem label={item.name} {...formItemLayout2}>
+                      <FormItem label={item.name} {...formItemLayout_b}>
                         <Select
                           showSearch
                           style={{ width: '35%',background:'none',marginRight:'10px'}}
@@ -261,11 +261,11 @@ const CarInsurance = ({
                     </Col>
                   ):(item.id==25010?
                       <Col span={11}>
-                        <FormItem label={item.name} {...formItemLayout2}>
+                        <FormItem label={item.name} {...formItemLayout_b}>
                           <InputNumber className="leftInput" disabled={item.coverageAblead}/>
                         </FormItem>
                       </Col>:(item.id==25011? <Col span={20}>
-                      <FormItem label={item.name} {...formItemLayou3}>
+                      <FormItem label={item.name} {...formItemLayout_c}>
                         <InputNumber className="leftInput" disabled={item.coverageAblead}/>
                         <span className="choseItem" onClick={deductiblesModal}>
                           {choseinsuranceData.length>0?choseinsuranceData.map((item,key)=>{
@@ -276,7 +276,7 @@ const CarInsurance = ({
                              </span>
                       </FormItem>
                     </Col>:<Col span={11}>
-                      <FormItem label={item.name} {...formItemLayout2}>
+                      <FormItem label={item.name} {...formItemLayout_b}>
                         <InputNumber className="leftInput" disabled={item.coverageAblead}/>
                         <InputNumber className="leftInput" disabled={item.discount_costAblead}  />
                       </FormItem>
@@ -296,12 +296,12 @@ const CarInsurance = ({
           {strongInsuranceData.map((item,key)=>{
             return (
               <div>
-                <Col {...ColProps3}>
-                  <FormItem  {...formItemLayout2}>
+                <Col {...ColProps_c}>
+                  <FormItem  {...formItemLayout_b}>
                     <Checkbox key={key} value={item.id} checked={item.checked} onClick={()=>checkedStrongInsurance(item.id)} ></Checkbox>
                   </FormItem></Col>
                 <Col span={11}>
-                  <FormItem label={item.name} {...formItemLayou4}>
+                  <FormItem label={item.name} {...formItemLayout_d}>
                     <InputNumber className="leftInput" disabled={item.coverageAblead}  />
                   </FormItem>
                 </Col>
@@ -310,8 +310,6 @@ const CarInsurance = ({
             )
           })}
         </Row>
-
-
       </div>
     )
 }

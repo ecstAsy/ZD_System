@@ -1,4 +1,4 @@
-src/**/*-test.js
+src/**/*-Edits.js
 src/public
 src/routes/chart/ECharts/theme
 src/routes/chart/highCharts/mapdata

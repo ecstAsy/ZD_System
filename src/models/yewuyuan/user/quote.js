@@ -11,7 +11,6 @@ const { prefix } = config
 
 export default modelExtend(pageModel, {
   namespace: 'quote',
-
   state: {
     currentItem: {},
     noteModalVisible: false,//发送短信弹窗
@@ -20,6 +19,7 @@ export default modelExtend(pageModel, {
     underwritingModalVisible:false,//承保信息
     choosePurCarModalVisible:false, //选择新车购置价
     deductiblesModalVisible:false,//不计免赔险
+    insureInfoModalVisible:true,
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -61,8 +61,6 @@ export default modelExtend(pageModel, {
       {id:'25004',name:'全车盗抢险不计免赔'},
       {id:'25005',name:'附加险不计免赔特约条款'},
     ]
-
-
   },
 
   subscriptions: {
@@ -171,7 +169,6 @@ export default modelExtend(pageModel, {
     },
 
     showModal (state, { payload }) {
-      console.log(payload.modalType)
       if(payload.modalType=='noteAtion'){
         return { ...state, noteModalVisible: true }
       }else if(payload.modalType=='giftAtion'){
@@ -184,37 +181,38 @@ export default modelExtend(pageModel, {
         return { ...state, deductiblesModalVisible: true }
       }
     },
+
+    hideModal (state,{ payload }) {
+      if(payload.modalType==='noteAtion'){
+        return { ...state, noteModalVisible: false }
+      }else if(payload.modalType==='giftAtion'){
+        return { ...state, giftModalVisible: false }
+      }else if(payload.modalType==='underwriting'){
+        return { ...state, underwritingModalVisible: false }
+      }else if(payload.modalType==='choosePurCar'){
+        return { ...state, choosePurCarModalVisible: false }
+      }else if(payload.modalType==='deductibles'){
+        return { ...state, deductiblesModalVisible: false }
+      }else if(payload.modalType==='insureAtion') {
+        return { ...state, insureInfoModalVisible: false }
+      }
+    },
+
     showModalRemark(state, { payload }) {
-      console.log(payload.id)
       return { ...state, ...payload, visibleRemark: true,remarkId:payload.id}
     },
+
     hideModalRemark(state, { payload }) {
       return { ...state, ...payload, visibleRemark: false }
     },
 
-    hideModal (state,{ payload }) {
-      if(payload.modalType=='noteAtion'){
-        return { ...state, noteModalVisible: false }
-      }else if(payload.modalType=='giftAtion'){
-        return { ...state, giftModalVisible: false }
-      }else if(payload.modalType=='underwriting'){
-        return { ...state, underwritingModalVisible: false }
-      }else if(payload.modalType=='choosePurCar'){
-        return { ...state, choosePurCarModalVisible: false }
-      }else if(payload.modalType=='deductibles'){
-        return { ...state, deductiblesModalVisible: false }
-      }
-    },
     choseDesId(state, { payload }){
-      console.log(payload)
-      return{
-        ...state,currentItem:payload
-      }
+      return{ ...state,currentItem:payload }
     },
     GiftUpdata(state,{payload}){
       if(payload.modalType=='cost'){
         state.GiftData.map(item=>{
-          if(item.id==payload.id){
+          if(item.id == payload.id){
             item.Num>0 && item.Num--
           }
         })

@@ -3,47 +3,59 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Table, Row, Col } from 'antd'
+import { Row, Col, Form, Input } from 'antd'
 import { DropOption } from 'components'
 import { Link } from 'react-router-dom'
 import styles from './List.less'
 
-const List = () => {
-  const ListData = [{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},{name:'周丹',num:'10'},]
+const FormItem = Form.Item;
+const formItemLayout = {
+  labelCol: {
+    span:10,
+  },
+  wrapperCol: {
+    span: 14,
+  },
+  style:{
+    marginBottom: 0,
+    borderRadius:'20px',
+    fontSize:'15',
+  }
+};
+const List = ({...listProps, ListData, isEdit,
+  form: {
+    getFieldDecorator,
+    getFieldsValue,
+    setFieldsValue }
+}) => {
   return (
     <Row>
-      <img src="/ghef_03.png"/><span style={{marginLeft:'5px',fontSize:'15px',fontweight:'bold'}}>月业绩目标（万）</span>
       <Row style={{marginBottom:15,marginTop:15}}>
-        <div className="listInfoRow">
-          <div>请选择月份：</div>
-          <p>2018-5</p>
-          <p>2018-6</p>
-          <p>当月</p>
-          <p>2018-8</p>
-          <p>2018-9</p>
-        </div>
-      </Row>
-
-      <Row style={{marginBottom:20,marginTop:15}}>
-        {
-          ListData.map((list,i)=>{
-            return (
-              <Col span={6}>
-                <div className="useInfoRow">
-                  <p>{list.name}</p><p>{list.num}</p>
-                </div>
-              </Col>
-            )
-          })
-        }
+              {
+                ListData.map((list,i)=>{
+                  return (
+                    <Col span={6}>
+                      <div >
+                        {
+                          !isEdit? <div className="useInfoRow"><p>{list.name}</p><p>{list.num}</p></div>:
+                            <FormItem  {...formItemLayout} label={list.name} >
+                              {getFieldDecorator(`${list.name}`,{
+                                initialValue:`${list.num}`
+                              })(<Input />)}
+                            </FormItem>
+                        }
+                      </div>
+                    </Col>
+                  )
+                })
+              }
       </Row>
     </Row>
   )
 }
 
 List.propTypes = {
-  onEditItem: PropTypes.func,
   location: PropTypes.object,
 }
 
-export default List
+export default Form.create() (List)

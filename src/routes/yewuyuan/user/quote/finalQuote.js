@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Radio, Input } from 'antd';
-import Title from './title';
+import { Title } from 'components';
 import styles from './index.less';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -100,7 +100,7 @@ const FinalQuote  = ({ sendNote, chooseGift,
   )
 }
 
-FinalQuote.propType = {
+FinalQuote.propTypes = {
   sendNote:PropTypes.func,
   chooseGift:PropTypes.func,
   form: PropTypes.object
