@@ -65,5 +65,62 @@
       }
     }
   }
-
+}
+.Modal{
+  color:#333;
+  :global{
+    .ant-modal-title{
+      text-align: center;
+      font-size: 18px;
+      color: #4D4D4D;
+    }
+    .ant-modal-footer{
+      text-align: center;
+      font-size: 14px;
+    }
+    .ant-modal-footer .ant-btn{
+      width: 120px;
+      height: 40px;
+    }
+    .ant-modal-footer .ant-btn:first-of-type(2){
+      margin-left: 48px;
+      color: #fff;
+    }
+    .ant-modal-footer .ant-btn:last-of-type{
+      margin-left: 48px;
+      color: #4D4D4D;
+    }
+    .contentTitle{
+      color: #939BA4;
+    }
+  }
+}
+.RegisterModal{
+  :global{
+    .title,.detail{
+      display: inline-block;
+      width: 50%;
+    }
+    .title{
+      text-align: right;
+      color:#939ba4;
+    }
+    .detail{
+      text-align: left;
+    }
+  }
+}
+.AuditModal{
+  :global{
+    .ant-col-24{
+      padding-left: 0px!important;
+    }
+    .ant-col-24:first-of-type{
+      margin-bottom: 15px;
+    }
+    .ant-form-item label{
+      font-size:14px;
+      color:rgba(147,155,164,1);
+    }
+  }
 }
