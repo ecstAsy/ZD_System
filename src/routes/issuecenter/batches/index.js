@@ -5,6 +5,7 @@ import { connect } from 'dva';
 import { Page } from 'components';
 import queryString from 'query-string';
 import Filter from './Filter';
+import List from './List';
 
 
 const Batches = ({
@@ -12,6 +13,7 @@ const Batches = ({
    }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
+  const { list, pagination } = batches;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -22,6 +24,17 @@ const Batches = ({
       }),
     }))
   };
+  const listProps = {
+    dataSource: list,
+    pagination,
+    loading: loading.effects['batches/query'],
+    onChange (page) {
+      handleRefresh({
+        page: page.current,
+        pageSize: page.pageSize,
+      })
+    },
+  }
 
   const filterProps = {
     filter: {
@@ -38,16 +51,17 @@ const Batches = ({
 
   return (
     <Page inner>
+
+      <List {...listProps}/>
       <Filter {...filterProps}/>
-      sss
     </Page>
   )
 }
-Batches.propTypes = {
+Barches.propTypes = {
   application: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
 
-export default connect(({ batches, loading }) => ({ batches, loading }))(Batches)
+export default connect(({ barches, loading }) => ({ barches, loading }))(Barches)
