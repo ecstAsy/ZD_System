@@ -12,6 +12,7 @@ let applicationListData = Mock.mock({
       carPlate : /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/,
       batchTime : '@datetime("yyyy-MM-dd")',
       paymentTime:'@datetime("yyyy-MM-dd")',
+      registerTime:'@datetime("yyyy-MM-dd")',
       'team|1' :['团队1','团队2','团队3','团队4','团队5','团队6','团队7','团队8'] ,
       'salesman|1':['业务员1','业务员2','业务员3','业务员4'],
       'registrant|1':['出单登记','财务登记'],

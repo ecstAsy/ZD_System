@@ -19,6 +19,12 @@ const formItemLayout = {
   }
 };
 
+const ColProps = {
+  style: {
+    marginBottom: 50,
+  },
+};
+
 const RegisterModal = ({...registerModalProps, handleCancel, currentItem,
      form: { getFieldDecorator, getFieldsValue, setFieldsValue }
   })=>{
@@ -30,11 +36,13 @@ const RegisterModal = ({...registerModalProps, handleCancel, currentItem,
         <Button key="back" onClick={handleCancel}>关闭</Button>
       ]}>
       <Row gutter={24}>
+        <Col {...ColProps}>
         <Col span={24}>
           <span className='title'>当前金额：</span><span className='detail'>{currentItem.insuranceNum}</span>
         </Col>
         <Col span={24}>
           <span className='title'>差价：</span><span className='detail' style={{color:'#ec412b'}}>{`-${currentItem.costNum}`}</span>
+        </Col>
         </Col>
         <Col span={24}>
           <FormItem {...formItemLayout} label='最终报价'>
