@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2018/7/9 0009.
+ * Created by Administrator on 2018/7/10 0010.
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -7,8 +7,9 @@ import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components';
 import classnames from 'classnames';
 import styles from './index.less';
-import { Form, Button, Row, Col, DatePicker, Input,  Select } from 'antd';
+import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
 
+const InputGroup = Input.Group;
 const Option = Select.Option;
 const { Search } = Input;
 const { RangePicker } = DatePicker;
@@ -66,12 +67,12 @@ const Filter = ({
     setFieldsValue,
   },
 }) => {
-  const { carPlate, status, team, processor, applyTime, }=filter;
+  const { carPlate, name, registrant, area, team, processor, paymentTime, insuranceCompany, }=filter;
 
   const handleFields = (fields) => {
-    const { applyTime } = fields;
-    if (applyTime && applyTime.length && applyTime.length > 1) {
-      fields.applyTime = [applyTime[0].format('YYYYMMDD'), applyTime[1].format('YYYYMMDD')]
+    const { paymentTime } = fields;
+    if (paymentTime && paymentTime.length && paymentTime.length > 1) {
+      fields.paymentTime = [paymentTime[0].format('YYYYMMDD'), paymentTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -97,6 +98,29 @@ const Filter = ({
     handleSubmit()
   };
 
+  const residences = [{
+    value: 'renbao',
+    label: '人保',
+    children: [{
+      value: 'suzhou',
+      label: '苏州',
+      children: [{
+        value: 'xinqu',
+        label: '新区',
+      }],
+    }],
+  }, {
+    value: 'taibao',
+    label: '太保',
+    children: [{
+      value: 'nanjing',
+      label: '南京',
+      children: [{
+        value: 'xuanwu',
+        label: '玄武',
+      }],
+    }],
+  }];
 
   return (
     <div className={styles.searchBox}>
@@ -108,21 +132,13 @@ const Filter = ({
             </FormItem>
           </Col>
           <Col {...ColProps}>
-            <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status', { initialValue: status})(<Select
-                showSearch
-                style={{ width: '100%' }}
-                placeholder="请选择"
-                dropdownStyle={{lineHeight:'25px'}}
-              >
-                <Option value="china">China</Option>
-                <Option value="use">U.S.A</Option>
-              </Select>)}
+            <FormItem label="姓名" {...formItemLayout}>
+              {getFieldDecorator('name', { initialValue: name })(<Input />)}
             </FormItem>
           </Col>
           <Col {...ColProps}>
             <FormItem label="团队"  {...formItemLayout}>
-              {getFieldDecorator('team', {initialValue: team})(<Select
+              {getFieldDecorator('team', { initialValue: team })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -135,7 +151,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor', {initialValue: processor})(<Select
+              {getFieldDecorator('processor', { initialValue: processor })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -145,9 +161,42 @@ const Filter = ({
               </Select>)}
             </FormItem>
           </Col>
+          <Col {...ColProps}>
+            <FormItem label="区域"  {...formItemLayout}>
+              {getFieldDecorator('area', { initialValue: area })(<Select
+                showSearch
+                style={{ width: '100%' }}
+                placeholder="请选择"
+                dropdownStyle={{lineHeight:'25px'}}
+              >
+                <Option value="china">China</Option>
+                <Option value="use">U.S.A</Option>
+              </Select>)}
+            </FormItem>
+          </Col>
+          <Col {...ColProps}>
+            <FormItem label="登记人"  {...formItemLayout}>
+              {getFieldDecorator('registrant', { initialValue: registrant })(<Select
+                showSearch
+                style={{ width: '100%' }}
+                placeholder="请选择"
+                dropdownStyle={{lineHeight:'25px'}}
+              >
+                <Option value="china">China</Option>
+                <Option value="use">U.S.A</Option>
+              </Select>)}
+            </FormItem>
+          </Col>
           <Col {...ColPropsLong}>
-            <FormItem label="申请日期"  {...formItemLayoutLong}>
-              {getFieldDecorator('applyTime', {initialValue: applyTime})(<RangePicker  style={{ width: '90%' }} />)}
+            <FormItem label="缴费日期"  {...formItemLayoutLong}>
+              {getFieldDecorator('paymentTime', { initialValue: paymentTime })
+              (<RangePicker  style={{ width: '70%' }} />)}
+            </FormItem>
+          </Col>
+          <Col {...ColPropsLong}>
+            <FormItem label="保险公司"  {...formItemLayoutLong}>
+              {getFieldDecorator('insuranceCompany', { initialValue: insuranceCompany })
+              (<Cascader placeholder="请选择" options={residences} />)}
             </FormItem>
           </Col>
         </Row>

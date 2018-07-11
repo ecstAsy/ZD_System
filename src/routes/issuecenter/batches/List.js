@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
 
-const List = ({...listProps,
+const List = ({...listProps, handleListAction,
   })=>{
   const columns = [
     {
@@ -59,7 +59,7 @@ const List = ({...listProps,
       title:'操作',
       dataIndex:'action',
       key:'action',
-      render:(text,list)=><span style={{color:list.status==='待审核'&&list.register==='-'?'#0082fe':'#f4a21a'}}>{list.status==='待审核'
+      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.status==='待审核'?'#f4a21a':'#0082fe'}}>{list.status==='待审核'
         ?'审核':list.status==='审核通过'&&list.register==='-'?'登记':''}</span>
     }
   ]
@@ -75,7 +75,7 @@ const List = ({...listProps,
 }
 
 List.propTypes = {
-
+  handleListAction:PropTypes.func
 }
 
 export default List

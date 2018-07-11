@@ -13,7 +13,9 @@ export default modelExtend(pageModel, {
   namespace: 'batches',
 
   state: {
-
+    currentItem:'',
+    RegisterModalVisible:false,
+    AuditModalVisible:false
   },
 
   subscriptions: {
@@ -51,7 +53,17 @@ export default modelExtend(pageModel, {
 
   reducers: {
 
+    showModal (state, { payload }) {
+      if(payload.status==='待审核'){
+        return { ...state,  AuditModalVisible: true ,currentItem:payload }
+      }else if (payload.status==='审核通过'){
+        return { ...state,  RegisterModalVisible: true ,currentItem:payload}
+      }
+    },
 
+    hideModal (state,{payload}) {
+      return { ...state, RegisterModalVisible: false,AuditModalVisible:false }
+    },
 
   },
 })

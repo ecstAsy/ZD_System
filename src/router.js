@@ -75,6 +75,10 @@ const Routers = function ({ history, app }) {
       path: '/batches',//批单
       models: () => [import('./models/issuecenter/batches')],
       component: () => import('./routes/issuecenter/batches/'),
+    },{
+      path: '/policyRegistration',//保单登记
+      models: () => [import('./models/issuecenter/policyRegistration')],
+      component: () => import('./routes/issuecenter/policyRegistration/'),
     }
   ]
 

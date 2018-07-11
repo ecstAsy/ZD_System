@@ -87,6 +87,12 @@ let database = [
     name: '批单',
     icon: 'phone',
     route: '/batches',
+  },{
+    id: '13',
+    bpid: '1',
+    name: '保单登记',
+    icon: 'phone',
+    route: '/policyRegistration',
   }
 ];
 

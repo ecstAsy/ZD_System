@@ -7,8 +7,9 @@ import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components';
 import classnames from 'classnames';
 import styles from './index.less';
-import { Form, Button, Row, Col, DatePicker, Input,  Select } from 'antd';
+import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
 
+const InputGroup = Input.Group;
 const Option = Select.Option;
 const { Search } = Input;
 const { RangePicker } = DatePicker;
@@ -66,7 +67,7 @@ const Filter = ({
     setFieldsValue,
   },
 }) => {
-  const { carPlate, status, team, processor, applyTime, }=filter;
+  const { carPlate, costNum, status, team, processor, applyTime, insuranceCompany, }=filter;
 
   const handleFields = (fields) => {
     const { applyTime } = fields;
@@ -97,6 +98,29 @@ const Filter = ({
     handleSubmit()
   };
 
+  const residences = [{
+    value: 'renbao',
+    label: '人保',
+    children: [{
+      value: 'suzhou',
+      label: '苏州',
+      children: [{
+        value: 'xinqu',
+        label: '新区',
+      }],
+    }],
+  }, {
+    value: 'taibao',
+    label: '太保',
+    children: [{
+      value: 'nanjing',
+      label: '南京',
+      children: [{
+        value: 'xuanwu',
+        label: '玄武',
+      }],
+    }],
+  }];
 
   return (
     <div className={styles.searchBox}>
@@ -109,7 +133,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status', { initialValue: status})(<Select
+              {getFieldDecorator('status', { initialValue: status })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -122,7 +146,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="团队"  {...formItemLayout}>
-              {getFieldDecorator('team', {initialValue: team})(<Select
+              {getFieldDecorator('team', { initialValue: team })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -135,7 +159,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor', {initialValue: processor})(<Select
+              {getFieldDecorator('processor', { initialValue: processor })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -145,9 +169,34 @@ const Filter = ({
               </Select>)}
             </FormItem>
           </Col>
+          <Col {...ColProps}>
+            <FormItem label="差额" {...formItemLayout}>
+              {getFieldDecorator('costNum ', { initialValue: costNum })
+              (
+                <div>
+                  <InputGroup>
+                    <Col span={11}>
+                      <Input  />
+                    </Col>
+                    <Col span={1}><p className="ant-form-split">-</p></Col>
+                    <Col span={11}>
+                      <Input  />
+                    </Col>
+                  </InputGroup>
+                </div>
+              )}
+            </FormItem>
+          </Col>
           <Col {...ColPropsLong}>
-            <FormItem label="申请日期"  {...formItemLayoutLong}>
-              {getFieldDecorator('applyTime', {initialValue: applyTime})(<RangePicker  style={{ width: '90%' }} />)}
+            <FormItem label="出单日期"  {...formItemLayoutLong}>
+              {getFieldDecorator('applyTime', { initialValue: applyTime })
+              (<RangePicker  style={{ width: '70%' }} />)}
+            </FormItem>
+          </Col>
+          <Col {...ColPropsLong}>
+            <FormItem label="保险公司"  {...formItemLayoutLong}>
+              {getFieldDecorator('insuranceCompany', { initialValue: insuranceCompany })
+              (<Cascader placeholder="请选择" options={residences} />)}
             </FormItem>
           </Col>
         </Row>

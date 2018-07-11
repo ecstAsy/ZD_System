@@ -6,17 +6,25 @@ const { apiPrefix } = config;
 let applicationListData = Mock.mock({
   'data|80-100':[
     {
-      id:'@id',
+      'id|+1': 1,
       name:'@cname',
       'insuranceCompany|1' : ['人保/苏州/人保1','人保/常州/人保2','人保/无锡/人保3','人保/南京/人保4','人保/江阴/人保1'],
       carPlate : /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/,
       batchTime : '@datetime("yyyy-MM-dd")',
+      paymentTime:'@datetime("yyyy-MM-dd")',
+      registerTime:'@datetime("yyyy-MM-dd")',
       'team|1' :['团队1','团队2','团队3','团队4','团队5','团队6','团队7','团队8'] ,
-      'processor|1':['业务员1','业务员2','业务员3','业务员4'],
+      'salesman|1':['业务员1','业务员2','业务员3','业务员4'],
+      'registrant|1':['出单登记','财务登记'],
       'status|1':['退保','待审核','审核通过'],
-      'costNum|1':['2.00','3.00','6.00','0.50','0.46',''],
-      'register|1':['登记完整','-'],
-      'insuranceNum|900-5000.1-2' : 1,
+      'policyAction|1':['修改缴费日期','登记缴费日期','修改登记金额'],
+      'internalCar|1':['是','否'],
+      costNum:0,
+      'commercialNum|2000-5000.2' : 1,
+      'compulsoryNum|2000-5000.2' : 1,
+      'registerStatus|1':['登记完整','-'],
+      'insuranceNum|900-5000.2' : 1,
+      'vehicleVesselTax|100-1000.2':1,
       batchInfo:'京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领，京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领',
       remark:'京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领,京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领'
     }
@@ -47,7 +55,7 @@ const NOTFOUND = {
 };
 
 module.exports ={
-  [`GET ${apiPrefix}/batches`] (req, res) {
+  [`GET ${apiPrefix}/generalData`] (req, res) {
     const { query } = req;
     let { pageSize, page, ...other } = query;
     pageSize = pageSize || 10;
