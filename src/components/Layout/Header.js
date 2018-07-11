@@ -1,18 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Menu, Icon, Popover, Layout ,Input } from 'antd'
+import { Menu, Icon, Popover, Layout ,Input ,Modal} from 'antd'
 import classnames from 'classnames'
 import styles from './Header.less'
 import Menus from './Menu'
 
 const { SubMenu } = Menu
-
+const confirm = Modal.confirm;
 const Header = ({
   user, logout, openUserInfo,openSpeechcraftModal,openQuickSearchModal,onChangeSearch,switchSider, siderFold, isNavbar, menuPopoverVisible, location, switchMenuPopover, navOpenKeys, changeOpenKeys, menu,searchTxt,
 }) => {
   let handleClickMenu = e => {
     if(e.key === 'logout'){
-       logout()
+      confirm({
+        title: '确定退出吗?',
+        okText:'确定',
+        cancelText:'取消',
+        iconType:'question-circle',
+        onOk() {
+          logout()
+        },
+        onCancel() {
+          console.log('Cancel');
+        },
+      });
+
     }else{
       openUserInfo()
     }

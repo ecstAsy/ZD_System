@@ -1,15 +1,57 @@
 @import "~themes/vars";
 
-.form {
+.loginBox{
   position: absolute;
   top: 50%;
-  left: 50%;
-  margin: -160px 0 0 -160px;
-  width: 320px;
-  height: 320px;
-  padding: 36px;
-  box-shadow: 0 0 100px rgba(0,0,0,.08);
+  left: 70%;
+  margin: -256px 0 0 -223px;
+  width: 446px;
+  :global{
+    .title{
+      font-size: 40px;
+      text-shadow: 4px 3px 2px #056ace;
+      text-align: center;
+      margin-bottom: 55px;
+      color: #fff;
+    }
+    .des{
+      text-align: center;
+      margin-top: 30px;
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+    input,Button{
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+    }
+    Button{
+      margin-top: 15px;
+    }
+    .disable{
+      background: #bdc7d2!important;
+      border: none;
+      cursor: not-allowed;
+    }
+    .checkbox{
+      margin-top: 10px;
+      font-size: 14px;
+      span{
+        color: #9aa2aa;
+      }
+    }
 
+  }
+}
+
+.form {
+  width: 400px;
+  padding: 32px;
+  box-shadow: 0 0 100px rgba(0,0,0,.08);
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
   button {
     width: 100%;
   }
@@ -39,11 +81,12 @@
 
   span {
     vertical-align: text-bottom;
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     display: inline-block;
-    font-weight: 700;
-    color: @primary-color;
+    //color: @primary-color;
+    color: #666;
+    margin-bottom: 20px;
   }
 }
 

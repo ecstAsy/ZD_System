@@ -13,7 +13,7 @@ const Title = ({title,sendNote})=>{
       }
     </div>
   )
-}
+};
 
 Title.propTypes = {
   sendNote : PropTypes.func
