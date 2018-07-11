@@ -1,18 +1,18 @@
 /* global window */
 /* global document */
-import React from 'react'
-import NProgress from 'nprogress'
-import PropTypes from 'prop-types'
-import pathToRegexp from 'path-to-regexp'
-import { connect } from 'dva'
-import { Loader, MyLayout } from 'components'
-import { BackTop, Layout } from 'antd'
-import { classnames, config } from 'utils'
-import { Helmet } from 'react-helmet'
-import { withRouter } from 'dva/router'
-import Error from './error'
-import '../themes/index.less'
-import './app.less'
+import React from 'react';
+import NProgress from 'nprogress';
+import PropTypes from 'prop-types';
+import pathToRegexp from 'path-to-regexp';
+import { connect } from 'dva';
+import { Loader, MyLayout } from 'components';
+import { BackTop, Layout } from 'antd';
+import { classnames, config } from 'utils';
+import { Helmet } from 'react-helmet';
+import { withRouter } from 'dva/router';
+import Error from './error';
+import '../themes/index.less';
+import './app.less';
 
 
 const { Content, Footer, Sider } = Layout;
@@ -247,7 +247,7 @@ const App = ({
               {hasPermission ? children : <Error />}
             </div>
             {
-              permissions.role=='yewuyuan'?<div style={{width:'20%',float:'left',paddingLeft:'15px'}}>
+              permissions.role=='yewuyuan'?<div style={{width:'18%',position:'fixed',right:'0',paddingLeft:'15px'}}>
                 <Appointment {...AppointmentProps}/>
                 <Calendar  />
                 <Message />
