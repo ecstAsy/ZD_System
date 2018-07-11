@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components';
 import classnames from 'classnames';
-import styles from './index.less';
+import styles from '../../publicStyle.less';
 import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
 
 const InputGroup = Input.Group;
@@ -204,8 +204,8 @@ const Filter = ({
           <Col >
             <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
               <div>
-                <Button type="primary" className="margin-right" onClick={handleSubmit}>查询</Button>
-                <Button onClick={handleReset}>重置</Button>
+                <Button type="primary" className="margin-right" onClick={handleSubmit} style={{width:70,height:35}}>查询</Button>
+                <Button onClick={handleReset} style={{width:70,height:35}}>重置</Button>
               </div>
             </div>
           </Col>

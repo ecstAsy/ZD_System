@@ -135,8 +135,6 @@ const PolicyRegistration = ({
             </Col>
           </Row>
       </div>
-
-
       <div className={classnames(styles.wrap)}>
         <Filter {...filterProps}/>
         <List {...listProps}/>
