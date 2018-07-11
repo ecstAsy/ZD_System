@@ -67,8 +67,8 @@ const Filter = ({
     setFieldsValue,
   },
 }) => {
-  const { carPlate, name, deliveryDate, region, area, team, processor, payment,
-    customerType, status, registerStatus, submitTime, insuranceCompany, }=filter;
+  const { carPlate, name, sendTime, policyScene, area, team, salesman, payWay, customerType,
+    status, registrationAmountStatus, submissionTime, insuranceCompany, }=filter;
 
   const handleFields = (fields) => {
     const { paymentTime } = fields;
@@ -139,7 +139,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="现场"  {...formItemLayout}>
-              {getFieldDecorator('region', { initialValue: region })(<Select
+              {getFieldDecorator('policyScene', { initialValue: policyScene })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -165,7 +165,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor', { initialValue: processor })(<Select
+              {getFieldDecorator('salesman', { initialValue: salesman })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -189,7 +189,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="支付方式"  {...formItemLayout}>
-              {getFieldDecorator('payment', { initialValue: payment })(<Select
+              {getFieldDecorator('payWay', { initialValue: payWay })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -201,7 +201,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="金额登记"  {...formItemLayout}>
-              {getFieldDecorator('registerStatus', { initialValue: registerStatus })(<Select
+              {getFieldDecorator('registrationAmountStatus', { initialValue: registrationAmountStatus })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -238,13 +238,13 @@ const Filter = ({
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="派送日期"  {...formItemLayoutLong}>
-              {getFieldDecorator('deliveryDate', { initialValue: deliveryDate })
+              {getFieldDecorator('sendTime', { initialValue: sendTime })
               (<RangePicker  style={{ width: '70%' }} />)}
             </FormItem>
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="提交时间"  {...formItemLayoutLong}>
-              {getFieldDecorator('submitTime', { initialValue: submitTime })
+              {getFieldDecorator('submissionTime', { initialValue: submissionTime })
               (<RangePicker  style={{ width: '70%' }} />)}
             </FormItem>
           </Col>

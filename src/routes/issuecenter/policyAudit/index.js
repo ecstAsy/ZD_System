@@ -5,7 +5,6 @@ import { connect } from 'dva';
 import { Page } from 'components';
 import Filter from './Filter'
 import queryString from 'query-string';
-import InsuranceApplicationModal from './insuranceApplicationModal'
 import classnames from 'classnames';
 import styles from './index.less';
 import List from './List';
@@ -16,7 +15,7 @@ const PolicyAudit = ({
                  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, InsuranceApplicationModalVisible, } = policyAudit;
+  const { list, pagination, } = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -40,22 +39,7 @@ const PolicyAudit = ({
     },
   };
 
-  const InsuranceApplicationModalProps = {
-    visible: InsuranceApplicationModalVisible,
-    maskClosable: false,
-    title:'投保单',
-    width:'55%',
-    closable:false,
-    wrapClassName: 'vertical-center-modal',
-    handleCancel () {
-      dispatch({
-        type: 'policyAudit/hideModal',
-        payload: {
-          modalType: 'insureAppAtion',
-        },
-      })
-    },
-  }
+
   const listProps = {
     dataSource:list,
     loading:loading.effects['policyAudit/query'],
@@ -65,8 +49,8 @@ const PolicyAudit = ({
         page: page.current,
         pageSize: page.pageSize,
       })
-    }
-  }
+    },
+  };
 
   return (
     <Page inner>
@@ -75,7 +59,6 @@ const PolicyAudit = ({
         除税保费合计：<span className='allNum'>3628.50</span>万元<span className='listNum'>（商业险: <span className='comNum'>2528.00</span>万元   交强险:<span className='cosNum'>1000.50</span>万元）</span>
       </div>
       <List {...listProps}/>
-      {InsuranceApplicationModalVisible && <InsuranceApplicationModal {...InsuranceApplicationModalProps}/>}
     </Page>
   )
 }
