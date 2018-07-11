@@ -14,8 +14,7 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem:'',
-    RegisterModalVisible:false,
-    AuditModalVisible:false
+    InsuranceSlipModalVisible:false,
   },
 
   subscriptions: {
@@ -55,14 +54,12 @@ export default modelExtend(pageModel, {
 
     showModal (state, { payload }) {
       if(payload.status==='待审核'){
-        return { ...state,  AuditModalVisible: true ,currentItem:payload }
-      }else if (payload.status==='审核通过'){
-        return { ...state,  RegisterModalVisible: true ,currentItem:payload}
+        return { ...state,  InsuranceSlipModalVisible: true ,currentItem:payload }
       }
     },
 
     hideModal (state,{payload}) {
-      return { ...state, RegisterModalVisible: false,AuditModalVisible:false }
+      return { ...state, InsuranceSlipModalVisible:false }
     },
 
   },

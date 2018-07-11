@@ -86,7 +86,6 @@ const Batches = ({
     },
   };
 
-
   return (
     <Page inner>
       <Filter {...filterProps}/>

@@ -8,14 +8,14 @@ import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
 import List from './List';
-
+import InsuranceSlipModal from './insuranceSlipModal'
 
 const PolicyAudit = ({
                    location, dispatch, policyAudit, loading,
                  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, } = policyAudit;
+  const { list, pagination, InsuranceSlipModalVisible, currentItem} = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -50,6 +50,27 @@ const PolicyAudit = ({
         pageSize: page.pageSize,
       })
     },
+    handleListAction(payload){
+      dispatch({
+        type:'policyAudit/showModal',
+        payload
+      })
+    }
+  };
+
+  const insuranceSlipModalProps = {
+    visible : InsuranceSlipModalVisible,
+    maskClosable: false,
+    title:'投保单',
+    width:'55%',
+    closable:false,
+    currentItem,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel(){
+      dispatch({
+        type:'policyAudit/hideModal'
+      })
+    },
   };
 
   return (
@@ -59,6 +80,7 @@ const PolicyAudit = ({
         除税保费合计：<span className='allNum'>3628.50</span>万元<span className='listNum'>（商业险: <span className='comNum'>2528.00</span>万元   交强险:<span className='cosNum'>1000.50</span>万元）</span>
       </div>
       <List {...listProps}/>
+      {InsuranceSlipModalVisible  && <InsuranceSlipModal {...insuranceSlipModalProps}/>}
     </Page>
   )
 }
