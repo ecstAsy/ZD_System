@@ -4,7 +4,8 @@ import { login } from 'services/login'
 export default {
   namespace: 'login',
 
-  state: {},
+  state: {
+  },
 
   effects: {
     * login ({
@@ -14,7 +15,6 @@ export default {
       const { locationQuery } = yield select(_ => _.app)
 
       if (data.success) {
-
         const { from } = locationQuery
         yield put({ type: 'app/query' })
         if (from && from !== '/login' && from !=='/' ) {
@@ -26,7 +26,8 @@ export default {
           yield put(routerRedux.push('/dashboard'))
         }
       } else {
-        throw data
+        throw data;
+
       }
     },
   },

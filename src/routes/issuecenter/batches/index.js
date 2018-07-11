@@ -97,7 +97,7 @@ const Batches = ({
   )
 }
 Batches.propTypes = {
-  application: PropTypes.object,
+  batches: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
