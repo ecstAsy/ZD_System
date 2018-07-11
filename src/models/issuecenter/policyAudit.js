@@ -14,7 +14,7 @@ export default modelExtend(pageModel, {
 
   state: {
     currentItem:'',
-    RegisterModalVisible:false,
+    EntryInfoModalVisible:false,
     AuditModalVisible:false
   },
 

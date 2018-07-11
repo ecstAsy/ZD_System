@@ -8,6 +8,7 @@ import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
 import List from './List';
+import EntryInfoModal from './entryInfoModal';
 
 
 const PolicyAudit = ({
@@ -15,7 +16,7 @@ const PolicyAudit = ({
                  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, } = policyAudit;
+  const { list, pagination, EntryInfoModalVisible, currentItem } = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -52,6 +53,21 @@ const PolicyAudit = ({
     },
   };
 
+  const entryInfoModalProps = {
+    visible : EntryInfoModalVisible,
+    maskClosable: false,
+    width:'35%',
+    closable:false,
+    title:'审核',
+    currentItem,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel(){
+      dispatch({
+        type:'policyRegistration/hideModal'
+      })
+    }
+  };
+
   return (
     <Page inner>
       <Filter {...filterProps}/>
@@ -59,6 +75,7 @@ const PolicyAudit = ({
         除税保费合计：<span className='allNum'>3628.50</span>万元<span className='listNum'>（商业险: <span className='comNum'>2528.00</span>万元   交强险:<span className='cosNum'>1000.50</span>万元）</span>
       </div>
       <List {...listProps}/>
+      {EntryInfoModalVisible && <EntryInfoModal {...entryInfoModalProps}/>}
     </Page>
   )
 }
