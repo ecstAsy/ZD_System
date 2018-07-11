@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
+import Filter from './Filter'
 import queryString from 'query-string';
-
+import InsuranceApplicationModal from './insuranceApplicationModal'
 
 const PolicyAudit = ({
                    location, dispatch, policyAudit, loading,
                  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination } = policyAudit;
+  const { list, pagination, InsuranceApplicationModalVisible, } = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -23,10 +24,39 @@ const PolicyAudit = ({
     }))
   };
 
+  const filterProps = {
+    filter: {
+      ...query,
+    },
+    onFilterChange (value) {
+      handleRefresh({
+        ...value,
+        page: 1,
+      })
+    },
+  };
+
+  const InsuranceApplicationModalProps = {
+    visible: InsuranceApplicationModalVisible,
+    maskClosable: false,
+    title:'投保单',
+    width:'55%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel () {
+      dispatch({
+        type: 'policyAudit/hideModal',
+        payload: {
+          modalType: 'insureAppAtion',
+        },
+      })
+    },
+  }
 
   return (
     <Page inner>
-      aaa
+      <Filter {...filterProps}/>
+      {InsuranceApplicationModalVisible && <InsuranceApplicationModal {...InsuranceApplicationModalProps}/>}
     </Page>
   )
 }

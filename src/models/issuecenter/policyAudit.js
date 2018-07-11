@@ -15,7 +15,8 @@ export default modelExtend(pageModel, {
   state: {
     currentItem:'',
     RegisterModalVisible:false,
-    AuditModalVisible:false
+    AuditModalVisible:false,
+    InsuranceApplicationModalVisible:false,
   },
 
   subscriptions: {
@@ -62,7 +63,9 @@ export default modelExtend(pageModel, {
     },
 
     hideModal (state,{payload}) {
-      return { ...state, RegisterModalVisible: false,AuditModalVisible:false }
+      if(payload.modalType==='insureAppAtion'){
+        return { ...state, InsuranceApplicationModalVisible: false }
+      }
     },
 
   },
