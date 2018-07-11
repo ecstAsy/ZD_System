@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components';
 import classnames from 'classnames';
-import styles from './index.less';
+import styles from '../../publicStyle.less';
 import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
 
 const InputGroup = Input.Group;
@@ -17,7 +17,7 @@ const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: {
-    span:10,
+    span:8,
   },
   wrapperCol: {
     span: 14,
@@ -41,19 +41,17 @@ const  ColPropsLong={
   sm: 8,
   style: {
     marginBottom: 10,
-    marginRight:10
   },
 };
 const formItemLayoutLong = {
   labelCol: {
-    span:6,
+    span:5,
   },
   wrapperCol: {
     span: 18,
   },
   style:{
     marginBottom: 0,
-    borderRadius:'20px',
     fontSize:'14px'
   }
 };
@@ -169,21 +167,19 @@ const Filter = ({
               </Select>)}
             </FormItem>
           </Col>
-          <Col {...ColProps}>
-            <FormItem label="差额" {...formItemLayout}>
+          <Col {...ColPropsLong}>
+            <FormItem label="差额" {...formItemLayoutLong}>
               {getFieldDecorator('costNum ', { initialValue: costNum })
               (
-                <div>
                   <InputGroup>
-                    <Col span={11}>
+                    <Col span={7}>
                       <Input  />
                     </Col>
                     <Col span={1}><p className="ant-form-split">-</p></Col>
-                    <Col span={11}>
+                    <Col span={7}>
                       <Input  />
                     </Col>
                   </InputGroup>
-                </div>
               )}
             </FormItem>
           </Col>
@@ -204,8 +200,8 @@ const Filter = ({
           <Col >
             <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
               <div>
-                <Button type="primary" className="margin-right" onClick={handleSubmit}>查询</Button>
-                <Button onClick={handleReset}>重置</Button>
+                <Button type="primary" className={styles.buttonStyle} onClick={handleSubmit}>查询</Button>
+                <Button onClick={handleReset} className={styles.buttonStyle}>重置</Button>
               </div>
             </div>
           </Col>

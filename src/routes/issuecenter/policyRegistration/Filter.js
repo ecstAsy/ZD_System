@@ -17,7 +17,7 @@ const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: {
-    span:10,
+    span:8,
   },
   wrapperCol: {
     span: 14,
@@ -46,7 +46,7 @@ const  ColPropsLong={
 };
 const formItemLayoutLong = {
   labelCol: {
-    span:6,
+    span:5,
   },
   wrapperCol: {
     span: 18,
@@ -204,8 +204,8 @@ const Filter = ({
           <Col >
             <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
               <div>
-                <Button type="primary" className="margin-right" onClick={handleSubmit} style={{width:70,height:35}}>查询</Button>
-                <Button onClick={handleReset} style={{width:70,height:35}}>重置</Button>
+                <Button type="primary" onClick={handleSubmit} className={styles.buttonStyle}>查询</Button>
+                <Button onClick={handleReset} className={styles.buttonStyle}>重置</Button>
               </div>
             </div>
           </Col>
