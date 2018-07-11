@@ -47,14 +47,16 @@ let usersListData = Mock.mock({
 })
 
 
-let database = usersListData.data
+let database = usersListData.data;
 
 const EnumRoleType = {
   ADMIN: 'admin',
   DEFAULT: 'guest',
   DEVELOPER: 'developer',
-  ISSUECENTER:'center'
-}
+  ISSUECENTER:'center',    //出单中心
+  YEWUYUAN:'yewuyuan',
+  TEAMLEADER:'teamleader',
+};
 
 const userPermission = {
   DEFAULT: {
@@ -71,8 +73,16 @@ const userPermission = {
   ISSUECENTER:{
     visit : ['1','3','12'],
     role: EnumRoleType.ISSUECENTER,
+  },
+  YEWUYUAN:{
+    visit : ['1','2','21','22','4','5'],
+    role: EnumRoleType.YEWUYUAN,
+  },
+  TEAMLEADER:{
+    visit : ['1','2','4','5','6','7','8','9','10','11','22'],
+    role: EnumRoleType.TEAMLEADER,
   }
-}
+};
 
 const adminUsers = [
   {
@@ -90,13 +100,23 @@ const adminUsers = [
     username: '吴彦祖',
     password: '123456',
     permissions: userPermission.DEVELOPER,
-  },, {
+  },{
     id: 3,
     username: 'center',
     password: 'center',
     permissions: userPermission.ISSUECENTER,
+  },{
+    id: 4,
+    username: 'yewuyuan',
+    password: 'yewuyuan',
+    permissions: userPermission.YEWUYUAN,
+  },{
+    id: 5,
+    username: 'teamleader',
+    password: 'teamleader',
+    permissions: userPermission.TEAMLEADER,
   },
-]
+];
 
 const queryArray = (array, key, keyAlias = 'key') => {
   if (!(array instanceof Array)) {
