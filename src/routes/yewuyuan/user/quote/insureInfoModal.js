@@ -12,7 +12,8 @@ const InsureInfoModal = ({...InsureInfoModalProps,handleCancel})=>{
         <Button  type="primary">保存</Button>,
         <Button onClick={handleCancel}>取消</Button>
       ]}>
-        <table border="1" >
+
+        <table >
           <tr>
             <th colSpan="2">被保险人</th>
             <td colSpan="1">刘媛媛</td>
@@ -24,7 +25,7 @@ const InsureInfoModal = ({...InsureInfoModalProps,handleCancel})=>{
             <td colSpan="5">江苏省盐城市滨海县滨海港镇友爱村四组68号</td>
           </tr>
           <tr>
-            <th colSpan="2">联系人</th>
+            <th colSpan="2" className='col'>联系人</th>
             <td colSpan="1">刘媛媛</td>
             <th colSpan="2">联系电话</th>
             <td colSpan="2">15895623390</td>
@@ -34,48 +35,48 @@ const InsureInfoModal = ({...InsureInfoModalProps,handleCancel})=>{
             <td colSpan="5">中国太平洋财产保险股份有限公司（苏州）</td>
           </tr>
           <tr>
-            <th rowSpan="4" style={{width:'5%',textIndent:'0',textAlign:'center'}}>
+            <th rowSpan="4" style={{width:'5%',textIndent:'0',textAlign:'center',borderBottom:'1px solid #939BA4'}}>
               投<br/>保<br/>机<br/>动<br/>车
             </th>
-            <th>被投保人与车辆关系</th>
+            <th className='row col'>被投保人与车辆关系</th>
             <td>
               <select name="" id="" style={{width:'80%',verticalAlign: 'middle'}}>
                 <option value="a">所有</option>
                 <option value="b">非所有</option>
               </select>
             </td>
-            <th>是否足额投保</th>
+            <th className='row'>是否足额投保</th>
             <td>
               <select name="" id="" style={{width:'80%',verticalAlign: 'middle'}}>
                 <option value="a">是</option>
                 <option value="b">否</option>
               </select>
             </td>
-            <th>行驶证车主</th>
+            <th className='row'>行驶证车主</th>
             <td>刘媛媛</td>
           </tr>
           <tr>
-            <th>车牌号码</th>
+            <th className='row col'>车牌号码</th>
             <td>苏MNH700</td>
-            <th>厂牌型号</th>
+            <th className='row'>厂牌型号</th>
             <td>雪佛兰SGM7150DAAA</td>
-            <th>核定座位</th>
+            <th className='row'>核定座位</th>
             <td>5</td>
           </tr>
           <tr>
-            <th>整备质量</th>
+            <th className='row col'>整备质量</th>
             <td></td>
-            <th>初次登记</th>
+            <th className='row'>初次登记</th>
             <td>2015-04-20</td>
-            <th>使用性质</th>
+            <th className='row'>使用性质</th>
             <td>家庭自用汽车</td>
           </tr>
-          <tr>
-            <th>车架号码</th>
+          <tr className='tr'>
+            <th className='row col'>车架号码</th>
             <td>LSGPC52H6FF143292</td>
-            <th>新车购置价</th>
+            <th className='row'>新车购置价</th>
             <td>86900</td>
-            <th>发动机号</th>
+            <th className='row'>发动机号</th>
             <td>150660591</td>
           </tr>
           <tr>
@@ -113,6 +114,8 @@ const InsureInfoModal = ({...InsureInfoModalProps,handleCancel})=>{
             </td>
           </tr>
         </table>
+
+
     </Modal>
   )
 }

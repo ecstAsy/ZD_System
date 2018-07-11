@@ -271,7 +271,7 @@ const Quote = ({
     visible: insureInfoModalVisible,
     maskClosable: false,
     title:'投保单',
-    width:'55%',
+    width:'53%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
     handleCancel () {
