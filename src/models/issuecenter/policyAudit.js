@@ -15,6 +15,8 @@ export default modelExtend(pageModel, {
   state: {
     currentItem:'',
     InsuranceSlipModalVisible:false,
+    EntryInfoModalVisible:false,
+    AuditModalVisible:false
   },
 
   subscriptions: {

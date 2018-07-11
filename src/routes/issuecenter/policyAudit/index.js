@@ -9,14 +9,16 @@ import classnames from 'classnames';
 import styles from './index.less';
 import List from './List';
 import InsuranceSlipModal from './insuranceSlipModal'
+import EntryInfoModal from './entryInfoModal';
+
 
 const PolicyAudit = ({
                    location, dispatch, policyAudit, loading,
                  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, InsuranceSlipModalVisible, currentItem} = policyAudit;
-
+  const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem} = policyAudit;
+  
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -73,6 +75,21 @@ const PolicyAudit = ({
     },
   };
 
+  const entryInfoModalProps = {
+    visible : EntryInfoModalVisible,
+    maskClosable: false,
+    width:'35%',
+    closable:false,
+    title:'审核',
+    currentItem,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel(){
+      dispatch({
+        type:'policyRegistration/hideModal'
+      })
+    }
+  };
+
   return (
     <Page inner>
       <Filter {...filterProps}/>
@@ -81,6 +98,7 @@ const PolicyAudit = ({
       </div>
       <List {...listProps}/>
       {InsuranceSlipModalVisible  && <InsuranceSlipModal {...insuranceSlipModalProps}/>}
+      {EntryInfoModalVisible && <EntryInfoModal {...entryInfoModalProps}/>}
     </Page>
   )
 }
