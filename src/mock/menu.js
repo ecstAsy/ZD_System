@@ -93,6 +93,12 @@ let database = [
     name: '保单登记',
     icon: 'phone',
     route: '/policyRegistration',
+  },{
+    id: '14',
+    bpid: '1',
+    name: '保单审核',
+    icon: 'phone',
+    route: '/policyAudit',
   }
 ];
 

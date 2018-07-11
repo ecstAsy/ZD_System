@@ -40,7 +40,6 @@ const Login = ({
       $('.buttonok').removeClass('disable')
     }
   };
-
   return (
     <div className={styles.loginBox}>
       <div className="title">欢迎使用中德业务系统!</div>
