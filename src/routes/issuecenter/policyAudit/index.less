@@ -1,0 +1,70 @@
+.totalPrice{
+  font-size: 14px;
+  color: #333;
+  :global{
+    .allNum{
+      color: #0082FE;
+      font-size: 20px;
+    }
+    .listNum{
+      color: #939BA4;
+    }
+    .comNum,.cosNum{
+      color: #333;
+    }
+  }
+}
+.table{
+  :global {
+    .status{
+      display: inline-block;
+      width: 80%;
+      height: 24px;
+      border-radius: 12px;
+      color: #fff;
+      line-height: 24px;
+      &.willAudit{
+        background: #F6BE1A;
+        box-shadow: 2px 0 4px #F6BE1A;
+      }
+      &.doneAudit{
+        background: #0DCBE4;
+        box-shadow: 2px 0 4px #0DCBE4;
+      }
+      &.outtimeAudit{
+        background: #FF5640;
+        box-shadow: 2px 0 4px #FF5640;
+      }
+    }
+    .ant-table-tbody > tr > td,
+    .ant-table-thead > tr > th {
+      width: 7%;
+      &:nth-of-type(2){
+        width: 5%;
+      }
+      &:nth-of-type(5){
+        width: 9%;
+      }
+      &:nth-of-type(6){
+        width: 9%;
+      }
+      &:nth-of-type(7){
+        width: 5%;
+      }
+      &:nth-of-type(8){
+        width: 11%;
+      }
+      &:nth-of-type(13){
+        width: 5%;
+      }
+      &:nth-of-type(14){
+        width: 5%;
+      }
+    }
+    .ant-table-tbody > tr > td {
+      &:nth-of-type(14){
+        cursor: default;
+      }
+    }
+  }
+}

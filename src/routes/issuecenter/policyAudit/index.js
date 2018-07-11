@@ -4,6 +4,9 @@ import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
 import queryString from 'query-string';
+import classnames from 'classnames';
+import styles from './index.less';
+import List from './List';
 
 
 const PolicyAudit = ({
@@ -23,10 +26,24 @@ const PolicyAudit = ({
     }))
   };
 
+  const listProps = {
+    dataSource:list,
+    loading:loading.effects['policyAudit/query'],
+    pagination,
+    onChange(page){
+      handleRefresh({
+        page: page.current,
+        pageSize: page.pageSize,
+      })
+    }
+  }
 
   return (
     <Page inner>
-      aaa
+      <div className={classnames(styles.totalPrice)}>
+        除税保费合计：<span className='allNum'>3628.50</span>万元<span className='listNum'>（商业险: <span className='comNum'>2528.00</span>万元   交强险:<span className='cosNum'>1000.50</span>万元）</span>
+      </div>
+      <List {...listProps}/>
     </Page>
   )
 }
