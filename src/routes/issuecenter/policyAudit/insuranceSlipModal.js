@@ -3,29 +3,12 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {  Modal, Button, Form, Row, Col, Input, Icon } from 'antd';
+import {  Modal, Button, Form, Row, Col, Icon } from 'antd';
 import publicStyles from '../../publicStyle.less';
 import styles from './index.less';
 import classnames from 'classnames';
 
-const FormItem = Form.Item;
-const TextArea = Input.TextArea;
-const formItemLayout = {
-  labelCol: {
-    span:3,
-  },
-  wrapperCol: {
-    span: 21,
-  },
-  style:{
-    marginBottom: 0,
-    borderRadius:'20px',
-    fontSize:'14px'
-  }
-};
-
-const InsuranceSlipModal = ({...insuranceSlipModalProps, handleCancel, currentItem,handleConfirm,
-  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+const InsuranceSlipModal = ({...insuranceSlipModalProps, handleCancel ,handleConfirm,
 })=>{
   return (
     <Modal className={classnames(publicStyles.Modal,styles.InsuranceSlipModal)}
@@ -146,7 +129,7 @@ const InsuranceSlipModal = ({...insuranceSlipModalProps, handleCancel, currentIt
             <span className='td_span'>派送信息</span>
             <span className='td_insurance'>收件人：熊卫平 联系方式：15252644908 付款方式：扫码支付 时间：2018-07-04
 地址：江苏省苏州市虎丘区长江路100号
-</span>
+            </span>
 
           </td>
         </tr>

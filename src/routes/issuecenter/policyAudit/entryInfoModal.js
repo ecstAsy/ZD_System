@@ -23,8 +23,8 @@ const formItemLayout = {
 };
 
 const EntryInfoModal = ({...entryInfoModalProps, handleCancel, currentItem,
-                                  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
-                                })=>{
+  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+})=>{
 
   const handleConfirm = ()=>{
     let fields = getFieldsValue();

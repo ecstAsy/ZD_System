@@ -41,7 +41,6 @@ const PolicyAudit = ({
     },
   };
 
-
   const listProps = {
     dataSource:list,
     loading:loading.effects['policyAudit/query'],
