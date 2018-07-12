@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Input, Select, DatePicker, Button } from 'antd';
-import styles from './index.less';
+import styles from '../../publicStyle.less';
 import queryString from 'query-string';
 
 const FormItem = Form.Item;
@@ -85,8 +85,8 @@ const Filter = ({FilterSearch, location,
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem {...formItemLayout} label="姓名">
-              {getFieldDecorator('userName',{
-                initialValue : values.userName
+              {getFieldDecorator('name',{
+                initialValue : values.name
               })(
                 <Input />
               )}
@@ -103,8 +103,8 @@ const Filter = ({FilterSearch, location,
           </Col>
           <Col {...ColProps}>
             <FormItem {...formItemLayout} label="车牌号">
-              {getFieldDecorator('userPlate',{
-                initialValue : values.userPlate
+              {getFieldDecorator('carPlate',{
+                initialValue : values.carPlate
               })(
                 <Input />
               )}
@@ -123,8 +123,8 @@ const Filter = ({FilterSearch, location,
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem {...formItemLayout} label="状态">
-              {getFieldDecorator('status',{
-                initialValue : values.status
+              {getFieldDecorator('complaintStatus',{
+                initialValue : values.complaintStatus
               })(
                 <Select showSearch style={{ width: '100%' }} placeholder="请选择" >
                     <Option value="china">China</Option>

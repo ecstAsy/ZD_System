@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'moment/src/locale/zh-cn';
-import { FilterItem } from 'components';
 import classnames from 'classnames';
 import styles from '../../publicStyle.less';
 import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
@@ -56,21 +55,14 @@ const formItemLayoutLong = {
   }
 };
 
-const Filter = ({
-  onFilterChange,
-  filter,
-  form: {
-    getFieldDecorator,
-    getFieldsValue,
-    setFieldsValue,
-  },
+const Filter = ({ FilterSearch, filter,
+  form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
-  const { carPlate, costNum, status, team, processor, applyTime, insuranceCompany, }=filter;
+  const { carPlate, costNum, policyStatus, team, salesman, applyTime, insuranceCompany, }=filter;
 
   const handleFields = (fields) => {
-    const { applyTime } = fields;
-    if (applyTime && applyTime.length && applyTime.length > 1) {
-      fields.applyTime = [applyTime[0].format('YYYYMMDD'), applyTime[1].format('YYYYMMDD')]
+    if (fields.applyTime && fields.applyTime instanceof Array && fields.applyTime.length > 1) {
+      fields.applyTime = [fields.applyTime[0].format('YYYYMMDD'), fields.applyTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -78,22 +70,16 @@ const Filter = ({
   const handleSubmit = () => {
     let fields = getFieldsValue();
     fields = handleFields(fields);
-    onFilterChange(fields)
+    FilterSearch(fields);
   };
 
   const handleReset = () => {
     const fields = getFieldsValue();
     for (let item in fields) {
-      if ({}.hasOwnProperty.call(fields, item)) {
-        if (fields[item] instanceof Array) {
-          fields[item] = []
-        } else {
-          fields[item] = undefined
-        }
-      }
+      fields[item] = fields[item] instanceof Array ? [] : undefined;
     }
     setFieldsValue(fields);
-    handleSubmit()
+    handleSubmit();
   };
 
   const residences = [{
@@ -121,7 +107,7 @@ const Filter = ({
   }];
 
   return (
-    <div className={styles.searchBox}>
+    <div className={classnames(styles.searchBox)}>
       <form layout="horizontal">
         <Row gutter={24}>
           <Col {...ColProps}>
@@ -131,7 +117,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status', { initialValue: status })(<Select
+              {getFieldDecorator('policyStatus', { initialValue: policyStatus })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -157,7 +143,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor', { initialValue: processor })(<Select
+              {getFieldDecorator('salesman', { initialValue: salesman })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -214,7 +200,7 @@ const Filter = ({
 Filter.propTypes = {
   form: PropTypes.object,
   filter: PropTypes.object,
-  onFilterChange: PropTypes.func,
+  FilterSearch: PropTypes.func,
 }
 
 export default Form.create()(Filter)

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, Table, Input } from 'antd';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 import classnames from 'classnames';
 
 const FormItem = Form.Item;
@@ -56,7 +57,7 @@ const AllocateListModal = ({...allocateListModalProps, handleCancel, list, pagin
     },
   ]
   return(
-    <Modal className={classnames(styles.AllocateListModal)}
+    <Modal className={classnames(styles.AllocateListModal,publicStyles.Modal)}
       {...allocateListModalProps}
       footer={[
         <Button type="primary" key="submit">确定</Button>,
@@ -65,7 +66,7 @@ const AllocateListModal = ({...allocateListModalProps, handleCancel, list, pagin
       <div><span className='title'>回收数量：</span><span className='detail'>2500</span></div>
       <Table
         dataSource={list}
-        className={classnames(styles.table)}
+        className={classnames(publicStyles.table,styles.table)}
         columns={columns}
         simple
         pagination={pagination}

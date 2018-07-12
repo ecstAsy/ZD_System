@@ -4,22 +4,22 @@ import { Table, Modal } from 'antd';
 import classnames from 'classnames';
 import queryString from 'query-string';
 import styles from './index.less';
-
+import publicStyles from '../../publicStyle.less';
 
 const List = ({...listProps})=>{
   const columns = [
     {
       title: '申请人',
-      dataIndex: 'applicant',
-      key: 'applicant',
+      dataIndex: 'salesman',
+      key: 'salesman',
     },{
       title: '申请时间',
       dataIndex: 'applyTime',
       key: 'applyTime',
     },{
       title: '姓名',
-      dataIndex: 'customer',
-      key: 'customer',
+      dataIndex: 'name',
+      key: 'name',
     },{
       title: '车牌',
       dataIndex: 'carPlate',
@@ -46,24 +46,24 @@ const List = ({...listProps})=>{
       key: 'heightRatio',
     },{
       title: '申请种类',
-      dataIndex: 'applyType',
-      key: 'applyType',
+      dataIndex: 'rebateType',
+      key: 'rebateType',
     },{
       title: '状态',
-      dataIndex: 'status',
-      key: 'status',
+      dataIndex: 'rebateStatus',
+      key: 'rebateStatus',
       render:(text,list)=>
-        <span style={{color:list.status==='驳回'?'#EC412B':list.status==='同意'?'#01CBBD':'#F4A21A'}}>{list.status}</span>
+        <span style={{color:list.rebateStatus==='驳回'?'#EC412B':list.rebateStatus==='同意'?'#01CBBD':'#F4A21A'}}>{list.rebateStatus}</span>
     },{
       title: '备注',
-      dataIndex: 'remark',
-      key: 'remark',
+      dataIndex: 'rebateRemark',
+      key: 'rebateRemark',
     },
   ]
   return (
     <Table
       {...listProps}
-      className={classnames(styles.table)}
+      className={classnames(styles.table,publicStyles.table)}
       columns={columns}
       simple
       rowKey={record => record.id}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, DatePicker, Select, Input, Radio } from 'antd';
-import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 import classnames from 'classnames';
 
 const FormItem = Form.Item;
@@ -43,7 +43,7 @@ const FilterModal = ({...filterProps, handleCancel, FilterSearch,
     FilterSearch(fields)
   };
   return (
-    <Modal className={classnames(styles.FilterModal)}
+    <Modal className={classnames(publicStyles.Modal)}
       {...filterProps}
     footer={[
       <Button type="primary" key="submit" onClick={handleSubmit}>确定</Button>,

@@ -24,14 +24,14 @@ const List = ({...listProps,
     },
     {
       title: '业务员',
-      dataIndex: 'processor',
-      key: 'processor',
+      dataIndex: 'salesman',
+      key: 'salesman',
     },
     {
       title: '状态',
-      dataIndex: 'status',
-      key: 'status',
-      render:(text,list)=><span style={{color:list.status==='驳回'?'#ec412b':list.status==='未处理'?'#f4a21a':'#0dcbe4'}}>{list.status}</span>
+      dataIndex: 'applyStatus',
+      key: 'applyStatus',
+      render:(text,list)=><span style={{color:list.applyStatus==='驳回'?'#ec412b':list.applyStatus==='未处理'?'#f4a21a':'#0dcbe4'}}>{list.applyStatus}</span>
     },
     {
       title: '是否存在',
@@ -42,9 +42,9 @@ const List = ({...listProps,
       title:'操作',
       dataIndex:'action',
       key:'action',
-      render:(text,list)=><span style={{color:list.status==='未处理'&&list.existence==='不存在'
-          ?'#ec412b':'#0082FE'}}>{list.status==='未处理'&&list.existence==='不存在'
-        ?'驳回':list.status==='未处理'&&list.existence==='存在'?'同意':''}</span>
+      render:(text,list)=><span style={{color:list.applyStatus==='未处理'&&list.existence==='不存在'
+          ?'#ec412b':'#0082FE'}}>{list.applyStatus==='未处理'&&list.existence==='不存在'
+        ?'驳回':list.applyStatus==='未处理'&&list.existence==='存在'?'同意':''}</span>
     }
   ]
   return (

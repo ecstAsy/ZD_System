@@ -72,8 +72,7 @@ export default modelExtend(pageModel, {
       }else if (payload.modalType==="view"){
         return { ...state, ViewPolicyModalVisible:false }
       }
-
     },
 
-  },
+  }
 })

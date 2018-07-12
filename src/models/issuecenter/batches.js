@@ -1,17 +1,16 @@
 /* global window */
-import modelExtend from 'dva-model-extend'
-import queryString from 'query-string'
-import { config } from 'utils'
-import { create, remove, update } from 'services/issuecenter/batches'
-import * as applicationsService from 'services/issuecenter/batches'
-import { pageModel } from '../common'
+import modelExtend from 'dva-model-extend';
+import queryString from 'query-string';
+import { config } from 'utils';
+import { create, remove, update } from 'services/generalData';
+import * as applicationsService from 'services/generalData';
+import { pageModel } from '../common';
 
-const { query } = applicationsService
-const { prefix } = config
+const { query } = applicationsService;
+const { prefix } = config;
 
 export default modelExtend(pageModel, {
   namespace: 'batches',
-
   state: {
     currentItem:'',
     RegisterModalVisible:false,
@@ -52,18 +51,16 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
-
     showModal (state, { payload }) {
-      if(payload.status==='待审核'){
+      if(payload.policyStatus==='待审核'){
         return { ...state,  AuditModalVisible: true ,currentItem:payload }
-      }else if (payload.status==='审核通过'){
+      }else if (payload.policyStatus==='审核通过'){
         return { ...state,  RegisterModalVisible: true ,currentItem:payload}
       }
     },
 
     hideModal (state,{payload}) {
       return { ...state, RegisterModalVisible: false,AuditModalVisible:false }
-    },
-
-  },
+    }
+  }
 })
