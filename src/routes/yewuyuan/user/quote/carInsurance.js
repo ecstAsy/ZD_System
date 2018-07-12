@@ -46,7 +46,7 @@ const formItemLayout_c = {
     span:5,
   },
   wrapperCol: {
-    span: 10,
+    span: 19,
   },
   style:{
     marginBottom: 0,
@@ -85,8 +85,8 @@ const ColProps_c = {
 const CarInsurance = ({
   item = {},
   insuranceData,
+  okMianpeiData,
   strongInsuranceData,
-  choseinsuranceData,
   checkedInsuranceFunc,
   checkedStrongInsurFunc,
   deductiblesModal,
@@ -149,8 +149,6 @@ const CarInsurance = ({
         $('.double-right').eq(1).addClass('show')
       }
     }
-
-
   };
 
     return (
@@ -268,12 +266,8 @@ const CarInsurance = ({
                       <FormItem label={item.name} {...formItemLayout_c}>
                         <InputNumber className="leftInput" disabled={item.coverageAblead}/>
                         <span className="choseItem" onClick={deductiblesModal}>
-                          {choseinsuranceData.length>0?choseinsuranceData.map((item,key)=>{
-                            return(item+'/')
-                          }):'请选择'}
-
-
-                             </span>
+                          {okMianpeiData}
+                         </span>
                       </FormItem>
                     </Col>:<Col span={11}>
                       <FormItem label={item.name} {...formItemLayout_b}>
@@ -287,10 +281,10 @@ const CarInsurance = ({
             )
           })}
         </Row>
-          <Row>
-            <Col span={1}></Col>
-            <Col span={23}><Checkbox value="B" checked={true}>交强险</Checkbox><Icon onClick={()=>isShowshangyexian(2)} className="double-right show" type="double-right" /></Col>
-          </Row>
+        <Row>
+          <Col span={1}></Col>
+          <Col span={23}><Checkbox value="B" checked={true}>交强险</Checkbox><Icon onClick={()=>isShowshangyexian(2)} className="double-right show" type="double-right" /></Col>
+        </Row>
         <Row className="shangyexian show" >
           <Icon onClick={()=>isShowshangyexian(2)} className="shouqiSy" type="double-right" />
           {strongInsuranceData.map((item,key)=>{

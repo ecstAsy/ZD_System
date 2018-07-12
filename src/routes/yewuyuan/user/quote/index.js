@@ -21,9 +21,9 @@ const Quote = ({
   dispatch, quote, loading,
                      }) => {
   const {
-    choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData,
+    choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData, okMianpeiData,
     underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData,
-    strongInsuranceData, choseinsuranceData, insureInfoModalVisible
+    strongInsuranceData , insureInfoModalVisible
   } = quote;
 
   const UserInfoProps={
@@ -122,7 +122,7 @@ const Quote = ({
       dispatch({
         type: 'quote/hideModal',
         payload: {
-          modalType: 'deductibles',
+          modalType: 'deductiblesSave',
           data:data,
         },
       })
@@ -135,13 +135,23 @@ const Quote = ({
           modalType: 'deductibles'
         },
       })
+    },
+
+    chosemianpei(id){
+      console.log(id)
+      dispatch({
+        type: 'quote/chosemianpei',
+        payload: {
+          id:id,
+        },
+      })
     }
   };
 
   const CarInsuranceProps={
     insuranceData:insuranceData,
-    choseinsuranceData,
     strongInsuranceData,
+    okMianpeiData,
     checkedInsuranceFunc(id){
       dispatch({
         type: 'quote/checkedInsuranceFunc',
