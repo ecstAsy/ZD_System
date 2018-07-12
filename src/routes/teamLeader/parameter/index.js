@@ -13,7 +13,6 @@ import Mouth from './mouthDate'
 import styles from './List.less'
 import queryString from 'query-string'
 
-const FormItem = Form.Item;
 const Parameter = ({
   location, dispatch, parameter, loading,
 }) => {

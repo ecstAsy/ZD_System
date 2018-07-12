@@ -35,7 +35,7 @@ const List = ({...listProps, ListData, isEdit,
                 ListData.map((list,i)=>{
                   return (
                     <Col span={6}>
-                      <div >
+                      <div>
                         {
                           !isEdit? <div className="useInfoRow"><p>{list.name}</p><p>{list.num}</p></div>:
                             <FormItem  {...formItemLayout} label={list.name} >
