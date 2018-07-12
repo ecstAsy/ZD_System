@@ -39,7 +39,6 @@ export default modelExtend(pageModel, {
 
     * query ({ payload = {} }, { call, put }) {
       const data = yield call(query, payload);
-      console.log(data)
       if (data) {
         yield put({
           type: 'querySuccess',
@@ -102,7 +101,6 @@ export default modelExtend(pageModel, {
       return { ...state, ...payload, modalVisible: true }
     },
     isShowMoreFunc( state, { payload }){
-      console.log(payload)
       return { ...state,  isMore: !payload }
     },
     hideModal (state) {

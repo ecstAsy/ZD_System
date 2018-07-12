@@ -72,7 +72,6 @@ export default modelExtend(pageModel, {
 
   reducers: {
     isEditFunc (state, { payload }) {
-      console.log(1111)
       return { ...state, ...payload, isEdit: !state.isEdit }
     },
 

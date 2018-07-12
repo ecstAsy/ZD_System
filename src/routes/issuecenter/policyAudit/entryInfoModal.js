@@ -31,7 +31,6 @@ const EntryInfoModal = ({...entryInfoModalProps, handleCancel, currentItem,
     fields.costNum = formatFloat(formatFloat(currentItem.commercialNum-fields.commercialNum,2)+
       formatFloat(currentItem.compulsoryNum-fields.compulsoryNum,2)+
       formatFloat(currentItem.vehicleVesselTax-fields.vehicleVesselTax,2),2)
-    console.log(fields)
   };
 
   const formatFloat =  (f, digit)=> {

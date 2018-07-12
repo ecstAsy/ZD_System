@@ -53,9 +53,7 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
-
     showModal (state, { payload }) {
-      console.log(payload)
       if(payload.policyAction==='修改登记金额'){
         return { ...state,  PolicyActionMoneyModalVisible: true, currentItem:payload }
       }else if(payload.policyAction==='修改缴费日期'||payload.policyAction==='登记缴费日期'){

@@ -6,7 +6,7 @@ import Menus from './Menu'
 import styles from './LeftShow.less'
 
 const Message = ({
-  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys,
+  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys, Height
 }) => {
 
 

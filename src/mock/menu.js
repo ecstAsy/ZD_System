@@ -100,7 +100,7 @@ let database = [
     icon: 'setting',
     route: '/teamGoal',
   },
-  },{
+  {
     id: '14',
     bpid: '1',
     name: '保单审核',

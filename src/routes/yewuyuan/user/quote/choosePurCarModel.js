@@ -95,7 +95,6 @@ const ChoosePurCarModal =({
       const data = {
         ...getFieldsValue(),
       }
-      console.log(data)
       onOk(data)
     })
   }

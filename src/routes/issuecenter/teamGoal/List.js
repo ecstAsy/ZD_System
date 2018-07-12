@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment';
 import { FilterItem } from 'components'
 import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select ,Icon, TimePicker} from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select ,Icon, TimePicker, InputNumber } from 'antd'
 import styles from './index.less'
 const Option = Select.Option;
 const { Search } = Input;
@@ -102,7 +102,7 @@ const List = ({
                               message:`${i.name}不能为空`
                             },
                           ],},
-                        )(<Input style={{width:'50%'}} />)}
+                        )(<InputNumber style={{width:'50%'}} />)}
                       </FormItem>
                     </Col>
                 )
@@ -127,7 +127,8 @@ const List = ({
 };
 
 List.propTypes = {
-
+  save: PropTypes.func,
+  handleCancelFunc: PropTypes.func,
 };
 
 export default Form.create()(List)

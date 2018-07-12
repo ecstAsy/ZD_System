@@ -6,10 +6,8 @@ import Menus from './Menu'
 import styles from './LeftShow.less'
 
 const Calendar = ({
-  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys,
+  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys, Height
 }) => {
-
-
   return (
     <div className={styles.appointment} style={{marginTop:'20px'}}>
       <div className={classnames(styles.headTop,styles.calendar)}>

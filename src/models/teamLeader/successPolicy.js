@@ -48,7 +48,6 @@ export default modelExtend(pageModel, {
 
     * query ({ payload = {} }, { call, put }) {
       const data = yield call(query, payload);
-      console.log(data)
       if (data) {
         yield put({
           type: 'querySuccess',
@@ -110,14 +109,12 @@ export default modelExtend(pageModel, {
       if(payload.modalType=='quotation'){
         return { ...state, ...payload, modalVisible: true }
       }else if(payload.modalType=='addRemark'){
-        console.log(payload.id)
         return { ...state, ...payload, visibleRemark: true,remarkId: payload.id}
       }else {
         return { ...state, ...payload, sendModalVisible: true }
       }
     },
     isShowMoreFunc( state, { payload }){
-      console.log(payload)
       return { ...state,  isMore: !payload }
     },
     hideModal (state,{payload}) {

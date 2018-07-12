@@ -6,7 +6,7 @@ import Menus from './Menu'
 import styles from './LeftShow.less'
 
 const Appointment = ({
-  user, logout,switchSider, siderFold,changeActiveKeyFunc, defaultActiveKey, location, switchMenuPopover, navOpenKeys, changeOpenKeys,
+  user, logout,switchSider, siderFold,changeActiveKeyFunc, defaultActiveKey, location, switchMenuPopover, navOpenKeys, changeOpenKeys, Height
 }) => {
   const changeActiveKey=(key)=>{
      changeActiveKeyFunc(key)

@@ -14,7 +14,6 @@ import Error from './error';
 import '../themes/index.less';
 import './app.less';
 
-
 const { Content, Footer, Sider } = Layout;
 const { Header, Bread, styles ,UseInfoModal, SpeechcraftModal, EditPwdModal, QuickSearchModal, Appointment,
         Calendar, Message } = MyLayout;
@@ -35,6 +34,7 @@ const App = ({
   const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname));
   const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
   const { href } = window.location;
+  let Height = document.body.clientHeight-196;
 
   if (lastHref !== href) {
     NProgress.start();
@@ -81,6 +81,7 @@ const App = ({
 
   const AppointmentProps={
     defaultActiveKey,
+    Height,
     changeActiveKeyFunc(key){
       dispatch({
         type: `app/changeActiveKey`,
@@ -215,7 +216,6 @@ const App = ({
     </div>)
   }
   return (
-
     <div>
       <Loader fullScreen spinning={loading.effects['app/query']} />
       <Helmet>
@@ -225,7 +225,6 @@ const App = ({
         {iconFontJS && <script src={iconFontJS} />}
         {iconFontCSS && <link rel="stylesheet" href={iconFontCSS} />}
       </Helmet>
-
       <Layout className={classnames({ [styles.dark]: darkTheme, [styles.light]: !darkTheme })}>
         {!isNavbar && <Sider
           trigger={null}
@@ -249,8 +248,8 @@ const App = ({
             {
               permissions.role=='yewuyuan'?<div style={{width:'18%',position:'fixed',right:'0',paddingLeft:'15px'}}>
                 <Appointment {...AppointmentProps}/>
-                <Calendar  />
-                <Message />
+                <Calendar Height={Height} />
+                <Message Height={Height}  />
               </div>:null
             }
           </Content>
