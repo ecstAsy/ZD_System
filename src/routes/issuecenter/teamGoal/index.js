@@ -1,15 +1,15 @@
 /**
  * Created by Administrator on 2018/7/2 0002.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Button, Form ,DatePicker} from 'antd'
-import { Page, Editor, Title} from 'components'
-import styles from './index.less'
-import queryString from 'query-string'
-import List from './List'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Row, Button, Form ,DatePicker} from 'antd';
+import { Page, Editor, Title} from 'components';
+import styles from './index.less';
+import queryString from 'query-string';
+import List from './List';
 const { RangePicker } = DatePicker;
 const formItemLayoutLong = {
   labelCol: {
@@ -30,7 +30,7 @@ const TeamGoal = ({
 
 }) => {
   location.query = queryString.parse(location.search);
-  const {teamData, isEdit, } = tamGoal;
+  const { teamData, isEdit, } = tamGoal;
 
   const isEditFunc = ()=> {
     dispatch({
@@ -45,7 +45,6 @@ const TeamGoal = ({
         type:'tamGoal/isEditFunc'
       })
     },
-
     saveFunc(data){
         console.log(data);
     }
@@ -61,14 +60,10 @@ const TeamGoal = ({
         <Title title="月业绩目标（万）"/>
       </div>
       <List {...listProps} />
-
-
     </Page>
 
   )
-
 };
-
 
 TeamGoal.propTypes = {
   tamGoal: PropTypes.object,

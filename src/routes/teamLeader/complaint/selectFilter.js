@@ -2,7 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Input, Button } from 'antd';
-import styles from './index.less';
 import queryString from 'query-string';
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -30,7 +29,7 @@ const SelectFilter = ({ FilterSearch,
     <Row>
       <Col span={9}>
         <FormItem {...formItemLayout} label="车牌">
-          {getFieldDecorator('userPlate')(
+          {getFieldDecorator('carPlate')(
             <Input/>
           )}
         </FormItem>

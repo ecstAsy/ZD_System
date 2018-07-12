@@ -13,8 +13,6 @@ import { withRouter } from 'dva/router';
 import Error from './error';
 import '../themes/index.less';
 import './app.less';
-import $ from 'jquery';
-
 
 const { Content, Footer, Sider } = Layout;
 const { Header, Bread, styles ,UseInfoModal, SpeechcraftModal, EditPwdModal, QuickSearchModal, Appointment,
@@ -36,7 +34,7 @@ const App = ({
   const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname));
   const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
   const { href } = window.location;
-  const Height = document.body.clientHeight-196;
+  let Height = document.body.clientHeight-196;
   if (lastHref !== href) {
     NProgress.start();
     if (!loading.global) {
@@ -217,7 +215,6 @@ const App = ({
     </div>)
   }
   return (
-
     <div>
       <Loader fullScreen spinning={loading.effects['app/query']} />
       <Helmet>
@@ -227,7 +224,6 @@ const App = ({
         {iconFontJS && <script src={iconFontJS} />}
         {iconFontCSS && <link rel="stylesheet" href={iconFontCSS} />}
       </Helmet>
-
       <Layout className={classnames({ [styles.dark]: darkTheme, [styles.light]: !darkTheme })}>
         {!isNavbar && <Sider
           trigger={null}

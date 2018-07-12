@@ -21,7 +21,6 @@ export default {
         const { from } = locationQuery;
         yield put({ type: 'app/query' });
         if (from && from !== '/login' && from !=='/' ) {
-          console.log(from)
           yield put(routerRedux.push(from))
         } else {
           yield put(routerRedux.push('/dashboard'))

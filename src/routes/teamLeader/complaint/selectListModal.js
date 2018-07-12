@@ -4,6 +4,7 @@ import { Modal, Button, Row, Col, Form, Input, Table, message } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
 import listStyles from './selectList.less';
+import publicStyles from '../../publicStyle.less';
 import SelectFilter from './selectFilter';
 import { Radio } from 'antd/lib/index';
 
@@ -51,7 +52,7 @@ const SelectListModal = ({...selectListModalProps, handleCancel, handleConfirm, 
     }
   ]
   return (
-    <Modal className={classnames(styles.SelectListModal,styles.AuditModal)}
+    <Modal className={classnames(styles.SelectListModal,publicStyles.Modal)}
       {...selectListModalProps}
       footer={[
         <Button type="primary" key="submit" onClick={confirmSelect}>确定</Button>,
@@ -60,7 +61,7 @@ const SelectListModal = ({...selectListModalProps, handleCancel, handleConfirm, 
       <SelectFilter {...selectFilterProps}/>
       {getFieldDecorator('user', {
       })(<RadioGroup>
-        <Table className={classnames(listStyles.table)} columns={columns} dataSource={selectList} pagination={false} />
+        <Table className={classnames(listStyles.table,publicStyles.table)} columns={columns} dataSource={selectList} pagination={false} />
       </RadioGroup>)}
 
     </Modal>

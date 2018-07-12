@@ -4,24 +4,23 @@ import { Table, Modal } from 'antd';
 import classnames from 'classnames';
 import queryString from 'query-string';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 
 const List = ({ location, ...listProps, handleStatus }) => {
   location.query = queryString.parse(location.search);
   const columns = [
     {
       title: '姓名',
-      dataIndex: 'userName',
-      key: 'userName',
+      dataIndex: 'name',
+      key: 'name',
     },{
       title: '手机号',
       dataIndex: 'userPhone',
       key: 'userPhone',
     },{
       title: '车牌',
-      dataIndex: 'province',
-      key: 'province',
-      render: (text, record) =>
-        <span>{record.province+record.userPlate}</span>,
+      dataIndex: 'carPlate',
+      key: 'carPlate'
     },{
       title: '创建日期',
       dataIndex: 'createTime',
@@ -36,12 +35,12 @@ const List = ({ location, ...listProps, handleStatus }) => {
       key: 'processor',
     },{
       title: '状态',
-      dataIndex: 'status',
-      key: 'status',
+      dataIndex: 'complaintStatus',
+      key: 'complaintStatus',
       render:(text,list)=>
-        <span style={{color:list.status=='返现驳回'?'#EC412B':list.status=='未处理'?'#F4A21A':
-              list.status== '返现通过'?'#01CBBD':''}}>
-          {list.status}
+        <span style={{color:list.complaintStatus=='返现驳回'?'#EC412B':list.complaintStatus=='未处理'?'#F4A21A':
+              list.complaintStatus== '返现通过'?'#01CBBD':''}}>
+          {list.complaintStatus}
         </span>
     },{
       title: '类别',
@@ -52,9 +51,9 @@ const List = ({ location, ...listProps, handleStatus }) => {
       dataIndex: 'sendType',
       key: 'sendType',
       render: (text, list) =>
-        <span onClick={()=>handleStatus(list)} style={{width: '100%',color:list.status!=''?'#0082FE':'#F4A21A',
-                textAlign:list.status=='未处理'?'right':'center'}}>
-          {list.status=='返现驳回'?'查看':list.status=='未处理'?'分配':list.status=='返现通过'?'查看':'审核'}
+        <span onClick={()=>handleStatus(list)} style={{width: '100%',color:list.complaintStatus!=''?'#0082FE':'#F4A21A',
+                textAlign:list.complaintStatus=='未处理'?'right':'center'}}>
+          {list.complaintStatus=='返现驳回'?'查看':list.complaintStatus=='未处理'?'分配':list.complaintStatus=='返现通过'?'查看':'审核'}
         </span>
     }
   ];
@@ -66,7 +65,7 @@ const List = ({ location, ...listProps, handleStatus }) => {
   return (
     <Table
       {...listProps}
-      className={classnames(styles.table)}
+      className={classnames(styles.table,publicStyles.table)}
       columns={columns}
       simple
       rowKey={record => record.id}

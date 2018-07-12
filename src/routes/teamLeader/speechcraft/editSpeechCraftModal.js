@@ -24,7 +24,6 @@ const formItemLayout = {
 const EditSpeechCraftModal = ({...EditSpeechCraftModalProps, handleCancel, currentItem, handleSubmit,
       form: { getFieldDecorator, getFieldsValue, setFieldsValue }
   })=>{
-  console.log(currentItem)
   return (
     <Modal className={classnames(styles.EditSpeechCraftModal)}
       {...EditSpeechCraftModalProps}

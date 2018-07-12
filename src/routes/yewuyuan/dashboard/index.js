@@ -6,97 +6,32 @@ import { color } from 'utils'
 import { Page } from 'components'
 import { NumberCard, Quote, Sales, Weather, RecentSales, Comments, Completed, Browser, Cpu, User } from './components'
 import styles from './index.less'
+import Pie from './components/pie'
 
-const bodyStyle = {
-  bodyStyle: {
-    height: 432,
-    background: '#fff',
-  },
-}
-
-function Dashboard ({ dashboard, loading }) {
+const Dashboard =({ dashboard, loading }) =>{
   const {
-    weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user,
-  } = dashboard
-  const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
-    <NumberCard {...item} />
-  </Col>))
-
+     sales,
+  } = dashboard;
+  const data=[
+    {title:'预约',data:[ {value:5, name:'已跟踪'},
+      {value:10, name:'未跟踪'},]},
+    {title:'首播',data:[ {value:20, name:'已处理'},
+      {value:10, name:'未处理'},]},
+    {title:'投诉',data:[ {value:25, name:'需处理'},
+      {value:5, name:'未处理'},]},
+    {title:'今日派单',data:[ {value:15, name:'成功'},
+      {value:2, name:'失败'},]}
+  ];
   return (
-    <Page loading={loading.models.dashboard && sales.length === 0} className={styles.dashboard}>
+    <Page  inner loading={loading.models.dashboard && sales.length === 0} className={styles.dashboard}>
       <Row gutter={24}>
-        {numberCards}
-        <Col lg={18} md={24}>
-          <Card bordered={false}
-            bodyStyle={{
-              padding: '24px 36px 24px 0',
-            }}
-          >
-            <Sales data={sales} />
-          </Card>
-        </Col>
-        <Col lg={6} md={24}>
-          <Row gutter={24}>
-            <Col lg={24} md={12}>
-              <Card bordered={false}
-                className={styles.weather}
-                bodyStyle={{
-                  padding: 0,
-                  height: 204,
-                  background: color.blue,
-                }}
-              >
-                <Weather {...weather} loading={loading.effects['dashboard/queryWeather']} />
-              </Card>
-            </Col>
-            <Col lg={24} md={12}>
-              <Card bordered={false}
-                className={styles.quote}
-                bodyStyle={{
-                  padding: 0,
-                  height: 204,
-                  background: color.peach,
-                }}
-              >
-                <Quote {...quote} />
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-        <Col lg={12} md={24}>
-          <Card bordered={false} {...bodyStyle}>
-            <RecentSales data={recentSales} />
-          </Card>
-        </Col>
-        <Col lg={12} md={24}>
-          <Card bordered={false} {...bodyStyle}>
-            <Comments data={comments} />
-          </Card>
-        </Col>
-        <Col lg={24} md={24}>
-          <Card bordered={false}
-            bodyStyle={{
-              padding: '24px 36px 24px 0',
-            }}
-          >
-            <Completed data={completed} />
-          </Card>
-        </Col>
-        <Col lg={8} md={24}>
-          <Card bordered={false} {...bodyStyle}>
-            <Browser data={browser} />
-          </Card>
-        </Col>
-        <Col lg={8} md={24}>
-          <Card bordered={false} {...bodyStyle}>
-            <Cpu {...cpu} />
-          </Card>
-        </Col>
-        <Col lg={8} md={24}>
-          <Card bordered={false} bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}>
-            <User {...user} />
-          </Card>
-        </Col>
+          {data.map((item,key)=>{
+              return(
+                <Col lg={12} md={24} className='dash'>
+                  <Pie title={item.title} data={item.data} key={key} />
+                </Col>
+              )
+          })}
       </Row>
     </Page>
   )

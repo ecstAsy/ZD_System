@@ -158,7 +158,6 @@ export default {
       }
     },
     choseDesId(state, { payload }){
-      console.log(payload);
       return{
         ...state,currentItem:payload
       }
@@ -185,7 +184,6 @@ export default {
       return { ...state, editPwdModalVisible: false }
     },
     onChangeSearchTxt(state,{ payload }){
-      console.log(payload)
       return { ...state, searchTxt: payload }
     },
     openQuickSearchModal(state){

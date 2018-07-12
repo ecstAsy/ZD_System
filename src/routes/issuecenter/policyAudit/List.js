@@ -18,10 +18,10 @@ const List = ({...listProps, handleListAction,
       key: 'name',
     },{
       title: '状态',
-      dataIndex: 'status',
-      key: 'status',
-      render:(text,list)=><span className={list.status==='审核通过'?'status doneAudit':
-        list.status==='审核失效'?'status outtimeAudit':'status willAudit'}>{list.status}</span>
+      dataIndex: 'auditStatus',
+      key: 'auditStatus',
+      render:(text,list)=><span className={list.auditStatus==='审核通过'?'status doneAudit':
+        list.auditStatus==='审核失效'?'status outtimeAudit':'status willAudit'}>{list.auditStatus}</span>
     },{
       title: '业务员',
       dataIndex: 'salesman',
@@ -66,8 +66,8 @@ const List = ({...listProps, handleListAction,
       title:'操作',
       dataIndex:'action',
       key:'action',
-      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.status==='待审核'?'#f4a21a':'#0082fe'}}>{
-        list.status==='待审核'?'审核':'查看'
+      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.auditStatus==='待审核'?'#f4a21a':'#0082fe'}}>{
+        list.auditStatus==='待审核'?'审核':'查看'
       }</span>
     }
   ]

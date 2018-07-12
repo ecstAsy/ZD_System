@@ -12,7 +12,6 @@ function* baum () {
 let CARD_KINDS = (function () {
   const b = baum()
   b.next()
-  console.log(11111)
 
   return [{
     value: 1,

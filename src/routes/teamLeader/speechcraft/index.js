@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import queryString from 'query-string';
 import styles from './index.less';
-import { Row, Col, Button, Tag } from 'antd';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';

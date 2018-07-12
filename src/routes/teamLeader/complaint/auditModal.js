@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button } from 'antd';
-import styles from './index.less';
+import styles from '../../publicStyle.less';
 import classnames from 'classnames';
 const AuditModal = ({
       ...auditModal, item, handleCancel, handleConfirm, handleReject

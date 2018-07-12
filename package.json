@@ -13,7 +13,7 @@
     "dva": "^2.2.3",
     "dva-loading": "^2.0.0",
     "echarts": "^4.1.0",
-    "echarts-for-react": "^2.0.8",
+    "echarts-for-react": "^2.0.13",
     "echarts-gl": "^1.1.1",
     "echarts-liquidfill": "^2.0.0",
     "ejs-loader": "^0.3.0",
