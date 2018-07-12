@@ -6,12 +6,12 @@ import Menus from './Menu'
 import styles from './LeftShow.less'
 
 const Appointment = ({
-  user, logout,switchSider, siderFold,changeActiveKeyFunc, defaultActiveKey, location, switchMenuPopover, navOpenKeys, changeOpenKeys,
+  user, logout,switchSider, siderFold,changeActiveKeyFunc, defaultActiveKey, location, switchMenuPopover,
+  navOpenKeys, changeOpenKeys, Height
 }) => {
   const changeActiveKey=(key)=>{
      changeActiveKeyFunc(key)
   }
-
   return (
     <div className={styles.appointment}>
         <div className={styles.headTop}>
@@ -20,7 +20,7 @@ const Appointment = ({
         </div>
       {
         defaultActiveKey==1?(
-          <ul className={styles.ulList}>
+          <ul className={styles.ulList} style={{height:`${Height*0.40}px`}}>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
@@ -29,7 +29,7 @@ const Appointment = ({
 
           </ul>
         ):(
-          <ul className={styles.ulList}>
+          <ul className={styles.ulList} style={{height:`${Height*0.40}px`}}>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>
             <li><span>1</span><span>王红</span><span>苏EH7F57</span><span>05-28 10:30</span><span>E</span></li>

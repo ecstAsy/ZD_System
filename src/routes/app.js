@@ -13,6 +13,7 @@ import { withRouter } from 'dva/router';
 import Error from './error';
 import '../themes/index.less';
 import './app.less';
+import $ from 'jquery';
 
 
 const { Content, Footer, Sider } = Layout;
@@ -35,7 +36,7 @@ const App = ({
   const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname));
   const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
   const { href } = window.location;
-
+  const Height = document.body.clientHeight-196;
   if (lastHref !== href) {
     NProgress.start();
     if (!loading.global) {
@@ -81,6 +82,7 @@ const App = ({
 
   const AppointmentProps={
     defaultActiveKey,
+    Height,
     changeActiveKeyFunc(key){
       dispatch({
         type: `app/changeActiveKey`,
@@ -248,9 +250,9 @@ const App = ({
             </div>
             {
               permissions.role=='yewuyuan'?<div style={{width:'18%',position:'fixed',right:'0',paddingLeft:'15px'}}>
-                <Appointment {...AppointmentProps}/>
-                <Calendar  />
-                <Message />
+                <Appointment  {...AppointmentProps}/>
+                <Calendar Height={Height} />
+                <Message  Height={Height}/>
               </div>:null
             }
           </Content>

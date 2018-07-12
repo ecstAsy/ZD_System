@@ -20,8 +20,8 @@ const ColProps = {
 
 const DeductiblesModal =({
   item = {},
-  onOk,
   deductiblesData,
+  chosemianpei,
   form: {
     getFieldDecorator,
     validateFields,
@@ -29,42 +29,21 @@ const DeductiblesModal =({
   },
   ...DeductiblesProps
 })=>{
-  const handleOk = () => {
-    validateFields((errors) => {
-      if (errors) {
-        return
-      }
-      const data = {
-        ...getFieldsValue(),
-      };
-      console.log(data)
-      onOk(data)
-    })
-  };
-
-  const modalOpts = {
-    ...DeductiblesProps,
-    onOk: handleOk,
-  };
-
   return(
     <Modal
-      {...modalOpts}
+      {...DeductiblesProps}
     >
-      {getFieldDecorator('carId',)(
-        <CheckboxGroup style={{width:'100%'}}>
         <Row gutter={24} style={{paddingLeft:'20%'}}>
           {
             deductiblesData.map((i,key)=>{
               return (
                 <Col {...ColProps} key={key}>
-                  <Checkbox value={i.id}>{i.name}</Checkbox>
+                  <Checkbox checked={i.checked} value={i.id} onClick={()=>chosemianpei(i.id)}>{i.name}</Checkbox>
                 </Col>
                 )
             })
           }
         </Row>
-      </CheckboxGroup>)}
     </Modal>
   )
 };

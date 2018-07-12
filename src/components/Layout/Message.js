@@ -6,7 +6,7 @@ import Menus from './Menu'
 import styles from './LeftShow.less'
 
 const Message = ({
-  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys,
+  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys, Height
 }) => {
 
 
@@ -15,8 +15,8 @@ const Message = ({
       <div className={classnames(styles.headTop,styles.message)}>
         提醒
       </div>
-      <div className={styles.messageBox}>
-        <ul className={styles.ulList3}>
+      <div className={styles.messageBox} style={{height:`${Height*0.3}px`}}>
+        <ul className={styles.ulList3} >
           <li><span>●</span>还剩<span>75</span>条首播未处理</li>
           <li><span>●</span>还剩<span>113</span>条首播未处理</li>
         </ul>

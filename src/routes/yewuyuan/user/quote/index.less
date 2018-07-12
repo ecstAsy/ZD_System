@@ -68,15 +68,6 @@
 }
 .NoteModal{
   :global{
-    .ant-modal-footer{
-      text-align: center;
-    }
-    .ant-btn{
-      margin: 0 40px;
-    }
-    .ant-modal-title{
-      text-align: center;
-    }
     .templateItem{
       line-height: 24px;
       margin-bottom: 10px;
@@ -86,7 +77,6 @@
       margin: 8px 15px;
       cursor: pointer;
       height: 24px;
-
       padding: 0 5px;
       border-radius: 15px;
     }
@@ -262,97 +252,5 @@
     height: 42px;
     padding: 10px 5px;
     background: #f0f2f5;
-  }
-}
-.InsureInfoModal{
-  :global{
-    .tableBox{
-      border:1px solid #000;
-      border-radius:5px;
-      box-sizing: border-box;
-      padding: 0;
-      overflow: hidden;
-    }
-    table{
-      width: 100%;
-      font-size:12px;
-      border-radius:5px;
-      background:#f5fbff;
-      :global{
-        tr{
-          height: 32px;
-        }
-        tr:last-of-type{
-          height: 50px;
-          vertical-align:top;
-        }
-        tr>th,tr>td{
-          text-indent: 12px;
-        }
-        td{
-          color: #1B56A5;
-          border: 1px solid #E2E4E8;
-        }
-        tr:first-of-type>th,tr:first-of-type>td{
-          border-top: 1px solid #939BA4;
-        }
-        tr:not(.tr)>th:first-of-type:not(.col){
-          border-left: 1px solid #939BA4;
-          border-bottom: 1px solid #E2E4E8;
-        }
-        .tr>.row,.tr>td{
-          border-bottom: 1px solid #939BA4;
-        }
-        .col{
-          border-left:1px solid #939BA4;
-        }
-        .row{
-          border:1px solid #E2E4E8;
-        }
-        tr:nth-of-type(3)>td,
-        tr:nth-of-type(3)>th{
-          border-bottom: 1px solid #939BA4;
-        }
-        tr>td:last-of-type{
-          border-right: 1px solid #939BA4;
-        }
-        tr:last-of-type>td:last-of-type{
-          border-left: 1px solid #939BA4;
-          border-bottom: 1px solid #939BA4;
-        }
-        tr:nth-last-of-type(5)>th:last-of-type{
-          border-right: 1px solid #939BA4;
-          border-top: 1px solid #939BA4;
-        }
-        tr:nth-last-of-type(4)>td:last-of-type,tr:nth-last-of-type(3)>td:last-of-type,tr:nth-last-of-type(2)>td:last-of-type{
-          border-left: 1px solid #939BA4;
-        }
-        tr:nth-last-of-type(4)>td:last-of-type,tr:nth-last-of-type(2)>td:last-of-type{
-          border-bottom: 1px solid #939BA4;
-        }
-         tr >th> span{
-           display: inline-block;
-           width: 33.33%;
-           text-align: center;
-         }
-        tr > td > p{
-          width: 100%;
-          margin: 5px 0;
-        }
-        tr > td > p >span{
-          display: inline-block;
-          width: 33.33%;
-          text-align: center;
-
-        }
-        .td_span{
-          color: #333;
-        }
-        .td_insurance{
-          display: inline-block;
-          margin-left: 5px;
-        }
-      }
-    }
   }
 }

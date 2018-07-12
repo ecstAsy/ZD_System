@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Modal, Form ,Button, Input } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+import publicStyles from '../../../publicStyle.less';
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -37,7 +38,7 @@ const NoteModal = ({
                 {id:2,title:'模板二',detail:'短信模板'}];
 
   return (
-    <Modal {...noteModalProps} className={classnames(styles.NoteModal)}
+    <Modal {...noteModalProps} className={classnames(styles.NoteModal,publicStyles.Modal)}
            footer={[
              <Button  type="primary" loading={loading}>发送</Button>,
              <Button  onClick={handleCancel}>取消</Button>

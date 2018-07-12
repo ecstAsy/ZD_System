@@ -50,17 +50,17 @@ export default modelExtend(pageModel, {
       {id:25010,checked:false,name:'无法找到第三方特约险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
       {id:25011,checked:false,name:'不计免赔险',discount_cost:'',discount_costAblead:true,coverageAblead:true,},
     ],
-    choseinsuranceData:[],  //已选的商业险
     strongInsuranceData:[
       {id:25012,checked:false,name:'车船税',travelTax:'',discount_costAblead:true,coverageAblead:true,},
     ],
     deductiblesData:[
-      {id:'25001',name:'此损险不计免赔'},
-      {id:'25002',name:'第三责任险不计免赔'},
-      {id:'25003',name:'座位险不计免赔'},
-      {id:'25004',name:'全车盗抢险不计免赔'},
-      {id:'25005',name:'附加险不计免赔特约条款'},
-    ]
+      {id:'25001',name:'此损险不计免赔',checked:false},
+      {id:'25002',name:'第三责任险不计免赔',checked:false},
+      {id:'25003',name:'座位险不计免赔',checked:false},
+      {id:'25004',name:'全车盗抢险不计免赔',checked:false},
+      {id:'25005',name:'附加险不计免赔特约条款',checked:false},
+    ],
+    okMianpeiData:'请选择'
   },
 
   subscriptions: {
@@ -139,7 +139,13 @@ export default modelExtend(pageModel, {
     checkedInsuranceFunc(state, { payload }){
       let id = payload.id;
       let insuranceData = state.insuranceData;
-      let choseinsuranceData = [];
+      let deductiblesData = state.deductiblesData;
+      let okMianpeiData ='';
+      for(let i of deductiblesData){
+        if(id==i.id){
+          i.checked=!i.checked;
+        }
+      }
       for(let item of insuranceData){
           if(item.id==id){
             item.checked=!item.checked;
@@ -148,11 +154,23 @@ export default modelExtend(pageModel, {
             }
           }
       }
-      for(let item of insuranceData){
-          if(item.checked){
-            choseinsuranceData.push(item.name);
-          }
+      for(let item of deductiblesData){
+        if(item.checked){
+          okMianpeiData+=item.name+'/'
+        }
       }
+      return { ...state, ...payload,okMianpeiData:okMianpeiData,}
+    },
+
+    chosemianpei(state, { payload }){
+      let id = payload.id;
+      let deductiblesData = state.deductiblesData;
+      for(let item of deductiblesData){
+        if(item.id==id){
+          item.checked=!item.checked;
+        }
+      }
+      console.log(deductiblesData)
       return { ...state, ...payload,}
     },
 
@@ -178,6 +196,16 @@ export default modelExtend(pageModel, {
       }else if(payload.modalType=='choosePurCar'){
         return { ...state, choosePurCarModalVisible: true }
       }else if(payload.modalType=='deductibles'){
+        let insuranceData = state.insuranceData;
+        let deductiblesData = state.deductiblesData;
+        for(let item of deductiblesData){
+          item.checked=false;
+          for(let i of insuranceData){
+              if(item.id==i.id){
+                item.checked = i.checked;
+              }
+          }
+        }
         return { ...state, deductiblesModalVisible: true }
       }
     },
@@ -195,6 +223,15 @@ export default modelExtend(pageModel, {
         return { ...state, deductiblesModalVisible: false }
       }else if(payload.modalType==='insureAtion') {
         return { ...state, insureInfoModalVisible: false }
+      }else if(payload.modalType==='deductiblesSave'){
+        let deductiblesData = state.deductiblesData;
+        let okMianpeiData='';
+        for(let item of deductiblesData){
+          if(item.checked){
+            okMianpeiData+=item.name+'/'
+          }
+        }
+        return { ...state, deductiblesModalVisible: false,okMianpeiData:okMianpeiData, }
       }
     },
 

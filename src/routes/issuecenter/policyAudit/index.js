@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
-import Filter from './Filter'
+import Filter from './Filter';
 import queryString from 'query-string';
 import classnames from 'classnames';
 import styles from './index.less';
 import List from './List';
-import InsuranceSlipModal from './insuranceSlipModal'
+import InsuranceSlipModal from './insuranceSlipModal';
 import EntryInfoModal from './entryInfoModal';
+import ViewPolicyModal from './viewPolicyModal';
 
 
 const PolicyAudit = ({
@@ -17,7 +18,7 @@ const PolicyAudit = ({
                  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem} = policyAudit;
+  const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem, ViewPolicyModalVisible} = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -103,6 +104,24 @@ const PolicyAudit = ({
     }
   };
 
+  const viewPolicyModalProps = {
+    visible : ViewPolicyModalVisible,
+    maskClosable: false,
+    width:'55%',
+    closable:false,
+    title:'投保单',
+    currentItem,
+    wrapClassName: 'vertical-center-modal',
+    handleCancel(){
+      dispatch({
+        type:'policyAudit/hideModal',
+        payload:{
+          modalType:'view'
+        }
+      })
+    }
+  };
+
   return (
     <Page inner>
       <Filter {...filterProps}/>
@@ -112,6 +131,7 @@ const PolicyAudit = ({
       <List {...listProps}/>
       {InsuranceSlipModalVisible  && <InsuranceSlipModal {...insuranceSlipModalProps}/>}
       {EntryInfoModalVisible && <EntryInfoModal {...entryInfoModalProps}/>}
+      {ViewPolicyModalVisible && <ViewPolicyModal {...viewPolicyModalProps}/>}
     </Page>
   )
 }

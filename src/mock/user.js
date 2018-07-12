@@ -71,7 +71,7 @@ const userPermission = {
     role: EnumRoleType.DEVELOPER,
   },
   ISSUECENTER:{
-    visit : ['1','3','12','13','14'],
+    visit : ['1','3','12','13','14','15'],
     role: EnumRoleType.ISSUECENTER,
   },
   YEWUYUAN:{

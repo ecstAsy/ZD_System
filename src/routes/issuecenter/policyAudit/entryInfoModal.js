@@ -23,8 +23,9 @@ const formItemLayout = {
 };
 
 const EntryInfoModal = ({...entryInfoModalProps, handleCancel, currentItem,
-  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
-})=>{
+    form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+  })=>{
+  console.log(currentItem)
 
   const handleConfirm = ()=>{
     let fields = getFieldsValue();
@@ -120,7 +121,7 @@ const EntryInfoModal = ({...entryInfoModalProps, handleCancel, currentItem,
       <Row gutter={24}>
         <Col span={12}>
           <FormItem {...formItemLayout} label='支付码'>
-            {getFieldDecorator('vehicleVesselTax')(
+            {getFieldDecorator('paymentCode')(
               <Input/>
             )}
           </FormItem>
