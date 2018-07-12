@@ -8,6 +8,7 @@ import Loader from './Loader';
 import Title from './Title';
 import * as MyLayout from './Layout/index.js';
 import Page from './Page';
+import PolicyTable from './PolicyTable';
 
 import layer from './layer';
 
@@ -22,5 +23,6 @@ export {
   Loader,
   layer,
   Title,
+  PolicyTable,
   Page,
 }

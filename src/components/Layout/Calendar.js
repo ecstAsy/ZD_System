@@ -6,7 +6,7 @@ import Menus from './Menu'
 import styles from './LeftShow.less'
 
 const Calendar = ({
-  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys,
+  user, logout,switchSider, siderFold,location, switchMenuPopover, navOpenKeys, changeOpenKeys, Height
 }) => {
 
 
@@ -15,7 +15,7 @@ const Calendar = ({
       <div className={classnames(styles.headTop,styles.calendar)}>
         预约日历
       </div>
-      <ul className={styles.ulList2}>
+      <ul className={styles.ulList2} style={{height:`${Height*0.25}px`}}>
         <li><span>05/31</span><span>已预约45单，还可预约<span>75</span>单</span></li>
         <li><span>05/31</span><span>已预约45单，还可预约<span>75</span>单</span></li>
         <li><span>05/31</span><span>已预约45单，还可预约<span>75</span>单</span></li>

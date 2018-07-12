@@ -23,15 +23,15 @@ const formItemLayout = {
 };
 
 const EntryInfoModal = ({...entryInfoModalProps, handleCancel, currentItem,
-                                  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
-                                })=>{
+    form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+  })=>{
+  console.log(currentItem)
 
   const handleConfirm = ()=>{
     let fields = getFieldsValue();
     fields.costNum = formatFloat(formatFloat(currentItem.commercialNum-fields.commercialNum,2)+
       formatFloat(currentItem.compulsoryNum-fields.compulsoryNum,2)+
       formatFloat(currentItem.vehicleVesselTax-fields.vehicleVesselTax,2),2)
-    console.log(fields)
   };
 
   const formatFloat =  (f, digit)=> {
@@ -120,7 +120,7 @@ const EntryInfoModal = ({...entryInfoModalProps, handleCancel, currentItem,
       <Row gutter={24}>
         <Col span={12}>
           <FormItem {...formItemLayout} label='支付码'>
-            {getFieldDecorator('vehicleVesselTax')(
+            {getFieldDecorator('paymentCode')(
               <Input/>
             )}
           </FormItem>
