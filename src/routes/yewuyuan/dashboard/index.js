@@ -8,9 +8,7 @@ import styles from './index.less';
 import Pie from './pie';
 
 function Dashboard ({ dashboard, loading }) {
-  const {
-    weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user,
-  } = dashboard;
+
   const data=[
     {title:'预约',data:[ {value:5, name:'已跟踪'},
       {value:10, name:'未跟踪'},]},
@@ -22,7 +20,7 @@ function Dashboard ({ dashboard, loading }) {
       {value:2, name:'失败'},]}
   ];
   return (
-    <Page  inner loading={loading.models.dashboard && sales.length === 0} className={styles.dashboard}>
+    <Page  inner loading={loading.models.dashboard} className={styles.dashboard}>
       <Row gutter={24}>
           {data.map((item,key)=>{
               return(
