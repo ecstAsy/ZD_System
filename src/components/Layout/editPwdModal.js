@@ -37,7 +37,6 @@ const EditPwdModal = ({
       const data = {
         ...getFieldsValue(),
       };
-      console.log(data)
       onOk(data)
     })
   }

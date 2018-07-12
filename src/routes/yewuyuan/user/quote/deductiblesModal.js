@@ -48,7 +48,7 @@ const DeductiblesModal =({
   )
 };
 DeductiblesModal.prototype = {
-
+  chosemianpei: PropTypes.func,
 
 }
 export default Form.create()(DeductiblesModal)

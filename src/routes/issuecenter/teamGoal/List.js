@@ -94,7 +94,7 @@ const List = ({ teamData, isEdit, handleCancelFunc, saveFunc,
                               message:`${i.name}不能为空`
                             },
                           ],},
-                        )(<Input style={{width:'50%'}} />)}
+                        )(<InputNumber style={{width:'50%'}} />)}
                       </FormItem>
                     </Col>
                 )
@@ -119,7 +119,8 @@ const List = ({ teamData, isEdit, handleCancelFunc, saveFunc,
 };
 
 List.propTypes = {
-
+  save: PropTypes.func,
+  handleCancelFunc: PropTypes.func,
 };
 
 export default Form.create()(List)

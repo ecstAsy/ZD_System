@@ -170,7 +170,6 @@ export default modelExtend(pageModel, {
           item.checked=!item.checked;
         }
       }
-      console.log(deductiblesData)
       return { ...state, ...payload,}
     },
 

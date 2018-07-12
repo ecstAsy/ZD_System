@@ -35,7 +35,6 @@ const UseInfoModal = ({
       const data = {
         ...getFieldsValue(),
       };
-      console.log(data)
        onOk(data)
     })
   }

@@ -138,7 +138,6 @@ const Quote = ({
     },
 
     chosemianpei(id){
-      console.log(id)
       dispatch({
         type: 'quote/chosemianpei',
         payload: {

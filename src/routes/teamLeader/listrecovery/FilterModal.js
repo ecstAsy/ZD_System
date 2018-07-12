@@ -39,7 +39,6 @@ const FilterModal = ({...filterProps, handleCancel, FilterSearch,
   const handleSubmit =()=>{
     let fields = getFieldsValue();
     fields = handleFields(fields);
-    console.log(fields)
     FilterSearch(fields)
   };
   return (
