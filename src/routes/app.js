@@ -35,7 +35,6 @@ const App = ({
   const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
   const { href } = window.location;
   let Height = document.body.clientHeight-196;
-
   if (lastHref !== href) {
     NProgress.start();
     if (!loading.global) {
@@ -247,9 +246,9 @@ const App = ({
             </div>
             {
               permissions.role=='yewuyuan'?<div style={{width:'18%',position:'fixed',right:'0',paddingLeft:'15px'}}>
-                <Appointment {...AppointmentProps}/>
+                <Appointment  {...AppointmentProps}/>
                 <Calendar Height={Height} />
-                <Message Height={Height}  />
+                <Message  Height={Height}/>
               </div>:null
             }
           </Content>

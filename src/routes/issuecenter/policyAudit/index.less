@@ -11,125 +11,9 @@
       color: #0082FE;
       text-align: right;
     }
-    .tablePolicy{
-      width: 100%;
-      font-size:12px;
-      border-radius:5px;
-      background:#f5fbff;
-      :global{
-        tr{
-          height: 32px;
-        }
-        tr:last-of-type{
-          height: 50px;
-          vertical-align:top;
-        }
-        tr>th,tr>td{
-          text-indent: 12px;
-        }
-        td{
-          color: #1B56A5;
-          border: 1px solid #E2E4E8;
-        }
-        tr:first-of-type>th,tr:first-of-type>td{
-          border-top: 1px solid #939BA4;
-        }
-        tr:not(.tr)>th:first-of-type:not(.col){
-          border-left: 1px solid #939BA4;
-          border-bottom: 1px solid #E2E4E8;
-        }
-        .tr>.row,.tr>td{
-          border-bottom: 1px solid #939BA4;
-        }
-        .col{
-          border-left:1px solid #939BA4;
-        }
-        .row{
-          border:1px solid #E2E4E8;
-        }
-        tr:nth-of-type(3)>td,
-        tr:nth-of-type(3)>th{
-          border-bottom: 1px solid #939BA4;
-        }
-        tr>td:last-of-type{
-          border-right: 1px solid #939BA4;
-        }
-        tr:last-of-type>td:last-of-type{
-          border-left: 1px solid #939BA4;
-          border-bottom: 1px solid #939BA4;
-        }
-        tr:nth-last-of-type(5)>th:last-of-type{
-          border-right: 1px solid #939BA4;
-          border-top: 1px solid #939BA4;
-        }
-        tr:nth-last-of-type(4)>td:last-of-type,tr:nth-last-of-type(3)>td:last-of-type,tr:nth-last-of-type(2)>td:last-of-type{
-          border-left: 1px solid #939BA4;
-        }
-        tr:nth-last-of-type(4)>td:last-of-type,tr:nth-last-of-type(2)>td:last-of-type{
-          border-bottom: 1px solid #939BA4;
-        }
-        tr >th> span{
-          display: inline-block;
-          width: 33.33%;
-          text-align: center;
-        }
-        tr > td > p{
-          width: 100%;
-          margin: 5px 0;
-        }
-        tr > td > p >span{
-          display: inline-block;
-          width: 33.33%;
-          text-align: center;
-
-        }
-        .td_span{
-          color: #333;
-        }
-        .td_insurance{
-          display: inline-block;
-          margin-left: 5px;
-        }
-      }
-    }
-    .tableSend{
-      margin-top: 20px;
-      width: 100%;
-      font-size:12px;
-      border-radius:5px;
-      background:#f5fbff;
-      :global{
-        tr{
-          text-indent: 12px;
-        }
-        tr:first-of-type{
-          height: 32px;
-          border-top: 1px solid #939BA4;
-          border-left: 1px solid #939BA4;
-          border-right: 1px solid #939BA4;
-          border-bottom: 1px solid #E2E4E8;
-        }
-        tr:last-of-type{
-          height: 54px;
-          border-bottom: 1px solid #939BA4;
-          border-left: 1px solid #939BA4;
-          border-right: 1px solid #939BA4;
-          border-top: 1px solid #E2E4E8;
-        }
-        .td_span{
-          color: #333;
-        }
-        .td_insurance{
-          display: inline-block;
-          margin-left: 5px;
-          width: 80%;
-          vertical-align: top;
-          color: #1B56A5;
-        }
-      }
-    }
   }
 }
+
 .totalPrice{
   font-size: 14px;
   color: #333;
@@ -145,7 +29,6 @@
       color: #333;
     }
   }
-
 }
 
 .table{
@@ -226,6 +109,46 @@
       background: transparent;
       color: #0082FE;
       border: none;
+    }
+    .titleTxt{
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+}
+.ViewPolicyModal{
+  :global{
+    .ant-col-18{
+      margin: 16px 30px 0px;
+      font-size:13px;
+      :global{
+        .title,.detail{
+          display: inline-block;
+          color: #939BA4;
+        }
+        .detail{
+          width: 15%;
+        }
+        .title>.unit{
+          font-size: 12px;
+        }
+        .allNum{
+          color: #333;
+        }
+      }
+    }
+    .ant-col-18:last-of-type{
+      margin-bottom: 16px;
+    }
+    .ant-col-11{
+      :global{
+        .title{
+          color: #939BA4;
+          display: inline-block;
+          vertical-align: top;
+          margin-left: -12px;
+        }
+      }
     }
   }
 }
