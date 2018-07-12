@@ -154,8 +154,8 @@ const Filter = ({
           <Col >
             <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
               <div>
-                <Button type="primary" className={styles.buttonStyle} onClick={handleSubmit}>查询</Button>
-                <Button onClick={handleReset} className={styles.buttonStyle}>重置</Button>
+                <Button type="primary" onClick={handleSubmit}>查询</Button>
+                <Button onClick={handleReset}>重置</Button>
               </div>
             </div>
           </Col>

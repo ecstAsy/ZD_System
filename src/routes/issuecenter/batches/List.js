@@ -59,8 +59,8 @@ const List = ({...listProps, handleListAction,
       title:'操作',
       dataIndex:'action',
       key:'action',
-      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.status==='待审核'?'#f4a21a':'#0082fe'}}>{list.status==='待审核'
-        ?'审核':list.status==='审核通过'&&list.register==='-'?'登记':''}</span>
+      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.status==='待审核'?'#f4a21a':'#0082fe'}}>{
+        list.status==='待审核'?'审核':list.status==='审核通过'&&list.register==='-'?'登记':''}</span>
     }
   ]
   return (
