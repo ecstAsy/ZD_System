@@ -1,11 +1,11 @@
 /* global document */
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import { FilterItem } from 'components'
-import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select ,Icon, TimePicker, InputNumber } from 'antd'
-import styles from './index.less'
+import classnames from 'classnames';
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select ,Icon, TimePicker} from 'antd';
+import styles from './index.less';
+
 const Option = Select.Option;
 const { Search } = Input;
 const { MonthPicker } = DatePicker;
@@ -46,16 +46,8 @@ const ColProps = {
   }
 };
 
-const List = ({
-  teamData,
-  isEdit,
-  handleCancelFunc,
-  saveFunc,
-  form: {
-    getFieldDecorator,
-    getFieldsValue,
-    setFieldsValue,
-  },
+const List = ({ teamData, isEdit, handleCancelFunc, saveFunc,
+  form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
   const save=()=>{
     let fields = getFieldsValue();

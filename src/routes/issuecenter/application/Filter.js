@@ -56,21 +56,14 @@ const formItemLayoutLong = {
   }
 };
 
-const Filter = ({
-  onFilterChange,
-  filter,
-  form: {
-    getFieldDecorator,
-    getFieldsValue,
-    setFieldsValue,
-  },
+const Filter = ({ FilterSearch, filter,
+  form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
-  const { carPlate, status, team, processor, applyTime, }=filter;
+  const { carPlate, applyStatus, team, salesman, applyTime, }=filter;
 
   const handleFields = (fields) => {
-    const { applyTime } = fields;
-    if (applyTime && applyTime.length && applyTime.length > 1) {
-      fields.applyTime = [applyTime[0].format('YYYYMMDD'), applyTime[1].format('YYYYMMDD')]
+    if (fields.applyTime && fields.applyTime instanceof Array  && fields.applyTime.length > 1) {
+      fields.applyTime = [fields.applyTime[0].format('YYYYMMDD'), fields.applyTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -78,22 +71,16 @@ const Filter = ({
   const handleSubmit = () => {
     let fields = getFieldsValue();
     fields = handleFields(fields);
-    onFilterChange(fields)
+    FilterSearch(fields);
   };
 
   const handleReset = () => {
     const fields = getFieldsValue();
     for (let item in fields) {
-      if ({}.hasOwnProperty.call(fields, item)) {
-        if (fields[item] instanceof Array) {
-          fields[item] = []
-        } else {
-          fields[item] = undefined
-        }
-      }
+      fields[item] = fields[item] instanceof Array ? [] : undefined;
     }
     setFieldsValue(fields);
-    handleSubmit()
+    handleSubmit();
   };
 
 
@@ -108,7 +95,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status', { initialValue: status})(<Select
+              {getFieldDecorator('applyStatus', { initialValue: applyStatus})(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -134,7 +121,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('processor', {initialValue: processor})(<Select
+              {getFieldDecorator('salesman', {initialValue: salesman})(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -168,7 +155,7 @@ const Filter = ({
 Filter.propTypes = {
   form: PropTypes.object,
   filter: PropTypes.object,
-  onFilterChange: PropTypes.func,
+  FilterSearch: PropTypes.func,
 }
 
 export default Form.create()(Filter)

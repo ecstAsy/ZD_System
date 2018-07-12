@@ -58,22 +58,15 @@ const formItemLayoutLong = {
   }
 };
 
-const Filter = ({
-  onFilterChange,
-  filter,
-  form: {
-    getFieldDecorator,
-    getFieldsValue,
-    setFieldsValue,
-  },
+const Filter = ({ FilterSearch, filter,
+  form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
   const { carPlate, name, sendTime, policyScene, area, team, salesman, payWay, customerType,
-    status, registrationAmountStatus, submissionTime, insuranceCompany, }=filter;
+    auditStatus, registrationAmountStatus, submissionTime, insuranceCompany, }=filter;
 
   const handleFields = (fields) => {
-    const { paymentTime } = fields;
-    if (paymentTime && paymentTime.length && paymentTime.length > 1) {
-      fields.paymentTime = [paymentTime[0].format('YYYYMMDD'), paymentTime[1].format('YYYYMMDD')]
+    if (fields.paymentTime && fields.paymentTime instanceof Array && fields.paymentTime.length > 1) {
+      fields.paymentTime = [fields.paymentTime[0].format('YYYYMMDD'), fields.paymentTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -81,22 +74,16 @@ const Filter = ({
   const handleSubmit = () => {
     let fields = getFieldsValue();
     fields = handleFields(fields);
-    onFilterChange(fields)
+    FilterSearch(fields);
   };
 
   const handleReset = () => {
     const fields = getFieldsValue();
     for (let item in fields) {
-      if ({}.hasOwnProperty.call(fields, item)) {
-        if (fields[item] instanceof Array) {
-          fields[item] = []
-        } else {
-          fields[item] = undefined
-        }
-      }
+      fields[item] = fields[item] instanceof Array ? [] : undefined;
     }
     setFieldsValue(fields);
-    handleSubmit()
+    handleSubmit();
   };
 
   const residences = [{
@@ -177,7 +164,7 @@ const Filter = ({
           </Col>
           <Col {...ColProps}>
             <FormItem label="状态"  {...formItemLayout}>
-              {getFieldDecorator('status', { initialValue: status })(<Select
+              {getFieldDecorator('auditStatus', { initialValue: auditStatus })(<Select
                 showSearch
                 style={{ width: '100%' }}
                 placeholder="请选择"
@@ -273,7 +260,7 @@ const Filter = ({
 Filter.propTypes = {
   form: PropTypes.object,
   filter: PropTypes.object,
-  onFilterChange: PropTypes.func,
+  FilterSearch: PropTypes.func,
 }
 
 export default Form.create()(Filter)

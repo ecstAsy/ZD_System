@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Button } from 'antd';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';

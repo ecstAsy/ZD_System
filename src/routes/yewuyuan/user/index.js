@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
-import { Page } from 'components'
-import queryString from 'query-string'
-import List from './List'
-import Filter from './Filter'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Row, Col, Button } from 'antd';
+import { Page } from 'components';
+import queryString from 'query-string';
+import List from './List';
+import Filter from './Filter';
+import styles from './List.less';
 
 const User = ({
   location, dispatch, user, loading, history

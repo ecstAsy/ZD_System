@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Row, Col, Button, Radio, Tag } from 'antd';
+import { Radio, Button } from 'antd';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
@@ -97,7 +97,7 @@ const ListRecovery = ({location, dispatch, listrecovery, loading,
           {
             salesMan.map((item,i)=>{
               return (
-                <Radio value={`${item.name}`}>{item.name}</Radio>
+                <Radio value={`${item.name}`} key={i}>{item.name}</Radio>
               )
             })
           }

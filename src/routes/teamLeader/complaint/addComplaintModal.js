@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal, Button, Row, Col, Form, Input, Select, DatePicker, Radio } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -26,7 +27,7 @@ const AddComplaintModal = ({...addComplaintModalProps, handleCancel, showSelectL
       form: { getFieldDecorator, getFieldsValue, setFieldsValue }
   })=>{
   return (
-    <Modal className={classnames(styles.AuditModal,styles.AddComplaintModal)}
+    <Modal className={classnames(publicStyles.Modal,styles.AddComplaintModal)}
       {...addComplaintModalProps}
       footer={[
         <Button type="primary" key="submit">确定</Button>,
@@ -35,12 +36,12 @@ const AddComplaintModal = ({...addComplaintModalProps, handleCancel, showSelectL
       <Row>
         <Col span={20}>
           <FormItem {...formItemLayout} label="客户">
-            {getFieldDecorator('user',{
-              initialValue : selectedUser.userName
+            {getFieldDecorator('name',{
+              initialValue : selectedUser.name
             })(
               <div>
                 {
-                  selectedUser.userName && <span className='NameShow'>{selectedUser.userName}</span>
+                  selectedUser.name && <span className='NameShow'>{selectedUser.name}</span>
                 }
                 <span className='NameChoose' onClick={showSelectList}>选择</span>
               </div>
@@ -49,8 +50,8 @@ const AddComplaintModal = ({...addComplaintModalProps, handleCancel, showSelectL
         </Col>
         <Col span={20}>
           <FormItem {...formItemLayout} label="处理业务员">
-            {getFieldDecorator('action',{
-              initialValue : selectedUser.salseMan
+            {getFieldDecorator('processor',{
+              initialValue : selectedUser.processor
             })(
               <Select showSearch style={{ width: '50%' }} placeholder="请选择" >
                 <Option value="业务员1">业务员1</Option>

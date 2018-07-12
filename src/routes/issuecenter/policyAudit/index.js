@@ -14,8 +14,8 @@ import ViewPolicyModal from './viewPolicyModal';
 
 
 const PolicyAudit = ({
-                   location, dispatch, policyAudit, loading,
-                 }) => {
+   location, dispatch, policyAudit, loading,
+ }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem, ViewPolicyModalVisible} = policyAudit;
@@ -34,7 +34,7 @@ const PolicyAudit = ({
     filter: {
       ...query,
     },
-    onFilterChange (value) {
+    FilterSearch (value) {
       handleRefresh({
         ...value,
         page: 1,

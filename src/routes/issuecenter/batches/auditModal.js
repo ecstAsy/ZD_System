@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, Input } from 'antd';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 import classnames from 'classnames';
 
 const FormItem = Form.Item;
@@ -24,7 +25,7 @@ const AuditModal = ({...auditModalProps, handleCancel, currentItem,
      form: { getFieldDecorator, getFieldsValue, setFieldsValue }
    })=>{
   return (
-    <Modal className={classnames(styles.Modal,styles.AuditModal)}
+    <Modal className={classnames(publicStyles.Modal,styles.AuditModal)}
       {...auditModalProps}
       footer={[
         <Button key="submit" type="primary">通过</Button>,

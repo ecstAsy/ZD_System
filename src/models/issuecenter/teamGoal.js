@@ -1,13 +1,13 @@
 /* global window */
-import modelExtend from 'dva-model-extend'
-import queryString from 'query-string'
-import { config } from 'utils'
-import { create, remove, update } from 'services/issuecenter/application'
-import * as applicationsService from 'services/issuecenter/application'
-import { pageModel } from '../common'
+import modelExtend from 'dva-model-extend';
+import queryString from 'query-string';
+import { config } from 'utils';
+import { create, remove, update } from 'services/issuecenter/application';
+import * as applicationsService from 'services/issuecenter/application';
+import { pageModel } from '../common';
 
-const { query } = applicationsService
-const { prefix } = config
+const { query } = applicationsService;
+const { prefix } = config;
 
 export default modelExtend(pageModel, {
   namespace: 'tamGoal',
@@ -34,7 +34,6 @@ export default modelExtend(pageModel, {
             {name:'周1丹:',num:'10'},{name:'周2丹:',num:'10'},{name:'周3丹:',num:'10'},
             {name:'周4丹:',num:'10'}]}]}
       ],
-
   },
 
   subscriptions: {
@@ -74,7 +73,5 @@ export default modelExtend(pageModel, {
     isEditFunc (state, { payload }) {
       return { ...state, ...payload, isEdit: !state.isEdit }
     },
-
-
   },
 })

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import styles from './Filter.less';
 import { Form, Button, Row, Col, DatePicker, Input, Select } from 'antd';
+
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
@@ -70,16 +69,9 @@ const  ColProps3={
   },
 };
 
-const Filter = ({
-        history,
-        filter,
-        dispatch,
-        SaveUserInfo,
-        form: {
-          getFieldDecorator,
-          getFieldsValue,
-          setFieldsValue,
-        }})=>{
+const Filter = ({ filter, dispatch, SaveUserInfo, history,
+    form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+  })=>{
   const handleFields = (fields) => {
     fields.carCheckTime = fields.carCheckTime && fields.carCheckTime.format('YYYYMMDD');
     fields.firstLoginTime = fields.firstLoginTime && fields.firstLoginTime.format('YYYYMMDDHH');
@@ -94,7 +86,7 @@ const Filter = ({
     history.push('/user')
   };
   return (
-    <div className={classnames(styles.infoBox)}>
+    <div>
       <Form>
         <Row gutter={24}>
           <Col {...ColProps}>

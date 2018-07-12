@@ -58,7 +58,7 @@ const PolicyRegistration = ({
     filter: {
       ...query,
     },
-    onFilterChange (value) {
+    FilterSearch (value) {
       handleRefresh({
         ...value,
         page: 1,
@@ -111,7 +111,8 @@ const PolicyRegistration = ({
         type:'policyRegistration/hideModal'
       })
     }
-  }
+  };
+
   return (
     <Page >
       <div className={classnames(styles.wrap)}>

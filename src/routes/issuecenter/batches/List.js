@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 
 const List = ({...listProps, handleListAction,
   })=>{
@@ -25,8 +26,8 @@ const List = ({...listProps, handleListAction,
       key: 'team',
     },{
       title: '业务员',
-      dataIndex: 'processor',
-      key: 'processor',
+      dataIndex: 'salesman',
+      key: 'salesman',
     },{
       title: '批改日期',
       dataIndex: 'batchTime',
@@ -47,26 +48,26 @@ const List = ({...listProps, handleListAction,
       render:(text,list)=><span>{`-${list.costNum}`}</span>
     },{
       title: '状态',
-      dataIndex: 'status',
-      key: 'status',
-      render:(text,list)=><span style={{color:list.status==='退保'?'#ec412b':list.status==='待审核'?'#f4a21a':'#0dcbe4'}}>{list.status}</span>
+      dataIndex: 'policyStatus',
+      key: 'policyStatus',
+      render:(text,list)=><span style={{color:list.policyStatus==='退保'?'#ec412b':list.policyStatus==='待审核'?'#f4a21a':'#0dcbe4'}}>{list.policyStatus}</span>
     },{
       title: '登记状态',
-      dataIndex: 'register',
-      key: 'register',
-      render:(text,list)=><span>{list.register}</span>
+      dataIndex: 'registerStatus',
+      key: 'registerStatus',
+      render:(text,list)=><span>{list.registerStatus}</span>
     },{
       title:'操作',
       dataIndex:'action',
       key:'action',
-      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.status==='待审核'?'#f4a21a':'#0082fe'}}>{
-        list.status==='待审核'?'审核':list.status==='审核通过'&&list.register==='-'?'登记':''}</span>
+      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color:list.policyStatus==='待审核'?'#f4a21a':'#0082fe'}}>{
+        list.policyStatus==='待审核'?'审核':list.policyStatus==='审核通过'&&list.registerStatus==='-'?'登记':''}</span>
     }
   ]
   return (
     <Table
       {...listProps}
-       className={classnames(styles.table)}
+       className={classnames(publicStyles.table,styles.table)}
       columns={columns}
       simple
       rowKey={record => record.id}

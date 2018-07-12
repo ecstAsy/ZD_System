@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Modal, Button, Form , Input, Tag } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+import publicStyles from '../../../publicStyle.less';
 const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
@@ -26,7 +27,7 @@ const GiftModal = ({...giftModalProps, handleCancel, handleCost, handleAdd, TagC
   };
 
   return (
-    <Modal {...giftModalProps} className={classnames(styles.NoteModal,styles.GiftModal)}
+    <Modal {...giftModalProps} className={classnames(publicStyles.Modal,styles.GiftModal)}
            footer={[
              <Button  type="primary" onClick={handleSubmit}>保存</Button>,
              <Button onClick={handleCancel}>取消</Button>,

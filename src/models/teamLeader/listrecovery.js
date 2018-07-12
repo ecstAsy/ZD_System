@@ -1,8 +1,8 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
 import { config } from 'utils';
-import { create, remove, update } from 'services/teamLeader/allocate';
-import * as allocatesService from 'services/teamLeader/allocate';
+import { create, remove, update } from 'services/generalData';
+import * as allocatesService from 'services/generalData';
 import { pageModel } from '../common';
 
 const { query } = allocatesService;

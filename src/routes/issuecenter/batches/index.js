@@ -78,7 +78,7 @@ const Batches = ({
     filter: {
       ...query,
     },
-    onFilterChange (value) {
+    FilterSearch (value) {
       handleRefresh({
         ...value,
         page: 1,

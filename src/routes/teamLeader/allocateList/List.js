@@ -4,6 +4,7 @@ import { Table, Modal, Form, Input } from 'antd';
 import classnames from 'classnames';
 import queryString from 'query-string';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 
 const FormItem = Form.Item;
 const List = ({...listProps,
@@ -12,8 +13,8 @@ const List = ({...listProps,
   const columns = [
     {
       title: '业务员',
-      dataIndex: 'salesMan',
-      key: 'salesMan',
+      dataIndex: 'name',
+      key: 'name',
     },{
       title: '首播未处理',
       dataIndex: 'firstCallWilldo',
@@ -49,7 +50,7 @@ const List = ({...listProps,
       dataIndex: 'allocateNum',
       key: 'allocateNum',
       render:(text,list)=><FormItem>
-          {getFieldDecorator(`${list.salesMan}`)(
+          {getFieldDecorator(`${list.name}`)(
             <Input />
           )}
         </FormItem>
@@ -58,7 +59,7 @@ const List = ({...listProps,
   return (
     <Table
       {...listProps}
-      className={classnames(styles.table)}
+      className={classnames(styles.table,publicStyles.table)}
       columns={columns}
       simple
       rowKey={record => record.id}
