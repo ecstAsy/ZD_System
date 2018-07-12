@@ -99,7 +99,6 @@ let database = [
     name: '团队目标',
     icon: 'setting',
     route: '/teamGoal',
-  },
   },{
     id: '14',
     bpid: '1',
