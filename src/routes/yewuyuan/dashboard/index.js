@@ -1,17 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'dva'
-import { Row, Col, Card } from 'antd'
-import { color } from 'utils'
-import { Page } from 'components'
-import { NumberCard, Quote, Sales, Weather, RecentSales, Comments, Completed, Browser, Cpu, User } from './components'
-import styles from './index.less'
-import Pie from './components/pie'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'dva';
+import { Row, Col } from 'antd';
+import { color } from 'utils';
+import { Page } from 'components';
+import styles from './index.less';
+import Pie from './pie';
 
 function Dashboard ({ dashboard, loading }) {
   const {
     weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user,
-  } = dashboard
+  } = dashboard;
   const data=[
     {title:'预约',data:[ {value:5, name:'已跟踪'},
       {value:10, name:'未跟踪'},]},
@@ -32,9 +31,6 @@ function Dashboard ({ dashboard, loading }) {
                 </Col>
               )
           })}
-
-
-
       </Row>
     </Page>
   )

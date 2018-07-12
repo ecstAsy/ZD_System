@@ -19,6 +19,7 @@ const Pie = ({
       trigger: 'item',
       formatter: "{a} <br/>{b}: {c} ({d}%)"
     },
+    color:title!='今日派单'?['#8c9eff','#f4a21a']:['#8c9eff','#ec412b'],
     series: [
       {
         name:'访问来源',
