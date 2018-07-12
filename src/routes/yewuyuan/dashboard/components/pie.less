@@ -1,0 +1,52 @@
+.pieBox{
+  margin-bottom:25px;
+  :global{
+    .pie{
+      padding: 0 25%;
+      margin: 0 auto;
+      border-right: 1px #ddd dashed;
+      canvas{
+        width:auto!important;
+        height: 100%!important;
+      }
+    }
+
+    .title{
+      font-size: 16px;
+      font-weight: bold;
+      line-height:30px;
+      padding-left: 20px;
+    }
+    .numShow{
+      display: flex;
+      flex-direction:row;
+      &>div:nth-child(2){
+        text-align: left;
+        padding-left: 30px;
+        &>span.value{
+          font-size: 22px;
+          color: #ec412b;
+        }
+        &>span.dian{
+          background: #f4a21a;
+        }
+      }
+      &>div{
+        flex:1;
+        font-size: 15px;
+        text-align: right;
+        padding-right: 30px;
+        &>span.dian{
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          margin-right: 5px;
+          background: #8c9eff;
+        }
+        &>span.value{
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
