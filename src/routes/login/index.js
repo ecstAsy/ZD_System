@@ -4,8 +4,8 @@ import { connect } from 'dva'
 import { Button, Row, Form, Input ,Checkbox} from 'antd'
 import { config } from 'utils'
 import styles from './index.less'
-import $ from 'jquery';
-const FormItem = Form.Item
+import $ from 'jquery'
+const FormItem = Form.Item;
 
 const Login = ({
   loading,
@@ -22,24 +22,13 @@ const Login = ({
     };
     if (data['username']==''||data['password']=='') {
         return false;
+    }else{
+      dispatch({ type: 'login/login', payload: data })
     }
-    validateFieldsAndScroll((errors, values) => {
-      if (errors) {
-        return
-      }
-      dispatch({ type: 'login/login', payload: values })
-    })
   }
-  const  compare=(rule, value, callback)=>{
-    const data = {
-      ...getFieldsValue(),
-    };
-    if (data['username']==''||data['password']=='') {
-      $('.buttonok').addClass('disable')
-    } else {
-      $('.buttonok').removeClass('disable')
-    }
-  };
+
+ let userInfo = JSON.parse(localStorage.getItem('loginInfo'));
+
   return (
     <div className={styles.loginBox}>
       <div className="title">欢迎使用中德业务系统!</div>
@@ -51,28 +40,28 @@ const Login = ({
         <form>
           <FormItem hasFeedback>
             {getFieldDecorator('username', {
-              initialValue: '',
+              initialValue: userInfo?userInfo.username:'',
               rules: [
                 {
                   required: true,
                   message:'用户名不能为空'
                 },
               ],
-            })(<Input  onKeyUp={compare} onPressEnter={handleOk} placeholder="帐号" />)}
+            })(<Input onPressEnter={handleOk} placeholder="帐号" />)}
           </FormItem>
           <FormItem hasFeedback>
             {getFieldDecorator('password', {
-              initialValue: '',
+              initialValue: userInfo?userInfo.password:'',
               rules: [
                 {
                   required: true,
                   message:'密码不能为空'
                 },
               ],
-            })(<Input type="password" onKeyUp={compare} onPressEnter={handleOk} placeholder="密码" />)}
+            })(<Input type="password"  onPressEnter={handleOk} placeholder="密码" />)}
           </FormItem>
           <Row>
-            <Button type="primary" className='buttonok disable' onClick={handleOk} loading={loading.effects.login}>
+            <Button type="primary" className={getFieldsValue()['username']==''||getFieldsValue()['password']==''?'disable':''} onClick={handleOk} loading={loading.effects.login}>
               登 录
             </Button>
           </Row>
