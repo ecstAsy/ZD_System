@@ -130,13 +130,11 @@ const PolicyRegistration = ({
           <Row gutter={24}>
             <Col >
                 <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap'}}>
-                  <Button type="primary" className="margin-right" >下载出单表</Button>
+                  <Button type="primary" className="margin-right" style={{width:'100px',height:'35px'}}>下载出单表</Button>
                 </div>
             </Col>
           </Row>
       </div>
-
-
       <div className={classnames(styles.wrap)}>
         <Filter {...filterProps}/>
         <List {...listProps}/>

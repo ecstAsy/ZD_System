@@ -94,12 +94,19 @@ let database = [
     icon: 'phone',
     route: '/policyRegistration',
   },{
-    id: '14',
+    id: '15',
     bpid: '1',
     name: '团队目标',
     icon: 'setting',
     route: '/teamGoal',
   },
+  },{
+    id: '14',
+    bpid: '1',
+    name: '保单审核',
+    icon: 'phone',
+    route: '/policyAudit',
+  }
 ];
 
 module.exports = {

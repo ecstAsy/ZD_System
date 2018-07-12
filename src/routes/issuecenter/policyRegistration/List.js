@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 
 const List = ({...listProps, handleListAction,
   })=>{
@@ -55,13 +56,13 @@ const List = ({...listProps, handleListAction,
       title:'操作',
       dataIndex:'policyAction',
       key:'policyAction',
-      render:(text,list)=><span onClick={()=>handleListAction(list)} style={{color: '#0082FE',cursor: 'default'}}>{list.policyAction}</span>
+      render:(text,list)=><span onClick={()=>handleListAction(list)}>{list.policyAction}</span>
     }
   ]
   return (
     <Table
       {...listProps}
-      className={classnames(styles.table)}
+      className={classnames(publicStyles.table,styles.List)}
       columns={columns}
       simple
       rowKey={record => record.id}

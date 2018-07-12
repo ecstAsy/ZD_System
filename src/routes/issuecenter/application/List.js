@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
+import publicStyles from '../../publicStyle.less';
 
 const List = ({...listProps,
   })=>{
@@ -49,7 +50,7 @@ const List = ({...listProps,
   return (
     <Table
       {...listProps}
-      className={classnames(styles.table)}
+      className={classnames(styles.table,publicStyles.table)}
       columns={columns}
       simple
       rowKey={record => record.id}

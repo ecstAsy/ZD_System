@@ -16,7 +16,6 @@ const Login = ({
     getFieldsValue,
   },
 }) => {
-
   function handleOk () {
     const data = {
       ...getFieldsValue(),

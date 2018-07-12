@@ -84,6 +84,11 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/issuecenter/teamGoal')],
     component: () => import('./routes/issuecenter/teamGoal/'),
   }
+    },{
+      path: '/policyAudit',//保单审核
+      models: () => [import('./models/issuecenter/policyAudit')],
+      component: () => import('./routes/issuecenter/policyAudit/'),
+    }
   ]
 
   return (
