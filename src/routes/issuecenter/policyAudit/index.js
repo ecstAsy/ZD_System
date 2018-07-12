@@ -18,7 +18,7 @@ const PolicyAudit = ({
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem} = policyAudit;
-  
+
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -70,22 +70,36 @@ const PolicyAudit = ({
     wrapClassName: 'vertical-center-modal',
     handleCancel(){
       dispatch({
-        type:'policyAudit/hideModal'
+        type:'policyAudit/hideModal',
+        payload:{
+          modalType:'policy'
+        }
       })
     },
+    handleConfirm(){
+      dispatch({
+        type:'policyAudit/showModal',
+        payload:{
+          status:'审核'
+        }
+      })
+    }
   };
 
   const entryInfoModalProps = {
     visible : EntryInfoModalVisible,
     maskClosable: false,
-    width:'35%',
+    width:'42%',
     closable:false,
     title:'审核',
     currentItem,
     wrapClassName: 'vertical-center-modal',
     handleCancel(){
       dispatch({
-        type:'policyRegistration/hideModal'
+        type:'policyAudit/hideModal',
+        payload:{
+          modalType:'audit'
+        }
       })
     }
   };
