@@ -23,6 +23,14 @@ const Message = ({
         <p>已处理<span>115</span>条</p>
         <p>成功<span>2</span>条</p>
         <p>失败<span>16</span>条</p>
+        <p>失败<span>0</span>条</p>
+        <div className="completionRateTitle">当月完成率</div>
+        <div className="completionRate">
+          <div>
+              <span style={{width:'50%'}}></span>
+          </div>
+          <div>50%</div>
+        </div>
       </div>
     </div>
   )
