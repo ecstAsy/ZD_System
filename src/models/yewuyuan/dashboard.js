@@ -7,7 +7,7 @@ import * as weatherService from 'services/yewuyuan/weather'
 export default modelExtend(model, {
   namespace: 'dashboard',
   state: {
-
+    sales: [],
   },
   subscriptions: {
     setup ({ dispatch, history }) {

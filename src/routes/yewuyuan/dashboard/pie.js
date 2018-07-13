@@ -1,19 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Table, Modal } from 'antd'
-import classnames from 'classnames'
 import ReactEcharts from 'echarts-for-react';
 import { DropOption } from 'components'
 import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 import styles from './pie.less'
-const { confirm } = Modal
 
 const Pie = ({
     data,
     title,
 }) => {
-  location.query = queryString.parse(location.search)
+  location.query = queryString.parse(location.search);
   const getOption={
     tooltip: {
       trigger: 'item',
@@ -49,8 +46,6 @@ const Pie = ({
     ]
   }
 
-
-
   return (
   <div className={styles.pieBox}>
     <p className="title">{title}</p>
@@ -61,7 +56,7 @@ const Pie = ({
     </div>
     <div className="numShow">
       {data.map((item,key)=>{
-        return <div><span className="dian"></span><span>{item.name}</span><span className="value">{item.value}</span></div>
+        return <div key={key}><span className="dian"></span><span>{item.name}</span><span className="value">{item.value}</span></div>
       })}
     </div>
   </div>
