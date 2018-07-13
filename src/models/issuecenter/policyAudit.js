@@ -55,11 +55,11 @@ export default modelExtend(pageModel, {
   reducers: {
 
     showModal (state, { payload }) {
-      if(payload.status==='待审核'){
+      if(payload.auditStatus==='待审核'){
         return { ...state,  InsuranceSlipModalVisible: true ,currentItem:payload }
-      }else if(payload.status==='审核'){
+      }else if(payload.auditStatus==='审核'){
         return { ...state,  EntryInfoModalVisible: true  }
-      }else if (payload.status==='审核通过'||payload.status==='审核失效'){
+      }else if (payload.auditStatus==='审核通过'||payload.auditStatus==='审核失效'){
         return { ...state,  ViewPolicyModalVisible: true ,currentItem:payload }
       }
     },

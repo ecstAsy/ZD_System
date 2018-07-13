@@ -14,6 +14,7 @@ export default modelExtend(pageModel, {
     selectList:[{id:1,userName:'用户',userPlate:'苏E00000',userPhone:'15698766789',salseMan:'业务员1'},
       {id:2,userName:'用户',userPlate:'苏E11111',userPhone:'15698766789',salseMan:'业务员2'}],
     auditModalVisible : false ,//审核弹窗
+    allotModalVisible:false,
     addComplaintModalVisible : false , //新增投诉弹窗,
     selectListModalVisible : false,
     selectedUser : ''
@@ -76,8 +77,11 @@ export default modelExtend(pageModel, {
 
   reducers: {
     showModal (state, { payload }) {
+      console.log(payload)
       if(payload.modalType === 'audit'){
         return { ...state, currentItem:payload.data, auditModalVisible: true }
+      }else if(payload.modalType === 'allot'){
+        return { ...state, currentItem:payload.data, allotModalVisible: true }
       }else if(payload.modalType === 'add'){
         return { ...state, addComplaintModalVisible: true }
       }else if (payload.modalType === 'select'){
@@ -88,6 +92,8 @@ export default modelExtend(pageModel, {
     hideModal (state,{payload}) {
       if(payload.modalType === 'audit'){
         return { ...state, auditModalVisible: false }
+      }else if(payload.modalType === 'allot'){
+        return { ...state, allotModalVisible: false }
       }else if(payload.modalType === 'add'){
         return { ...state, addComplaintModalVisible:false }
       }else if (payload.modalType === 'select'){
