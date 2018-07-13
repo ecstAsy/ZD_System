@@ -2,8 +2,8 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
 import { config } from 'utils';
-import { create, remove, update } from 'services/issuecenter/application';
-import * as applicationsService from 'services/issuecenter/application';
+import { create, remove, update } from 'services/generalData';
+import * as applicationsService from 'services/generalData';
 import { pageModel } from '../common';
 
 const { query } = applicationsService;
