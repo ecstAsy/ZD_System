@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'dva'
-import { Row, Col, Card } from 'antd'
-import { color } from 'utils'
-import { Page } from 'components'
-import styles from './index.less'
-import Pie from './pie'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'dva';
+import { Row, Col } from 'antd';
+import { color } from 'utils';
+import { Page } from 'components';
+import styles from './index.less';
+import Pie from './pie';
 
 const Dashboard =({ dashboard, loading }) =>{
   const {
