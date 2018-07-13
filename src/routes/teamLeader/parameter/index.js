@@ -1,18 +1,19 @@
 /**
  * Created by Administrator on 2018/7/2 0002.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Button, Form } from 'antd'
-import { Page, Editor, Title } from 'components'
-import List from './List'
-import Lists from './Lists'
-import Mouth from './mouthDate'
-import styles from './List.less'
-import queryString from 'query-string'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Row, Button, Form } from 'antd';
+import { Page, Editor, Title } from 'components';
+import List from './List';
+import Lists from './Lists';
+import Mouth from './mouthDate';
+import styles from './List.less';
+import queryString from 'query-string';
 
+const FormItem = Form.Item;
 const Parameter = ({
   location, dispatch, parameter, loading,
 }) => {
@@ -31,7 +32,6 @@ const Parameter = ({
   };
 
   const mouthProps = {
-    item: {},
     loading,
     mouthDate,
     width:'45%',
@@ -70,10 +70,8 @@ const Parameter = ({
         }
       </div>
     </Page>
-
   )
-
-}
+};
 
 
 Parameter.propTypes = {

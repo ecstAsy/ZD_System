@@ -1,17 +1,17 @@
 /* global document */
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/src/locale/zh-cn';
-import { FilterItem } from 'components'
-import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker } from 'antd'
-
+import { FilterItem } from 'components';
+import classnames from 'classnames';
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Select } from 'antd';
 import styles from './List.less'
+
 const Option = Select.Option;
-const { Search } = Input
-const { RangePicker } = DatePicker
-const FormItem = Form.Item
+const { Search } = Input;
+const { RangePicker } = DatePicker;
+const FormItem = Form.Item;
 
 const formItemLayout = {
   labelCol: {
@@ -26,6 +26,7 @@ const formItemLayout = {
     fontSize:'14px'
   }
 };
+
 const ColProps = {
   xs: 24,
   sm: 5,
@@ -55,45 +56,10 @@ const formItemLayoutLong = {
     fontSize:'14px'
   }
 };
-const ColProps3 = {
-  xs: 24,
-  sm:10,
-  style: {
-    marginBottom: 10,
-    marginRight:0
-  },
-};
-const ColProps4 = {
-  xs: 24,
-  sm: 3,
-  style: {
-    marginBottom: 10,
-    marginRight:0,
-    paddingLeft:0,
-    paddingRight:10
-  },
-};
-const formItemLayout3 = {
-  labelCol: {
-    span:0,
-  },
-  wrapperCol: {
-    span: 24,
-  },
-  style:{
-    marginBottom: 0,
-    borderRadius:'20px',
-    fontSize:'14px'
-  }
-};
 
 const Filter = ({
-  onAdd,
-  isMotion,
-  switchIsMotion,
   onFilterChange,
   filter,
-  isMore,
   form: {
     getFieldDecorator,
     getFieldsValue,
@@ -154,6 +120,7 @@ const Filter = ({
       }],
     }],
   }];
+
   return (
   <div className={styles.searchBox}>
     <form layout="horizontal">

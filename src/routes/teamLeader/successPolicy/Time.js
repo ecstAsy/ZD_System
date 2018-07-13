@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/6/26 0026.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './offer.less'
-import { connect } from 'dva'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './offer.less';
+import { connect } from 'dva';
 
 const Time = () => {
   return (
@@ -27,4 +27,4 @@ const Time = () => {
   )
 }
 
-export default connect(({  }) => ({  }))(Time)
+export default Time

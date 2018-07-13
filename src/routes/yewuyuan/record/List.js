@@ -1,14 +1,14 @@
 /**
  * Created by Administrator on 2018/6/25 0025.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Table } from 'antd'
-import classnames from 'classnames'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import queryString from 'query-string'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table } from 'antd';
+import classnames from 'classnames';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import styles from './List.less';
 
 const List = ({
   location, ...tableProps,
@@ -60,7 +60,7 @@ const List = ({
       rowKey={record => record.id}
     />
   )
-}
+};
 
 List.propTypes = {
   onEditItem: PropTypes.func,

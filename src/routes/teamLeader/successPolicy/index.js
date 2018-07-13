@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm ,Modal} from 'antd'
-import { Page } from 'components'
-import queryString from 'query-string'
-import List from './List'
-import Filter from './Filter'
-import Offermodal from './Modal'
-import styles from './List.less'
-import SendModal from './sendModal'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Row, Col, Button, Popconfirm ,Modal} from 'antd';
+import { Page } from 'components';
+import queryString from 'query-string';
+import List from './List';
+import Filter from './Filter';
+import Offermodal from './Modal';
+import styles from './List.less';
+import SendModal from './sendModal';
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
@@ -95,8 +95,6 @@ const SuccessPolicy = ({
       })
     },
   };
-
-
 
   const listProps = {
     dataSource: list,

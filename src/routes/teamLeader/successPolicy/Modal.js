@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { config } from 'utils'
-import classnames from 'classnames'
-import CarInsurance from './carInsurance'
-import FinalOffer from './finalOffer'
-import ExpressInformation from './expressInformation'
-import Time from './Time'
-import { Form, Input, InputNumber, Radio, Modal, Cascader,Button } from 'antd'
-import styles from './offer.less'
-import UserInfo from './userInfo'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { config } from 'utils';
+import classnames from 'classnames';
+import CarInsurance from './carInsurance';
+import FinalOffer from './finalOffer';
+import ExpressInformation from './expressInformation';
+import Time from './Time';
+import { Form, Input, InputNumber, Radio, Modal, Cascader,Button } from 'antd';
+import styles from './offer.less';
+import UserInfo from './userInfo';
 
 const FormItem = Form.Item
 

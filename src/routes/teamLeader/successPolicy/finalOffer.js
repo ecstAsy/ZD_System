@@ -1,9 +1,9 @@
 /**
  * Created by Administrator on 2018/6/26 0026.
  */
-import React from 'react'
-import styles from './offer.less'
-import { connect } from 'dva'
+import React from 'react';
+import styles from './offer.less';
+import { connect } from 'dva';
 
 const FinalOffer = () => {
   return (
@@ -34,4 +34,4 @@ const FinalOffer = () => {
 
 
 
-export default connect(({  }) => ({  }))(FinalOffer)
+export default FinalOffer
