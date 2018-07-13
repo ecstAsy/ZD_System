@@ -26,8 +26,8 @@ const Dashboard =({ dashboard, loading }) =>{
       <Row gutter={24}>
           {data.map((item,key)=>{
               return(
-                <Col lg={12} md={24} className='dash'>
-                  <Pie title={item.title} data={item.data} key={key} />
+                <Col lg={12} md={24} className='dash'  key={key}>
+                  <Pie title={item.title} data={item.data}/>
                 </Col>
               )
           })}
