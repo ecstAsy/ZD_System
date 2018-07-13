@@ -6,10 +6,9 @@ import PropTypes from 'prop-types'
 import moment from 'moment';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components'
-import { Form, Button, Row, Col, DatePicker, Input, Select } from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input } from 'antd'
 import styles from './List.less'
 
-const Option = Select.Option;
 const { Search } = Input
 const { RangePicker } = DatePicker
 const FormItem = Form.Item
