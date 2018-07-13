@@ -1,43 +1,16 @@
 import React from 'react'
-import { connect } from 'dva'
 import PropTypes from 'prop-types'
-import queryString from 'query-string'
-import { Form, Input, InputNumber, Radio, Modal, Cascader ,Icon} from 'antd'
+import {Icon} from 'antd'
 import styles from './offer.less'
-const { TextArea } = Input;
-const FormItem = Form.Item
 
 const UserInfo = ({
-  visibleRemark,
   addRemark,
-  RemarkCancel,
-  saveRemark,
-  remarkId,
-  form: {
-    getFieldDecorator,
-    validateFields,
-    getFieldsValue,
-  },
 })=>{
-  const handleCancel=()=>{
-    RemarkCancel()
-  };
   const editRemark=(id)=>{
     addRemark(id)
   };
   const addRemarkFunc=()=>{
     addRemark()
-  };
-  const handleOk=()=>{
-    validateFields((errors) => {
-      if (errors) {
-        return
-      }
-      const data = {
-        ...getFieldsValue(),
-      };
-      saveRemark(data)
-    })
   };
 
   const remarks=[
@@ -45,8 +18,6 @@ const UserInfo = ({
     {id:2,date:'20180517',des:'备注2'},
     {id:3,date:'20180613',des:'备注3'},
   ];
-
-  const remarkValue='';
 
   return (
     <div>
@@ -92,28 +63,9 @@ const UserInfo = ({
               <span className="oridel" style={{marginTop:'-5px'}}></span>
               <p className="date addRemark" onClick={addRemarkFunc}>新增</p>
             </div>
-
           </div>
         </div>
       </div>
-      <Modal
-        visible={visibleRemark}
-        title={remarkId==''?'新增备注':'修改备注'}
-        onCancel={handleCancel}
-        onOk={handleOk}
-      >
-        <FormItem>
-          {getFieldDecorator('remark', {
-            initialValue: '',
-            rules: [
-              {
-                required: true,
-                message: '备注信息不能为空!',
-              },
-            ],
-          })( <TextArea className="textarerRemark" placeholder="请输入备注内容"  />)}
-        </FormItem>
-      </Modal>
     </div>
   )
 };
@@ -124,4 +76,4 @@ UserInfo.propTypes = {
 };
 
 
-export default Form.create()(UserInfo)
+export default UserInfo

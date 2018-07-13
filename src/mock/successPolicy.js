@@ -8,9 +8,9 @@ let successPolicyData = Mock.mock({
   'data|80-100': [
     {
       id: '@id',
-      name: '@cname',
-      salesman:'@cname',
-      plate: /^E\d{5}$/,
+      customerName: '@cname',
+      salesmanName:'@cname',
+      plateNumber: /^E\d{5}$/,
       phone: /^1[34578]\d{9}$/,
       'age|11-99': 1,
       province:'苏',
@@ -24,9 +24,9 @@ let successPolicyData = Mock.mock({
         "转账到保险公司",
       ],
       piesType:'2',
-      policyPrice: /^\d{5}$/,
+      docPrice: /^\d{5}$/,
       PaymentDate: '@datetime("yyyyMMddHHmmss")',
-      submissionDate: '@date("yyyyMMdd")',
+      submitTime: '@date("yyyyMMddHHmmss")',
       insuranceCompany:'2',
       viFlag:1,
       'state|1':[

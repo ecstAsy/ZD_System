@@ -99,6 +99,12 @@ const arrayToTree = (array, id = 'id', pid = 'pid', children = 'children') => {
   return result
 }
 
+const dateConversion=(date)=>{
+  return date.substring(0,4)+'-'+date.substring(4,6)+'-'+date.substring(6,8)
+}
+const timeConversion=(time)=>{
+  return time.substring(0,4)+'-'+time.substring(4,6)+'-'+time.substring(6,8)+' '+time.substring(8,10)+':'+time.substring(10,12)+':'+time.substring(12,14);
+};
 module.exports = {
   config,
   request,
@@ -107,4 +113,6 @@ module.exports = {
   queryURL,
   queryArray,
   arrayToTree,
+  dateConversion,
+  timeConversion,
 }

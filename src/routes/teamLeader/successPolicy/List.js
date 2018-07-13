@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import AnimTableBody from 'components/DataTable/AnimTableBody';
 import styles from './List.less';
-
+import { dateConversion, timeConversion } from 'utils/index'
 const { confirm } = Modal;
 
 const List = ({
-  onDeleteItem, seeQuotation, isMotion, location, ...tableProps, seeSendation
+  seeQuotation, isMotion, location, ...tableProps, seeSendation, changeSalesman
 }) => {
   location.query = queryString.parse(location.search);
 
@@ -19,12 +19,7 @@ const List = ({
     if (e.key === '1') {
       seeQuotation(record)
     } else if (e.key === '2') {
-      confirm({
-        title: '你确定要更改吗?',
-        onOk () {
-          onDeleteItem(record.id)
-        },
-      })
+      changeSalesman(record)
     }
   };
 
@@ -35,18 +30,18 @@ const List = ({
   const columns = [
     {
       title: '车牌',
-      dataIndex: 'plate',
-      key: 'plate',
-      render: (text, record) =><span>{record.province+record.plate}</span>,
+      dataIndex: 'plateNumber',
+      key: 'plateNumber',
+      render: (text, record) =><span>{record.province+record.plateNumber}</span>,
     },
      {
       title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'customerName',
+      key: 'customerName',
     },{
       title: '业务员',
-      dataIndex: 'salesman',
-      key: 'salesman',
+      dataIndex: 'salesmanName',
+      key: 'salesmanName',
     }, {
       title: '出单类型',
       dataIndex: 'SingleType',
@@ -64,12 +59,13 @@ const List = ({
       key: 'payType',
     }, {
       title: '保单金额',
-      dataIndex: 'policyPrice',
-      key: 'policyPrice',
+      dataIndex: 'docPrice',
+      key: 'docPrice',
     }, {
       title: '提交时间',
-      dataIndex: 'submissionDate',
-      key: 'submissionDate',
+      dataIndex: 'submitTime',
+      key: 'submitTime',
+      render:(text, record)=><span>{timeConversion(record.submitTime)}</span>
     }, {
       title: '缴费时间',
       dataIndex: 'PaymentDate',

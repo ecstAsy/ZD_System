@@ -4,9 +4,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components'
-import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker } from 'antd'
-
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Select } from 'antd'
 import styles from './List.less'
 const Option = Select.Option;
 const { Search } = Input
@@ -55,45 +53,9 @@ const formItemLayoutLong = {
     fontSize:'14px'
   }
 };
-const ColProps3 = {
-  xs: 24,
-  sm:10,
-  style: {
-    marginBottom: 10,
-    marginRight:0
-  },
-};
-const ColProps4 = {
-  xs: 24,
-  sm: 3,
-  style: {
-    marginBottom: 10,
-    marginRight:0,
-    paddingLeft:0,
-    paddingRight:10
-  },
-};
-const formItemLayout3 = {
-  labelCol: {
-    span:0,
-  },
-  wrapperCol: {
-    span: 24,
-  },
-  style:{
-    marginBottom: 0,
-    borderRadius:'20px',
-    fontSize:'14px'
-  }
-};
-
 const Filter = ({
-  onAdd,
-  isMotion,
-  switchIsMotion,
   onFilterChange,
   filter,
-  isMore,
   form: {
     getFieldDecorator,
     getFieldsValue,
@@ -103,9 +65,9 @@ const Filter = ({
   const {name, plate }=filter;
 
   const handleFields = (fields) => {
-    const { submissionDate } = fields;
-    if (submissionDate && submissionDate.length && submissionDate.length > 1) {
-      fields.submissionDate = [submissionDate[0].format('YYYYMMDD'), submissionDate[1].format('YYYYMMDD')]
+    const { submitTime } = fields;
+    if (submitTime && submitTime.length && submitTime.length > 1) {
+      fields.submitTime = [submitTime[0].format('YYYYMMDD'), submitTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -221,7 +183,7 @@ const Filter = ({
       </Col>
       <Col {...ColPropsLong}>
         <FormItem label="提交日期"  {...formItemLayoutLong}>
-          {getFieldDecorator('submissionDate')(<RangePicker  style={{ width: '90%' }} />)}
+          {getFieldDecorator('submitTime')(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>

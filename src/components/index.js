@@ -9,7 +9,7 @@ import Title from './Title';
 import * as MyLayout from './Layout/index.js';
 import Page from './Page';
 import PolicyTable from './PolicyTable';
-
+import RemarkMadal from './RemarkModal';
 import layer from './layer';
 
 export {
@@ -25,4 +25,5 @@ export {
   Title,
   PolicyTable,
   Page,
+  RemarkMadal,
 }

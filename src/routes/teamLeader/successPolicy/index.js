@@ -10,14 +10,14 @@ import Filter from './Filter'
 import Offermodal from './Modal'
 import styles from './List.less'
 import SendModal from './sendModal'
-
+import ChangeSalesman from './changeSalesman'
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const {
-    list, TimeData, pagination,  modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible } = successPolicy;
+    list, TimeData, pagination,  modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible, changeSalesVisible } = successPolicy;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -96,8 +96,6 @@ const SuccessPolicy = ({
     },
   };
 
-
-
   const listProps = {
     dataSource: list,
     loading: loading.effects['successPolicy/query'],
@@ -111,16 +109,20 @@ const SuccessPolicy = ({
       })
     },
 
-    onDeleteItem (id) {
+    changeSalesman (item) {
+      console.log(item)
       dispatch({
-        type: 'successPolicy/delete',
-        payload: id,
+        type: 'successPolicy/showModal',
+        payload: {
+          modalType: 'changeSalesman',
+          currentItem: item,
+        },
       })
-        .then(() => {
-          handleRefresh({
-            page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-          })
-        })
+        // .then(() => {
+        //   handleRefresh({
+        //     page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
+        //   })
+        // })
     },
 
     seeQuotation (item) {
@@ -161,6 +163,31 @@ const SuccessPolicy = ({
     },
   };
 
+  const changeSalesProps={
+    visible: changeSalesVisible,
+    maskClosable: false,
+    title:'修改所属',
+    width:'30%',
+    onOk(data){
+      console.log(data)
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'changeSalesman',
+          datga: data,
+        },
+      })
+    },
+    onCancel(){
+      dispatch({
+        type: 'successPolicy/hideModal',
+        payload: {
+          modalType: 'changeSalesman',
+        },
+      })
+    }
+  }
+  console.log(changeSalesVisible)
   return (
     <Page inner>
       <Filter {...filterProps} />
@@ -170,6 +197,7 @@ const SuccessPolicy = ({
       <List {...listProps} />
       {modalVisible && <Offermodal {...modalProps} />}
       {sendModalVisible && <SendModal {...sendModalProps} />}
+      {changeSalesVisible && <ChangeSalesman {...changeSalesProps} />}
     </Page>
   )
 };
