@@ -4,11 +4,11 @@ import {  Modal, Button } from 'antd';
 import styles from '../../publicStyle.less';
 import classnames from 'classnames';
 const AuditModal = ({
-      ...auditModal, item, handleCancel, handleConfirm, handleReject
+      ...auditModalProps, item, handleCancel, handleConfirm, handleReject
  })=>{
   return (
-    <Modal {...auditModal}
-      className={classnames(styles.AuditModal)}
+    <Modal {...auditModalProps}
+      className={classnames(styles.Modal)}
       footer={[
         <Button type="primary" key="submit" onClick={handleConfirm(item)}>同意</Button>,
         <Button type="danger" ghost key="reject" onClick={handleReject(item)}>驳回</Button>,

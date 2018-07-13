@@ -8,13 +8,14 @@ import queryString from 'query-string';
 import Filter from './Filter';
 import List from './List';
 import AuditModal from './auditModal';
+import AllotModal from './allotModal';
 import AddComplaintModal from './addComplaintModal';
 import SelectListModal from './selectListModal';
 
 const Complaint = ({location, dispatch, complaint,   loading,})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, selectList, selectedUser, pagination, currentItem, auditModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
+  const { list, selectList, selectedUser, pagination, currentItem, auditModalVisible, allotModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -57,23 +58,22 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
       })
     },
     handleStatus (list) {
-      list.status == '' &&
-        dispatch({
+      dispatch({
           type: 'complaint/showModal',
           payload: {
-            modalType: 'audit',
+            modalType: list.complaintStatus === ''?'audit':list.complaintStatus === '未处理'?'allot':'',
             data: list,
           },
         })
     }
   };
 
-  const auditModal = {
+  const auditModalProps = {
     item: currentItem,
     visible: auditModalVisible,
     maskClosable: false,
     title:'投诉审核',
-    width:'40%',
+    width:'30%',
     closable:false,
     wrapClassName: 'vertical-center-modal',
     handleConfirm(payload){
@@ -89,6 +89,32 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
         type: 'complaint/hideModal',
         payload: {
           modalType: 'audit'
+        },
+      })
+    }
+  };
+
+  const allotModalProps = {
+    item: currentItem,
+    visible: allotModalVisible,
+    maskClosable: false,
+    title:'分配投诉',
+    width:'30%',
+    closable:false,
+    wrapClassName: 'vertical-center-modal',
+    handleConfirm(payload){
+
+
+    },
+    handleReject(payload){
+
+
+    },
+    handleCancel(){
+      dispatch({
+        type: 'complaint/hideModal',
+        payload: {
+          modalType: 'allot'
         },
       })
     }
@@ -159,7 +185,8 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
         </Col>
       </Row>
       <List {...listProps}/>
-      { auditModalVisible && <AuditModal {...auditModal}/> }
+      { auditModalVisible && <AuditModal {...auditModalProps}/> }
+      { allotModalVisible && <AllotModal {...allotModalProps}/> }
       { addComplaintModalVisible && <AddComplaintModal {...addComplaintModalProps}/> }
       { selectListModalVisible && <SelectListModal {...selectListModalProps}/> }
     </Page>

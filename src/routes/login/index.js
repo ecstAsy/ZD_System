@@ -4,7 +4,7 @@ import { connect } from 'dva'
 import { Button, Row, Form, Input ,Checkbox} from 'antd'
 import { config } from 'utils'
 import styles from './index.less'
-import $ from 'jquery'
+
 const FormItem = Form.Item;
 
 const Login = ({

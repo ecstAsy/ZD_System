@@ -1,7 +1,7 @@
-import { request, config } from 'utils'
+import { request, config } from 'utils';
 
-const { api } = config
-const { generalData } = api
+const { api } = config;
+const { generalData } = api;
 
 export function query (params) {
   return request({
