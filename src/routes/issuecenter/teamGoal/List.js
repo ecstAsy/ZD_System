@@ -1,9 +1,8 @@
 /* global document */
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import classnames from 'classnames';
-import { Form, Button, Row, Col, DatePicker, Input, InputNumber, Switch, Select ,Icon, TimePicker} from 'antd';
+import { Form, Button, Row, Col, DatePicker, Input, InputNumber, Select , TimePicker} from 'antd';
 import styles from './index.less';
 
 const Option = Select.Option;
