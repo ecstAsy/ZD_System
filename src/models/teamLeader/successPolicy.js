@@ -16,6 +16,7 @@ export default modelExtend(pageModel, {
     currentItem: {},
     modalVisible: false,  //报价弹窗
     sendModalVisible : false ,//派送弹窗
+    changeSalesVisible:false, //修改所属弹窗
     isMore:false,
     visibleRemark:false,  //新增备注
     remarkId:'',
@@ -110,9 +111,12 @@ export default modelExtend(pageModel, {
         return { ...state, ...payload, modalVisible: true }
       }else if(payload.modalType=='addRemark'){
         return { ...state, ...payload, visibleRemark: true,remarkId: payload.id}
-      }else {
+      }else if(payload.modalType=='sendation'){
         return { ...state, ...payload, sendModalVisible: true }
+      }else if(payload.modalType=='changeSalesman'){
+        return { ...state, ...payload, changeSalesVisible: true }
       }
+
     },
     isShowMoreFunc( state, { payload }){
       return { ...state,  isMore: !payload }
@@ -122,8 +126,10 @@ export default modelExtend(pageModel, {
         return { ...state, modalVisible: false }
       }else if(payload.modalType=='addRemark'){
         return { ...state, ...payload, visibleRemark: false }
-      }else{
+      }else if(payload.modalType=='sendation'){
         return { ...state, sendModalVisible: false }
+      }else if(payload.modalType=='changeSalesman'){
+        return { ...state, changeSalesVisible: false }
       }
     },
 

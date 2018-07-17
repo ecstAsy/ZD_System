@@ -1,12 +1,6 @@
 import React from 'react'
-import { connect } from 'dva'
-import PropTypes from 'prop-types'
-import queryString from 'query-string'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker,Modal} from 'antd'
-import styles from './offer.less'
+import { Form, Input, Modal} from 'antd'
 const { TextArea } = Input;
-const Option = Select.Option;
-const { RangePicker } = DatePicker
 const FormItem = Form.Item
 const RemarkMadal =({
   item = {},
@@ -34,7 +28,6 @@ const RemarkMadal =({
   const RemarkOpts={
       ...RemarkMadalProps,
     onOk: handleOk,
-
   }
 
   return(

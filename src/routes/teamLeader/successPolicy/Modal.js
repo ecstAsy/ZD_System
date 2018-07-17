@@ -1,78 +1,47 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { config } from 'utils';
-import classnames from 'classnames';
-import CarInsurance from './carInsurance';
-import FinalOffer from './finalOffer';
-import ExpressInformation from './expressInformation';
-import Time from './Time';
-import { Form, Input, InputNumber, Radio, Modal, Cascader,Button } from 'antd';
-import styles from './offer.less';
-import UserInfo from './userInfo';
-
-const FormItem = Form.Item
-
-const formItemLayout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 14,
-  },
-}
+import React from 'react'
+import PropTypes from 'prop-types'
+import { config } from 'utils'
+import CarInsurance from './carInsurance'
+import FinalOffer from './finalOffer'
+import ExpressInformation from './expressInformation'
+import Time from './Time'
+import {Modal, Button } from 'antd'
+import styles from './offer.less'
+import UserInfo from './userInfo'
+import {RemarkMadal} from 'components';
 
 const Offermodal = ({
   item = {},
-  onOk,
   onCancel,
   addRemarkFunc,
   RemarkCancel,
   visibleRemark,
   remarkId,
   saveRemarkFunc,
-  form: {
-    getFieldDecorator,
-    validateFields,
-    getFieldsValue,
-  },
   ...modalProps
 }) => {
-  const handleOk = () => {
-    validateFields((errors) => {
-      if (errors) {
-        return
-      }
-      const data = {
-        ...getFieldsValue(),
-        key: item.key,
-      };
-      onOk(data)
-    })
-  };
-
-  const CancelRemark=()=>{
-    RemarkCancel()
-  };
-
-  const saveRemark=(data)=>{
-    saveRemarkFunc(data)
-  };
-
   const modalOpts = {
     ...modalProps,
-    onOk: handleOk,
   };
 
   const RemarkOpts={
     visibleRemark,
-    RemarkCancel:CancelRemark,
-    saveRemark:saveRemark,
     addRemark(id){
       addRemarkFunc(id)
     },
     remarkId:remarkId,
   };
 
+  const RemarkMadalProps={
+    visible: visibleRemark,
+    title:remarkId==''?'新增备注':'修改备注',
+    onOk(data){
+      saveRemarkFunc(data)
+    },
+    onCancel(){
+      RemarkCancel()
+    },
+  };
   return (
     <Modal {...modalOpts}   footer={[
       <Button key="submit" type="primary"  onClick={onCancel}>
@@ -85,10 +54,11 @@ const Offermodal = ({
               <ExpressInformation />
               <FinalOffer />
             </div>
-            <div  className={styles.rightB}>
+            <div className={styles.rightB}>
               <CarInsurance />
               <Time />
             </div>
+          {visibleRemark&&<RemarkMadal {...RemarkMadalProps}/>}
         </div>
     </Modal>
   )
@@ -102,4 +72,4 @@ Offermodal.propTypes = {
   onCancel:PropTypes.func,
 }
 
-export default Form.create()(Offermodal)
+export default Offermodal

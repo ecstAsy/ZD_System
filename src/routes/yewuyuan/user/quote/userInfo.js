@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker,Modal} from 'antd'
 import styles from './offer.less'
-import RemarkMadal from './remarkModal'
-const { TextArea } = Input;
 const Option = Select.Option;
 const { RangePicker } = DatePicker
 const FormItem = Form.Item
@@ -27,13 +25,9 @@ const ColProps = {
   sm: 8,
 };
 const UserInfo = ({
-  visibleRemark,
   addRemarkFunc,
   openUnderwriting,
   choosePurCar,
-  RemarkCancel,
-  remarkId,
-  saveRemark,
   form: {
     getFieldDecorator,
     validateFields,
@@ -52,17 +46,6 @@ const UserInfo = ({
    const editRemark=(id)=>{
      addRemarkFunc(id)
    };
-
-  const RemarkMadalProps={
-    visible: visibleRemark,
-    title:remarkId==''?'新增备注':'修改备注',
-    onOk(data){
-      saveRemark(data)
-    },
-    onCancel(){
-      RemarkCancel()
-    },
-  };
 
   return (
     <div className="useinfoBox">
@@ -202,7 +185,6 @@ const UserInfo = ({
           </div>
         </div>
       </div>
-      {visibleRemark&&<RemarkMadal {...RemarkMadalProps}/>}
     </div>
   )
 }

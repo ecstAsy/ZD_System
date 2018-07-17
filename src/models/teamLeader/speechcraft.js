@@ -12,6 +12,8 @@ export default modelExtend(pageModel, {
   state: {
     currentItem: {},
     editSpeechCraftModalVisible:false,
+    nowId:'', //当前被移动的元素ID
+    newId:'',
     speechCraftData:[
       {id:1,name:'车漆延保卡',detail:'11111111111111111111111'},
       {id:2,name:'无锡',detail:'无锡无锡无锡无锡无锡无锡无锡无锡无锡'},
@@ -39,6 +41,42 @@ export default modelExtend(pageModel, {
   },
 
   reducers: {
+
+    drag(state, { payload }){
+      let nowId = payload.id;
+
+      return { ...state, nowId:nowId}
+
+    },
+
+    allowDrop(state, { payload }){
+      let id = payload.id;  //移到当前元素的ID
+
+      return { ...state, newId:id}
+    },
+
+    endDrop(state, { payload }){
+      let nowId = state.nowId;
+      let newId = state.newId;
+      if(nowId!=newId){
+        let data={};
+        let index;
+        let speechCraftData = state.speechCraftData;
+        for(var i=0;i<speechCraftData.length;i++){
+          if(speechCraftData[i].id==nowId){
+            data = speechCraftData[i];
+            speechCraftData.splice(i,1)
+          }
+        };
+        for(var i=0;i<speechCraftData.length;i++){
+          if(speechCraftData[i].id==newId){
+            index = i;
+          }
+        };
+        speechCraftData.splice(index,0,data);
+        return { ...state,}
+      }
+    },
     showModal (state, { payload }) {
       if(payload){
         return { ...state,  editSpeechCraftModalVisible: true, currentItem : payload }
