@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
-import { Row, Col, Button, Popconfirm,Form } from 'antd';
-import { Page } from 'components';
-import queryString from 'query-string';
-import classnames from 'classnames';
-import styles from './index.less';
+import {Button,Form } from 'antd';
+import { Page, RemarkMadal } from 'components';
 import UserInfo from './userInfo';
 import CarInsurance from './carInsurance';
 import FinalQuote from './finalQuote';
@@ -17,9 +14,9 @@ import UnderWritingMadal from './underwritingModal';
 import ChoosePurCarModal from './choosePurCarModel';
 import DeductiblesModal from './deductiblesModal';
 import InsureInfoModal from './insureInfoModal';
+
 const Quote = ({
-  dispatch, quote, loading,
-                     }) => {
+  dispatch, quote, loading,}) => {
   const {
     choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData, okMianpeiData,
     underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData,
@@ -34,20 +31,6 @@ const Quote = ({
         type: 'quote/showModalRemark',
         payload: {
          id:id?id:'',
-        },
-      })
-    },
-    RemarkCancel(){
-      dispatch({
-        type: 'quote/hideModalRemark',
-      })
-    },
-
-    saveRemark(data){
-      dispatch({
-        type: 'quote/hideModalRemark',
-        payload: {
-          data:data,
         },
       })
     },
@@ -291,7 +274,25 @@ const Quote = ({
         },
       })
     },
-  }
+  };
+
+  const RemarkMadalProps={
+    visible: visibleRemark,
+    title:remarkId==''?'新增备注':'修改备注',
+    onOk(data){
+      dispatch({
+        type: 'quote/hideModalRemark',
+        payload: {
+          data:data,
+        },
+      })
+    },
+    onCancel(){
+      dispatch({
+        type: 'quote/hideModalRemark',
+      })
+    },
+  };
 
   return (
       <Page>
@@ -308,6 +309,7 @@ const Quote = ({
         {choosePurCarModalVisible && <ChoosePurCarModal {...choosePurCarProps} />}
         {deductiblesModalVisible && <DeductiblesModal {...DeductiblesProps}/>}
         {insureInfoModalVisible && <InsureInfoModal {...InsureInfoModalProps}/>}
+        {visibleRemark&&<RemarkMadal {...RemarkMadalProps}/>}
         <div className="buttonBox">
           <Button type="primary">保存</Button>
           <Button type="primary">跟踪提交</Button>

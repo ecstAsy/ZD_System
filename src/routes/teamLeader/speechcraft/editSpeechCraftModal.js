@@ -14,10 +14,10 @@ const formItemLayout = {
     span: 22,
   },
   style:{
-    marginBottom: 0,
+    marginBottom: '20px',
     borderRadius:'20px',
     fontSize:'14',
-    color:'#333'
+    color:'#333',
   }
 }
 

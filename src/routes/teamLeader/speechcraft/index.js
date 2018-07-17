@@ -48,6 +48,7 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
 
   }
 
+
   return (
     <Page>
       <div className={classnames(styles.SpeechCraftListBox)}>

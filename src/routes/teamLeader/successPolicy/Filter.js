@@ -1,17 +1,18 @@
 /* global document */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment';
 import 'moment/src/locale/zh-cn';
-import { FilterItem } from 'components';
-import classnames from 'classnames';
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Select } from 'antd';
+import { FilterItem } from 'components'
+import classnames from 'classnames'
+import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch,Select ,Icon,TimePicker } from 'antd'
+
 import styles from './List.less'
 
 const Option = Select.Option;
-const { Search } = Input;
-const { RangePicker } = DatePicker;
-const FormItem = Form.Item;
+const { Search } = Input
+const { RangePicker } = DatePicker
+const FormItem = Form.Item
 
 const formItemLayout = {
   labelCol: {
@@ -26,7 +27,6 @@ const formItemLayout = {
     fontSize:'14px'
   }
 };
-
 const ColProps = {
   xs: 24,
   sm: 5,
@@ -69,9 +69,9 @@ const Filter = ({
   const {name, plate }=filter;
 
   const handleFields = (fields) => {
-    const { submissionDate } = fields;
-    if (submissionDate && submissionDate.length && submissionDate.length > 1) {
-      fields.submissionDate = [submissionDate[0].format('YYYYMMDD'), submissionDate[1].format('YYYYMMDD')]
+    const { submitTime } = fields;
+    if (submitTime && submitTime.length && submitTime.length > 1) {
+      fields.submitTime = [submitTime[0].format('YYYYMMDD'), submitTime[1].format('YYYYMMDD')]
     }
     return fields
   };
@@ -188,7 +188,7 @@ const Filter = ({
       </Col>
       <Col {...ColPropsLong}>
         <FormItem label="提交日期"  {...formItemLayoutLong}>
-          {getFieldDecorator('submissionDate')(<RangePicker  style={{ width: '90%' }} />)}
+          {getFieldDecorator('submitTime')(<RangePicker  style={{ width: '90%' }} />)}
         </FormItem>
       </Col>
       <Col {...ColProps}>
