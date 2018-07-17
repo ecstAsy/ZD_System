@@ -1,12 +1,12 @@
 /**
  * Created by Administrator on 2018/7/2 0002.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Row, Col, Form, Input } from 'antd'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import styles from './List.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Row, Col, Form, Input } from 'antd';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import styles from './List.less';
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -22,6 +22,7 @@ const formItemLayout = {
     fontSize:'15'
   }
 };
+
 const Lists = ({...listProps, ListData, isEdit,
   form: {
     getFieldDecorator,

@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/6/25 0025.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './offer.less'
-import { connect } from 'dva'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './offer.less';
+import { Divider } from 'antd';
 
 const CarInsurance = () => {
   return (
@@ -17,6 +17,7 @@ const CarInsurance = () => {
         <div className="useInfoRow">
           <p>投保公司：</p> <p>太保</p><p>区域：</p><p>苏州 平安1</p>
         </div>
+          <Divider dashed style={{backgroundColor:'#E2E4E8',marginBottom:'15px',marginTop:'15px'}}/>
         <div className="useInfoRow">
           商业险
         </div>
@@ -44,4 +45,4 @@ const CarInsurance = () => {
   )
 }
 
-export default connect(({  }) => ({  }))(CarInsurance)
+export default CarInsurance

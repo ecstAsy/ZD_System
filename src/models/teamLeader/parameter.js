@@ -1,15 +1,15 @@
 /**
  * Created by Administrator on 2018/7/2 0002.
  */
-import modelExtend from 'dva-model-extend'
-import queryString from 'query-string'
-import { config } from 'utils'
-import { create, remove, update } from 'services/yewuyuan/user'
-import * as usersService from 'services/yewuyuan/users'
-import { pageModel } from '../common'
+import modelExtend from 'dva-model-extend';
+import queryString from 'query-string';
+import { config } from 'utils';
+import { create, remove, update } from 'services/yewuyuan/user';
+import * as usersService from 'services/yewuyuan/users';
+import { pageModel } from '../common';
 
-const { query } = usersService
-const { prefix } = config
+const { query } = usersService;
+const { prefix } = config;
 
 export default modelExtend(pageModel, {
   namespace: 'parameter',
@@ -89,7 +89,6 @@ export default modelExtend(pageModel, {
       }
     },
 
-
     * update ({ payload }, { select, call, put }) {
       const id = yield select(({ user }) => user.currentItem.id)
       const newUser = { ...payload, id }
@@ -100,19 +99,9 @@ export default modelExtend(pageModel, {
         throw data
       }
     },
-
   },
 
   reducers: {
-    showModal (state, { payload }) {
-      if(payload.modalType=='quotation'){
-        return { ...state, ...payload, modalVisible: true }
-      }else if(payload.modalType=='addRemark'){
-        return { ...state, ...payload, visibleRemark: true,remarkId: payload.id}
-      }else {
-        return { ...state, ...payload, sendModalVisible: true }
-      }
-    },
     isEditFunc( state ){
       return { ...state,  isEdit: ! state.isEdit }
     },

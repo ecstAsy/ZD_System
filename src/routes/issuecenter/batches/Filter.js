@@ -58,7 +58,7 @@ const formItemLayoutLong = {
 const Filter = ({ FilterSearch, filter,
   form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
-  const { carPlate, costNum, policyStatus, team, salesman, applyTime, insuranceCompany, }=filter;
+  const { carPlate, costNum, policyStatus, team, salesman, applyTime, insuranceCompany }=filter;
 
   const handleFields = (fields) => {
     if (fields.applyTime && fields.applyTime instanceof Array && fields.applyTime.length > 1) {

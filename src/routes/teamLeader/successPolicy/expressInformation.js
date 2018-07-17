@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/6/26 0026.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './offer.less'
-import { connect } from 'dva'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './offer.less';
+import { connect } from 'dva';
 
 const ExpressInformation = () => {
   return (
@@ -30,4 +30,4 @@ const ExpressInformation = () => {
   )
 }
 
-export default connect(({  }) => ({  }))(ExpressInformation)
+export default ExpressInformation

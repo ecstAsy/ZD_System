@@ -11,6 +11,7 @@ import Offermodal from './Modal'
 import styles from './List.less'
 import SendModal from './sendModal'
 import ChangeSalesman from './changeSalesman'
+
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
  }) => {

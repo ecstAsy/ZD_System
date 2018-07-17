@@ -5,7 +5,6 @@ import styles from './index.less';
 import publicStyles from '../../publicStyle.less';
 import classnames from 'classnames';
 import moment from 'moment';
-import $ from 'jquery';
 
 const FormItem = Form.Item;
 const formItemLayout = {

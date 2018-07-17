@@ -1,7 +1,7 @@
-const qs = require('qs')
-const Mock = require('mockjs')
-const config = require('../utils/config')
-const { apiPrefix } = config
+const qs = require('qs');
+const Mock = require('mockjs');
+const config = require('../utils/config');
+const { apiPrefix } = config;
 
 let successPolicyData = Mock.mock({
   'data|80-100': [
@@ -34,29 +34,29 @@ const queryArray = (array, key, keyAlias = 'key') => {
     return data
   }
   return null
-}
+};
 
 const NOTFOUND = {
   message: 'Not Found',
   documentation_url: 'http://localhost:8000/request',
-}
+};
 
 module.exports = {
   [`GET ${apiPrefix}/record`] (req, res) {
-    const cookie = req.headers.cookie || ''
-    const cookies = qs.parse(cookie.replace(/\s/g, ''), { delimiter: ';' })
-    const response = {}
-    const user = {}
+    const cookie = req.headers.cookie || '';
+    const cookies = qs.parse(cookie.replace(/\s/g, ''), { delimiter: ';' });
+    const response = {};
+    const user = {};
     if (!cookies.token) {
       res.status(200).send({ message: 'Not Login' })
       return
     }
-    const token = JSON.parse(cookies.token)
+    const token = JSON.parse(cookies.token);
     if (token) {
       response.success = token.deadline > new Date().getTime()
     }
     if (response.success) {
-      const userItem = adminUsers.filter(_ => _.id === token.id)
+      const userItem = adminUsers.filter(_ => _.id === token.id);
       if (userItem.length > 0) {
         user.permissions = userItem[0].permissions
         user.username = userItem[0].username
@@ -68,7 +68,7 @@ module.exports = {
   },
 
   [`GET ${apiPrefix}/records`] (req, res) {
-    const { query } = req
+    const { query } = req;
     let { pageSize, page, ...other } = query
     pageSize = pageSize || 10
     page = page || 1
@@ -81,9 +81,9 @@ module.exports = {
             if (key === 'address') {
               return other[key].every(iitem => item[key].indexOf(iitem) > -1)
             } else if (key === 'createTime') {
-              const start = new Date(other[key][0]).getTime()
-              const end = new Date(other[key][1]).getTime()
-              const now = new Date(item[key]).getTime()
+              const start = new Date(other[key][0]).getTime();
+              const end = new Date(other[key][1]).getTime();
+              const now = new Date(item[key]).getTime();
 
               if (start && end) {
                 return now >= start && now <= end
@@ -103,13 +103,13 @@ module.exports = {
   },
 
   [`DELETE ${apiPrefix}/records`] (req, res) {
-    const { ids } = req.body
+    const { ids } = req.body;
     database = database.filter(item => !ids.some(_ => _ === item.id))
     res.status(204).end()
   },
 
   [`POST ${apiPrefix}/record`] (req, res) {
-    const newData = req.body
+    const newData = req.body;
     newData.createTime = Mock.mock('@now')
     newData.avatar = newData.avatar || Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.nickName.substr(0, 1))
     newData.id = Mock.mock('@id')
@@ -118,8 +118,8 @@ module.exports = {
   },
 
   [`GET ${apiPrefix}/record/:id`] (req, res) {
-    const { id } = req.params
-    const data = queryArray(database, id, 'id')
+    const { id } = req.params;
+    const data = queryArray(database, id, 'id');
     if (data) {
       res.status(200).json(data)
     } else {
@@ -128,8 +128,8 @@ module.exports = {
   },
 
   [`DELETE ${apiPrefix}/record/:id`] (req, res) {
-    const { id } = req.params
-    const data = queryArray(database, id, 'id')
+    const { id } = req.params;
+    const data = queryArray(database, id, 'id');
     if (data) {
       database = database.filter(item => item.id !== id)
       res.status(204).end()
@@ -139,8 +139,8 @@ module.exports = {
   },
 
   [`PATCH ${apiPrefix}/record/:id`] (req, res) {
-    const { id } = req.params
-    const editItem = req.body
+    const { id } = req.params;
+    const editItem = req.body;
     let isExist = false
     database = database.map((item) => {
       if (item.id === id) {

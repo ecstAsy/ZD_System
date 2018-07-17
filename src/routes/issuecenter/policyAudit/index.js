@@ -42,7 +42,6 @@ const PolicyAudit = ({
     },
   };
 
-
   const listProps = {
     dataSource:list,
     loading:loading.effects['policyAudit/query'],
@@ -81,7 +80,7 @@ const PolicyAudit = ({
       dispatch({
         type:'policyAudit/showModal',
         payload:{
-          status:'审核'
+          auditStatus:'审核'
         }
       })
     }

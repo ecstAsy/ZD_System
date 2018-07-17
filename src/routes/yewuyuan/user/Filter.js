@@ -1,10 +1,10 @@
 /* global document */
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { FilterItem } from 'components'
 import classnames from 'classnames'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch, Select ,Icon, TimePicker} from 'antd'
+import { Form, Button, Row, Col, DatePicker, Input, Select ,Icon} from 'antd'
 
 import styles from './List.less'
 

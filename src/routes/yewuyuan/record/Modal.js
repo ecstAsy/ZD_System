@@ -1,9 +1,9 @@
 /**
  * Created by Administrator on 2018/6/25 0025.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Form, Modal } from 'antd';
 
 const FormItem = Form.Item
 

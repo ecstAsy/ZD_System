@@ -1,23 +1,21 @@
 /**
  * Created by Administrator on 2018/6/25 0025.
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Page } from 'components'
-import queryString from 'query-string'
-import List from './List'
-import Filter from './Filter'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+import { Page } from 'components';
+import queryString from 'query-string';
+import List from './List';
+import Filter from './Filter';
 
 const Record = ({
   location, dispatch, record, loading,
 }) => {
   location.query = queryString.parse(location.search)
-  const { query, pathname } = location
-  const {
-    list, pagination,
-  } = record
+  const { query, pathname } = location;
+  const { list, pagination } = record;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -25,8 +23,8 @@ const Record = ({
       search: queryString.stringify({
         ...query,
         ...newQuery,
-    }),
-  }))
+      }),
+    }))
   };
 
   const listProps = {
@@ -60,7 +58,7 @@ const Record = ({
       <List {...listProps} />
     </Page>
   )
-}
+};
 
 Record.propTypes = {
   record: PropTypes.object,

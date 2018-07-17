@@ -2,8 +2,8 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
 import { config } from 'utils';
-import { create, remove, update } from 'services/issuecenter/application';
-import * as applicationsService from 'services/issuecenter/application';
+import { create, remove, update } from 'services/generalData';
+import * as applicationsService from 'services/generalData';
 import { pageModel } from '../common';
 
 const { query } = applicationsService;
@@ -39,7 +39,7 @@ export default modelExtend(pageModel, {
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen((location) => {
-        if (location.pathname === '/application') {
+        if (location.pathname === '/TeamGoal') {
           const payload = queryString.parse(location.search) || { page: 1, pageSize: 10 };
           dispatch({
             type: 'query',

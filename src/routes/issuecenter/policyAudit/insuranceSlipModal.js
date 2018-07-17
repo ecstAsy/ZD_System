@@ -3,31 +3,14 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {  Modal, Button, Form, Row, Col, Input, Icon } from 'antd';
 import { PolicyTable } from 'components';
+import {  Modal, Button, Form, Row, Col, Icon } from 'antd';
 import publicStyles from '../../publicStyle.less';
 import styles from './index.less';
 import classnames from 'classnames';
 import SendTable from './sendTable';
 
-const FormItem = Form.Item;
-const TextArea = Input.TextArea;
-const formItemLayout = {
-  labelCol: {
-    span:3,
-  },
-  wrapperCol: {
-    span: 21,
-  },
-  style:{
-    marginBottom: 0,
-    borderRadius:'20px',
-    fontSize:'14px'
-  }
-};
-
-const InsuranceSlipModal = ({...insuranceSlipModalProps, handleCancel, currentItem,handleConfirm,
-  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+const InsuranceSlipModal = ({...insuranceSlipModalProps, handleCancel ,handleConfirm,
 })=>{
   return (
     <Modal className={classnames(publicStyles.Modal,styles.InsuranceSlipModal)}

@@ -1,15 +1,15 @@
 /**
  * Created by Administrator on 2018/6/25 0025.
  */
-import modelExtend from 'dva-model-extend'
-import queryString from 'query-string'
-import { config } from 'utils'
-import { create, remove, update } from 'services/yewuyuan/record'
-import * as recordsService from 'services/yewuyuan/records'
-import { pageModel } from '../common'
+import modelExtend from 'dva-model-extend';
+import queryString from 'query-string';
+import { config } from 'utils';
+import { create, remove, update } from 'services/yewuyuan/record';
+import * as recordsService from 'services/yewuyuan/records';
+import { pageModel } from '../common';
 
-const { query } = recordsService
-const { prefix } = config
+const { query } = recordsService;
+const { prefix } = config;
 
 export default modelExtend(pageModel, {
   namespace: 'record',
@@ -92,7 +92,6 @@ export default modelExtend(pageModel, {
     throw data
   }
 },
-
 },
 
 reducers: {
@@ -100,15 +99,8 @@ reducers: {
   showModal (state, { payload }) {
     return { ...state, ...payload, modalVisible: true }
   },
-
   hideModal (state) {
     return { ...state, modalVisible: false }
   },
-
-  switchIsMotion (state) {
-    window.localStorage.setItem(`${prefix}userIsMotion`, !state.isMotion)
-    return { ...state, isMotion: !state.isMotion }
-  },
-
 },
 })

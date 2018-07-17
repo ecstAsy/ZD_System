@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {  Modal, Timeline, Button } from 'antd';
 import styles from './sendModal.less';
 import classnames from 'classnames';
+
 const TimeLineList = (list)=>{
   return (
     <div>
@@ -18,7 +19,8 @@ const TimeLineList = (list)=>{
       </div>
     </div>
   )
-}
+};
+
 const SendModal = ({onCancel, ...sendModalProps, TimeData})=>{
   return (
     <Modal {...sendModalProps}
@@ -39,5 +41,6 @@ const SendModal = ({onCancel, ...sendModalProps, TimeData})=>{
       </Timeline>
     </Modal>
   )
-}
+};
+
 export default SendModal

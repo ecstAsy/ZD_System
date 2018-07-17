@@ -5,13 +5,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components';
-import classnames from 'classnames';
 import styles from '../../publicStyle.less';
 import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
 
-const InputGroup = Input.Group;
 const Option = Select.Option;
-const { Search } = Input;
 const { RangePicker } = DatePicker;
 const FormItem = Form.Item;
 
@@ -181,8 +178,8 @@ const Filter = ({ FilterSearch, filter,
                 style={{ width: '100%' }}
                 placeholder="请选择"
               >
-                <Option value="china">China</Option>
-                <Option value="use">U.S.A</Option>
+                <Option value="扫码支付">扫码支付</Option>
+                <Option value="转账至保险公司">转账至保险公司</Option>
               </Select>)}
             </FormItem>
           </Col>
@@ -205,8 +202,8 @@ const Filter = ({ FilterSearch, filter,
                 style={{ width: '100%' }}
                 placeholder="请选择"
               >
-                <Option value="a">A</Option>
-                <Option value="b">B</Option>
+                <Option value="A">A</Option>
+                <Option value="B">B</Option>
               </Select>)}
             </FormItem>
           </Col>
@@ -218,8 +215,8 @@ const Filter = ({ FilterSearch, filter,
                 placeholder="请选择"
                 dropdownStyle={{lineHeight:'25px'}}
               >
-                <Option value="china">China</Option>
-                <Option value="use">U.S.A</Option>
+                <Option value="suzhou">苏州</Option>
+                <Option value="nanjing">南京</Option>
               </Select>)}
             </FormItem>
           </Col>
