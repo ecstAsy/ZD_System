@@ -45,6 +45,7 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
   }
   const speechCraftListProps = {
     EditSpeechCraft,
+
   }
 
   return (
@@ -53,7 +54,7 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
         {
           speechCraftData.map((item,i)=>{
             return (
-                <SpeechCraftList key={item.id} item={item} {...speechCraftListProps}/>
+                <SpeechCraftList key={item.id}  item={item} {...speechCraftListProps}/>
             )
           })
         }
