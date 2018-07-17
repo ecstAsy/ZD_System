@@ -5,8 +5,6 @@ import queryString from 'query-string';
 import styles from './index.less';
 
 const SpeechCraftList = ({item, EditSpeechCraft})=>{
-
-
   return (
       <div className={classnames(styles.SpeechCraftList)} >
         <span className='cicle'></span>
