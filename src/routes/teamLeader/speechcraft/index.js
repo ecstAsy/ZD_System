@@ -39,16 +39,15 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
 
     }
   };
+
   const addSpeechCraftListProps = {
     EditSpeechCraft,
-  }
+  };
 
   const speechCraftListProps = {
     EditSpeechCraft,
     //开始
     drag(item){
-      // ev.dataTransfer.setData("Text",ev.target.id);
-      console.log(item);
       let id = item.id;
       dispatch({
         type: 'speechcraft/drag',
@@ -77,9 +76,7 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
         type: 'speechcraft/endDrop',
       })
     }
-
-
-  }
+  };
 
 
   return (
