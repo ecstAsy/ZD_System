@@ -96,7 +96,6 @@ const List = ({
     <Table
       {...tableProps}
       className={classnames(styles.table)}
-      scroll={{ y: 500 }}
       columns={columns}
       simple
       rowKey={record => record.id}
