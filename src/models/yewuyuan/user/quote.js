@@ -20,6 +20,8 @@ export default modelExtend(pageModel, {
     choosePurCarModalVisible:false, //选择新车购置价
     deductiblesModalVisible:false,//不计免赔险
     insureInfoModalVisible:true,
+    failureModalVisible:false, //失败提交
+    appointmentModalVisible:false,//预约跟踪
     remarkId:'',
     selectedRowKeys: [],
     isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
@@ -59,6 +61,21 @@ export default modelExtend(pageModel, {
       {id:'25003',name:'座位险不计免赔',checked:false},
       {id:'25004',name:'全车盗抢险不计免赔',checked:false},
       {id:'25005',name:'附加险不计免赔特约条款',checked:false},
+    ],
+    failureData:[
+      {id:'25001',name:'价格贵',checked:false},
+      {id:'25002',name:'服务不齐全',checked:false},
+      {id:'25003',name:'有朋友做车险',checked:false},
+      {id:'25004',name:'已经续保',checked:false},
+      {id:'25005',name:'不需要',checked:false},
+      {id:'25006',name:'其他公司保两年',checked:false},
+      {id:'25007',name:'其他',checked:false},
+    ],
+    appointmentData:[
+      {id:'25001',name:'A',checked:false},
+      {id:'25002',name:'B',checked:false},
+      {id:'25003',name:'C',checked:false},
+      {id:'25004',name:'D',checked:false},
     ],
     okMianpeiData:'请选择'
   },
@@ -173,6 +190,28 @@ export default modelExtend(pageModel, {
       return { ...state, ...payload,}
     },
 
+    chosefailure(state, { payload }){
+      let id = payload.id;
+      let failureData = state.failureData;
+      for(let item of failureData){
+        if(item.id==id){
+          item.checked=!item.checked;
+        }
+      }
+      return { ...state, ...payload,}
+    },
+
+    choseappointment(state, { payload }){
+      let id = payload.id;
+      let appointmentData = state.appointmentData;
+      for(let item of appointmentData){
+        if(item.id==id){
+          item.checked=!item.checked;
+        }
+      }
+      return { ...state, ...payload,}
+    },
+
     checkedStrongInsurFunc(state, { payload }){
       let id = payload.id;
       let strongInsuranceData = state.strongInsuranceData;
@@ -206,6 +245,10 @@ export default modelExtend(pageModel, {
           }
         }
         return { ...state, deductiblesModalVisible: true }
+      }else if(payload.modalType=='failure'){
+        return { ...state, failureModalVisible: true }
+      }else if(payload.modalType=='appointment') {
+        return {...state, appointmentModalVisible: true}
       }
     },
 
@@ -231,6 +274,10 @@ export default modelExtend(pageModel, {
           }
         }
         return { ...state, deductiblesModalVisible: false,okMianpeiData:okMianpeiData, }
+      }else if(payload.modalType==='failure') {
+        return {...state, failureModalVisible: false}
+      }else if(payload.modalType=='appointment') {
+        return {...state, appointmentModalVisible: false}
       }
     },
 
