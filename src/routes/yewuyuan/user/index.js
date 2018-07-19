@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { routerRedux } from 'dva/router';
-import { connect } from 'dva';
-import { Row, Col, Button } from 'antd';
-import { Page } from 'components';
+import {routerRedux} from 'dva/router';
+import {connect} from 'dva';
+import {Row, Col, Button} from 'antd';
+import {Page} from 'components';
 import queryString from 'query-string';
 import List from './List';
 import Filter from './Filter';
@@ -13,7 +13,7 @@ const User = ({
   location, dispatch, user, loading, history
 }) => {
   location.query = queryString.parse(location.search);
-  const { query, pathname } = location;
+  const {query, pathname} = location;
   const {
     list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys, isMore
   } = user;
@@ -71,15 +71,15 @@ const User = ({
     },
 
     isShowMoreFunc(payload){
-      dispatch({ type: 'user/isShowMoreFunc', payload })
+      dispatch({type: 'user/isShowMoreFunc', payload})
     },
 
     switchIsMotion () {
-      dispatch({ type: 'user/switchIsMotion' })
+      dispatch({type: 'user/switchIsMotion'})
     },
   };
 
-  const onAdd=()=>{
+  const onAdd = ()=> {
     history.push('user/add');
   };
 
@@ -105,4 +105,4 @@ User.propTypes = {
   loading: PropTypes.object,
 };
 
-export default connect(({ user, loading }) => ({ user, loading }))(User)
+export default connect(({user, loading}) => ({user, loading}))(User)
