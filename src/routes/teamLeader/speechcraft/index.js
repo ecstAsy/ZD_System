@@ -8,6 +8,7 @@ import $ from 'jquery';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
+import { Icon } from 'antd';
 import SpeechCraftList from './speechCraftList';
 import AddSpeechCraftList from './addSpeechCraftList';
 import EditSpeechCraftModal from './editSpeechCraftModal';
@@ -82,6 +83,10 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
   return (
     <Page>
       <div className={classnames(styles.SpeechCraftListBox)}>
+        <div className="toast">
+          <Icon type="exclamation-circle-o" style={{marginRight:'10px'}} />
+          提示：下列卡片可直接手动拖动调整位置
+        </div>
         {
           speechCraftData.map((item,i)=>{
             return (

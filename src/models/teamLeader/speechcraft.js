@@ -74,6 +74,8 @@ export default modelExtend(pageModel, {
         };
         speechCraftData.splice(index,0,data);
         return { ...state,}
+      }else{
+        return { ...state,}
       }
     },
     showModal (state, { payload }) {
