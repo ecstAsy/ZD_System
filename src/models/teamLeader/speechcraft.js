@@ -15,19 +15,18 @@ export default modelExtend(pageModel, {
     nowId:'', //当前被移动的元素ID
     newId:'',
     speechCraftData:[
-      {id:1,name:'车漆延保卡',detail:'11111111111111111111111'},
-      {id:2,name:'无锡',detail:'无锡无锡无锡无锡无锡无锡无锡无锡无锡'},
-      {id:3,name:'南京',detail:'南京南京南京南京南京南京南京南京南京'},
-      {id:4,name:'单面喷漆卡',detail:'单面喷漆卡单面喷漆卡单面喷漆卡单面喷漆卡单面喷漆卡'},
-      {id:5,name:'保养卡',detail:'保养卡保养卡保养卡保养卡保养卡保养卡保养卡保养卡保养卡'},
-      {id:6,name:'蜂鸟养车',detail:'蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车'},
-      {id:7,name:'充电转换器',detail:'充电转换器充电转换器充电转换器充电转换器充电转换器充电转换器'},
-      {id:8,name:'四件套',detail:'四件套四件套四件套四件套四件套四件套四件套四件套四件套四件套四件套'},
-      {id:9,name:'车载空气净化器',detail:'车载空气净化器车载空气净化器车载空气净化器车载空气净化器'},
-      {id:10,name:'人情保',detail:'人情保人情保人情保人情保人情保人情保人情保人情保人情保人情保人情保'},
-      {id:11,name:'畅客',detail:'畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客'},
-      {id:12,name:'成本核单话术',detail:'成本核单话 术成本核单话 术成本核单话 术成本核单话 术成本核单话 术'},
-
+      {id:0,name:'车漆延保卡',detail:'11111111111111111111111'},
+      {id:1,name:'无锡',detail:'无锡无锡无锡无锡无锡无锡无锡无锡无锡'},
+      {id:2,name:'南京',detail:'南京南京南京南京南京南京南京南京南京'},
+      {id:3,name:'单面喷漆卡',detail:'单面喷漆卡单面喷漆卡单面喷漆卡单面喷漆卡单面喷漆卡'},
+      {id:4,name:'保养卡',detail:'保养卡保养卡保养卡保养卡保养卡保养卡保养卡保养卡保养卡'},
+      {id:5,name:'蜂鸟养车',detail:'蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车蜂鸟养车'},
+      {id:6,name:'充电转换器',detail:'充电转换器充电转换器充电转换器充电转换器充电转换器充电转换器'},
+      {id:7,name:'四件套',detail:'四件套四件套四件套四件套四件套四件套四件套四件套四件套四件套四件套'},
+      {id:8,name:'车载空气净化器',detail:'车载空气净化器车载空气净化器车载空气净化器车载空气净化器'},
+      {id:9,name:'人情保',detail:'人情保人情保人情保人情保人情保人情保人情保人情保人情保人情保人情保'},
+      {id:10,name:'畅客',detail:'畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客畅客'},
+      {id:11,name:'成本核单话术',detail:'成本核单话 术成本核单话 术成本核单话 术成本核单话 术成本核单话 术'},
     ]
   },
 
@@ -75,6 +74,8 @@ export default modelExtend(pageModel, {
         };
         speechCraftData.splice(index,0,data);
         return { ...state,}
+      }else{
+        return { ...state,}
       }
     },
     showModal (state, { payload }) {
@@ -89,6 +90,7 @@ export default modelExtend(pageModel, {
     hideModal (state,{payload}) {
       return { ...state, editSpeechCraftModalVisible: false }
     },
+
 
   },
 })
