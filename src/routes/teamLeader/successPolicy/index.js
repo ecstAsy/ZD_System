@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
-import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm ,Modal} from 'antd'
-import { Page } from 'components'
+import {routerRedux} from 'dva/router'
+import {connect} from 'dva'
+import {Row, Col, Button, Popconfirm, Modal} from 'antd'
+import {Page} from 'components'
 import queryString from 'query-string'
 import List from './List'
 import Filter from './Filter'
@@ -14,11 +14,12 @@ import ChangeSalesman from './changeSalesman'
 
 const SuccessPolicy = ({
   location, dispatch, successPolicy, loading,
- }) => {
+}) => {
   location.query = queryString.parse(location.search);
-  const { query, pathname } = location;
+  const {query, pathname} = location;
   const {
-    list, TimeData, pagination,  modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible, changeSalesVisible } = successPolicy;
+    list, TimeData, pagination, modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible, changeSalesVisible
+  } = successPolicy;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -33,13 +34,13 @@ const SuccessPolicy = ({
   const modalProps = {
     item: {},
     visible: modalVisible,
-    remarkId:remarkId,
+    remarkId: remarkId,
     maskClosable: false,
-    title:'报价详情',
-    width:'90%',
-    visibleRemark:visibleRemark,
+    title: '报价详情',
+    width: '90%',
+    visibleRemark: visibleRemark,
     wrapClassName: 'vertical-center-modal',
-    closable:false,
+    closable: false,
     onCancel () {
       dispatch({
         type: 'successPolicy/hideModal',
@@ -54,7 +55,7 @@ const SuccessPolicy = ({
         type: 'successPolicy/showModal',
         payload: {
           modalType: 'addRemark',
-          id:id?id:'',
+          id: id ? id : '',
         },
       })
     },
@@ -73,7 +74,7 @@ const SuccessPolicy = ({
         type: 'successPolicy/hideModal',
         payload: {
           modalType: 'addRemark',
-          data:data,
+          data: data,
         },
       })
     }
@@ -83,9 +84,9 @@ const SuccessPolicy = ({
     TimeData,
     visible: sendModalVisible,
     maskClosable: false,
-    title:'派送记录',
-    width:'40%',
-    closable:false,
+    title: '派送记录',
+    width: '40%',
+    closable: false,
     wrapClassName: 'vertical-center-modal',
     onCancel () {
       dispatch({
@@ -119,11 +120,11 @@ const SuccessPolicy = ({
           currentItem: item,
         },
       })
-        // .then(() => {
-        //   handleRefresh({
-        //     page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-        //   })
-        // })
+      // .then(() => {
+      //   handleRefresh({
+      //     page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
+      //   })
+      // })
     },
 
     seeQuotation (item) {
@@ -160,15 +161,15 @@ const SuccessPolicy = ({
     },
 
     switchIsMotion () {
-      dispatch({ type: 'user/switchIsMotion' })
+      dispatch({type: 'user/switchIsMotion'})
     },
   };
 
-  const changeSalesProps={
+  const changeSalesProps = {
     visible: changeSalesVisible,
     maskClosable: false,
-    title:'修改所属',
-    width:'30%',
+    title: '修改所属',
+    width: '30%',
     onOk(data){
       console.log(data)
       dispatch({
@@ -210,4 +211,4 @@ SuccessPolicy.propTypes = {
   loading: PropTypes.object,
 };
 
-export default connect(({ successPolicy, loading }) => ({ successPolicy, loading }))(SuccessPolicy)
+export default connect(({successPolicy, loading}) => ({successPolicy, loading}))(SuccessPolicy)

@@ -13,9 +13,14 @@ export default modelExtend(pageModel, {
     currentItem: {},
     selectList:[{id:1,userName:'用户',userPlate:'苏E00000',userPhone:'15698766789',salseMan:'业务员1'},
       {id:2,userName:'用户',userPlate:'苏E11111',userPhone:'15698766789',salseMan:'业务员2'}],
+    viewList:[ {handleTime:'2018-7-17', dis:'111', complaintStatus:'处理中', processor:'业务员1',},
+      {handleTime:'2018-7-18', dis:'111', complaintStatus:'处理失败', processor:'业务员2',},
+      {handleTime:'2018-7-18', dis:'111', complaintStatus:'处理成功', processor:'业务员1',
+      },],
     auditModalVisible : false ,//审核弹窗
     allotModalVisible:false,
     addComplaintModalVisible : false , //新增投诉弹窗,
+    viewComplaintModalVisible: false ,
     selectListModalVisible : false,
     selectedUser : ''
   },
@@ -86,8 +91,11 @@ export default modelExtend(pageModel, {
         return { ...state, addComplaintModalVisible: true }
       }else if (payload.modalType === 'select'){
         return { ...state, selectListModalVisible: true ,addComplaintModalVisible:false}
+      }else if (payload.modalType === 'view'){
+        return {...state, currentItem:payload.data, viewComplaintModalVisible: true }
       }
-    },
+    }
+    ,
 
     hideModal (state,{payload}) {
       if(payload.modalType === 'audit'){
@@ -98,6 +106,8 @@ export default modelExtend(pageModel, {
         return { ...state, addComplaintModalVisible:false }
       }else if (payload.modalType === 'select'){
         return { ...state, selectListModalVisible: false ,addComplaintModalVisible:true}
+      }else if (payload.modalType === 'view'){
+        return { ...state, viewComplaintModalVisible: false}
       }
     },
 

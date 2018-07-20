@@ -10,12 +10,13 @@ import List from './List';
 import AuditModal from './auditModal';
 import AllotModal from './allotModal';
 import AddComplaintModal from './addComplaintModal';
+import ViewComplaintModal from './viewComplaintModal';
 import SelectListModal from './selectListModal';
 
 const Complaint = ({location, dispatch, complaint,   loading,})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, selectList, selectedUser, pagination, currentItem, auditModalVisible, allotModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
+  const { list, selectList, viewList, selectedUser, pagination, currentItem, auditModalVisible, allotModalVisible, viewComplaintModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -61,7 +62,7 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
       dispatch({
           type: 'complaint/showModal',
           payload: {
-            modalType: list.complaintStatus === ''?'audit':list.complaintStatus === '未处理'?'allot':'',
+            modalType: list.complaintStatus === ''?'audit':list.complaintStatus === '未处理'?'allot':list.complaintStatus === '返现驳回'?'view':list.complaintStatus === '返现通过'?'view':'',
             data: list,
           },
         })
@@ -73,8 +74,9 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     visible: auditModalVisible,
     maskClosable: false,
     title:'投诉审核',
-    width:'30%',
+    width:'45%',
     closable:false,
+    viewList,
     wrapClassName: 'vertical-center-modal',
     handleConfirm(payload){
 
@@ -92,6 +94,33 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
         },
       })
     }
+  };
+
+  const viewComplaintModalProps = {
+    visible : viewComplaintModalVisible,
+    maskClosable: false,
+    title:'处理投诉',
+    width:'45%',
+    closable:false,
+    item: currentItem,
+    viewList,
+    wrapClassName: 'vertical-center-modal',
+    handleConfirm(payload){
+
+
+    },
+    handleReject(payload){
+
+
+    },
+    handleCancel(){
+      dispatch({
+        type:'complaint/hideModal',
+        payload: {
+          modalType: 'view'
+        },
+      })
+    },
   };
 
   const allotModalProps = {
@@ -189,6 +218,7 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
       { allotModalVisible && <AllotModal {...allotModalProps}/> }
       { addComplaintModalVisible && <AddComplaintModal {...addComplaintModalProps}/> }
       { selectListModalVisible && <SelectListModal {...selectListModalProps}/> }
+      { viewComplaintModalVisible && <ViewComplaintModal {...viewComplaintModalProps}/>}
     </Page>
   )
 }
