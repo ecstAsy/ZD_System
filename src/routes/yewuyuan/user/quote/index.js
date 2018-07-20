@@ -187,7 +187,7 @@ const Quote = ({
           id:id,
         },
       })
-    }
+    },
   };
 
   const CarInsuranceProps={

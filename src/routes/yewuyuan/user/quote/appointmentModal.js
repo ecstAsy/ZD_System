@@ -2,6 +2,7 @@
  * Created by Administrator on 2018/7/19 0019.
  */
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Modal, Checkbox, Row, Col, Form, DatePicker, Button, Radio, } from 'antd';
 import classnames from 'classnames';
@@ -29,13 +30,21 @@ const ColProps = {
     marginBottom: 10,
   },
 };
-
-const AppointmentModal = ({...appointmentProps, appointmentData, choseappointment,handleCancel,
+const AppointmentModal = ({...appointmentProps, appointmentData, choseappointment, handleCancel,
   form: { getFieldDecorator, getFieldsValue, setFieldsValue }
 })=>{
   const handleSubmit = ()=>{
     let fields = getFieldsValue();
   };
+
+  function disabledDate(current) {
+    return current && current < Date.now();
+  }
+
+  function onChange(value) {
+    console.log('选择了时间：', value);
+  }
+
   return (
     <Modal className={classnames(publicStyles.Modal)}
            {...appointmentProps}
@@ -48,7 +57,13 @@ const AppointmentModal = ({...appointmentProps, appointmentData, choseappointmen
         <Col span={20}>
           <FormItem {...formItemLayout} label="预约时间：">
             {getFieldDecorator('finalTime')(
-              <DatePicker style={{ width: '50%' }}/>
+              <DatePicker
+                disabledDate={disabledDate}
+                showTime
+                format="YYYY-MM-DD HH:mm:ss"
+                placeholder="请选择时间"
+                onChange={onChange}
+                style={{ width: '60%' }}/>
             )}
           </FormItem>
         </Col>

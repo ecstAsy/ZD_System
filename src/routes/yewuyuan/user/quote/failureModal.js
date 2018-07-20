@@ -25,7 +25,7 @@ const FailureModal =({
     let fields = getFieldsValue();
   };
   return(
-    <Modal className={classnames(publicStyles.Modal)}
+    <Modal className={classnames(publicStyles.Modal,styles.radio)}
       {...FailureProps}
            footer={[
              <Button  type="primary" onClick={handleSubmit}>保存</Button>,
