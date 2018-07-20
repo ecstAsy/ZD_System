@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, Col, Checkbox, Modal, Button} from 'antd';
+import { Form, Row, Col, Checkbox, Modal, Button, Radio} from 'antd';
 import classnames from 'classnames';
 import publicStyles from '../../../publicStyle.less';
 import styles from './index.less';
@@ -17,9 +17,10 @@ const ColProps = {
 };
 
 const FailureModal =({
-  failureData, chosefailure, handleCancel,
-  ...FailureProps
+  failureData, chosefailure, handleCancel, ...FailureProps,
+
 })=>{
+
   const handleSubmit =() =>{
     let fields = getFieldsValue();
   };
@@ -32,15 +33,17 @@ const FailureModal =({
            ]}
     >
       <Row gutter={24} style={{paddingLeft:'20%'}}>
-        {
-          failureData.map((i,key)=>{
-            return (
-              <Col {...ColProps} key={key}>
-                <Checkbox checked={i.checked} value={i.id} onClick={()=>chosefailure(i.id)}>{i.name}</Checkbox>
-              </Col>
-            )
-          })
-        }
+        <Radio.Group >
+          {
+            failureData.map((item,i)=>{
+              return (
+                <Col {...ColProps}>
+                <Radio value={`${item.name}`} key={i} onClick={()=>chosefailure(i.id)}>{item.name}</Radio>
+                </Col>
+              )
+            })
+          }
+        </Radio.Group>
       </Row>
     </Modal>
   )

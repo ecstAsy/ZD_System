@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Checkbox, Row, Col, Form, DatePicker, Button, } from 'antd';
+import { Modal, Checkbox, Row, Col, Form, DatePicker, Button, Radio, } from 'antd';
 import classnames from 'classnames';
 import publicStyles from '../../../publicStyle.less';
 import styles from './index.less';
@@ -23,8 +23,8 @@ const formItemLayout = {
   }
 }
 const ColProps = {
-  xs: 24,
-  sm: 4,
+  xs: 26,
+  sm: 6,
   style: {
     marginBottom: 10,
   },
@@ -54,15 +54,17 @@ const AppointmentModal = ({...appointmentProps, appointmentData, choseappointmen
         </Col>
         <Col span={20}>
           <FormItem {...formItemLayout} label="预约级别：">
-            {
-              appointmentData.map((i,key)=>{
-                return (
-                  <Col {...ColProps} key={key}>
-                    <Checkbox checked={i.checked} value={i.id} onClick={()=>choseappointment(i.id)}>{i.name}</Checkbox>
-                  </Col>
-                )
-              })
-            }
+            <Radio.Group>
+              {
+                appointmentData.map((item,i)=>{
+                  return (
+                    <Col {...ColProps}>
+                      <Radio value={`${item.name}`} key={i} onClick={()=>choseappointment(i.id)}>{item.name}</Radio>
+                    </Col>
+                  )
+                })
+              }
+            </Radio.Group>
           </FormItem>
         </Col>
       </Row>
