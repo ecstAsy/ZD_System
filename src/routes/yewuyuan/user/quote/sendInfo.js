@@ -59,6 +59,13 @@ const SendInfo = ({
     setFieldsValue,
   }
 })=>{
+  const disabledDate=(current)=> {
+    let curDate = Date.now();
+    let seven = 7 * 24 * 3600 * 1000;
+    let sevendate = curDate + seven;
+    return current && current < Date.now() - 8.64e7 || current > sevendate;
+  };
+
   const options = [{
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -82,6 +89,7 @@ const SendInfo = ({
       }],
     }],
   }];
+
    return(
      <div className={classnames(styles.Quote,styles.SendInfo)}>
        <Title title={`保单派送信息`}/>
@@ -96,7 +104,7 @@ const SendInfo = ({
          <Col {...ColProps}>
            <FormItem {...formItemLayout} label="派送时间" >
              {getFieldDecorator('sendTime')(
-               <DatePicker placeholder="请选择"/> )}
+               <DatePicker disabledDate={disabledDate} placeholder="请选择"/> )}
            </FormItem>
          </Col>
          <Col {...ColProps}>

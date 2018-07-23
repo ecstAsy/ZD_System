@@ -37,13 +37,12 @@ const AppointmentModal = ({...appointmentProps, appointmentData, choseappointmen
     let fields = getFieldsValue();
   };
 
-  function disabledDate(current) {
-    return current && current < Date.now();
-  }
-
-  function onChange(value) {
-    console.log('选择了时间：', value);
-  }
+  const disabledDate=(current)=> {
+    let curDate = Date.now();
+    let seven = 7 * 24 * 3600 * 1000;
+    let sevendate = curDate + seven;
+    return current && current < Date.now() - 8.64e7 || current > sevendate;
+  };
 
   return (
     <Modal className={classnames(publicStyles.Modal)}
@@ -58,11 +57,10 @@ const AppointmentModal = ({...appointmentProps, appointmentData, choseappointmen
           <FormItem {...formItemLayout} label="预约时间：">
             {getFieldDecorator('finalTime')(
               <DatePicker
-                disabledDate={disabledDate}
-                showTime
+                showTime={true}
                 format="YYYY-MM-DD HH:mm:ss"
                 placeholder="请选择时间"
-                onChange={onChange}
+                disabledDate={disabledDate}
                 style={{ width: '60%' }}/>
             )}
           </FormItem>
