@@ -38,7 +38,8 @@ const List = ({...listProps, ListData, isEdit,
               <Col span={6}>
                 <div>
                   {
-                    !isEdit? <div className="useInfoRow"><p>{list.name}</p><p>{list.num}</p></div>:
+                    !isEdit? <div className="useInfoRow"><p>{list.name}</p><p>
+                      {list.num}</p></div>:
                       <FormItem  {...formItemLayout} label={list.name} >
                         {getFieldDecorator(`${list.name}`,{
                           initialValue:`${list.num}`
@@ -60,3 +61,4 @@ List.propTypes = {
 }
 
 export default Form.create() (List)
+

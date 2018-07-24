@@ -34,7 +34,6 @@ const List = ({
       dataIndex: 'recordDate',
       key: 'recordDate',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.recordDate - b.recordDate,
     },{
       title: '通话时长(秒)',
       dataIndex: 'modifyDate',

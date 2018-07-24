@@ -53,7 +53,7 @@ const Parameter = ({
   return (
     <Page inner>
       <Row className="page">
-          <Button type="Edit" icon="edit" style={{border:0}} onClick={isEditFunc}>编辑</Button>
+        <Button type="Edit" icon="edit" style={{border:0}} onClick={isEditFunc}>编辑</Button>
       </Row>
       <Title title="月业绩目标（万）"/>
       <Mouth {...mouthProps} />

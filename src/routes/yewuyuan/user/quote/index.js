@@ -14,14 +14,18 @@ import UnderWritingMadal from './underwritingModal';
 import ChoosePurCarModal from './choosePurCarModel';
 import DeductiblesModal from './deductiblesModal';
 import InsureInfoModal from './insureInfoModal';
+import FailuerModal from './failureModal'
+import AppointmentModal from './appointmentModal'
 
 const Quote = ({
-  dispatch, quote, loading,}) => {
+  dispatch, quote, loading,
+}) => {
   const {
     choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData, okMianpeiData,
-    underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData,
-    strongInsuranceData , insureInfoModalVisible
+    underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData,failureModalVisible,failureData,
+    strongInsuranceData , insureInfoModalVisible,appointmentModalVisible,appointmentData,
   } = quote;
+
 
   const UserInfoProps={
     visibleRemark:visibleRemark,
@@ -95,6 +99,62 @@ const Quote = ({
     }
   };
 
+  const FailureProps={
+    visible: failureModalVisible,
+    title:'选择失败原因',
+    width:'50%',
+    wrapClassName: 'vertical-center-modal',
+    failureData,
+    choseItem:choseItem,
+    currentItem:currentItem,
+    closable:false,
+    handleCancel () {
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'failure',
+        },
+      })
+    },
+    chosefailure(id){
+      dispatch({
+        type: 'quote/chosefailure',
+        payload: {
+          id:id,
+        },
+      })
+    },
+  };
+
+  const appointmentProps={
+    item:{},
+    visible: appointmentModalVisible,
+    title:'跟踪信息完善',
+    wrapClassName: 'vertical-center-modal',
+    width:'35%',
+    appointmentData,
+    choseItem:choseItem,
+    currentItem:currentItem,
+    maskClosable: false,
+    closable:false,
+    handleCancel () {
+      dispatch({
+        type: 'quote/hideModal',
+        payload: {
+          modalType: 'appointment',
+        },
+      })
+    },
+    choseappointment(id){
+      dispatch({
+        type: 'quote/choseappointment',
+        payload: {
+          id:id,
+        },
+      })
+    },
+  };
+
   const DeductiblesProps={
     visible: deductiblesModalVisible,
     title:'不计免赔险',
@@ -127,7 +187,7 @@ const Quote = ({
           id:id,
         },
       })
-    }
+    },
   };
 
   const CarInsuranceProps={
@@ -160,6 +220,23 @@ const Quote = ({
         },
       })
     }
+  };
+  const sendfailure = ()=>{
+    dispatch({
+      type: 'quote/showModal',
+      payload: {
+        modalType: 'failure'
+      },
+    })
+  };
+
+  const sendappointment = ()=>{
+    dispatch({
+      type: 'quote/showModal',
+      payload: {
+        modalType: 'appointment'
+      },
+    })
   };
 
   const finalProps = {
@@ -310,11 +387,13 @@ const Quote = ({
         {deductiblesModalVisible && <DeductiblesModal {...DeductiblesProps}/>}
         {insureInfoModalVisible && <InsureInfoModal {...InsureInfoModalProps}/>}
         {visibleRemark&&<RemarkMadal {...RemarkMadalProps}/>}
+        {failureModalVisible && <FailuerModal {...FailureProps}/>}
+        {appointmentModalVisible && <AppointmentModal {...appointmentProps}/>}
         <div className="buttonBox">
           <Button type="primary">保存</Button>
-          <Button type="primary">跟踪提交</Button>
+          <Button type="primary" onClick={sendappointment}>跟踪提交</Button>
           <Button type="primary">成功提交</Button>
-          <Button type="primary">失败提交</Button>
+          <Button type="primary" onClick={sendfailure} >失败提交</Button>
           <Button type="primary">其他业务</Button>
         </div>
       </Page>
@@ -326,6 +405,8 @@ Quote.propTypes = {
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
+  sendFailure: PropTypes.func,
+  sendappointment: PropTypes.func,
 }
 
 export default connect(({ quote, loading }) => ({ quote, loading }))(Quote)
