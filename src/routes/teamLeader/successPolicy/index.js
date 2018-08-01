@@ -1,24 +1,26 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {routerRedux} from 'dva/router'
-import {connect} from 'dva'
-import {Row, Col, Button, Popconfirm, Modal} from 'antd'
-import {Page} from 'components'
-import queryString from 'query-string'
-import List from './List'
-import Filter from './Filter'
-import Offermodal from './Modal'
-import styles from './List.less'
-import SendModal from './sendModal'
-import ChangeSalesman from './changeSalesman'
+/**
+ * 成功提交保单页
+ * Created by Administrator on 2018/6/25 0025.
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+import {routerRedux} from 'dva/router';
+import {connect} from 'dva';
+import {Page} from 'components';
+import queryString from 'query-string';
+import List from './List';
+import Filter from './Filter';
+import Offermodal from './Modal';   // 报价详情
+import styles from './List.less';
+import SendModal from './sendModal';
+import ChangeSalesman from './changeSalesman';
 
 const SuccessPolicy = ({
-  location, dispatch, successPolicy, loading,
+  location, dispatch, successPolicy, loading
 }) => {
   location.query = queryString.parse(location.search);
   const {query, pathname} = location;
-  const {
-    list, TimeData, pagination, modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible, changeSalesVisible
+  const {list, TimeData, pagination, modalVisible, visibleRemark, remarkId, isMotion, sendModalVisible, changeSalesVisible
   } = successPolicy;
 
   const handleRefresh = (newQuery) => {
@@ -49,7 +51,6 @@ const SuccessPolicy = ({
         },
       })
     },
-
     addRemarkFunc(id){
       dispatch({
         type: 'successPolicy/showModal',
@@ -59,7 +60,6 @@ const SuccessPolicy = ({
         },
       })
     },
-
     RemarkCancel(){
       dispatch({
         type: 'successPolicy/hideModal',
@@ -68,7 +68,6 @@ const SuccessPolicy = ({
         },
       })
     },
-
     saveRemarkFunc(data){
       dispatch({
         type: 'successPolicy/hideModal',
@@ -95,7 +94,7 @@ const SuccessPolicy = ({
           modalType: 'sendation',
         },
       })
-    },
+    }
   };
 
   const listProps = {
@@ -110,7 +109,6 @@ const SuccessPolicy = ({
         pageSize: page.pageSize,
       })
     },
-
     changeSalesman (item) {
       console.log(item)
       dispatch({
@@ -120,13 +118,7 @@ const SuccessPolicy = ({
           currentItem: item,
         },
       })
-      // .then(() => {
-      //   handleRefresh({
-      //     page: (list.length === 1 && pagination.current > 1) ? pagination.current - 1 : pagination.current,
-      //   })
-      // })
     },
-
     seeQuotation (item) {
       dispatch({
         type: 'successPolicy/showModal',
@@ -136,7 +128,6 @@ const SuccessPolicy = ({
         },
       })
     },
-
     seeSendation(item) {
       dispatch({
         type: 'successPolicy/showModal',
@@ -158,11 +149,7 @@ const SuccessPolicy = ({
         ...value,
         page: 1,
       })
-    },
-
-    switchIsMotion () {
-      dispatch({type: 'user/switchIsMotion'})
-    },
+    }
   };
 
   const changeSalesProps = {
@@ -188,8 +175,8 @@ const SuccessPolicy = ({
         },
       })
     }
-  }
-  console.log(changeSalesVisible)
+  };
+
   return (
     <Page inner>
       <Filter {...filterProps} />
@@ -208,7 +195,7 @@ SuccessPolicy.propTypes = {
   successPolicy: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
-  loading: PropTypes.object,
+  loading: PropTypes.object
 };
 
 export default connect(({successPolicy, loading}) => ({successPolicy, loading}))(SuccessPolicy)

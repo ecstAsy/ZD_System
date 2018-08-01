@@ -1,5 +1,6 @@
 /**
  * Created by Administrator on 2018/7/2 0002.
+ * 单日跟踪上限
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -58,7 +59,7 @@ const Lists = ({...listProps, ListData, isEdit,
 }
 
 Lists.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.object
 }
 
 export default Form.create()(Lists)

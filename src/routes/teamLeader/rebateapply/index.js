@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/2 0002.
+ * 返利申请
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { routerRedux } from 'dva/router';
@@ -7,11 +11,11 @@ import queryString from 'query-string';
 import Filter from './Filter';
 import List from './List';
 
-
-const RebateApply = ({location, dispatch, rebateapply,   loading,})=>{
+const RebateApply = ({location, dispatch, rebateapply, loading})=>{
    location.query = queryString.parse(location.search);
    const { query, pathname } = location;
    const { list, pagination } = rebateapply;
+
    const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -21,6 +25,7 @@ const RebateApply = ({location, dispatch, rebateapply,   loading,})=>{
       }),
     }))
   };
+
    const filterProps = {
      location,
      FilterSearch (value) {
@@ -30,6 +35,7 @@ const RebateApply = ({location, dispatch, rebateapply,   loading,})=>{
        })
      }
    };
+
   const listProps = {
     dataSource: list,
     loading: loading.effects['rebateapply/query'],
@@ -42,6 +48,7 @@ const RebateApply = ({location, dispatch, rebateapply,   loading,})=>{
       })
     },
   };
+
   return (
     <Page inner>
       <Filter {...filterProps}/>
@@ -49,6 +56,7 @@ const RebateApply = ({location, dispatch, rebateapply,   loading,})=>{
     </Page>
   )
 }
+
 RebateApply.propTypes = {
   rebateapply: PropTypes.object,
   location: PropTypes.object,

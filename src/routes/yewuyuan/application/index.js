@@ -6,8 +6,6 @@ import { Row, Col, Button, Popconfirm } from 'antd'
 import { Page } from 'components'
 import queryString from 'query-string'
 
-
-
 const Application = ({
   location, dispatch, application, loading,
 }) => {

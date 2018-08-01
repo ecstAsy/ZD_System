@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/6/26 0026.
+ * 时间信息
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './offer.less';
-import { connect } from 'dva';
 
 const Time = () => {
   return (
@@ -25,6 +25,6 @@ const Time = () => {
       </div>
     </div>
   )
-}
+};
 
 export default Time

@@ -1,9 +1,10 @@
 /**
  * Created by Administrator on 2018/7/18 0018.
+ * 查看投诉
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {  Modal, Button, Form, Row, Col, Input, Table } from 'antd';
+import {  Modal, Button, Form, Row, Table } from 'antd';
 import styles from './index.less';
 import publicStyles from '../../publicStyle.less';
 import classnames from 'classnames';
@@ -11,20 +12,20 @@ import classnames from 'classnames';
 const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
-    span:3,
+    span:5,
   },
   wrapperCol: {
     span: 21,
   },
   style:{
     marginBottom: 0,
+    marginLeft:'36px',
     borderRadius:'20px',
     fontSize:'14px'
   }
 };
 
-const ViewComplaintModal = ({...viewComplaintModalProps, handleCancel, viewList,
-  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+const ViewComplaintModal = ({...viewComplaintModalProps, handleCancel, viewList
 })=>{
   const columns = [
     {
@@ -60,12 +61,13 @@ const ViewComplaintModal = ({...viewComplaintModalProps, handleCancel, viewList,
         <div className={classnames(publicStyles.biaoti)}>投诉描述：<span style={{color:'#000'}}>返现100</span></div>
         <div className={classnames(publicStyles.biaoti)}>处理记录：</div>
         <FormItem {...formItemLayout}>
-         < Table className={classnames(styles.clomun,publicStyles.table)} columns={columns} dataSource={viewList} pagination={false}/>
+         <Table className={classnames(styles.clomun,publicStyles.table)} columns={columns} dataSource={viewList} pagination={false}/>
         </FormItem>
       </Row>
     </Modal>
   )
 }
+
 ViewComplaintModal.propTypes = {
   handleCancel:PropTypes.func
 }

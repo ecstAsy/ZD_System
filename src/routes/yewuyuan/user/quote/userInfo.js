@@ -58,7 +58,11 @@ const UserInfo = ({
         </Col>
         <Col {...ColProps}>
           <FormItem label="联系电话" {...formItemLayout}>
-            <div>18662511029</div>
+            <div>18662511029
+              <Icon style={{fontSize:'18px'}} className="chengbao" type="phone"/>
+              <span style={{color:'#939BA4'}} > 无效名单？</span>
+            </div>
+
           </FormItem>
         </Col>
         <Col {...ColProps}>

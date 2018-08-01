@@ -1,3 +1,6 @@
+/**
+ * 重新分配
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, Table, Input } from 'antd';

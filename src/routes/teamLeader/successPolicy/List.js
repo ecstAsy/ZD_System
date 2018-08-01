@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import AnimTableBody from 'components/DataTable/AnimTableBody';
 import styles from './List.less';
-import { dateConversion, timeConversion } from 'utils/index'
+import { dateConversion, timeConversion } from 'utils/index';
 const { confirm } = Modal;
 
 const List = ({
@@ -128,5 +128,4 @@ List.propTypes = {
   location: PropTypes.object,
   seeSendation : PropTypes.func
 };
-
 export default List

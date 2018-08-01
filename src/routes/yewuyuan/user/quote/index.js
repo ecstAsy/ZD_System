@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
+import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import {Button,Form } from 'antd';
 import { Page, RemarkMadal } from 'components';
@@ -14,18 +16,19 @@ import UnderWritingMadal from './underwritingModal';
 import ChoosePurCarModal from './choosePurCarModel';
 import DeductiblesModal from './deductiblesModal';
 import InsureInfoModal from './insureInfoModal';
-import FailuerModal from './failureModal'
-import AppointmentModal from './appointmentModal'
+import FailuerModal from './failureModal';
+import AppointmentModal from './appointmentModal';
 
 const Quote = ({
-  dispatch, quote, loading,
+  location, dispatch, quote, loading,
 }) => {
+  location.query = queryString.parse(location.search)
+  const { query, pathname } = location;
   const {
     choseItem, currentItem, visibleRemark, giftModalVisible , deductiblesModalVisible, deductiblesData, okMianpeiData,
-    underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData,failureModalVisible,failureData,
-    strongInsuranceData , insureInfoModalVisible,appointmentModalVisible,appointmentData,
+    underwritingModalVisible, choosePurCarModalVisible, remarkId, GiftData, noteModalVisible, insuranceData, failureModalVisible, failureData,
+    strongInsuranceData, insureInfoModalVisible, appointmentModalVisible, appointmentData
   } = quote;
-
 
   const UserInfoProps={
     visibleRemark:visibleRemark,
@@ -38,7 +41,6 @@ const Quote = ({
         },
       })
     },
-
     openUnderwriting(data){
       dispatch({
         type: 'quote/showModal',
@@ -47,7 +49,6 @@ const Quote = ({
         },
       })
     },
-
     choosePurCar(data){
       dispatch({
         type: 'quote/showModal',
@@ -55,7 +56,12 @@ const Quote = ({
           modalType: 'choosePurCar'
         },
       })
-    },
+    }
+  };
+
+  const TimeInfoprops={
+    item: {},
+    currentItem,
   };
 
   const UnderwritingProps={
@@ -88,7 +94,6 @@ const Quote = ({
         },
       })
     },
-
     onCancel(){
       dispatch({
         type: 'quote/hideModal',
@@ -123,7 +128,7 @@ const Quote = ({
           id:id,
         },
       })
-    },
+    }
   };
 
   const appointmentProps={
@@ -152,7 +157,7 @@ const Quote = ({
           id:id,
         },
       })
-    },
+    }
   };
 
   const DeductiblesProps={
@@ -170,7 +175,6 @@ const Quote = ({
         },
       })
     },
-
     onCancel(){
       dispatch({
         type: 'quote/hideModal',
@@ -179,7 +183,6 @@ const Quote = ({
         },
       })
     },
-
     chosemianpei(id){
       dispatch({
         type: 'quote/chosemianpei',
@@ -187,7 +190,7 @@ const Quote = ({
           id:id,
         },
       })
-    },
+    }
   };
 
   const CarInsuranceProps={
@@ -202,7 +205,6 @@ const Quote = ({
         },
       })
     },
-
     checkedStrongInsurFunc(id){
       dispatch({
         type: 'quote/checkedStrongInsurFunc',
@@ -211,7 +213,6 @@ const Quote = ({
         },
       })
     },
-
     deductiblesModal(data){
       dispatch({
         type: 'quote/showModal',
@@ -221,6 +222,7 @@ const Quote = ({
       })
     }
   };
+
   const sendfailure = ()=>{
     dispatch({
       type: 'quote/showModal',
@@ -248,7 +250,6 @@ const Quote = ({
         },
       })
     },
-
     chooseGift (){
       dispatch({
         type: 'quote/showModal',
@@ -278,7 +279,6 @@ const Quote = ({
         },
       })
     },
-
     choseDesId(item){
       dispatch({
         type: 'quote/choseDesId',
@@ -305,7 +305,6 @@ const Quote = ({
         },
       })
     },
-
     handleAdd(id){
       dispatch({
         type: 'quote/GiftUpdata',
@@ -315,7 +314,6 @@ const Quote = ({
         },
       })
     },
-
     TagClose(id){
       dispatch({
         type: 'quote/GiftUpdata',
@@ -325,7 +323,6 @@ const Quote = ({
         },
       })
     },
-
     handleCancel () {
       dispatch({
         type: 'quote/hideModal',
@@ -333,7 +330,7 @@ const Quote = ({
           modalType: 'giftAtion',
         },
       })
-    },
+    }
   };
 
   const InsureInfoModalProps = {
@@ -350,7 +347,7 @@ const Quote = ({
           modalType: 'insureAtion',
         },
       })
-    },
+    }
   };
 
   const RemarkMadalProps={
@@ -368,7 +365,7 @@ const Quote = ({
       dispatch({
         type: 'quote/hideModalRemark',
       })
-    },
+    }
   };
 
   return (
@@ -377,7 +374,7 @@ const Quote = ({
           <UserInfo {...UserInfoProps}/>
           <CarInsurance {...CarInsuranceProps}/>
           <FinalQuote {...finalProps}/>
-          <TimeInfo/>
+          <TimeInfo {...TimeInfoprops}/>
           <SendInfo />
         </Form>
         {noteModalVisible && <NoteModal {...noteModalProps} />}
@@ -398,7 +395,7 @@ const Quote = ({
         </div>
       </Page>
   )
-}
+};
 
 Quote.propTypes = {
   quote: PropTypes.object,
@@ -406,7 +403,7 @@ Quote.propTypes = {
   dispatch: PropTypes.func,
   loading: PropTypes.object,
   sendFailure: PropTypes.func,
-  sendappointment: PropTypes.func,
+  sendappointment: PropTypes.func
 }
 
 export default connect(({ quote, loading }) => ({ quote, loading }))(Quote)

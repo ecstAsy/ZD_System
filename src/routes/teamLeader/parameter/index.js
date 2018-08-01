@@ -1,9 +1,9 @@
 /**
  * Created by Administrator on 2018/7/2 0002.
+ * 团队参数
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Row, Button, Form } from 'antd';
 import { Page, Editor, Title } from 'components';

@@ -1,14 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import ReactEcharts from 'echarts-for-react';
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import queryString from 'query-string'
-import styles from './pie.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactEcharts from 'echarts-for-react';;
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import styles from './pie.less';
 
-const Pie = ({
-    data,
-    title,
+const Pie = ({data, title
 }) => {
   location.query = queryString.parse(location.search);
   const getOption={
@@ -44,7 +42,7 @@ const Pie = ({
         data:data
       }
     ]
-  }
+  };
 
   return (
   <div className={styles.pieBox}>
@@ -61,10 +59,6 @@ const Pie = ({
     </div>
   </div>
   )
-};
-
-Pie.propTypes = {
-
 };
 
 export default Pie

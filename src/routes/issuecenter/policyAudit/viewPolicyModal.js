@@ -1,5 +1,6 @@
 /**
  * Created by Administrator on 2018/7/11 0011.
+ * 查看保单信息（审核通过）
  */
 import React from 'react';
 import PropTypes from 'prop-types';

@@ -1,6 +1,10 @@
+/**
+ * Created by Administrator on 2018/7/18 0018.
+ * 新增投诉
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button, Row, Col, Form, Input, Table, message } from 'antd';
+import { Modal, Button, Form, Input, Table, message } from 'antd';
 import classnames from 'classnames';
 import styles from './index.less';
 import listStyles from './selectList.less';
@@ -11,11 +15,9 @@ import { Radio } from 'antd/lib/index';
 const FormItem = Form.Item
 const RadioGroup = Radio.Group;
 
-
 const SelectListModal = ({...selectListModalProps, handleCancel, handleConfirm, FilterSearch, selectList,
       form: { getFieldDecorator, getFieldsValue, setFieldsValue }
 })=>{
-
   const selectFilterProps = {
     FilterSearch
   };
@@ -50,7 +52,8 @@ const SelectListModal = ({...selectListModalProps, handleCancel, handleConfirm, 
       dataIndex: 'salseMan',
       key: 'salseMan',
     }
-  ]
+  ];
+
   return (
     <Modal className={classnames(styles.SelectListModal,publicStyles.Modal)}
       {...selectListModalProps}
@@ -62,8 +65,7 @@ const SelectListModal = ({...selectListModalProps, handleCancel, handleConfirm, 
       {getFieldDecorator('user', {
       })(<RadioGroup>
         <Table className={classnames(listStyles.table,publicStyles.table)} columns={columns} dataSource={selectList} pagination={false} />
-      </RadioGroup>)}
-
+         </RadioGroup>)}
     </Modal>
   )
 }

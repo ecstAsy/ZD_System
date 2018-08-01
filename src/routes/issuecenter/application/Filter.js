@@ -33,7 +33,7 @@ const ColProps = {
   style: {
     marginBottom: 10,
     marginRight:30
-  },
+  }
 };
 const  ColPropsLong={
   xs: 24,
@@ -41,7 +41,7 @@ const  ColPropsLong={
   style: {
     marginBottom: 10,
     marginRight:10
-  },
+  }
 };
 const formItemLayoutLong = {
   labelCol: {
@@ -59,7 +59,7 @@ const formItemLayoutLong = {
 const Filter = ({ FilterSearch, filter,
   form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
-  const { carPlate, applyStatus, team, salesman, applyTime, }=filter;
+  const { carPlate, applyStatus, team, salesman, applyTime }=filter;
 
   const handleFields = (fields) => {
     if (fields.applyTime && fields.applyTime instanceof Array  && fields.applyTime.length > 1) {

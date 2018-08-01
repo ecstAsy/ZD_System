@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/11 0002.
+ * 话术编辑
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, Input } from 'antd';
@@ -19,7 +23,7 @@ const formItemLayout = {
     fontSize:'14',
     color:'#333',
   }
-}
+};
 
 const EditSpeechCraftModal = ({...EditSpeechCraftModalProps, handleCancel, currentItem, handleSubmit,
       form: { getFieldDecorator, getFieldsValue, setFieldsValue }
@@ -53,7 +57,8 @@ const EditSpeechCraftModal = ({...EditSpeechCraftModalProps, handleCancel, curre
         </Row>
     </Modal>
   )
-}
+};
+
 EditSpeechCraftModal.propTypes = {
   handleCancel:PropTypes.func,
   handleSubmit:PropTypes.func

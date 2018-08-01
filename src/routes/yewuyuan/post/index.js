@@ -7,13 +7,11 @@ import queryString from 'query-string'
 import { Page } from 'components'
 import List from './List'
 
-const { TabPane } = Tabs
-
+const { TabPane } = Tabs;
 const EnumPostStatus = {
   UNPUBLISH: 1,
   PUBLISHED: 2,
-}
-
+};
 
 const Index = ({
   post, dispatch, loading, location,
