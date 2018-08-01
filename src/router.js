@@ -87,7 +87,11 @@ const Routers = function ({ history, app }) {
       path: '/policyAudit',//保单审核
       models: () => [import('./models/issuecenter/policyAudit')],
       component: () => import('./routes/issuecenter/policyAudit/'),
-    }
+    },{
+    path: '/complaints',//客户投诉
+      models: () => [import('./models/yewuyuan/complaints')],
+    component: () => import('./routes/yewuyuan/complaints/'),
+  }
   ]
 
   return (

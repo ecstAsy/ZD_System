@@ -1,0 +1,61 @@
+.table {
+  :global {
+    .ant-table-tbody > tr > td,
+    .ant-table-thead > tr > th {
+      width:13%;
+      &:nth-child(8) {
+        width: 9%;
+      }
+      .ant-table-thead > tr:first-child > th:last-child{
+        width: 25%;
+      }
+    }
+    .ant-table-tbody{
+      &>tr>td:nth-of-type(9){
+        cursor: default;
+      }
+    }
+  }
+}
+
+.AddComplaintModal{
+  :global{
+    .NameChoose{
+      color: #0082fe;
+      cursor: pointer;
+    }
+    .NameShow{
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
+}
+
+.SelectListModal{
+  :global{
+    .ant-col-9{
+      height: 40px;
+    }
+    .ant-col-6{
+      height: 40px;
+    }
+    .ant-col-6 .ant-btn{
+      margin-left: 16px;
+      margin-top: 3px;
+      width: 72px;
+      font-size: 16px;
+    }
+    .ant-radio-group{
+      width: 100%;
+      margin-top: 32px;
+    }
+  }
+}
+.clomun {
+  :global {
+    .ant-table-tbody > tr > td,
+    .ant-table-thead > tr > th {
+      width:25%;
+    }
+  }
+}

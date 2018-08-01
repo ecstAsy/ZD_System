@@ -20,6 +20,7 @@ let applicationListData = Mock.mock({
       createTime: '@datetime("yyyy-MM-dd")',
       handleTime:'@datetime("yyyy-MM-dd")',
       'complaintStatus|1':['返现驳回','','未处理','返现通过'],
+      'complaintsStatus|1':['失败处理','未处理','成功处理'],
       'cpType|1':['礼品投诉','返现投诉'],
       cpDecription:'返现100元',
       'team|1' :['团队1','团队2','团队3','团队4','团队5','团队6','团队7','团队8'] ,
