@@ -1,3 +1,6 @@
+/**
+ * 批单页面
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { routerRedux } from 'dva/router';
@@ -9,12 +12,12 @@ import List from './List';
 import RegisterModal from './registerModal';
 import AuditModal from './auditModal';
 
-
 const Batches = ({
      location, dispatch, batches, loading,
    }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
+
   const { list, pagination, RegisterModalVisible, AuditModalVisible, currentItem } = batches;
 
   const handleRefresh = (newQuery) => {
@@ -26,6 +29,7 @@ const Batches = ({
       }),
     }))
   };
+
   const listProps = {
     dataSource: list,
     pagination,
@@ -56,7 +60,7 @@ const Batches = ({
       dispatch({
         type:'batches/hideModal'
       })
-    },
+    }
   };
 
   const auditModalProps = {

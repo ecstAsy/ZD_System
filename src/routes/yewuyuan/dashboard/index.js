@@ -8,9 +8,8 @@ import styles from './index.less';
 import Pie from './pie';
 
 const Dashboard =({ dashboard, loading }) =>{
-  const {
-     sales,
-  } = dashboard;
+  const {sales} = dashboard;
+
   const data=[
     {title:'预约',data:[ {value:5, name:'已跟踪'},
       {value:10, name:'未跟踪'},]},
@@ -21,6 +20,7 @@ const Dashboard =({ dashboard, loading }) =>{
     {title:'今日派单',data:[ {value:15, name:'成功'},
       {value:2, name:'失败'},]}
   ];
+
   return (
     <Page  inner loading={loading.models.dashboard && sales.length === 0} className={styles.dashboard}>
       <Row gutter={24}>
@@ -34,11 +34,10 @@ const Dashboard =({ dashboard, loading }) =>{
       </Row>
     </Page>
   )
-}
+};
 
 Dashboard.propTypes = {
   dashboard: PropTypes.object,
   loading: PropTypes.object,
 }
-
 export default connect(({ dashboard, loading }) => ({ dashboard, loading }))(Dashboard)

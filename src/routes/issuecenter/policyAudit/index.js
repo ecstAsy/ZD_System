@@ -1,3 +1,6 @@
+/**
+ * 保单审核
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
@@ -17,7 +20,7 @@ const PolicyAudit = ({
  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem, ViewPolicyModalVisible} = policyAudit;
+  const { list, pagination, EntryInfoModalVisible, InsuranceSlipModalVisible, currentItem, ViewPolicyModalVisible} = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -58,7 +61,7 @@ const PolicyAudit = ({
       })
     }
   };
-
+  //  投保单审核页
   const insuranceSlipModalProps = {
     visible : InsuranceSlipModalVisible,
     maskClosable: false,
@@ -84,7 +87,7 @@ const PolicyAudit = ({
       })
     }
   };
-
+  // 上传投保资料
   const entryInfoModalProps = {
     visible : EntryInfoModalVisible,
     maskClosable: false,
@@ -102,7 +105,7 @@ const PolicyAudit = ({
       })
     }
   };
-
+  // 查看保单信息（审核通过）
   const viewPolicyModalProps = {
     visible : ViewPolicyModalVisible,
     maskClosable: false,

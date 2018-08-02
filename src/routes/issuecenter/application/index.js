@@ -1,3 +1,6 @@
+/**
+ * 名单申请
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
@@ -13,6 +16,7 @@ const Application = ({
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, pagination } = application;
+  // 重置
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -23,6 +27,7 @@ const Application = ({
     }))
   };
 
+  //查询
   const filterProps = {
     filter: {
       ...query,

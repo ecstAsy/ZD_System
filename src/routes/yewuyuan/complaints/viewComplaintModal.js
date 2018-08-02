@@ -1,6 +1,5 @@
 /**
- * Created by Administrator on 2018/7/18 0018.
- * 查看投诉
+ * Created by Administrator on 2018/8/1 0001.
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -61,7 +60,7 @@ const ViewComplaintModal = ({...viewComplaintModalProps, handleCancel, viewList
         <div className={classnames(publicStyles.biaoti)}>投诉描述：<span style={{color:'#000'}}>返现100</span></div>
         <div className={classnames(publicStyles.biaoti)}>处理记录：</div>
         <FormItem {...formItemLayout}>
-         <Table className={classnames(styles.clomun,publicStyles.table)} columns={columns} dataSource={viewList} pagination={false}/>
+          <Table className={classnames(styles.clomun,publicStyles.table)} columns={columns} dataSource={viewList} pagination={false}/>
         </FormItem>
       </Row>
     </Modal>

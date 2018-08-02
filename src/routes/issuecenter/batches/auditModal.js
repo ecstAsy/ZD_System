@@ -1,3 +1,7 @@
+  /**
+ * Created by Administrator on 2018/7/11 0011.
+ * 批单审核
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, Input } from 'antd';

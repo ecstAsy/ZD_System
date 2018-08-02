@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/10 0010.
+ * 保单登记
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -63,7 +67,7 @@ const PolicyRegistration = ({
         ...value,
         page: 1,
       })
-    },
+    }
   };
 
   const listProps = {
@@ -83,7 +87,7 @@ const PolicyRegistration = ({
       })
     }
   };
-
+  // 修改登记金额
   const policyActionMoneyModalProps = {
     visible : PolicyActionMoneyModalVisible,
     maskClosable: false,
@@ -98,7 +102,7 @@ const PolicyRegistration = ({
       })
     }
   };
-
+  // 修改缴费日期
   const policyActionTimeModalProps={
     visible : PolicyActionTimeModalVisible,
     maskClosable: false,

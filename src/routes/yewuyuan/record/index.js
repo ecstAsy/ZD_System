@@ -1,5 +1,6 @@
 /**
  * Created by Administrator on 2018/6/25 0025.
+ * 通话记录
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -11,7 +12,7 @@ import List from './List';
 import Filter from './Filter';
 
 const Record = ({
-  location, dispatch, record, loading,
+  location, dispatch, record, loading
 }) => {
   location.query = queryString.parse(location.search)
   const { query, pathname } = location;
@@ -37,7 +38,7 @@ const Record = ({
         page: page.current,
         pageSize: page.pageSize,
       })
-    },
+    }
   };
 
   const filterProps = {
@@ -49,7 +50,7 @@ const Record = ({
         ...value,
       page: 1,
     })
-    },
+    }
   };
 
   return (
@@ -66,5 +67,4 @@ Record.propTypes = {
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
-
 export default connect(({ record, loading }) => ({ record, loading }))(Record)

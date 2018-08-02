@@ -1,3 +1,6 @@
+/**
+ * 客户投诉
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button } from 'antd';
@@ -13,7 +16,7 @@ import AddComplaintModal from './addComplaintModal';
 import ViewComplaintModal from './viewComplaintModal';
 import SelectListModal from './selectListModal';
 
-const Complaint = ({location, dispatch, complaint,   loading,})=>{
+const Complaint = ({location, dispatch, complaint, loading})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, selectList, viewList, selectedUser, pagination, currentItem, auditModalVisible, allotModalVisible, viewComplaintModalVisible, addComplaintModalVisible, selectListModalVisible } = complaint;
@@ -74,16 +77,14 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     visible: auditModalVisible,
     maskClosable: false,
     title:'投诉审核',
-    width:'45%',
+    width:'35%',
     closable:false,
     viewList,
     wrapClassName: 'vertical-center-modal',
     handleConfirm(payload){
 
-
     },
     handleReject(payload){
-
 
     },
     handleCancel(){
@@ -107,10 +108,8 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     wrapClassName: 'vertical-center-modal',
     handleConfirm(payload){
 
-
     },
     handleReject(payload){
-
 
     },
     handleCancel(){
@@ -120,7 +119,7 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
           modalType: 'view'
         },
       })
-    },
+    }
   };
 
   const allotModalProps = {
@@ -133,10 +132,8 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     wrapClassName: 'vertical-center-modal',
     handleConfirm(payload){
 
-
     },
     handleReject(payload){
-
 
     },
     handleCancel(){
@@ -222,10 +219,12 @@ const Complaint = ({location, dispatch, complaint,   loading,})=>{
     </Page>
   )
 }
+
 Complaint.propTypes = {
   complaint: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
+
 export default connect(({ complaint, loading }) => ({ complaint, loading }))(Complaint)

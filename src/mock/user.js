@@ -64,7 +64,7 @@ const userPermission = {
     role: EnumRoleType.DEFAULT,
   },
   ADMIN: {
-     visit: ['1', '2','21', '7', '5', '51', '52', '53'],
+     visit: ['1', '2','21', '7', '5', '51', '52', '53','16'],
     role: EnumRoleType.ADMIN,
   },
   DEVELOPER: {
@@ -75,7 +75,7 @@ const userPermission = {
     role: EnumRoleType.ISSUECENTER,
   },
   YEWUYUAN:{
-    visit : ['1','2','21','22','4','5'],
+    visit : ['1','2','21','22','4','5','16'],
     role: EnumRoleType.YEWUYUAN,
   },
   TEAMLEADER:{

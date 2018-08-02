@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/10 0010.
+ * 修改登记金额
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, Input } from 'antd';

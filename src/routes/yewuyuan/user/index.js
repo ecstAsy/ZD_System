@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/6/25 0025.
+ * 名单查询
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {routerRedux} from 'dva/router';
@@ -15,7 +19,7 @@ const User = ({
   location.query = queryString.parse(location.search);
   const {query, pathname} = location;
   const {
-    list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys, isMore
+    list, pagination, selectedRowKeys, isMore
   } = user;
 
   const handleRefresh = (newQuery) => {
@@ -39,7 +43,6 @@ const User = ({
         pageSize: page.pageSize,
       })
     },
-
     rowSelection: {
       selectedRowKeys,
       onChange: (keys) => {
@@ -51,7 +54,6 @@ const User = ({
         })
       },
     },
-
     toQuoteFunc(id){
       history.push('user/quote');
     }
@@ -62,21 +64,18 @@ const User = ({
     filter: {
       ...query,
     },
-
     onFilterChange (value) {
       handleRefresh({
         ...value,
         page: 1,
       })
     },
-
     isShowMoreFunc(payload){
       dispatch({type: 'user/isShowMoreFunc', payload})
     },
-
     switchIsMotion () {
       dispatch({type: 'user/switchIsMotion'})
-    },
+    }
   };
 
   const onAdd = ()=> {
@@ -104,5 +103,4 @@ User.propTypes = {
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 };
-
 export default connect(({user, loading}) => ({user, loading}))(User)

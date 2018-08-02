@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Table, Modal } from 'antd'
-import classnames from 'classnames'
-import { DropOption } from 'components'
-import { Link } from 'react-router-dom'
-import queryString from 'query-string'
-import AnimTableBody from 'components/DataTable/AnimTableBody'
-import styles from './List.less'
-import { dateConversion, timeConversion } from 'utils/index'
-const { confirm } = Modal
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Modal } from 'antd';
+import classnames from 'classnames';
+import { DropOption } from 'components';
+import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import AnimTableBody from 'components/DataTable/AnimTableBody';
+import styles from './List.less';
+import { dateConversion, timeConversion } from 'utils/index';
 
+const { confirm } = Modal;
 const List = ({
   onDeleteItem, onEditItem, toQuoteFunc, isMotion, location, ...tableProps
 }) => {
@@ -111,5 +111,4 @@ List.propTypes = {
   isMotion: PropTypes.bool,
   location: PropTypes.object,
 };
-
 export default List

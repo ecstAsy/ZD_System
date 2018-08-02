@@ -4,22 +4,16 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
 import { config } from 'utils';
-import { create, remove, update } from 'services/yewuyuan/user';
 import * as usersService from 'services/yewuyuan/users';
 import { pageModel } from '../common';
 
-const { query } = usersService;
+const { query, update } = usersService;
 const { prefix } = config;
 
 export default modelExtend(pageModel, {
   namespace: 'parameter',
-
   state: {
     currentItem: {},
-    remarkId:'',
-    modalType: 'create',
-    selectedRowKeys: [],
-    isMotion: window.localStorage.getItem(`${prefix}userIsMotion`) === 'true',
     // ListData:[
     //   {id:1,date:'2018-05',ListData:[{name:'周丹:',num:'10'},{name:'周0丹:',num:'10'},
     //     {name:'周1丹:',num:'10'},{name:'周2丹:',num:'10'},{name:'周3丹:',num:'10'},
@@ -66,34 +60,6 @@ export default modelExtend(pageModel, {
             },
           },
         })
-      }
-    },
-
-    * delete ({ payload }, { call, put, select }) {
-      const data = yield call(remove, { id: payload })
-      const { selectedRowKeys } = yield select(_ => _.user)
-      if (data.success) {
-        yield put({ type: 'updateState', payload: { selectedRowKeys: selectedRowKeys.filter(_ => _ !== payload) } })
-      } else {
-        throw data
-      }
-    },
-
-    * multiDelete ({ payload }, { call, put }) {
-      const data = yield call(usersService.remove, payload)
-      if (data.success) {
-        yield put({ type: 'updateState', payload: { selectedRowKeys: [] } })
-      } else {
-        throw data
-      }
-    },
-
-    * create ({ payload }, { call, put }) {
-      const data = yield call(create, payload)
-      if (data.success) {
-        yield put({ type: 'hideModal' })
-      } else {
-        throw data
       }
     },
 
