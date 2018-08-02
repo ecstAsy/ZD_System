@@ -1,13 +1,17 @@
-/* global window */
+
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
-import { config } from 'utils';
-import { create, remove, update } from 'services/generalData';
 import * as applicationsService from 'services/generalData';
 import { pageModel } from '../common';
 
+/**
+ * 把B作为一个叫做A的表格
+ * A是一个object
+ * 使用规则：const {a}=A or A.a
+ * @ import * as A from 'B' ;
+ * */
+
 const { query } = applicationsService;
-const { prefix } = config;
 
 export default modelExtend(pageModel, {
   namespace: 'batches',

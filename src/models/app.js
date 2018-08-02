@@ -94,15 +94,13 @@ export default {
       * 请求数据
       * @yield call
       *
-      * 触发action
+      * 触发action 通过reducers 来改变state
       * @yield put
       *
       * 从state里面选择对象
       * @yield select
      * */
-    * query ({
-      payload,
-    }, { call, put, select }) {
+    * query ({ payload }, { call, put, select }) {
       const { success, user } = yield call(query, payload)
       const { locationPathname } = yield select(_ => _.app)
       if (success && user) {
@@ -145,9 +143,7 @@ export default {
       }
     },
 
-    * logout ({
-      payload,
-    }, { call, put }) {
+    * logout ({ payload }, { call, put }) {
       const data = yield call(logout, parse(payload))
       if (data.success) {
         yield put({ type: 'query' })

@@ -1,7 +1,5 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
-import { config } from 'utils';
-import { create, remove, update } from 'services/generalData';
 import * as allocatesService from 'services/generalData';
 import { pageModel } from '../common';
 
@@ -63,26 +61,6 @@ export default modelExtend(pageModel, {
             },
           },
         })
-      }
-    },
-
-    * create ({ payload }, { call, put }) {
-      const data = yield call(create, payload);
-      if (data.success) {
-        yield put({ type: 'hideModal' })
-      } else {
-        throw data
-      }
-    },
-
-    * update ({ payload }, { select, call, put }) {
-      const id = yield select(({ user }) => user.currentItem.id);
-      const newUser = { ...payload, id };
-      const data = yield call(update, newUser);
-      if (data.success) {
-        yield put({ type: 'hideModal' })
-      } else {
-        throw data
       }
     },
   },

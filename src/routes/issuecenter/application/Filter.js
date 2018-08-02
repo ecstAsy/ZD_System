@@ -3,11 +3,12 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'moment/src/locale/zh-cn';
-import { FilterItem } from 'components';
 import classnames from 'classnames';
-import styles from '../../publicStyle.less';
+import 'moment/src/locale/zh-cn';
 import { Form, Button, Row, Col, DatePicker, Input,  Select } from 'antd';
+import { FilterItem } from 'components';
+import styles from '../../publicStyle.less';
+
 
 const Option = Select.Option;
 const { Search } = Input;

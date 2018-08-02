@@ -4,9 +4,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'moment/src/locale/zh-cn';
-import { FilterItem } from 'components';
-import styles from '../../publicStyle.less';
+import classnames from 'classnames';
 import { Form, Button, Row, Col, DatePicker, Input, Select, Cascader } from 'antd';
+import styles from '../../publicStyle.less';
 
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
@@ -108,7 +108,7 @@ const Filter = ({ FilterSearch, filter,
   }];
 
   return (
-    <div className={styles.searchBox}>
+    <div className={classnames(styles.searchBox)}>
       <form layout="horizontal">
         <Row gutter={24}>
           <Col {...ColProps}>

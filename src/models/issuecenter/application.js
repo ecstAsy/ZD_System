@@ -1,14 +1,16 @@
 /* global window */
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
-import { config } from 'utils';
-import { create, remove, update } from 'services/generalData';
 import * as applicationsService from 'services/generalData';
 import { pageModel } from '../common';
 
 const { query } = applicationsService;
-const { prefix } = config;
 
+
+/**
+ * 根据namespace动态加载模块
+ * @modelExtend
+ * */
 export default modelExtend(pageModel, {
   namespace: 'application',
   state: {
@@ -30,6 +32,10 @@ export default modelExtend(pageModel, {
   },
 
   effects: {
+    /**
+     * 参数 payload = payload || {}
+     * @payload = {}
+     * */
     * query ({ payload = {} }, { call, put }) {
       const data = yield call(query, payload);
       if (data) {

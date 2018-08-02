@@ -37,7 +37,7 @@ const App = ({
   let Height = document.body.clientHeight-196;
 
   /**
-   * 进度条应用.start() .done() .set() .inc()
+   * ajax请求进度条应用.start() .done() .set() .inc()
    * @NProgress
    * */
   if (lastHref !== href) {

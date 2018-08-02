@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
+import classnames from 'classnames';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
-import Filter from './Filter';
-import queryString from 'query-string';
-import classnames from 'classnames';
 import styles from './index.less';
+import Filter from './Filter';
 import List from './List';
 import InsuranceSlipModal from './insuranceSlipModal';
 import EntryInfoModal from './entryInfoModal';
 import ViewPolicyModal from './viewPolicyModal';
-
 
 const PolicyAudit = ({
    location, dispatch, policyAudit, loading,
@@ -139,7 +138,7 @@ PolicyAudit.propTypes = {
   policyAudit: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
-  loading: PropTypes.object,
+  loading: PropTypes.object
 }
 
 export default connect(({ policyAudit, loading }) => ({ policyAudit, loading }))(PolicyAudit)

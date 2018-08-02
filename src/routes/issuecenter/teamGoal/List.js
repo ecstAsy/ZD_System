@@ -69,7 +69,7 @@ const List = ({ teamData, isEdit, handleCancelFunc, saveFunc,
         {
           teamData.map((item,key)=>{
             return(
-              <Col {...ColProps}>
+              <Col {...ColProps} key={key}>
                 <FormItem label={item.quyuName}  {...formItemLayout}>
                   <span>150</span>
                 </FormItem>

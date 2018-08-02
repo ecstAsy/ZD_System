@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import Filter from './Filter';
 import { Page } from 'components';
-import queryString from 'query-string';
 import List from './List';
 
 const Application = ({
      location, dispatch, application, loading,
  }) => {
-  location.query = queryString.parse(location.search)
+  location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, pagination } = application;
   const handleRefresh = (newQuery) => {
