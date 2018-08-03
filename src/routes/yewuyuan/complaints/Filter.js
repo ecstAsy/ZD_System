@@ -117,20 +117,21 @@ const Filter = ({FilterSearch, location,
         <Row gutter={24}>
           <Col {...ColProps}>
             <FormItem {...formItemLayout} label="处理状态">
-              {getFieldDecorator('complaintStatus',{
-                initialValue : values.complaintStatus
+              {getFieldDecorator('complaintsStatus',{
+                initialValue : values.complaintsStatus
               })(
                 <Select showSearch style={{ width: '100%' }} placeholder="请选择" >
-                  <Option value="china">China</Option>
-                  <Option value="use">U.S.A</Option>
+                  <Option value="未处理">未处理</Option>
+                  <Option value="失败处理">失败处理</Option>
+                  <Option value="成功处理">成功处理</Option>
                 </Select>
               )}
             </FormItem>
           </Col>
           <Col {...ColPropsTwo}>
             <FormItem {...formItemLayoutTwo} label="创建日期">
-              {getFieldDecorator('creatTime',{
-                initialValue : values.creatTime
+              {getFieldDecorator('createTime',{
+                initialValue : values.createTime
               })(
                 <RangePicker />
               )}

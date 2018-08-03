@@ -88,7 +88,7 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/issuecenter/policyAudit')],
       component: () => import('./routes/issuecenter/policyAudit/'),
     },{
-    path: '/complaints',//客户投诉
+    path: '/complaints',//客户投诉(业务员)
       models: () => [import('./models/yewuyuan/complaints')],
     component: () => import('./routes/yewuyuan/complaints/'),
   }

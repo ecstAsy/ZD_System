@@ -9,6 +9,7 @@ import publicStyles from '../../publicStyle.less';
 import classnames from 'classnames';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 const TextArea = Input.TextArea;
 const formItemLayout = {
   labelCol: {
@@ -24,8 +25,7 @@ const formItemLayout = {
   }
 };
 
-const DealModal = ({...dealModalProps, handleCancel, item, handleConfirm, viewList,
-  form: { getFieldDecorator, getFieldsValue, setFieldsValue }
+const DealModal = ({...dealModalProps, handleCancel, item, handleConfirm, viewList
 })=>{
   const columns = [
     {
