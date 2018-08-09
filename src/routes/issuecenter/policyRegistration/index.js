@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Page, FilterItem, } from 'components';
+import { Page } from 'components';
 import Filter from './Filter'
 import { Form, Button, Row, Col, DatePicker } from 'antd';
 import queryString from 'query-string';
@@ -44,7 +44,7 @@ const formItemLayoutLong = {
 const PolicyRegistration = ({
      location, dispatch, policyRegistration, loading,
    }) => {
-  location.query = queryString.parse(location.search)
+  location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, pagination, PolicyActionMoneyModalVisible, PolicyActionTimeModalVisible, currentItem } = policyRegistration;
 
@@ -120,25 +120,25 @@ const PolicyRegistration = ({
   return (
     <Page >
       <div className={classnames(styles.wrap)}>
-          <Row gutter={24}>
-            <Col {...ColPropsLong}>
-              <FormItem label="登记时间"  {...formItemLayoutLong}>
-                <RangePicker  style={{ width: '70%' }} />
-              </FormItem>
-            </Col>
-            <Col {...ColPropsLong}>
-              <FormItem label="缴费时间"  {...formItemLayoutLong}>
-                <RangePicker  style={{ width: '70%' }} />
-              </FormItem>
-            </Col>
-          </Row>
-          <Row gutter={24}>
-            <Col >
-                <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap'}}>
-                  <Button type="primary" className="margin-right" style={{width:'100px',height:'35px'}}>下载出单表</Button>
-                </div>
-            </Col>
-          </Row>
+        <Row gutter={24}>
+          <Col {...ColPropsLong}>
+            <FormItem label="登记时间"  {...formItemLayoutLong}>
+              <RangePicker  style={{ width: '70%' }} />
+            </FormItem>
+          </Col>
+          <Col {...ColPropsLong}>
+            <FormItem label="缴费时间"  {...formItemLayoutLong}>
+              <RangePicker  style={{ width: '70%' }} />
+            </FormItem>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col >
+            <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap'}}>
+              <Button type="primary" className="margin-right" style={{width:'100px',height:'35px'}}>下载出单表</Button>
+            </div>
+          </Col>
+        </Row>
       </div>
       <div className={classnames(styles.wrap)}>
         <Filter {...filterProps}/>

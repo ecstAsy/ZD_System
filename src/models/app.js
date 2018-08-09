@@ -129,12 +129,12 @@ export default {
         });
 
         if (location.pathname === '/login' || location.pathname === '/') {//登陆成功跳转页面判断
-          yield put(routerRedux.push({  //基于action的路由跳转@routerRedux.push（）
+          yield put(routerRedux.push({  //基于action的路由跳转 @routerRedux.push（）
             pathname: '/dashboard',
           }))
         }
       } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
-        yield put(routerRedux.push({  //基于action的路由跳转@routerRedux.push（）
+        yield put(routerRedux.push({  //基于action的路由跳转 @routerRedux.push（）
           pathname: '/login',
           search: queryString.stringify({
             from: locationPathname,

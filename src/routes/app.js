@@ -35,7 +35,6 @@ const App = ({
   const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
   const { href } = window.location;
   let Height = document.body.clientHeight-196;
-
   /**
    * ajax请求进度条应用.start() .done() .set() .inc()
    * @NProgress

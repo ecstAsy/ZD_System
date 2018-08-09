@@ -24,9 +24,7 @@ export default modelExtend(pageModel, {
       {id:'area',title:'市场',area:''},
       {id:'highEndCar',title:'高端车',highEndCar:''},
       {id:'carPlate',title:'车牌',carPlate:''},
-      {id:'washList',title:'清洗名单',washList:''},
-
-
+      {id:'washList',title:'清洗名单',washList:''}
     ]
   },
 
@@ -42,7 +40,6 @@ export default modelExtend(pageModel, {
         }
       })
     },
-
   },
 
   effects: {

@@ -17,7 +17,6 @@ import FilterModal from './FilterModal';
 const AllocateList = ({location, dispatch, allocate, loading})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-
   const { list,  FilterModalVisible, pagination, FilterValues } = allocate;
 
   const handleRefresh = (newQuery) => {

@@ -34,12 +34,12 @@ const PolicyActionTimeModal = ({...policyActionTimeModalProps, handleCancel, cur
   };
   return (
     <Modal className={classnames(publicStyles.Modal,styles.PolicyActionModal)}
-           {...policyActionTimeModalProps}
+      {...policyActionTimeModalProps}
       title={currentItem.policyAction}
-           footer={[
-             <Button type="primary" key="submit" onClick={handleConfirm}>确定</Button>,
-             <Button key="back" onClick={handleCancel}>关闭</Button>
-           ]}>
+      footer={[
+         <Button type="primary" key="submit" onClick={handleConfirm}>确定</Button>,
+         <Button key="back" onClick={handleCancel}>关闭</Button>
+      ]}>
       <FormItem {...formItemLayout} label='缴费日期'>
         {getFieldDecorator('paymentTime',{
           initialValue:moment(currentItem.paymentTime)

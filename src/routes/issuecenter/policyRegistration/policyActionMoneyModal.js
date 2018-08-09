@@ -88,8 +88,8 @@ const PolicyActionMoneyModal = ({...policyActionMoneyModalProps, handleCancel, c
         <Col span={12}>
           <span className='title'>当前金额：</span><span className='detail'>{currentItem.vehicleVesselTax}</span>
           <span className='title'>差额：</span><span className='detail' style={{color:getFieldsValue().vehicleVesselTax&&formatFloat(currentItem.vehicleVesselTax-getFieldsValue().vehicleVesselTax,2)<-30||getFieldsValue().vehicleVesselTax&&formatFloat(currentItem.vehicleVesselTax-getFieldsValue().vehicleVesselTax,2)>30
-            ?'#EC412B':'#333'}}
-        >{getFieldsValue().vehicleVesselTax ? formatFloat(currentItem.vehicleVesselTax-getFieldsValue().vehicleVesselTax,2):0}</span>
+            ?'#EC412B':'#333'}}>
+          {getFieldsValue().vehicleVesselTax ? formatFloat(currentItem.vehicleVesselTax-getFieldsValue().vehicleVesselTax,2):0}</span>
         </Col>
       </Row>
     </Modal>
