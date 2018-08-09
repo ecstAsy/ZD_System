@@ -59,6 +59,7 @@ export default {
    * 格式为 ({ dispatch, history }) => unsubscribe
    * @subscriptions
   * */
+
   subscriptions: {
 
     setupHistory ({ dispatch, history }) {

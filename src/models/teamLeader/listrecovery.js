@@ -98,7 +98,6 @@ export default modelExtend(pageModel, {
       }else if (payload.modalType==='allocate'){
         return { ...state,  allocateListModalVisible: true }
       }
-
     },
 
     hideModal (state,{payload}) {

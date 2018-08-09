@@ -246,7 +246,7 @@ const App = ({
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
             <div style={{width:permissions.role =='yewuyuan'?'80%':'100%',float:'left'}}>
-              <Bread {...breadProps} />
+              {/*<Bread {...breadProps} />*/}
               {hasPermission ? children : <Error />}
             </div>
             {
