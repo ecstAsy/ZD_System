@@ -1,11 +1,13 @@
+/**
+ * 话术管理
+ * Created by Administrator on 2018/7/11 0002.
+ */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import queryString from 'query-string';
 import styles from './index.less';
 import $ from 'jquery';
-import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
 import { Icon } from 'antd';
@@ -17,12 +19,14 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
    location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { speechCraftData, editSpeechCraftModalVisible, currentItem } = speechcraft;
+
   const EditSpeechCraft = (payload)=>{
     dispatch({
       type:'speechcraft/showModal',
       payload
     })
   };
+
   const EditSpeechCraftModalProps = {
     visible : editSpeechCraftModalVisible,
     maskClosable: false,
@@ -57,7 +61,6 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
         },
       })
     },
-
     allowDrop(item){
       event.preventDefault();
       let newId = item.id;
@@ -70,7 +73,6 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
         },
       })
     },
-
     endDrop(){
       $('.activeCraftList').remove();
       dispatch({
@@ -78,7 +80,6 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
       })
     }
   };
-
 
   return (
     <Page>
@@ -99,11 +100,12 @@ const SpeechCraft = ({location, dispatch, speechcraft, loading})=>{
       { editSpeechCraftModalVisible &&  <EditSpeechCraftModal {...EditSpeechCraftModalProps}/>}
     </Page>
   )
-}
+};
+
 SpeechCraft.propTypes = {
   speechcraft: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
-  loading: PropTypes.object,
+  loading: PropTypes.object
 };
 export default connect(({ speechcraft, loading }) => ({ speechcraft, loading }))(SpeechCraft)

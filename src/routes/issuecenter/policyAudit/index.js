@@ -1,24 +1,26 @@
+/**
+ * 保单审核
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
+import classnames from 'classnames';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Page } from 'components';
-import Filter from './Filter';
-import queryString from 'query-string';
-import classnames from 'classnames';
 import styles from './index.less';
+import Filter from './Filter';
 import List from './List';
 import InsuranceSlipModal from './insuranceSlipModal';
 import EntryInfoModal from './entryInfoModal';
 import ViewPolicyModal from './viewPolicyModal';
-
 
 const PolicyAudit = ({
    location, dispatch, policyAudit, loading,
  }) => {
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
-  const { list, pagination, EntryInfoModalVisible,InsuranceSlipModalVisible, currentItem, ViewPolicyModalVisible} = policyAudit;
+  const { list, pagination, EntryInfoModalVisible, InsuranceSlipModalVisible, currentItem, ViewPolicyModalVisible} = policyAudit;
 
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
@@ -59,7 +61,7 @@ const PolicyAudit = ({
       })
     }
   };
-
+  //  投保单审核页
   const insuranceSlipModalProps = {
     visible : InsuranceSlipModalVisible,
     maskClosable: false,
@@ -85,7 +87,7 @@ const PolicyAudit = ({
       })
     }
   };
-
+  // 上传投保资料
   const entryInfoModalProps = {
     visible : EntryInfoModalVisible,
     maskClosable: false,
@@ -103,7 +105,7 @@ const PolicyAudit = ({
       })
     }
   };
-
+  // 查看保单信息（审核通过）
   const viewPolicyModalProps = {
     visible : ViewPolicyModalVisible,
     maskClosable: false,
@@ -139,7 +141,7 @@ PolicyAudit.propTypes = {
   policyAudit: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func,
-  loading: PropTypes.object,
+  loading: PropTypes.object
 }
 
 export default connect(({ policyAudit, loading }) => ({ policyAudit, loading }))(PolicyAudit)

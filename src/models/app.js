@@ -3,17 +3,21 @@
 /* global location */
 /* eslint no-restricted-globals: ["error", "event"] */
 
-import { routerRedux } from 'dva/router'
-import { parse } from 'qs'
-import config from 'config'
-import { EnumRoleType } from 'enums'
-import { query, logout ,saveUseInfo} from 'services/app'
-import * as menusService from 'services/menus'
-import queryString from 'query-string'
+import { routerRedux } from 'dva/router';
+import { parse } from 'qs';
+import config from 'config';
+import { EnumRoleType } from 'enums';
+import { query, logout ,saveUseInfo} from 'services/app';
+import * as menusService from 'services/menus';
+import queryString from 'query-string';
 
-const { prefix } = config
+const { prefix } = config;
 
 export default {
+  /* *
+   * 命名空间，只能是string，禁止多层命名（str.str）
+   * @namespace
+  * */
   namespace: 'app',
   state: {
     user: {},
@@ -48,10 +52,18 @@ export default {
     locationPathname: '',
     locationQuery: {},
   },
+
+  /* *
+   * 监听页面,用于订阅一个数据源，然后根据条件 dispatch 需要的 action。
+   * 数据源可以是   当前的时间、服务器的 websocket 连接、keyboard 输入、geolocation 变化、history 路由变化等等。
+   * 格式为 ({ dispatch, history }) => unsubscribe
+   * @subscriptions
+  * */
+
   subscriptions: {
 
     setupHistory ({ dispatch, history }) {
-      history.listen((location) => {
+      history.listen((location) => {//监听页面路由
         dispatch({
           type: 'updateState',
           payload: {
@@ -63,10 +75,14 @@ export default {
     },
 
     setup ({ dispatch }) {
-      dispatch({ type: 'query' })
-      let tid
+      dispatch({ type: 'query' });
+      let tid;
+      /* *
+       * 监听页面div或者屏幕大小改变
+       * @window.onresize
+      * */
       window.onresize = () => {
-        clearTimeout(tid)
+        clearTimeout(tid);
         tid = setTimeout(() => {
           dispatch({ type: 'changeNavbar' })
         }, 300)
@@ -75,18 +91,25 @@ export default {
 
   },
   effects: {
-
-    * query ({
-      payload,
-    }, { call, put, select }) {
+    /* *
+      * 请求数据
+      * @yield call
+      *
+      * 触发action 通过reducers 来改变state
+      * @yield put
+      *
+      * 从state里面选择对象
+      * @yield select
+     * */
+    * query ({ payload }, { call, put, select }) {
       const { success, user } = yield call(query, payload)
       const { locationPathname } = yield select(_ => _.app)
       if (success && user) {
-        const { list } = yield call(menusService.query)
-        const { permissions } = user
-        let menu = list
+        const { list } = yield call(menusService.query);
+        const { permissions } = user;
+        let menu = list;
         if (permissions.role === EnumRoleType.ADMIN || permissions.role === EnumRoleType.DEVELOPER) {
-          permissions.visit = list.map(item => item.id)
+          permissions.visit = list.map(item => item.id);
         } else {
           menu = list.filter((item) => {
             const cases = [
@@ -105,13 +128,14 @@ export default {
             menu,
           },
         });
-        if (location.pathname === '/login' || location.pathname === '/') {
-          yield put(routerRedux.push({
+
+        if (location.pathname === '/login' || location.pathname === '/') {//登陆成功跳转页面判断
+          yield put(routerRedux.push({  //基于action的路由跳转@routerRedux.push（）
             pathname: '/dashboard',
           }))
         }
       } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
-        yield put(routerRedux.push({
+        yield put(routerRedux.push({  //基于action的路由跳转@routerRedux.push（）
           pathname: '/login',
           search: queryString.stringify({
             from: locationPathname,
@@ -120,9 +144,7 @@ export default {
       }
     },
 
-    * logout ({
-      payload,
-    }, { call, put }) {
+    * logout ({ payload }, { call, put }) {
       const data = yield call(logout, parse(payload))
       if (data.success) {
         yield put({ type: 'query' })
@@ -150,6 +172,11 @@ export default {
     },
 
   },
+
+  /**
+   * 唯一可以改变的state的地方，由action触发，即（dispatch  参数：object）
+   * @reducers
+   * */
   reducers: {
     updateState (state, { payload }) {
       return {

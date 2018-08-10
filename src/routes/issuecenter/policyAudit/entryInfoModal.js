@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/11 0011.
+ * 上传投保资料
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Title } from 'components';

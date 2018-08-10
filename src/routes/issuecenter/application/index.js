@@ -1,18 +1,22 @@
+/**
+ * 名单申请
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import Filter from './Filter';
 import { Page } from 'components';
-import queryString from 'query-string';
 import List from './List';
 
 const Application = ({
      location, dispatch, application, loading,
  }) => {
-  location.query = queryString.parse(location.search)
+  location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, pagination } = application;
+  // 重置
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,
@@ -23,6 +27,7 @@ const Application = ({
     }))
   };
 
+  //查询
   const filterProps = {
     filter: {
       ...query,

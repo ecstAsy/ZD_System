@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/6/25 0025.
+ * 派送记录
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Timeline, Button } from 'antd';

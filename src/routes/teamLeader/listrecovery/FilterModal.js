@@ -1,3 +1,6 @@
+/**
+ * 回收筛选条件
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Modal, Button, Form, Row, Col, DatePicker, Select, Input, Radio } from 'antd';
@@ -9,6 +12,7 @@ const { RangePicker } = DatePicker;
 const { Option } = Select;
 const RadioGroup = Radio.Group;
 const InputGroup = Input.Group;
+
 const formItemLayout = {
   labelCol: {
     span:7,
@@ -22,7 +26,7 @@ const formItemLayout = {
     fontSize:'14',
     color:'#333'
   }
-}
+};
 
 const FilterModal = ({...filterProps, handleCancel, FilterSearch,
      form: { getFieldDecorator, getFieldsValue, setFieldsValue }
@@ -36,11 +40,13 @@ const FilterModal = ({...filterProps, handleCancel, FilterSearch,
      }
      return fields
   };
+
   const handleSubmit =()=>{
     let fields = getFieldsValue();
     fields = handleFields(fields);
     FilterSearch(fields)
   };
+
   return (
     <Modal className={classnames(publicStyles.Modal)}
       {...filterProps}

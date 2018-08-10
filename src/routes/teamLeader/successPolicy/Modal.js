@@ -1,27 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { config } from 'utils'
-import CarInsurance from './carInsurance'
-import FinalOffer from './finalOffer'
-import ExpressInformation from './expressInformation'
-import Time from './Time'
-import {Modal, Button } from 'antd'
-import styles from './offer.less'
-import UserInfo from './userInfo'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { config } from 'utils';
+import CarInsurance from './carInsurance';              // 车险选项
+import FinalOffer from './finalOffer';                  // 保单派送信息
+import ExpressInformation from './expressInformation';  // 最终报价
+import Time from './Time';                              // 时间信息
+import {Modal, Button } from 'antd';
+import styles from './offer.less';
+import UserInfo from './userInfo';                      // 客户信息
 import {RemarkMadal} from 'components';
 
-const Offermodal = ({
-  item = {},
-  onCancel,
-  addRemarkFunc,
-  RemarkCancel,
-  visibleRemark,
-  remarkId,
-  saveRemarkFunc,
-  ...modalProps
+const Offermodal = ({item = {}, onCancel, addRemarkFunc, RemarkCancel, visibleRemark, remarkId, saveRemarkFunc, ...modalProps
 }) => {
   const modalOpts = {
-    ...modalProps,
+    ...modalProps
   };
 
   const RemarkOpts={
@@ -29,7 +21,7 @@ const Offermodal = ({
     addRemark(id){
       addRemarkFunc(id)
     },
-    remarkId:remarkId,
+    remarkId:remarkId
   };
 
   const RemarkMadalProps={
@@ -40,8 +32,9 @@ const Offermodal = ({
     },
     onCancel(){
       RemarkCancel()
-    },
+    }
   };
+
   return (
     <Modal {...modalOpts}   footer={[
       <Button key="submit" type="primary"  onClick={onCancel}>
@@ -69,7 +62,6 @@ Offermodal.propTypes = {
   type: PropTypes.string,
   item: PropTypes.object,
   onOk: PropTypes.func,
-  onCancel:PropTypes.func,
+  onCancel:PropTypes.func
 }
-
 export default Offermodal

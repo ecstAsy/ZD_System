@@ -1,9 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd';
 
-const FormItem = Form.Item
-
+const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -11,17 +10,10 @@ const formItemLayout = {
   wrapperCol: {
     span: 14,
   },
-}
+};
 
-const modal = ({
-  item = {},
-  onOk,
-  form: {
-    getFieldDecorator,
-    validateFields,
-    getFieldsValue,
-  },
-  ...modalProps
+const modal = ({item = {}, onOk, ...modalProps,
+  form: {getFieldDecorator, validateFields, getFieldsValue}
 }) => {
   const handleOk = () => {
     validateFields((errors) => {
@@ -35,12 +27,12 @@ const modal = ({
       data.address = data.address.join(' ')
       onOk(data)
     })
-  }
+  };
 
   const modalOpts = {
     ...modalProps,
     onOk: handleOk,
-  }
+  };
 
   return (
     <Modal {...modalOpts}>
@@ -114,17 +106,15 @@ const modal = ({
             ],
           })(<Input />)}
         </FormItem>
-
       </Form>
     </Modal>
   )
-}
+};
 
 modal.propTypes = {
   form: PropTypes.object.isRequired,
   type: PropTypes.string,
   item: PropTypes.object,
-  onOk: PropTypes.func,
+  onOk: PropTypes.func
 }
-
 export default Form.create()(modal)

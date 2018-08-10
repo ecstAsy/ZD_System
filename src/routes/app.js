@@ -35,6 +35,11 @@ const App = ({
   const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false;
   const { href } = window.location;
   let Height = document.body.clientHeight-196;
+
+  /**
+   * ajax请求进度条应用.start() .done() .set() .inc()
+   * @NProgress
+   * */
   if (lastHref !== href) {
     NProgress.start();
     if (!loading.global) {
@@ -89,7 +94,7 @@ const App = ({
     }
   }
 
-  const siderProps = {
+  const siderProps = {//主题切换
     menu,
     location,
     siderFold,
@@ -104,18 +109,19 @@ const App = ({
     },
   }
 
-  const breadProps = {
+  const breadProps = {//点击页面面包屑展示
     menu,
     location,
   }
 
   const modalProps = {
     visible: userInfoModalVisible,
-    maskClosable: false,
-    // confirmLoading: loading.effects[`user/${modalType}`],
+    maskClosable: false, //点击蒙层是否允许关闭
+    // confirmLoading: loading.effects[`app/login}`],  //按钮loading状态条件
     title: '个人信息',
     cancelText:'取消',
     okText:'保存',
+    mask:true,//是否展示遮罩
     width:'35%',
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
@@ -140,7 +146,7 @@ const App = ({
 
   }
 
-  const speechcraftModalProps={
+  const speechcraftModalProps={  //话术Modal
     visible: speechcraftModalVisible,
     maskClosable: false,
     // confirmLoading: loading.effects[`user/${modalType}`],
@@ -170,7 +176,7 @@ const App = ({
     }
   }
 
-  const editPwdModalProps={
+  const editPwdModalProps={  //修改密码Modal
     visible: editPwdModalVisible,
     maskClosable: false,
     title: '修改密码',
@@ -193,7 +199,7 @@ const App = ({
     },
   }
 
-  const QuickSearchModalProps={
+  const QuickSearchModalProps={  //快速查询Modal
     visible: QuickSearchModalVisible,
     maskClosable: false,
     // confirmLoading: loading.effects[`user/${modalType}`],
@@ -241,7 +247,7 @@ const App = ({
           {QuickSearchModalVisible && <QuickSearchModal {...QuickSearchModalProps}  />}
           <Content>
             <div style={{width:permissions.role =='yewuyuan'?'80%':'100%',float:'left'}}>
-              <Bread {...breadProps} />
+              {/*<Bread {...breadProps} />*/}
               {hasPermission ? children : <Error />}
             </div>
             {

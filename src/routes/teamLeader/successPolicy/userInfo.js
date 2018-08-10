@@ -1,14 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {Icon} from 'antd'
-import styles from './offer.less'
+/**
+ * Created by Administrator on 2018/6/25 0025.
+ * 客户信息
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Icon} from 'antd';
+import styles from './offer.less';
 
-const UserInfo = ({
-  addRemark,
+const UserInfo = ({addRemark
 })=>{
   const editRemark=(id)=>{
     addRemark(id)
   };
+
   const addRemarkFunc=()=>{
     addRemark()
   };
@@ -72,8 +76,6 @@ const UserInfo = ({
 
 UserInfo.propTypes = {
   addRemarkFunc: PropTypes.func,
-  editRemark:PropTypes.func,
+  editRemark:PropTypes.func
 };
-
-
 export default UserInfo

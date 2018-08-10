@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/6/26 0026.
+ * 最终报价
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './offer.less';
-import { connect } from 'dva';
 
 const ExpressInformation = () => {
   return (
@@ -28,6 +28,6 @@ const ExpressInformation = () => {
       </div>
     </div>
   )
-}
+};
 
 export default ExpressInformation

@@ -1,11 +1,10 @@
 import modelExtend from 'dva-model-extend';
 import queryString from 'query-string';
 import { config } from 'utils';
-import { create, remove, update } from 'services/generalData';
 import * as complaintsService from 'services/generalData';
 import { pageModel } from '../common';
 
-const { query } = complaintsService;
+const { query, create, update } = complaintsService;
 
 export default modelExtend(pageModel, {
   namespace: 'complaint',

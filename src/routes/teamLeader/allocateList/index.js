@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/2 0002.
+ * 名单分配
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -10,11 +14,12 @@ import { Page } from 'components';
 import List from './List';
 import FilterModal from './FilterModal';
 
-
 const AllocateList = ({location, dispatch, allocate, loading})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
+
   const { list,  FilterModalVisible, pagination, FilterValues } = allocate;
+
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,

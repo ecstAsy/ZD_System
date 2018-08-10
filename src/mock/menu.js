@@ -105,6 +105,12 @@ let database = [
     name: '保单审核',
     icon: 'phone',
     route: '/policyAudit',
+  },{
+    id: '16',
+    bpid: '1',
+    name: '投诉',
+    icon: 'phone',
+    route: '/complaints',
   }
 ];
 

@@ -187,7 +187,7 @@ const Filter = ({ FilterSearch, filter,
             <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap' ,}}>
               <div>
                 <Button type="primary"  onClick={handleSubmit}>查询</Button>
-                <Button onClick={handleReset} >重置</Button>
+                <Button onClick={handleReset}>重置</Button>
               </div>
             </div>
           </Col>

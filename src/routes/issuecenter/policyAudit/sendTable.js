@@ -1,3 +1,7 @@
+/**
+ * Created by Administrator on 2018/7/11 0011.
+ * 礼品信息（投保单）
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';

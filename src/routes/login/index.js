@@ -1,31 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'dva'
-import { Button, Row, Form, Input ,Checkbox} from 'antd'
-import { config } from 'utils'
-import styles from './index.less'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'dva';
+import { Button, Row, Form, Input ,Checkbox} from 'antd';
+import styles from './index.less';
 
 const FormItem = Form.Item;
 
-const Login = ({
-  loading,
-  dispatch,
-  form: {
-    getFieldDecorator,
-    validateFieldsAndScroll,
-    getFieldsValue,
-  },
+const Login = ({ loading, dispatch,
+  form: { getFieldDecorator, validateFieldsAndScroll, getFieldsValue }
 }) => {
-  function handleOk () {
-    const data = {
-      ...getFieldsValue(),
-    };
+  const handleOk= ()=> {
+    const data = { ...getFieldsValue() };
     if (data['username']==''||data['password']=='') {
         return false;
     }else{
       dispatch({ type: 'login/login', payload: data })
     }
-  }
+  };
 
  let userInfo = JSON.parse(localStorage.getItem('loginInfo'));
 

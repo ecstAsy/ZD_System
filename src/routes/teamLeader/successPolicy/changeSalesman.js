@@ -1,6 +1,11 @@
+/**
+ * Created by Administrator on 2018/6/25 0025.
+ * 更改名单所属
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Form, Select, } from 'antd';
+import {Modal, Form, Select} from 'antd';
+
 const FormItem = Form.Item
 const Option = Select.Option;
 const formItemLayout = {
@@ -16,18 +21,15 @@ const formItemLayout = {
     fontSize:'14px'
   }
 };
-const ChangeSalesman = ({
-  onOk,
-  form: {
-    getFieldDecorator,
-    getFieldsValue,
-  },
-  ...changeSalesProps
+
+const ChangeSalesman = ({onOk, ...changeSalesProps,
+  form: {getFieldDecorator, getFieldsValue}
 })=>{
   const handelOk=()=>{
     let files = getFieldsValue();
     onOk(files);
   };
+
   const SalesProps={
     ...changeSalesProps,
     onOk:handelOk,
@@ -51,6 +53,5 @@ const ChangeSalesman = ({
     </Modal>
   )
 };
-
 
 export default Form.create()(ChangeSalesman)

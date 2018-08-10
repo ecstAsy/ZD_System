@@ -1,5 +1,6 @@
 /**
  * Created by Administrator on 2018/6/26 0026.
+ * 保单派送信息
  */
 import React from 'react';
 import styles from './offer.less';
@@ -30,8 +31,6 @@ const FinalOffer = () => {
       </div>
     </div>
   )
-}
-
-
+};
 
 export default FinalOffer
