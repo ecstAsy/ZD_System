@@ -97,7 +97,6 @@ const AllocateList = ({location, dispatch, allocate, loading})=>{
                       <Tag key={i} className='tag' onClose={()=>TagClose(list)} closable>{`${list.title} : ${list.name}`}</Tag>
                     )
                   }
-
                 }
               })
             }

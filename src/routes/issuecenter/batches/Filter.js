@@ -155,15 +155,15 @@ const Filter = ({ FilterSearch, filter,
           </Col>
           <Col {...ColPropsLong}>
             <FormItem label="差额" {...formItemLayoutLong}>
-              {getFieldDecorator('costNum ', { initialValue: costNum })
+              {getFieldDecorator('costNum', { initialValue: costNum })
               (
                   <InputGroup>
                     <Col span={7}>
-                      <Input  />
+                      <Input/>
                     </Col>
                     <Col span={1}><p className="ant-form-split">-</p></Col>
                     <Col span={7}>
-                      <Input  />
+                      <Input/>
                     </Col>
                   </InputGroup>
               )}

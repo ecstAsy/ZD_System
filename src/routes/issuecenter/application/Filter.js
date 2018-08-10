@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import 'moment/src/locale/zh-cn';
 import { Form, Button, Row, Col, DatePicker, Input,  Select } from 'antd';
-import { FilterItem } from 'components';
 import styles from '../../publicStyle.less';
 
 
@@ -122,14 +121,15 @@ const Filter = ({ FilterSearch, filter,
           </Col>
           <Col {...ColProps}>
             <FormItem label="业务员"  {...formItemLayout}>
-              {getFieldDecorator('salesman', {initialValue: salesman})(<Select
-                showSearch
-                style={{ width: '100%' }}
-                placeholder="请选择"
-              >
-                <Option value="china">China</Option>
-                <Option value="use">U.S.A</Option>
-              </Select>)}
+              {getFieldDecorator('salesman', {initialValue: salesman})(
+                <Select
+                  showSearch
+                  style={{ width: '100%' }}
+                  placeholder="请选择"
+                >
+                  <Option value="china">China</Option>
+                  <Option value="use">U.S.A</Option>
+                </Select>)}
             </FormItem>
           </Col>
           <Col {...ColPropsLong}>
