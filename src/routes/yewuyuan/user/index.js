@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
-import {Row, Col, Button} from 'antd';
+import {Row, Col, Button, Icon} from 'antd';
 import {Page} from 'components';
 import queryString from 'query-string';
 import List from './List';
@@ -81,6 +81,17 @@ const User = ({
   const onAdd = ()=> {
     history.push('user/add');
   };
+  const flowFunc=()=>{
+    layer.open({
+      shade: 0,
+      title: false,
+      closeBtn:0,
+      btn:null,
+      time:1000,
+      content: '<div><img src="/ghef_03.png" />保存成功</div>'
+    });
+
+  };
 
   return (
     <Page inner>
@@ -89,7 +100,7 @@ const User = ({
         <Col>
           {`选择 ${selectedRowKeys.length} 项`}
           <Button type="primary" className='addBtn' onClick={onAdd}>新增</Button>
-          <Button className='gengzongBtn'>跟踪</Button>
+          <Button className='gengzongBtn' onClick={()=>flowFunc()}>跟踪</Button>
         </Col>
       </Row>
       <List {...listProps} />

@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import 'moment/src/locale/zh-cn';
 import { Form, Button, Row, Col, DatePicker, Input,  Select } from 'antd';
 import styles from '../../publicStyle.less';
 

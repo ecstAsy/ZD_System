@@ -11,7 +11,7 @@ import { dateConversion, timeConversion } from 'utils/index';
 
 const { confirm } = Modal;
 const List = ({
-  onDeleteItem, onEditItem, toQuoteFunc, isMotion, location, ...tableProps
+ toQuoteFunc, isMotion, location, ...tableProps
 }) => {
   location.query = queryString.parse(location.search)
 

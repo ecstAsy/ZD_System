@@ -1,7 +1,6 @@
 /* global document */
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'moment/src/locale/zh-cn';
 import { FilterItem } from 'components';
 import { Form, Button, Row, Col, DatePicker, Input, Cascader, Select} from 'antd'
 import styles from './List.less'
