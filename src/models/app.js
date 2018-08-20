@@ -147,7 +147,7 @@ export default {
     * logout ({ payload }, { call, put }) {
       const data = yield call(logout, parse(payload))
       if (data.success) {
-        yield put({ type: 'query' })
+        yield put({ type: ' ' })
       } else {
         throw (data)
       }
