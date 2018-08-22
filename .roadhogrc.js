@@ -7,11 +7,11 @@ const svgSpriteDirs = [
 ]
 
 export default {
-  entry: 'src/index.js',
+  entry: 'src/index.js',//指定 webpack 入口文件
   svgSpriteLoaderDirs: svgSpriteDirs,
   theme: "./theme.config.js",
-  publicPath: `/${version}/`,
-  outputPath: `./dist/${version}`,
+  publicPath: `/${version}/`,//配置生产环境的 publicPath，开发环境下永远为 /
+  outputPath: `./dist/${version}`,//配置输出路径，默认是 ./dist
   // 接口代理示例
   proxy: {
     "/api/v1/weather": {
@@ -28,7 +28,7 @@ export default {
   env: {
     development: {
       extraBabelPlugins: [
-        "dva-hmr",
+        "dva-hmr",//可实现 routes 和 components 以及相关 CSS 修改的热更新，其他修改会自动刷新页面
         "transform-runtime",
         [
           "import", {
@@ -38,6 +38,7 @@ export default {
         ]
       ]
     },
+
     production: {
       extraBabelPlugins: [
         "transform-runtime",

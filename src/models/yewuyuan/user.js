@@ -38,7 +38,6 @@ export default modelExtend(pageModel, {
   effects: {
 
     * query ({ payload = {} }, { call, put }) {
-      console.log(payload);
       const data = yield call(query, payload);
       if (data) {
         yield put({

@@ -46,7 +46,6 @@ const App = ({
       lastHref = href;
     }
   }
-
   const headerProps = {
     menu,
     user,

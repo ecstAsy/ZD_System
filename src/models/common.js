@@ -12,7 +12,6 @@ const model = {
 }
 
 const pageModel = modelExtend(model, {
-
   state: {
     list: [],
     pagination: {

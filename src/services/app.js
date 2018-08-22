@@ -1,6 +1,6 @@
 import { request, config } from 'utils';
 
-const { api } = config
+const {  api } = config
 const { user, userLogout, userLogin } = api
 
 export function login (params) {

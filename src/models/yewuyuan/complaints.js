@@ -56,7 +56,6 @@ export default modelExtend(pageModel, {
 
   reducers: {
     showModal (state, { payload }) {
-      console.log(payload)
       if(payload.modalType === 'deal'){
         return { ...state, currentItem:payload.data, dealModalVisible: true }
       }else if (payload.modalType === 'view'){

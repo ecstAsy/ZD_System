@@ -16,7 +16,6 @@ const Complaints = ({location, dispatch, complaints, loading})=>{
   location.query = queryString.parse(location.search);
   const { query, pathname } = location;
   const { list, viewList, pagination, currentItem, dealModalVisible, viewComplaintModalVisible} = complaints;
-
   const handleRefresh = (newQuery) => {
     dispatch(routerRedux.push({
       pathname,

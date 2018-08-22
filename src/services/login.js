@@ -10,3 +10,4 @@ export function login (data) {
     data,
   })
 }
+
